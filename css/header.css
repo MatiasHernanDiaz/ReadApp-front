@@ -1,6 +1,6 @@
 /*Aca irian de ser necesarios los estilos del header*/
 header {
-    background-color: #F25D0B;
+    background-color: var(--secundary-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -25,5 +25,5 @@ header {
 .avatar{
     border-radius: 50%;
     height: 90%;
-    border: 3px solid #FFC171;
+    border: 3px solid var(--primary-color);;
 }

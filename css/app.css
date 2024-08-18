@@ -10,6 +10,8 @@ DE CLARO A OSCURO
 /*VARIABLES*/
 :root {
     --primary-color: #FFC171; /*tomar a ejemplo, modificar mas adelante*/
+    --secundary-color: #F25D0B;
+    --tertiary-color: #F98F3E;
     --font-family: Arial, sans-serif; /*Definir fuentes*/
     /*espaciado, margenes, etc etc*/
   }
