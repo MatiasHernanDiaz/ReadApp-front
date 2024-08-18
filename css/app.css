@@ -1,0 +1,22 @@
+/*PALETA DE COLORES
+DE CLARO A OSCURO
+#FFC171 -> fondo
+#FCA858
+#F98F3E
+#F57625
+#F25D0B
+*/
+
+/*VARIABLES*/
+:root {
+    --primary-color: #FFC171; /*tomar a ejemplo, modificar mas adelante*/
+    --font-family: Arial, sans-serif; /*Definir fuentes*/
+    /*espaciado, margenes, etc etc*/
+  }
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary-color);
+}
+
