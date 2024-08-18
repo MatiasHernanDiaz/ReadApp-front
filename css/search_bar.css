@@ -3,6 +3,7 @@
     background-color: var(--tertiary-color);
     display: flex;
     justify-content: center;
+    margin-top: 0.1rem;
 }
 
 .search_bar{
