@@ -1,5 +1,6 @@
 /*PALETA DE COLORES
 DE CLARO A OSCURO
+#ffedd6 -> nueva sugerencia
 #FFC171 -> fondo
 #FCA858
 #F98F3E
@@ -7,16 +8,29 @@ DE CLARO A OSCURO
 #F25D0B
 */
 
+/*FUNTE*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;900&family=Roboto+Mono:wght@100;300;400;600;700&display=swap');
+
 /*VARIABLES*/
 :root {
-    --primary-color: #FFC171; /*tomar a ejemplo, modificar mas adelante*/
-    --font-family: Arial, sans-serif; /*Definir fuentes*/
+    --primary-color: #ffedd6; /*tomar a ejemplo, modificar mas adelante*/
+    --secundary-color: #F25D0B;
+    --tertiary-color: #F98F3E;
+    --white: #F2F2F2;
+    --font-family:  "Cantarell", Arial, sans-serif; /*Definir fuentes*/
     /*espaciado, margenes, etc etc*/
   }
 
-body {
-    margin: 0;
-    padding: 0;
-    background-color: var(--primary-color);
+* {
+  margin: 0;
+  padding: 0;  
 }
 
+body {
+  background-color: var(--primary-color);
+}
+
+html {
+  font-size: 16px;
+  font-family: var(--font-family);
+}
