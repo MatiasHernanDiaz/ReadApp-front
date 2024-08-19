@@ -16,6 +16,7 @@ DE CLARO A OSCURO
     --primary-color: #ffedd6; /*tomar a ejemplo, modificar mas adelante*/
     --secundary-color: #F25D0B;
     --tertiary-color: #F98F3E;
+    --white: #F2F2F2;
     --font-family:  "Cantarell", Arial, sans-serif; /*Definir fuentes*/
     /*espaciado, margenes, etc etc*/
   }
