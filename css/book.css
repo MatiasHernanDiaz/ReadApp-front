@@ -1,0 +1,50 @@
+.grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+
+    align-items: center;
+    justify-items: center;
+}
+
+
+div.principal{
+    margin: 2rem;
+    font-size: 3rem;
+    width: 30rem;
+    height: 15rem;
+    background-color: var(--secundary-color);
+    display: flex;
+    border-radius: 1rem;
+}
+.book{
+    margin: 1rem;
+    margin-right: 2rem;
+    padding: 0rem;
+    width: 8.5rem;
+    height: 12.75rem;
+}
+
+div.interior{
+    font-size: 1rem;
+    margin-top: 1rem;
+    padding: 0rem;
+    color: white;
+    display: block;
+    line-height: 1.5rem;
+}
+.titulo{
+    height: 1rem;
+    padding-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+.imagenes{
+    display: flex;
+    height: 1.5rem;
+    padding-left: 4.5rem;
+}
+.imageText{
+    height: 1.5rem;
+    display: flex;
+    line-height: 1.5rem;
+}
