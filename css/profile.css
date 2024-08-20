@@ -1,0 +1,57 @@
+
+.profile-main-container {
+    display: flex;
+    height: 90%;
+}
+
+.profile-main-container aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 300px;
+
+    border-right: 1px solid #aaa;
+}
+
+.profile-main-container aside .avatar {
+    display: block;
+    width: 40%;
+    height: auto;
+    margin-top: 10%;
+
+    border: 1px solid #aaa;
+}
+
+.profile-main-container aside h3 {
+    margin-top: 10%;
+
+}
+
+.profile-main-container aside hr {
+    width: 80%;
+    height: 1px;
+    margin-top: 6%;
+
+    background-color: var(--secundary-color);
+}
+
+.profile-main-container aside nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    height: 26%;
+
+    font-size: .9rem;
+}
+
+.profile-main-container aside nav a {
+    display: flex;
+    align-items: center;
+}
+
+.profile-main-container aside nav a img { 
+    width: 22px;
+    margin-right: 10px;
+}
