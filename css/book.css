@@ -16,14 +16,14 @@ div.principal{
     display: flex;
     border-radius: 1rem;
 }
-.book{
+.bookImage{
     margin: 1rem;
     padding: 0rem;
     width: 8.5rem;
     height: 12.75rem;
 }
 
-div.interior{
+div.inside{
     font-size: 1rem;
     margin-top: 1rem;
     padding: 0rem;
@@ -31,13 +31,13 @@ div.interior{
     display: block;
     line-height: 1.5rem;
 }
-.titulo{
+.bookTitle{
     height: 1rem;
     width: 16rem;
     padding-bottom: 0.5rem;
     display: flex;
 }
-.imagenes{
+.images{
     display: flex;
     height: 1.5rem;
     text-align: right;
