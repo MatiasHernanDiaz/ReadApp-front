@@ -55,3 +55,54 @@
     width: 22px;
     margin-right: 10px;
 }
+
+
+.profile-info-container {
+    width: 100%;
+}
+
+.profile-info-container h2 {
+    margin: 12px 20px;
+
+    font-size: 1.8rem;
+}
+
+.profile-info-container h3 {
+    margin: 16px 20px;
+
+    font-size: 1.1rem;
+}
+
+.gral-info-items-container {
+    display: grid;
+    grid-template-columns: 44% 44%;
+    justify-content: space-evenly;
+    gap: 10px;
+
+    width: 100%;
+}
+
+.gral-info-items-container label {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    font-size: .9rem;
+    font-weight: bold;
+}
+
+.gral-info-items-container input {
+    margin-top: 10px;
+    padding: 8px 10px;
+    height: 16px;
+
+    font: .6rem;
+
+    outline: none;
+    border: var(--light-border);
+    border-radius: 4px
+}
+
+.gral-info-items-container input:focus {
+    outline: none;
+}
