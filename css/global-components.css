@@ -66,3 +66,15 @@ header {
     border-top-right-radius: 0.5em;
     border-bottom-right-radius: 0.5em;
 }
+
+.content-check{
+    color: var(--white);
+    font-size: 0.8rem;
+    display: flex;
+}
+
+.label-check{
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+}
