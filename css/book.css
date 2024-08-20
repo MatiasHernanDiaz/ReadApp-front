@@ -33,15 +33,15 @@ div.interior{
 }
 .titulo{
     height: 1rem;
-    width: 20rem;
+    width: 16rem;
     padding-bottom: 0.5rem;
     display: flex;
-    
 }
 .imagenes{
     display: flex;
     height: 1.5rem;
-    padding-left: 1rem;
+    text-align: right;
+    padding-left: 5rem
 }
 .imageText{
     height: 1.5rem;
