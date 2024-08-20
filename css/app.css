@@ -27,6 +27,7 @@ DE CLARO A OSCURO
 }
 
 body {
+  height: 100vh;
   background-color: var(--primary-color);
 }
 
