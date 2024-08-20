@@ -1,0 +1,50 @@
+.grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    align-items: center;
+    justify-items: center;
+}
+
+
+div.principal{
+    margin-top: 2rem;
+    font-size: 3rem;
+    width: 25rem;
+    height: 15rem;
+    background-color: var(--secundary-color);
+    display: flex;
+    border-radius: 1rem;
+}
+.bookImage{
+    margin: 1rem;
+    padding: 0rem;
+    width: 8.5rem;
+    height: 12.75rem;
+}
+
+div.inside{
+    font-size: 1rem;
+    margin-top: 1rem;
+    padding: 0rem;
+    color: white;
+    display: block;
+    line-height: 1.5rem;
+}
+.bookTitle{
+    height: 1rem;
+    width: 16rem;
+    padding-bottom: 0.5rem;
+    display: flex;
+}
+.images{
+    display: flex;
+    height: 1.5rem;
+    text-align: right;
+    padding-left: 5rem
+}
+.imageText{
+    height: 1.5rem;
+    display: flex;
+    line-height: 1.5rem;
+}
