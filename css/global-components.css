@@ -40,7 +40,7 @@ header {
 
 .search_bar{
     height: 3rem;
-    width: 60%; 
+    width: 70%; 
     display: flex;
     align-items: center;
     padding: 1rem;
@@ -65,4 +65,26 @@ header {
     background-color: var(--secundary-color);
     border-top-right-radius: 0.5em;
     border-bottom-right-radius: 0.5em;
+}
+
+.content-check{
+    color: var(--white);
+    font-size: 0.8rem;
+    display: flex;
+}
+
+.label-check{
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.wrapper{
+    width: 70%;
+    display: flex;
+}
+
+.search_bar_checkbox{
+    padding-left: 0px;
+    flex: 1;
 }
