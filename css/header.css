@@ -1,0 +1,61 @@
+/*HEADER*/
+/*Desktop*/
+.header-bar {
+    background-color: var(--secundary-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--white);
+    height: 3rem;
+    padding: 0.8rem;    
+    font-size: 1rem;
+}
+
+.title{
+    display: flex;
+}
+
+.user{
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.avatar{
+    border-radius: 50%;
+    height: 90%;
+    border: 3px solid var(--primary-color);
+}
+
+.menu-hamburgesa{
+    display: none;
+}
+
+/*Tablet*/
+
+@media (max-width: 768px) and (min-width: 401px) {
+    .user{
+        display: none;
+    }
+    .menu-hamburgesa{
+        display: block;
+    }
+}
+
+/*Mobile*/
+
+@media (max-width: 400px) {
+    .header-bar{
+        display: flex;
+        
+    }
+
+    .user{
+        display: none;
+    }
+    .menu-hamburgesa{
+        display: block;
+    }
+}
