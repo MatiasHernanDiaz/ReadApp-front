@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/app.css">
-    <link rel="stylesheet" href="/css/global-components.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/search-bar.css">
+    <link rel="stylesheet" href="/css/layout.css">
     <title>Document</title>
 </head>
 <body>
-    <header>
+    <header class="header-bar header">
         <div class="title">
             <img src="/img/book-white.svg"/>
             <h1>ReadApp</h1>
@@ -17,12 +19,12 @@
             <img class="avatar" src="/img/avatar.jpeg">
             <p>Homero Simpson</p>
         </div>
+        <img class="menu-hamburgesa" src="/img/hamburgesa-white.svg">
     </header>
 
     <div class="contain_search_bar">
         <div class="wrapper">
-
-            <div class="search_bar search_bar_checkbox">
+            <div class="search_bar">
                 <input class="search_input" type="search" placeholder="Buscar">
                 <button class="search_button"><img src="/img/magnifying-glass.svg"/></button>
             </div>
@@ -31,10 +33,16 @@
                     <input type="checkbox"/> Solo ver recomendaciones privadas
                 </label>
             </div>
-
-
         </div>
     </div>
+
+    <main>
+        <!-- aca va el contenido-->
+         
+    </main>
+    <footer>
+        <!--aca lo necesito para el layout de los dispositivos mobiles-->
+    </footer>
 
 </body>
 </html>
