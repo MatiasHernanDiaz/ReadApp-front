@@ -24,33 +24,27 @@ div.inside{
     line-height: 1.5rem;
 }
 .bookTitle{
-    height: 1rem;
+    height: 1.5rem;
     width: 16rem;
-    padding-bottom: 0.5rem;
     padding-left: 0.6rem;
     display: flex;
-    align-self: center;
     justify-content: center;
+    text-align: center;
 }
 .images{
     display: flex;
     height: 1.5rem;
-    padding-left: 0.5rem;
     text-align: right;
     justify-content: right;
-}
-.imageText{
-    height: 1.5rem;
-    display: flex;
-    line-height: 1.5rem;
 }
 
 @media(width < 500px){
     .bookImage{
-        width: 8rem;
+        width: 7rem;
         margin: 0.3rem;
+        padding-left: 50%;
         height: auto;
-        display: block;
+        display: flex;
     }
     .bookTitle{
         justify-content:left;

@@ -9,9 +9,11 @@
     gap: 1rem;
     margin-top: 2rem;
 
+    align-items: center;
+    justify-items: center;
 }
 
-.card{
+figure.card{
     border : 2px solid var(--secundary-color);
     max-width: 13rem;
     border-radius: 1.2rem;
@@ -19,11 +21,16 @@
     margin: 1rem;
     background-color: var(--tertiary-color);
     box-shadow: 0 0.55rem 0.3rem rgba(0, 0, 0, 0.1);
-    text-align: center;
+    justify-content: center;
+}
+.imageText{
+    height: 1.5rem;
+    display: flex;
+    line-height: 1.5rem;
 }
 
 @media (width < 1000px){
-    .card{
+    figure.card{
         display: block;
         font-size: 1rem;
     }
@@ -34,11 +41,18 @@
 }
 
 @media (width < 500px){
-    .card{
-        max-width: 16rem;
+    .card-container{
+        max-width: 15rem;
+        margin-left: 0%;
+        margin-right: 0%;
+        padding: 0;
+    }
+    figure.card{
+        max-width: 15rem;
         display: flex;
         font-size: 1rem;
         text-align:left;
+        justify-content: center;
     }
     .card-container{
         grid-template-columns:auto;
