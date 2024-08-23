@@ -1,7 +1,9 @@
 
 .profile-main-container {
     display: flex;
-    height: 90%;
+
+    grid-row-start: 2;
+    grid-row-end: 5;
 }
 
 .profile-main-container aside {
@@ -9,7 +11,11 @@
     flex-direction: column;
     justify-content: start;
     align-items: center;
+
+    box-sizing: border-box;
+
     width: 300px;
+    height: 100%;
 
     border-right: 1px solid #aaa;
 }
@@ -18,21 +24,19 @@
     display: block;
     width: 40%;
     height: auto;
-    margin-top: 10%;
+    margin-top: 14%;
 
     border: 1px solid #aaa;
 }
 
 .profile-main-container aside h3 {
-    margin-top: 10%;
-
+    margin-top: 14%;
 }
 
 .profile-main-container aside hr {
     width: 80%;
     height: 1px;
-    margin-top: 6%;
-
+    margin-top: 10%;
     background-color: var(--secundary-color);
 }
 
@@ -54,4 +58,130 @@
 .profile-main-container aside nav a img { 
     width: 22px;
     margin-right: 10px;
+}
+
+/*Estilos generales para los inputs*/
+.profile-info-container {
+    flex-grow: 1;
+}
+
+
+.profile-info-container h2 {
+    margin: 0 3%;
+    margin-top: 2%;
+
+    font-size: 1.8rem;
+}
+
+.profile-info-container h3 {
+    margin: 2% 3%;
+
+    font-size: 1rem;
+}
+
+.profile-info-container hr {
+    margin: 0 3%;
+    margin-top: 2%;
+}
+
+.items-container {
+    padding: 0 40px;
+    justify-content: space-between;
+}
+
+.items-container label{
+    font-size: .9rem;
+}
+
+/*Estilos particulares para los inputs*/
+.gral-info-items-container {
+    display: grid;
+    grid-template-columns: 38% 38%;
+    gap: 10px;
+}
+
+.gral-info-items-container label {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    font-weight: bold;
+}
+
+.gral-info-items-container label .required-label {
+    color: rgb(124, 0, 0);
+}
+
+.gral-info-items-container input {
+    margin-top: 1%;
+    padding: 6px 10px;
+    height: 16px;
+
+    font-size: .8rem;
+
+    border: var(--light-border);
+    border-radius: 4px
+}
+
+.read-mode-items-container {
+    display: flex;
+}
+
+.search-criteria-items-container {
+    display: grid;
+    grid-template-columns: 32% 32% 32%;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.search-criteria-items-container label {
+    position: relative;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+
+}
+
+.search-criteria-items-container label input {
+    margin-right: 6px;
+}
+
+.search-criteria-items-container label .max-limit {
+    margin: 6px;
+    width: 40%;
+    padding: 2px 6px;
+
+    font-size: .7rem;
+
+    background-color: var(--white);
+    border: var(--light-border);
+    border-radius: 6px;
+}
+
+.search-criteria-items-container label .max-limit {
+    position: absolute;
+    left: 32%;
+    display: none;
+    width: 50%;
+    border: var(--light-border);;
+    border-radius: 4px;
+}
+
+.search-criteria-items-container label .max-limit input {
+    width: 60%;
+}
+
+.search-criteria-items-container label input:checked ~ .max-limit {
+    display: flex;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: end;
+    margin-top: 2%;
+}
+
+.buttons-container button {
+    margin: 1%;
 }

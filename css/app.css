@@ -17,7 +17,9 @@ DE CLARO A OSCURO
     --secundary-color: #F25D0B;
     --tertiary-color: #F98F3E;
     --white: #F2F2F2;
-    --font-family:  "Cantarell", Arial, sans-serif;
+    --light-border: 1px solid #aaa;
+    --font-family:  "Cantarell", Arial, sans-serif; /*Definir fuentes*/
+    /*espaciado, margenes, etc etc*/
     --max-width-mobile: 400px; 
   }
 
@@ -26,12 +28,8 @@ DE CLARO A OSCURO
   padding: 0;  
 }
 
-body {
-  height: 100vh;
-  background-color: var(--primary-color);
-}
-
 html {
   font-size: 16px;
   font-family: var(--font-family);
 }
+

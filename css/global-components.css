@@ -1,1 +1,98 @@
+
+/*HEADER*/
+header {
+    background-color: var(--secundary-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--white);
+    height: 3rem;
+    padding: 0.8rem;    
+    font-size: 1rem;
+}
+
+.title{
+    display: flex;
+}
+
+.user{
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.avatar{
+    border-radius: 50%;
+    height: 90%;
+    border: 3px solid var(--primary-color);;
+}
+
+/*SEARCH BAR*/
+
+.contain_search_bar{
+    width: 100%;
+    background-color: var(--tertiary-color);
+    display: flex;
+    justify-content: center;
+}
+
+.search_bar{
+    height: 3rem;
+    width: 60%; 
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+}
+
+.search_input{
+    box-sizing: border-box;
+    padding-left: 1rem;
+    border: 3px solid var(--secundary-color);
+    font-size: 1rem;
+    height: 90%;
+    width: 100%;
+    border-top-left-radius: 0.5em;
+    border-bottom-left-radius: 0.5em;
+}
+
+.search_button{
+    padding: 0;
+    border: px solid var(--secundary-color);;
+    height: 90%;
+    background-color: var(--secundary-color);
+    border-top-right-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+}
+
+input {
+    outline: none;
+}
+
+button{
+    padding: 10px 12px;
+
+    font-size: .8rem;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    
+    transition: 1s;        
+}
+
+button.accept {
+    background:#F25D0B;
+}
+
+button.accept:hover, button.cancel:hover {
+    background-color: rgb(124, 139, 153);
+}
+
+button.cancel {
+    background:var(--primary-color);
+    border: var(--light-border);
+}
 /*en principio sin uso, tal vez ballan los botones con propiedades generales*/
