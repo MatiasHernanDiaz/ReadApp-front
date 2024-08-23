@@ -55,7 +55,6 @@ header {
     width: 100%;
     border-top-left-radius: 0.5em;
     border-bottom-left-radius: 0.5em;
-    outline: none; /*quitar el efecto por defecto cuando se hace click*/
 }
 
 .search_button{
@@ -65,4 +64,8 @@ header {
     background-color: var(--secundary-color);
     border-top-right-radius: 0.5em;
     border-bottom-right-radius: 0.5em;
+}
+
+input {
+    outline: none;
 }
