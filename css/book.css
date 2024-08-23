@@ -1,51 +1,12 @@
-.grid{
-    width: 70%;
-    margin-left: 15%;
-    margin-right: 15%;
-    display:grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: center;
-    justify-items: center;
-}
-
 .bookImage{
     width: 12rem;
     height: auto;
     margin-bottom: 0.5rem;
-    
-    
 }
 
-div.inside{
-    font-size: 0.8rem;
-    margin-top: 0.25rem;
-    padding: 0rem;
-    color: white;
-    display: block;
-    line-height: 1.5rem;
-}
-.bookTitle{
-    height: 1.5rem;
-    width: 16rem;
-    padding-left: 0.6rem;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-}
 .images{
     display: flex;
     height: 1.5rem;
     text-align: right;
     justify-content: right;
-}
-
-@media(width < 500px){
-    .bookTitle{
-        justify-content:left;
-        padding-left: 0rem;
-    }
-    .images{
-        padding-left:0;
-        justify-content: center;
-    }
 }
