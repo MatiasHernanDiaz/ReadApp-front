@@ -20,16 +20,12 @@ DE CLARO A OSCURO
     --light-border: 1px solid #aaa;
     --font-family:  "Cantarell", Arial, sans-serif; /*Definir fuentes*/
     /*espaciado, margenes, etc etc*/
+    --max-width-mobile: 400px; 
   }
 
 * {
   margin: 0;
   padding: 0;  
-}
-
-body {
-  height: 100vh;
-  background-color: var(--primary-color);
 }
 
 html {

@@ -4,10 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/app.css">
-    <link rel="stylesheet" href="/css/global-components.css">
+    <link rel="stylesheet" href="/css/login.css">
     <title>Document</title>
 </head>
 <body>
+    <section>
+        <div class="login-container">
+            <div class="login-form">
+                <form action="g">
+                    <h1 class="form-title">
+                        <img src="img/book.svg" alt="no deberías ver esto">
+                        ReadApp
+                    </h1>
+
+                    <div class="input-group">
+                        <input type="text" id="Username" required>
+                        <label for="Username">Usuario*</label>
+                        <div id="usernameAlert" class="alert-message">
+                            <img src="img/warning.svg" alt="no deberías ver esto">
+                            El nombre de usuario es obligatorio.
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="password" required>
+                        <label for="#">Contraseña*</label>
+                        <i><img src="img/eye.svg" alt="no deberias ver esto "></i>
+                        
+                    </div>
+
+                </form>
+
+                <div class="submit-container">
+                    <button type="submit">Ingresar</button>
+                </div>
+
+            </div>
     
 </body>
 </html>
