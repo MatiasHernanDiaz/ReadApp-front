@@ -3,6 +3,8 @@ body{
    grid-template-rows: 4.5rem 5rem 5fr 4.5rem;
    grid-template-columns: 1fr;
 
+   height: 100vh;
+
    background-color: var(--primary-color);
 }
 
