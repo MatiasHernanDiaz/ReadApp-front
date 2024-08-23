@@ -95,3 +95,4 @@ button.cancel {
     background:var(--primary-color);
     border: var(--light-border);
 }
+/*en principio sin uso, tal vez ballan los botones con propiedades generales*/
