@@ -34,3 +34,8 @@ html {
   font-family: var(--font-family);
 }
 
+body{
+  height: 100vh;
+  background-color: var(--primary-color);
+}
+

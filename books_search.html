@@ -6,13 +6,12 @@
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/search-bar.css">
-    <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/card.css">
     <link rel="stylesheet" href="/css/book.css">
     <title>Busqueda De Libros</title>
 </head>
 <body>
-    <header class="header-bar header">
+    <header class="header-bar">
         <div class="title">
             <img src="/img/book-white.svg"/>
             <h1>ReadApp</h1>
@@ -25,11 +24,15 @@
     </header>
 
     <div class="contain_search_bar">
-        <div class="search_bar">
-            <input class="search_input" type="search" placeholder="Buscar">
-            <button class="search_button"><img src="/img/magnifying-glass.svg"/></button>
+        <div class="wrapper">
+            <div class="search_bar">
+                <input class="search_input" type="search" placeholder="Buscar">
+                <button class="search_button"><img src="/img/magnifying-glass.svg"/></button>
+            </div>
         </div>
     </div>
+  
+    
     <main>
         
         <div class="card-container">
@@ -169,7 +172,7 @@
         </div>
         
     </main>
-
+  
     <footer>
         <!--necesario para el layout-->
     </footer>

@@ -2,6 +2,7 @@
 
 .contain_search_bar{
     width: 100%;
+    height: 5rem;
     background-color: var(--tertiary-color);
     display: flex;
     justify-content: center;
