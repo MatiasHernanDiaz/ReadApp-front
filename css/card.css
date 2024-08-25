@@ -39,7 +39,7 @@ figure.card{
     }
 }
 
-@media (width < 400px){
+@media (width < 600px){
     figure.card{
         max-width: 15rem;
         font-size: 1rem;
