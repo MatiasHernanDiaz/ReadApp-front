@@ -1,9 +1,6 @@
 
 .profile-main-container {
     display: flex;
-
-    grid-row-start: 2;
-    grid-row-end: 5;
 }
 
 .profile-main-container aside {
@@ -14,29 +11,35 @@
 
     box-sizing: border-box;
 
-    width: 300px;
-    height: 100%;
+    width: 280px;
 
     border-right: 1px solid #aaa;
 }
 
-.profile-main-container aside .avatar {
+.img-name-aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 30%;
+}
+
+.img-name-aside .avatar {
     display: block;
-    width: 40%;
+    width: 100px;
     height: auto;
-    margin-top: 14%;
 
     border: 1px solid #aaa;
 }
 
-.profile-main-container aside h3 {
-    margin-top: 14%;
+.img-name-aside h3 {
+    font-size: 1.2rem;
 }
 
 .profile-main-container aside hr {
     width: 80%;
     height: 1px;
-    margin-top: 10%;
     background-color: var(--secundary-color);
 }
 
@@ -45,9 +48,10 @@
     flex-direction: column;
     justify-content: space-evenly;
 
-    height: 26%;
+    width: 80%;
+    height: 30%;
 
-    font-size: .9rem;
+    font-size: .8rem;
 }
 
 .profile-main-container aside nav a {
@@ -76,7 +80,7 @@
 .profile-info-container h3 {
     margin: 2% 3%;
 
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 .profile-info-container hr {
@@ -85,7 +89,7 @@
 }
 
 .items-container {
-    padding: 0 40px;
+    margin: 2% 3%;
     justify-content: space-between;
 }
 
@@ -96,7 +100,8 @@
 /*Estilos particulares para los inputs*/
 .gral-info-items-container {
     display: grid;
-    grid-template-columns: 38% 38%;
+    grid-template-columns: 42% 42%;
+    justify-content: space-between;
     gap: 10px;
 }
 
@@ -109,7 +114,7 @@
 }
 
 .gral-info-items-container label .required-label {
-    color: rgb(124, 0, 0);
+    color: rgb(178, 0, 0);
 }
 
 .gral-info-items-container input {
@@ -125,6 +130,7 @@
 
 .read-mode-items-container {
     display: flex;
+    gap: 10px;
 }
 
 .search-criteria-items-container {
@@ -148,6 +154,11 @@
 }
 
 .search-criteria-items-container label .max-limit {
+    position: absolute;
+    right: 0;
+    display: none;
+    width: 50%;
+
     margin: 6px;
     width: 40%;
     padding: 2px 6px;
@@ -156,20 +167,12 @@
 
     background-color: var(--white);
     border: var(--light-border);
-    border-radius: 6px;
-}
-
-.search-criteria-items-container label .max-limit {
-    position: absolute;
-    left: 32%;
-    display: none;
-    width: 50%;
-    border: var(--light-border);;
     border-radius: 4px;
 }
 
 .search-criteria-items-container label .max-limit input {
     width: 60%;
+    font-size: .7rem;
 }
 
 .search-criteria-items-container label input:checked ~ .max-limit {
@@ -184,4 +187,54 @@
 
 .buttons-container button {
     margin: 1%;
+}
+
+
+@media (max-width: 768px) and (min-width: 401px) {
+    .profile-main-container {
+        flex-direction: column;
+    }
+
+    .profile-main-container aside {
+        width: 100%;
+    }
+
+    .img-name-aside {
+        flex-direction: row;
+        padding: 20px;
+    }
+
+    .profile-main-container aside nav {
+        margin: 10px 0;
+    }
+}
+
+/*Mobile*/
+
+@media (max-width: 400px) {
+    .profile-main-container {
+        flex-direction: column;
+    }
+
+    .profile-main-container aside {
+        width: 100%;
+    }
+
+    .img-name-aside {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .profile-main-container aside nav {
+        margin: 10px 0;
+    }
+
+    .gral-info-items-container, .search-criteria-items-container {
+        grid-template-columns: 100%;
+    }
+
+    .read-mode-items-container {
+        flex-direction: column;
+
+    }
 }
