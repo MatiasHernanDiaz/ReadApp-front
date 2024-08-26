@@ -21,7 +21,9 @@ DE CLARO A OSCURO
     --light-border: 1px solid #aaa;
     --font-family:  "Cantarell", Arial, sans-serif; /*Definir fuentes*/
     /*espaciado, margenes, etc etc*/
-    --max-width-mobile: 400px; 
+    --max-width-mobile: 400px;
+    --header-height: 10%;
+    --search-height:12%;
   }
 
 * {
@@ -36,7 +38,16 @@ html {
 
 body{
   height: 100vh;
+  display: flex;
+  flex-direction: column;
   background-color: var(--primary-color);
+  box-sizing: border-box;
+}
+
+main{
+  height: calc(100% - var(--header-height) - var(--search-height));
+  overflow-y: auto;
+  box-sizing: border-box;
 }
 
 
