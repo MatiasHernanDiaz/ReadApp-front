@@ -7,6 +7,7 @@
     display: flex;
     justify-content: center;
     box-sizing: border-box;
+    align-items: center;
 }
 
 .search_bar{
@@ -62,6 +63,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        height: 70%;
     }
 
     .search_bar{
