@@ -4,13 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/global-components.css">
     <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/search-bar.css">
-    <link rel="stylesheet" href="/css/layout.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="/css/profile.css">
+    <link rel="stylesheet" href="/css/friends.css">
+    <title>Perfil Amigos</title>
 </head>
 <body>
+    <header class="header-bar">
+        <div class="title">
+            <img src="/img/book-white.svg"/>
+            <h1>ReadApp</h1>
+        </div>
+        <div class="user">
+            <img class="avatar" src="/img/avatar.jpeg">
+            <p>Homero Simpson</p>
+        </div>
+        <img class="menu-hamburgesa" src="/img/hamburgesa-white.svg">
+    </header>
+    <main class="profile-main-container without-search">
+        <aside>
+            <div class="img-name-aside">
+                <img class="avatar" src="/img/avatar.jpeg">
+                <h3>Homero Simpson</h3>
+            </div>
+            <hr/>
+            <nav>
+                <a><img src="/img/info.svg"/> Información</a>
+                <a><img src="/img/friends.svg"/> Amigos</a>
+                <a><img src="/img/book.svg"/> Libros leídos</a>
+                <a><img src="/img/bookmark.svg"/> Libros a leer</a>
+                <a><img src="/img/heart.svg"/> Recomendaciones a valorar</a>
+            </nav>
+        </aside>
+        
+        <div class="friend-main-container">
+            <div class="sub-friends">
 
+                <h1>Amigos</h1>
+                <div class="content-container">
+                    <div class="friend">
+                        <img src="/img/nelson.png" alt="Foto del amigo" class="friend-photo">
+                        <div class="friend-details">
+                            <h2 class="friend-name">Nombre Apellido</h2>
+                            <p class="friend-email">email@ejemplo.com</p>
+                        </div>
+                        <div>
+                            <img src="/img/trash.svg" alt="no se ve" class="trash">
+                        </div>
+                    </div>
     
+                    <div class="friend">
+                        <img src="/img/nelson.png" alt="Foto del amigo" class="friend-photo">
+                        <div class="friend-details">
+                            <h2 class="friend-name">Nombre Apellido</h2>
+                            <p class="friend-email">email@ejemplo.com</p>
+                        </div>
+                        <div>
+                            <img src="/img/trash.svg" alt="no se ve" class="trash">
+                        </div>
+                    </div>
+    
+                    <div class="friend">
+                        <img src="/img/nelson.png" alt="Foto del amigo" class="friend-photo">
+                        <div class="friend-details">
+                            <h2 class="friend-name">Nombre Apellido</h2>
+                            <p class="friend-email">email@ejemplo.com</p>
+                        </div>
+                        <div>
+                            <img src="/img/trash.svg" alt="no se ve" class="trash">
+                        </div>
+                    </div>
+    
+                    
+    
+                    <div class="friend">
+                        <img src="/img/nelson.png" alt="Foto del amigo" class="friend-photo">
+                        <div class="friend-details">
+                            <h2 class="friend-name">Nombre Apellido</h2>
+                            <p class="friend-email">email@ejemplo.com</p>
+                        </div>
+                        <div>
+                            <img src="/img/trash.svg" alt="no se ve" class="trash">
+                        </div>
+                    </div> 
+    
+                    <div class="add-friend-button">
+                        <span>+</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="items-container buttons-container">
+                <button class="cancel">Cancelar</button>
+                <button class="accept" type="submit">Guardar cambios</button>
+            </div>
+
+
+        </div>
+
+    </main>
 </body>
 </html>

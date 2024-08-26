@@ -50,6 +50,10 @@ main{
   box-sizing: border-box;
 }
 
+main.without-search{
+  height: calc(100% - var(--header-height));
+}
+
 
 /*Tablet*/
 
