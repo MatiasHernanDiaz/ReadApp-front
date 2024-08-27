@@ -1,6 +1,6 @@
 
 .profile-main-container {
-    display: flex;
+    display: flex;  
 }
 
 .profile-main-container aside {
@@ -14,6 +14,7 @@
     width: 280px;
 
     border-right: 1px solid #aaa;
+
 }
 
 .img-name-aside {
@@ -27,9 +28,7 @@
 
 .img-name-aside .avatar {
     display: block;
-    width: 100px;
-    height: auto;
-
+    height: 70%;
     border: 1px solid #aaa;
 }
 
@@ -103,6 +102,7 @@
     grid-template-columns: 42% 42%;
     justify-content: space-between;
     gap: 10px;
+    
 }
 
 .gral-info-items-container label {
@@ -183,6 +183,7 @@
     display: flex;
     justify-content: end;
     margin-top: 2%;
+    width: 90%;
 }
 
 .buttons-container button {
@@ -201,7 +202,11 @@
 
     .img-name-aside {
         flex-direction: row;
-        padding: 20px;
+        height: auto;
+    }
+
+    .img-name-aside h3{
+        font-size: 2.2rem;
     }
 
     .profile-main-container aside nav {
@@ -218,11 +223,16 @@
 
     .profile-main-container aside {
         width: 100%;
+        
     }
 
     .img-name-aside {
         flex-direction: column;
-        padding: 20px;
+        height: auto;
+    }
+
+    .img-name-aside h3{
+        font-size: 2.2rem;
     }
 
     .profile-main-container aside nav {

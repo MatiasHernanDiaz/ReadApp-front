@@ -6,9 +6,10 @@
     align-items: center;
     justify-content: space-between;
     color: var(--white);
-    height: 3rem;
+    height: 10%;
     padding: 0.8rem;    
     font-size: 1rem;
+    box-sizing: border-box;
 }
 
 .title{
@@ -48,11 +49,8 @@
 
 @media (max-width: 400px) {
     .header-bar{
-        display: flex;
-        position:fixed;
-        bottom: 0;
-        left: 0;
         width: 100%;
+        order: 5;
     }
 
     .user{
