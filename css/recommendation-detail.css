@@ -1,0 +1,28 @@
+.title-rating{
+    width: 70%;
+    margin-top: 4%;
+    gap: 3%;
+    height: 4rem;
+    display: flex;
+    padding-left: 5%;
+    padding-right: 2%;
+    display: flex;
+    align-items: baseline;
+}
+
+.title-rating div{
+    padding-top: 2%;
+}
+.wrapper-rating{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.button-contain{
+    padding: 4rem;
+}
+
+.rating-card-without-item-center{
+    align-items: start;
+}
