@@ -54,6 +54,10 @@ main.without-search{
   height: calc(100% - var(--header-height));
 }
 
+input {
+  outline: none;
+}
+
 
 /*Tablet*/
 
