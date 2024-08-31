@@ -36,7 +36,7 @@
 
 /*Tablet*/
 
-@media (max-width: 768px) and (min-width: 401px) {
+@media (max-width: 768px) and (min-width: 481px) {
     .user{
         display: none;
     }
@@ -47,7 +47,7 @@
 
 /*Mobile*/
 
-@media (max-width: 400px) {
+@media (max-width: 480px) {
     .header-bar{
         width: 100%;
         order: 5;

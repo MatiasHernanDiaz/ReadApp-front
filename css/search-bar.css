@@ -58,7 +58,7 @@
 }
 
 
-@media (max-width: 400px) {
+@media (max-width: 480px) {
     .wrapper{
         flex-direction: column;
         justify-content: center;

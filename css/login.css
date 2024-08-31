@@ -111,7 +111,7 @@ button:hover{
     opacity: .8;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 480px) {
     section.login-section{
         background-color: var(--white);
     }
