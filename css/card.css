@@ -1,25 +1,22 @@
 .card-container{
     width: 70%;
-    margin-left: 15%;
-    margin-right: 15%;
-
+    grid-template-columns: repeat(3,1fr) ;
     display: grid;
-    grid-template-columns:auto auto auto;
     padding: 0.1rem;
-    margin-top: 2rem;
-
+    margin: 2rem auto;
+    gap: 2rem 5%;
     align-items: center;
+    justify-content: center;
     justify-items: center;
-
     box-sizing: border-box; 
 }
 
-figure.card{
+article.card{
     border : 2px solid var(--secundary-color);
-    max-width: 20rem;
+    width: 13rem;
+    
     border-radius: 1.2rem;
     padding: 1rem;
-    margin: 1rem;
     background-color: var(--card-background);
     box-shadow: 0 0.55rem 0.3rem rgba(0, 0, 0, 0.1);
     justify-content: center;
@@ -30,34 +27,33 @@ figure.card{
     line-height: 1.5rem;
 }
 
-@media (width < 1000px){
-    figure.card{
-        display: block;
-        font-size: 1rem;
-    }
 
-    .card-container{
-        grid-template-columns:auto auto;
-    }
-}
 
-@media (width < 600px){
-    figure.card{
-        max-width: 15rem;
-        font-size: 1rem;
+@media (max-width:480px ) {
+    article.card{
         text-align:left;
 
     }
     .card-container{
-        grid-template-columns:auto;
+        grid-template-columns: 1fr ;
         padding: 0;
     }
-
 }
+@media (min-width: 481px) and (max-width:768px ) {
+    article.card{
+        display: block;
+    }
+
+    .card-container{
+        grid-template-columns: repeat(2,1fr) ;
+    }
+}
+
 .card-header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: 1rem;
   }
 .comments{
     display: grid;
@@ -74,4 +70,15 @@ figure.card{
 .image-center{
     display: flex;
     justify-content: center;
+}
+.favorite-icon{
+    display: flex;
+    justify-content: space-between;
+}
+.icons{
+    width: 1.2rem;
+    margin: 2px;
+}
+.card-header h3{
+    font-size: 1rem;
 }
