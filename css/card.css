@@ -36,7 +36,6 @@ article.card{
 .comments{
     display: grid;
     grid-template-columns: auto auto;
-    margin-bottom: 2rem;
 }
 .comment{
     font-size: 0.8rem;
