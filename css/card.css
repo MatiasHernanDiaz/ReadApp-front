@@ -27,6 +27,35 @@ article.card{
     line-height: 1.5rem;
 }
 
+.card-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+  }
+.comments{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.comment{
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    margin-top: 0.3rem;
+}
+
+.image-center{
+    display: flex;
+    justify-content: center;
+}
+.favorite-icon{
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-header h3{
+    font-size: 1rem;
+}
 
 
 @media (max-width:480px ) {
@@ -47,38 +76,4 @@ article.card{
     .card-container{
         grid-template-columns: repeat(2,1fr) ;
     }
-}
-
-.card-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1rem;
-  }
-.comments{
-    display: grid;
-    grid-template-columns: auto auto;
-    margin-bottom: 2rem;
-}
-.comment{
-    font-size: 0.8rem;
-    display: flex;
-    align-items: center;
-    margin-top: 0.3rem;
-}
-
-.image-center{
-    display: flex;
-    justify-content: center;
-}
-.favorite-icon{
-    display: flex;
-    justify-content: space-between;
-}
-.icons{
-    width: 1.2rem;
-    margin: 2px;
-}
-.card-header h3{
-    font-size: 1rem;
 }

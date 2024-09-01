@@ -1,4 +1,4 @@
-  .profile-main-container .card-container {
+.profile-main-container .card-container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;

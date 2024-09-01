@@ -23,3 +23,12 @@ button.cancel {
     background:var(--primary-color);
     border: var(--light-border);
 }
+
+.btn-plus-conteiner{
+   margin-left: 0.5rem;
+}
+
+.btn-plus-conteiner img{
+    height: 4rem;
+    width: auto;
+}
