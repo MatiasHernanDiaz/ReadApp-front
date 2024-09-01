@@ -27,28 +27,6 @@ article.card{
     line-height: 1.5rem;
 }
 
-
-
-@media (max-width:480px ) {
-    article.card{
-        text-align:left;
-
-    }
-    .card-container{
-        grid-template-columns: 1fr ;
-        padding: 0;
-    }
-}
-@media (min-width: 481px) and (max-width:768px ) {
-    article.card{
-        display: block;
-    }
-
-    .card-container{
-        grid-template-columns: repeat(2,1fr) ;
-    }
-}
-
 .card-header{
     display: flex;
     justify-content: space-between;
@@ -75,10 +53,27 @@ article.card{
     display: flex;
     justify-content: space-between;
 }
-.icons{
-    width: 1.2rem;
-    margin: 2px;
-}
+
 .card-header h3{
     font-size: 1rem;
+}
+
+@media (max-width:480px ) {
+    article.card{
+        text-align:left;
+
+    }
+    .card-container{
+        grid-template-columns: 1fr ;
+        padding: 0;
+    }
+}
+@media (min-width: 481px) and (max-width:768px ) {
+    article.card{
+        display: block;
+    }
+
+    .card-container{
+        grid-template-columns: repeat(2,1fr) ;
+    }
 }

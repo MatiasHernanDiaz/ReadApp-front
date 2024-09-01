@@ -58,6 +58,10 @@ input {
   outline: none;
 }
 
+.icons{
+  width: 1.2rem;
+  margin: 2px;
+}
 
 /*Tablet*/
 
