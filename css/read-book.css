@@ -1,4 +1,4 @@
-.card-container#read-book {
+/* .card-container#read-book {
     display: grid;
     grid-template-columns: repeat(2, 1fr); 
 }
@@ -13,4 +13,10 @@
         padding: 0;
         
     }
+} */
+
+.plus-card{
+    display: flex;
+    justify-content: center;
+    width: 13rem;
 }
