@@ -105,26 +105,31 @@
 /*Estilos particulares para los inputs*/
 .gral-info-items-container {
     display: grid;
-    grid-template-columns: 42% 42%;
-    justify-content: space-between;
-    gap: 10px;
+    grid-template-columns: 47% 47%;
+    gap: 1.5rem;
     
+}
+
+.gral-info-items-container .form-item {
+    display: flex;
+    flex-direction: column;
 }
 
 .gral-info-items-container label {
     display: flex;
-    flex-direction: column;
     flex-grow: 1;
 
     font-weight: bold;
 }
 
 .gral-info-items-container label .required-label {
+    margin-left: .4rem;
     color: rgb(178, 0, 0);
 }
 
 .gral-info-items-container input {
     margin-top: .5rem;
+    flex-grow: 1;
     padding: 6px 10px;
     height: 16px;
 
