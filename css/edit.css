@@ -1,0 +1,77 @@
+.title-edit .form-item {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.recom-edit {
+    display: flex;
+    flex-grow: 1;
+
+    font-weight: bold;
+}
+
+.recom-edit .required-label {
+    margin-left: .4rem;
+    color: rgb(178, 0, 0);
+}
+
+.title-edit input[type=text] {
+    margin-top: .5rem;
+    width: 90%;
+    padding: 6px 10px;
+    height: 16px;
+
+    font-size: .8rem;
+
+    border: var(--light-border);
+    border-radius: 4px
+}
+
+.title-edit{
+    padding: 1.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.label-check-edit{
+    display: flex;
+    font-size: 0.7rem;
+    align-items: center;
+}
+
+.title-edit .content-check{
+    display: flex;
+    justify-content: start;
+    padding: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.recom-description{
+    width: 70%;
+    text-align: left;
+    font-size: 1.3rem;
+    border-bottom: 5rem, solid, black;
+}
+
+.recom-description textarea{
+    width: 100%;
+}
+
+
+@media (max-width: 480px) {
+    .title-edit{
+        flex-direction: column;
+    }
+
+    .title-edit .form-item {
+        width: 90%;
+    }
+
+    .title-edit .content-check{
+        width: 90%;
+        margin-top: 0rem;
+    }
+
+}

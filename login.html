@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/gral-buttons.css">
     <title>Login</title>
 </head>
 <body>
@@ -20,7 +21,7 @@
             <div class="login-form">
                 <form action="#">
                     <div class="input-group">
-                        <label for="Username">Usuario<span class="required"></span></label>
+                        <label for="Username">Usuario<span class="required">*</span></label>
                         <input type="text" id="Username" required>
                         <div id="usernameAlert" class="alert-message">
                             <img src="img/warning.svg" alt="no deberías ver esto">
@@ -29,13 +30,13 @@
                     </div>
 
                     <div class="input-group">
-                        <label for="#">Contraseña<span class="required"></span></label>
+                        <label for="#">Contraseña<span class="required">*</span></label>
                         <i><img src="img/eye.svg" alt="no deberías ver esto "></i>
                         <input type="password" required>
                     </div>
 
                     <div class="submit-container">
-                        <button type="submit">Ingresar</button>
+                        <button class="btn-login" type="submit">Ingresar</button>
                     </div>
                 </form>
             </div>

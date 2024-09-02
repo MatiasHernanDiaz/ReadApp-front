@@ -34,18 +34,61 @@
     margin-bottom: 3%;
 }
 
+.title-recomendation{
+    
+    background-color: var(--primary-color);
+    font-size: 2.5rem;
+    text-align: left;
+    align-items: center;
+    padding-left: 2.5rem;
+    box-sizing: border-box;
+}
+
+.books-title{
+    width: 70%;
+    text-align: left;
+    font-size: 1.8rem;
+    padding-left: 2.5rem;
+}
+
+.recom-description{
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    text-align: left;
+    font-size: 1.3rem;
+    border-bottom: 5rem, solid, black;
+}
+
+.title-reco{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    width: 85%;
+}
+
+.title-reco img{
+    width: 2.5rem;
+    flex: 0;
+}
+
 @media (max-width: 768px) and (min-width: 481px) {
-    .btn-reco-detail{
-        margin-right: 3%;
-        margin-bottom: 3%;
+    .title-recomendation{
+        background-color: var(--primary-color);
+        padding-left: 0;
+        flex: 1;
     }
 }
 
 /*Mobile*/
-
 @media (max-width: 480px) {
-    .btn-reco-detail{
-        margin-right: 3%;
-        margin-bottom: 3%;
+    .title-recomendation{
+        flex: 1;
+        font-size: 2rem;
+        background-color: var(--primary-color);
+        padding-left: 0;
     }
 }
+
+
+
