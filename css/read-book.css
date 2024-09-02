@@ -1,16 +1,7 @@
-.card-container#read-book {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); 
-}
-
-.images#trash img {
-    width: 1.5rem;
-}
-
-@media (max-width:480px ) {
-    .card-container#read-book{
-        grid-template-columns: repeat(1,1fr) ;
-        padding: 0;
-        
-    }
+.plus-card{
+    display: flex;
+    justify-content: center;
+    width: 13rem;
+    border: 2px solid transparent;
+    padding: 1rem;
 }

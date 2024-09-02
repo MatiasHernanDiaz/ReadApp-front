@@ -24,11 +24,11 @@ button.cancel {
     border: var(--light-border);
 }
 
-.btn-plus-conteiner{
+.btn-plus-container{
    margin-left: 0.5rem;
 }
 
-.btn-plus-conteiner img{
+.btn-plus-container img{
     height: 4rem;
     width: auto;
 }
