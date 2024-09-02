@@ -59,16 +59,21 @@
 
 }
 
-@media (max-width: 1000px) and (min-width: 401px) {
+.sub-friends{
+    width: 100%;
+}
+
+@media (max-width: 1000px) and (min-width: 481px) {
     .content-container {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
     }
+    
 }
 
 
 
-@media (max-width: 400px) {
+@media (max-width: 480px) {
     .content-container {
         grid-template-columns: repeat(1, 1fr);
         gap: 1rem;

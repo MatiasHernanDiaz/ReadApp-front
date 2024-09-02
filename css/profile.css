@@ -34,7 +34,7 @@
 }
 
 .img-name-aside h3 {
-    font-size: 1.2rem;
+    /* font-size: 1.2rem; */
 }
 
 .profile-main-container aside hr {
@@ -57,6 +57,10 @@
 .profile-main-container aside nav a {
     display: flex;
     align-items: center;
+    padding: 0.7rem;
+    text-wrap: balance;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .profile-main-container aside nav a img { 
@@ -195,7 +199,7 @@ nav a.active {
     color: black; 
     font-weight: bold; 
     border-radius: 0.5rem; 
-    padding: 0.5rem;
+    /* padding: 0.5rem; */
 }
 
 

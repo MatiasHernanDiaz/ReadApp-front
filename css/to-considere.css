@@ -10,9 +10,9 @@
 }
 
 @media (max-width: 768px) and (min-width: 481px) {
-    .profile-main-container .card-container {
+    /* .profile-main-container .card-container {
         justify-content: center;
-    }
+    } */
 }
 
 /*Mobile*/
