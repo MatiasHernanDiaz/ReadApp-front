@@ -34,8 +34,7 @@
     margin-bottom: 3%;
 }
 
-
-.tittle-recomendation{
+.title-recomendation{
     
     background-color: var(--primary-color);
     font-size: 2.5rem;
@@ -45,9 +44,7 @@
     box-sizing: border-box;
 }
 
-
-
-.books-tittle{
+.books-title{
     width: 70%;
     text-align: left;
     font-size: 1.8rem;
@@ -75,11 +72,8 @@
     flex: 0;
 }
 
-
-
-
 @media (max-width: 768px) and (min-width: 481px) {
-    .tittle-recomendation{
+    .title-recomendation{
         background-color: var(--primary-color);
         padding-left: 0;
         flex: 1;
@@ -87,9 +81,8 @@
 }
 
 /*Mobile*/
-
 @media (max-width: 480px) {
-    .tittle-recomendation{
+    .title-recomendation{
         flex: 1;
         font-size: 2rem;
         background-color: var(--primary-color);
