@@ -13,14 +13,14 @@
 
 article.card{
     border : 2px solid var(--secundary-color);
-    width: 13rem;
-    
+    width: 13rem;    
     border-radius: 1.2rem;
     padding: 1rem;
     background-color: var(--card-background);
     box-shadow: 0 0.55rem 0.3rem rgba(0, 0, 0, 0.1);
     justify-content: center;
 }
+
 .imageText{
     height: 1.5rem;
     display: flex;
@@ -32,11 +32,8 @@ article.card{
     justify-content: space-between;
     align-items: center;
     font-size: 1rem;
-  }
-.comments{
-    display: grid;
-    grid-template-columns: auto auto;
 }
+
 .comment{
     font-size: 0.8rem;
     display: flex;
@@ -44,12 +41,17 @@ article.card{
     margin-top: 0.3rem;
 }
 
-.image-center{
+.comments{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.image-center, .favorite-icon{
     display: flex;
     justify-content: center;
 }
+
 .favorite-icon{
-    display: flex;
     justify-content: space-between;
 }
 
@@ -57,11 +59,9 @@ article.card{
     font-size: 1rem;
 }
 
-
 @media (max-width:480px ) {
     article.card{
         text-align:left;
-
     }
     .card-container{
         grid-template-columns: 1fr ;
