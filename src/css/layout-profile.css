@@ -1,0 +1,17 @@
+.profile-main-container .card-container {
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    width: 90%;
+    
+}
+.profile-info-container .title-profile{
+    margin-left: 4rem;
+}
+
+/*Mobile*/
+@media (max-width: 480px) {
+    .profile-main-container .card-container {
+        justify-content: center;
+    }
+}
