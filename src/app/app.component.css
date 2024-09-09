@@ -1,5 +1,7 @@
-nav {
+:host {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    justify-content: start;
+  
+    height: 100%;
 }
