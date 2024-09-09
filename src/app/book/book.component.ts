@@ -8,5 +8,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./book.component.css','/src/css/card.css']
 })
 export class BookComponent {
+  enter: boolean = false
+  tamanio = 200
 
+  entrar(){
+    this.enter = true;
+    this.tamanio = 100;
+  }
+
+  salir(){
+    this.enter = false;
+    this.tamanio = 200;
+  }
+
+
+  
 }
