@@ -1,0 +1,15 @@
+<aside>
+    <div class="img-name-aside">
+        <img class="avatar" src="assets/avatar.jpeg" alt="Avatar del usuario">
+        <h3>Homero Simpson</h3>
+    </div>
+    <hr/>
+    <nav>
+        <a routerLink="info" routerLinkActive="active"><img src="assets/icons/info.svg" alt="Ícono de Información"/> Información</a>
+        <a routerLink="friends" routerLinkActive="active"><img src="assets/icons/friends.svg" alt="Ícono de amigos"/> Amigos</a>
+        <a routerLink="readbooks" routerLinkActive="active"><img src="assets/icons/book.svg" alt="Ícono de libros leídos"/> Libros leídos</a>
+        <a routerLink="bookstoread" routerLinkActive="active"><img src="assets/icons/bookmark.svg" alt="Ícono de libros a leer"/> Libros a leer</a>
+        <a routerLink="recomstoevaluate" routerLinkActive="active"><img src="assets/icons/heart.svg" alt="Ícono de recomendaciones a valorar"/> Recomendaciones a valorar</a>
+    </nav>
+</aside>
+<main id="profile-container"><router-outlet></router-outlet></main>

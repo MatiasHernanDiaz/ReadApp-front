@@ -1,0 +1,11 @@
+p {
+    padding: 14px;
+
+    background-color: orange;
+
+    border: none;
+}
+
+hr {
+    display: none;
+}

@@ -1,0 +1,24 @@
+<article (mouseenter)="entrar()" (mouseleave)="salir()" class="card">
+    <div class="image-center"><!DOCTYPE html>
+        <img width="{{tamanio}}" class="bookImage" src='img/Book.jpg' alt="Portada de libro"/>
+    </div>
+    <div class="card-header">
+        <h2>Bill book</h2>
+        <span class="images">
+            <img class="icons" src="img/medal.svg" alt="Premio">
+            <img class="icons" src="img/star.svg" alt="Ícono de Destacado">
+        </span>
+    </div>
+    <div>
+        @if(enter){
+        <p>Por Alex Hirsch </p>
+        <ul class="comments">
+            <li class="comment"><img class="icons" src="img/article.svg" alt="Icono de paginas">224 Paginas</li>
+            <li class="comment"><img class="icons" src="img/text.svg" alt="Ícono de palabras">15.000 Palabras</li>
+            <li class="comment"><img class="icons" src="img/calendar.svg" alt="Ícono de fecha">08/01/2024</li>
+            <li class="comment"><img class="icons" src="img/globe.svg" alt="Icono de lenguajes">español-English</li>
+            <li class="comment"><img class="icons" src="img/money.svg" alt="Ícono de ventas">50.300 Ventas</li>
+        </ul>
+    }
+    </div>
+</article>
