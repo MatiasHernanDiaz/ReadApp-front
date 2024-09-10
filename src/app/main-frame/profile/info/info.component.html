@@ -1,1 +1,179 @@
-<p>info works!</p>
+<h2>Información</h2>
+<form>
+    <h3>General</h3>
+    <div class="gral-info-items-container items-container">
+        <div class="form-item">
+            <label>Apellido <span class="required-label">*</span></label>
+            <input
+                type="text"
+                name="first-name"
+                [(ngModel)]="user.firstName"
+            />
+        </div>
+        <div class="form-item">
+            <label>Nombre <span class="required-label">*</span></label>
+            <input
+                type="text"
+                name="last-name"
+                [(ngModel)]="user.lastName"
+            />
+        </div>
+        <div class="form-item">
+            <label>Username <span class="required-label">*</span></label>
+            <input
+                type="text"
+                name="username"
+                [(ngModel)]="user.username"
+            />
+        </div>
+        <div class="form-item">
+            <label>Fecha de nacimiento <span class="required-label">*</span></label>
+            <input
+                type="date"
+                name="birthday"
+                [(ngModel)]="birthday"
+            />
+        </div>
+        <div class="form-item">
+            <label>Email <span class="required-label">*</span></label>
+            <input
+                type="email"
+                name="email"
+                [(ngModel)]="user.email"
+            />
+        </div>
+        <div class="form-item">
+            <label>Tiempo de lectura promedio</label>
+            <input
+                type="number"
+                name="read-time"
+                [(ngModel)]="user.readTimeAvg"
+            />
+        </div>
+    </div>
+    <hr/>
+    <h3>Forma de lectura</h3>
+    <div class="read-mode-items-container items-container">
+        <label>
+            <input
+            type="radio"
+            name="read-mode"
+            value="mean-read"
+            checked
+            />
+            <span>Lector promedio</span>
+        </label>
+        <label>
+            <input
+            type="radio"
+            name="read-mode"
+            value="anxious"
+            />
+            <span>Ansioso</span>
+        </label>
+        <label>
+            <input
+            type="radio"
+            name="read-mode"
+            value="fanatic"
+            />
+            <span>Fanático</span>
+        </label>
+        <label>
+            <input
+            type="radio"
+            name="read-mode"
+            value="recurrent"
+            />
+            <span>Recurrente</span>
+        </label>
+    </div>
+    <hr/>
+    <h3>Criterio de búsqueda</h3>
+    <div class="search-criteria-items-container items-container">
+        <label>
+            <input
+            type="checkbox"
+            name="cautious"
+            checked
+            />
+            <span>Precavido</span>
+        </label>
+        <label>
+            <input
+            type="checkbox"
+            name="demanding"
+            />
+            <span>Demandante</span>
+        </label>
+        <label>
+            <input
+            type="checkbox"
+            name="changing"
+            checked
+            />
+            <span>Cambiante</span>
+            <label class="max-limit">
+                <span>Límite máximo</span>
+                <input
+                type="number"
+                placeholder="Límite"
+                name="chang-max-limit"
+                value=""
+                />
+            </label>
+        </label>
+        <label>
+            <input
+            type="checkbox"
+            name="bigreader"
+            checked
+            />
+            <span>Leedor</span>
+        </label>
+        <label>
+            <input
+            type="checkbox"
+            name="nativist"
+            checked
+            />
+            <span>Nativista</span>
+        </label>
+        <div class="placeholder"></div>
+        <label>
+            <input
+            type="checkbox"
+            name="polyglot"
+            />
+            <span>Políglota</span>
+        </label>
+        <label>
+            <input
+            type="checkbox"
+            name="experiencied"
+            checked
+            />
+            <span>Experimentado</span>
+        </label>
+        <label>
+            <input
+            type="checkbox"
+            name="calculator"
+            />
+            <span>Calculador</span>
+            <label class="max-limit">
+                <span>Límite máximo</span>
+                <input
+                type="number"
+                placeholder="Límite"
+                name="calc-max-limit"
+                value=""
+                />
+            </label>
+        </label>
+    </div>
+    <div class="items-container buttons-container">
+        <button class="cancel">Cancelar</button>
+        <button class="accept" type="submit">Guardar cambios</button>
+    </div>
+</form>
