@@ -6,7 +6,7 @@ import { BookComponent } from '../../components/book/book.component'
   standalone: true,
   imports: [BookComponent],
   templateUrl: './book-container.component.html',
-  styleUrl: '/src/css/card-container.css'
+  styleUrl: './book-container.component.css'
 })
 export class BookContainerComponent {
 

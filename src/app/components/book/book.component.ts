@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './book.component.html',
-  styleUrls: ['./book.component.css','/src/css/card.css']
+  styleUrl: './book.component.css'
 })
 export class BookComponent {
   enter: boolean = false
