@@ -1,4 +1,7 @@
-export class User {
+import { Injectable } from "@angular/core"
+
+
+class User {
     lastName: string
     firstName: string
     username: string
@@ -29,14 +32,91 @@ export class User {
     }
   }
 
-  export interface ReadMode {
+@Injectable({ providedIn: 'root' })
+export class StubLoginService {
+    // TODO: inicialización temporal hasta que se implemente el flujo de autenticación
+    private signedUser?: User = new User(
+        "Simpson", "Homero", "hsimpson", new Date(1968, 4, 4), 'homer@simps.com', 100
+    )
 
-  }
+    // TODO: provisorio hasta que tengamos un servicio externo
+    dummyUserPayloads = [
+        {
+            lastName: "Simpson",
+            firstName: "Homero",
+            username: "hsimpson", 
+            password: "simpsonfamily",
+            birthday: new Date(1968, 4, 4), 
+            email: 'homer@simps.com', 
+            readTimeAvg: 100,
 
-  export interface SearchCriteria {
+        },
+        {
+            lastName: "Simpson",
+            firstName: "Marge",
+            username: "msimpson", 
+            password: "simpsonfamily",
+            birthday: new Date(1970, 4, 4), 
+            email: 'marge@simps.com', 
+            readTimeAvg: 110,
 
-  }
+        },
+        {
+            lastName: "Simpson",
+            firstName: "Bart",
+            username: "bsimpson", 
+            password: "simpsonfamily",
+            birthday: new Date(1989, 4, 4), 
+            email: 'bart@simps.com', 
+            readTimeAvg: 80,
 
-  export class ReaderAvg implements ReadMode {
+        },
+        {
+            lastName: "Simpson",
+            firstName: "Lisa",
+            username: "lsimpson", 
+            password: "simpsonfamily",
+            birthday: new Date(1991, 4, 4), 
+            email: 'lisa@simps.com', 
+            readTimeAvg: 150,
 
-  }
+        }
+    ] 
+
+    login( credentials: { username: string, password: string }) {
+        const userData = this.dummyUserPayloads.find( data => data.username === credentials.username )
+
+        if( ! userData || userData.password !== credentials.password ) {
+            return { ok: false, res: "Credenciales inválidas."}
+        }
+
+        this.signedUser = new User(
+            userData.lastName,
+            userData.firstName,
+            userData.username,
+            userData.birthday,
+            userData.email,
+            userData.readTimeAvg
+        )
+
+        return { ok: true, res: this.signedUser }
+    }
+
+    logout() {
+        this.signedUser = undefined
+    }
+
+    getSignedUser() { return this.signedUser }
+}
+
+export interface ReadMode {
+    algoParaQueCompile: string
+}
+
+export interface SearchCriteria {
+    algoParaQueCompile: string
+}
+
+export class ReaderAvg implements ReadMode {
+    algoParaQueCompile = "Compilá!!"
+}
