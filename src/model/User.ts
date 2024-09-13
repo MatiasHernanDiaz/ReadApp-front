@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core"
 
 
-class User {
+export class User {
     lastName: string
     firstName: string
     username: string
@@ -106,7 +106,20 @@ export class StubLoginService {
         this.signedUser = undefined
     }
 
-    getSignedUser() { return this.signedUser }
+    getSignedUser() {
+        return new User(
+            this.signedUser?.lastName || '',
+            this.signedUser?.firstName || '',
+            this.signedUser?.username || '',
+            this.signedUser?.birthday || new Date(),
+            this.signedUser?.email || '',
+            this.signedUser?.readTimeAvg || 0
+        )
+    }
+
+    updateSignedUserData( newUserData: User ) {
+        this.signedUser = newUserData
+    }
 }
 
 export interface ReadMode {

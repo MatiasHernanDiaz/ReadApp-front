@@ -1,21 +1,27 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { User } from '../../../../model/User';
+import { Component } from '@angular/core'
+import { FormsModule } from '@angular/forms'
+import { StubLoginService, User } from '../../../../model/User'
+import { CommonModule } from '@angular/common'
 
 
 @Component({
   selector: 'app-info',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './info.component.html',
   styleUrl: './info.component.css'
 })
 export class InfoComponent {
+  user: User = new User( '', '', '', new Date(), '', 0 )
 
-  user = new User(
-    "Simpson", "Homero", "homeros", new Date( '1974-10-10' ), "homero@simpson", 100
-  )
+  constructor( public loginService: StubLoginService ) {}
 
-  get birthday() { return this.user.birthday.toISOString().slice(0, 10) }
+  ngOnInit() {
+    this.user = this.loginService.getSignedUser()!
+  }
+
+  saveUserInfo() {
+    this.loginService.updateSignedUserData( this.user )
+  }
 }
 
