@@ -1,0 +1,85 @@
+.friend-main-container, .friend-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.friend-main-container { 
+    align-items: center; 
+    justify-content: space-between; 
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.friend-main-container h1{
+    margin: 0 3%;
+    margin-top: 2%;
+    font-size: 1.8rem;
+}
+
+.content-container {
+    width: 100%;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 0.5rem;
+    align-content: start;
+    justify-content: start;
+}
+
+.friend {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    max-height: 3rem;
+}
+
+.friend-photo {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.friend-name {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.friend-email {
+    margin: 0;
+    font-size: 0.875rem;
+    color: #858585;
+}
+
+.trash{
+  cursor: pointer;
+}
+
+.sub-friends{
+    width: 100%;
+}
+
+@media (max-width: 768px) and (min-width: 481px) {
+    .content-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }   
+}
+
+@media (max-width: 480px) {
+    .content-container {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1rem;
+        box-sizing: border-box;
+    }
+
+    .sub-friends{
+        width: 92%;
+    }
+    
+    .friend-name{
+        font-size: 1.5rem;
+    }
+}

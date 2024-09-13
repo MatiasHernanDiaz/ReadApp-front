@@ -1,0 +1,84 @@
+.title-edit .form-item, .recom-edit{
+    display: flex;
+    flex-grow: 1;
+} 
+
+.title-edit .form-item {
+    flex-direction: column;
+}
+
+.recom-edit {
+    font-weight: bold;
+}
+
+.recom-edit .required-label {
+    margin-left: .4rem;
+    color: rgb(178, 0, 0);
+}
+
+.title-edit input[type=text] {
+    margin-top: .5rem;
+    width: 90%;
+    padding: 6px 10px;
+    height: 16px;
+    
+    font-size: .8rem;
+
+    border: var(--light-border);
+    border-radius: 4px
+}
+
+.title-edit, .label-check-edit, .wrapper-title-edit{
+    display: flex;
+    align-items: center;
+}
+
+.title-edit{
+    padding: 1.4rem;
+    justify-content: space-between;
+    width: 67%;
+    min-width: 60%;
+}
+
+.label-check-edit{
+    font-size: 0.7rem;
+}
+
+.wrapper-title-edit{
+    width: 100%;
+    flex-direction: column;
+}
+
+.title-edit .content-check{
+    display: flex;
+    justify-content: start;
+    padding: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.recom-description{
+    width: 70%;
+    text-align: left;
+    font-size: 1.3rem;
+    border-bottom: 5rem, solid, black;
+}
+
+.recom-description textarea{
+    width: 100%;
+}
+
+@media (max-width: 480px) {
+    .title-edit{
+        flex-direction: column;
+    }
+
+    .title-edit .form-item {
+        width: 90%;
+    }
+
+    .title-edit .content-check{
+        width: 90%;
+        margin-top: 0rem;
+    }
+
+}

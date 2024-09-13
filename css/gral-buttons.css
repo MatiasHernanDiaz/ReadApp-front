@@ -1,0 +1,51 @@
+button{
+    padding: 10px 12px;
+
+    font-size: .8rem;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    
+    transition: 1s;        
+}
+
+button.accept {
+    background:#F25D0B;
+}
+
+button.accept:hover, button.cancel:hover {
+    background-color: rgb(124, 139, 153);
+}
+
+button.cancel {
+    background:var(--primary-color);
+    border: var(--light-border);
+}
+
+.btn-plus-container{
+   margin-left: 0.5rem;
+}
+
+.btn-plus-container img{
+    height: 4rem;
+    width: auto;
+}
+
+.btn-login{
+    width: 100%;
+    height: 3rem;
+    border-radius: 1rem;
+    border: none;
+    background-color:var(--secundary-color);
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    font-size: 1.5rem;
+}
+
+.btn-login:hover{
+    opacity: .8;
+}

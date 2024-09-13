@@ -1,0 +1,11 @@
+.bookImage{
+    width: 8rem;
+    height: auto;
+    margin-bottom: 0.5rem;
+}
+
+.images{
+    display: flex;
+    text-align: right;
+    justify-content: right;
+}

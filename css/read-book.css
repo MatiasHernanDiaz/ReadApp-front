@@ -1,0 +1,7 @@
+.plus-card{
+    display: flex;
+    justify-content: center;
+    width: 13rem;
+    border: 2px solid transparent;
+    padding: 1rem;
+}
