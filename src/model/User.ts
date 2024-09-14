@@ -20,8 +20,8 @@ export class User {
         birthday: Date, 
         email: string, 
         readTimeMinAvg: number,
-        readMode = readerModes.avgReader, 
-        searchCriteria = [],
+        readMode: ReadMode = readerModes.avgReader, 
+        searchCriteria: SearchCriteria[] = [],
     ) {
         this.lastName = lastName
         this.firstName = firstName
@@ -94,7 +94,7 @@ export class StubLoginService {
     ] 
 
     login( credentials: { username: string, password: string }) {
-        const userData = this.dummyUserPayloads.find( data => data.username === credentials.username )
+        const userData: User & { password: string } = this.dummyUserPayloads.find( data => data.username === credentials.username ) as unknown as User & { password: string }
 
         if( ! userData || userData.password !== credentials.password ) {
             return { ok: false, res: "Credenciales inválidas."}
@@ -106,10 +106,12 @@ export class StubLoginService {
             userData.username,
             userData.birthday,
             userData.email,
-            userData.readTimeAvg
+            userData.readTimeMinAvg,
+            userData.readMode,
+            userData.searchCriteria
         )
 
-        return { ok: true, res: this.signedUser }
+        return { ok: true, res: this.getSignedUser() }
     }
 
     logout() {
@@ -118,23 +120,27 @@ export class StubLoginService {
 
     getSignedUser() {
         return new User(
-            this.signedUser?.lastName || '',
-            this.signedUser?.firstName || '',
-            this.signedUser?.username || '',
-            this.signedUser?.birthday || new Date(),
-            this.signedUser?.email || '',
-            this.signedUser?.readTimeMinAvg || 0
+            this.signedUser?.lastName ?? '',
+            this.signedUser?.firstName ?? '',
+            this.signedUser?.username ?? '',
+            this.signedUser?.birthday ?? new Date(),
+            this.signedUser?.email ?? '',
+            this.signedUser?.readTimeMinAvg ?? 0,
+            this.signedUser?.readMode,
+            this.signedUser?.searchCriteria
         )
     }
 
     updateSignedUserData( newUserData: User ) {
         this.signedUser = new User(
-            newUserData?.lastName || '',
-            newUserData?.firstName || '',
-            newUserData?.username || '',
-            newUserData?.birthday || new Date(),
-            newUserData?.email || '',
-            newUserData?.readTimeMinAvg || 0
+            newUserData?.lastName ?? '',
+            newUserData?.firstName ?? '',
+            newUserData?.username ?? '',
+            newUserData?.birthday ?? new Date(),
+            newUserData?.email ?? '',
+            newUserData?.readTimeMinAvg ?? 0,
+            newUserData?.readMode,
+            newUserData?.searchCriteria
         )
     }
 }

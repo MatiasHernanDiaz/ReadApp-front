@@ -105,7 +105,7 @@ export class InfoComponent {
   saveUserInfo() {
     this.loginService.updateSignedUserData( this.user )
     this.editMode = false
-    alert( JSON.stringify( this.user ) )
+    alert( JSON.stringify( this.loginService.getSignedUser() ) )
   }
 
   setEditMode() { this.editMode = true }
