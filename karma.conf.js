@@ -24,16 +24,17 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/XXXXXX'), // <-- reemplazar XXXXXX por nombre del proyecto
+      dir: require('path').join(__dirname, './coverage/readapp-2024-grupo-7'),
       subdir: '.',
       reporters: [
         { type: 'html' },
         { type: 'text-summary' }, // <-- agregar una coma al final
-        { type: 'lcov' }          // <-- agregar esta línea
+        { type: 'lcov' },
+        { type: 'json-summary' }         // <-- agregar esta línea
       ]
     },
     reporters: ['progress', 'kjhtml'],
     browsers: ['Chrome'],
     restartOnFileChange: true
-  });
-};
+  })
+}
