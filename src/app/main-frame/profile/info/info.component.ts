@@ -22,7 +22,7 @@ export class InfoComponent {
       displayName: string 
     }
   > = {}
-  
+  editMode = false
 
   constructor( public loginService: StubLoginService ) {}
 
@@ -99,11 +99,15 @@ export class InfoComponent {
   cancelUserEdit() {
     this.user = this.loginService.getSignedUser()!
     this.resetSearchCriteria()
+    this.editMode = false
   }
 
   saveUserInfo() {
     this.loginService.updateSignedUserData( this.user )
+    this.editMode = false
     alert( JSON.stringify( this.user ) )
   }
+
+  setEditMode() { this.editMode = true }
 }
 
