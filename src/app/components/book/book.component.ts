@@ -1,4 +1,4 @@
-import { Component, input, Input } from '@angular/core';
+import { Component, Input } from '@angular/core'
 
 @Component({
   selector: 'app-book',
@@ -13,29 +13,29 @@ export class BookComponent {
   tamanio = 200
 
   entrar(){
-    this.enter = true;
-    this.tamanio = 100;
+    this.enter = true
+    this.tamanio = 100
   }
 
   salir(){
-    this.enter = false;
-    this.tamanio = 200;
+    this.enter = false
+    this.tamanio = 200
   }
 
   @Input()
-  title: string = "";
+  title: string = ""
   @Input()
-  imageURL: string = "";
+  imageURL: string = ""
   @Input() 
-  autor: string = "";
+  autor: string = ""
   @Input() 
-  pages: string = "0";
+  pages: string = "0"
   @Input() 
-  words: string = "0";
+  words: string = "0"
   @Input() 
-  date: string = "0/0/0";
+  date: string = "0/0/0"
   @Input() 
-  lenguages: string = "english";
+  lenguages: string = "english"
   @Input() 
-  sales: string = "0";
+  sales: string = "0"
 }

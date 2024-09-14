@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RecomComponent } from '../../../components/recom/recom.component';
+import { Component } from '@angular/core'
+import { RecomComponent } from '../../../components/recom/recom.component'
 
 @Component({
   selector: 'app-explorer',

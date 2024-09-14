@@ -13,14 +13,13 @@ DE CLARO A OSCURO
 
 /*VARIABLES*/
 :root {
-    --primary-color: #ffedd6; /*tomar a ejemplo, modificar mas adelante*/
+    --primary-color: #ffedd6; 
     --secundary-color: #F25D0B;
     --tertiary-color: #F98F3E;
-    --white: #F2F2F2;
+    --fourth-color: #F2F2F2;
     --card-background :#fad2b3;
     --light-border: 1px solid #aaa;
-    --font-family:  "Cantarell", Arial, sans-serif; /*Definir fuentes*/
-    /*espaciado, margenes, etc etc*/
+    --font-family:  "Cantarell", Arial, sans-serif;
     --max-width-mobile: 400px;
     --header-height: 10%;
     --search-height:12%;
@@ -29,6 +28,7 @@ DE CLARO A OSCURO
 * {
   margin: 0;
   padding: 0;
+  /* box-sizing: border-box; <--- No se puede, hay cosas que rompen*/ 
 }
 
 html {

@@ -11,7 +11,7 @@ section.login-section{
 
 .login-container{
     width: 25rem;
-    background-color: var(--white);
+    background-color: var(--fourth-color);
     border-radius: 1.25rem;
     padding: 1rem;
     display: flex;
@@ -96,7 +96,7 @@ section.login-section{
         font-size: 1rem;
       }
     section.login-section{
-        background-color: var(--white);
+        background-color: var(--fourth-color);
     }
 
     .login-container{

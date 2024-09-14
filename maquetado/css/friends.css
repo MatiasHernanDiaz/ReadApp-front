@@ -1,6 +1,9 @@
-.friend-main-container {
+.friend-main-container, .friend-details {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
+}
+
+.friend-main-container { 
     align-items: center; 
     justify-content: space-between; 
     width: 100%;
@@ -12,6 +15,7 @@
     margin-top: 2%;
     font-size: 1.8rem;
 }
+
 .content-container {
     width: 100%;
     padding: 1rem;
@@ -38,11 +42,6 @@
     object-fit: cover;
 }
 
-.friend-details {
-    display: flex;
-    flex-direction: column;
-}
-
 .friend-name {
     margin: 0;
     font-size: 1rem;
@@ -56,7 +55,6 @@
 
 .trash{
   cursor: pointer;
-
 }
 
 .sub-friends{
@@ -67,8 +65,7 @@
     .content-container {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
-    }
-    
+    }   
 }
 
 @media (max-width: 480px) {
@@ -81,6 +78,7 @@
     .sub-friends{
         width: 92%;
     }
+    
     .friend-name{
         font-size: 1.5rem;
     }

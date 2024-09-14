@@ -74,3 +74,29 @@ a:visited {
   text-decoration: none;
   color: inherit;
 }
+
+button{
+  padding: 10px 12px;
+
+  font-size: .8rem;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  
+  transition: 1s;        
+}
+
+button.accept {
+  background:#F25D0B;
+}
+
+button.accept:hover, button.cancel:hover {
+  background-color: rgb(124, 139, 153);
+}
+
+button.cancel {
+  background:var(--primary-color);
+  border: var(--light-border);
+}
