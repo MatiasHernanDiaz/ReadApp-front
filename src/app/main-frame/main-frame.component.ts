@@ -9,5 +9,5 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './main-frame.component.css'
 })
 export class MainFrameComponent {
-
+  
 }
