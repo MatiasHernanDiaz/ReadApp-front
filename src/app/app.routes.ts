@@ -22,6 +22,7 @@ export const routes: Routes = [
     {
         path: 'app',
         component: MainFrameComponent,
+        
         children: [
             {
                 path: "recoms",
@@ -30,16 +31,6 @@ export const routes: Routes = [
                     {
                         path: "explorer",
                         component: ExplorerComponent
-                    }
-                ]
-            },
-            { 
-                path: 'myrecoms',
-                component: MyrecomsComponent,
-                children: [
-                    {
-                        path: 'recom-details',
-                        component: RecomdetailsComponent
                     }
                 ]
             },

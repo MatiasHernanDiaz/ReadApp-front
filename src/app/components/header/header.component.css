@@ -48,14 +48,14 @@
     display: flex;
     flex-direction: column;
     color: black;
-    width: 15rem;
+    width: 17rem;
     font-size: 1.3rem;
     padding: 1rem;
     top: 3.5rem;
-    right: 0;
+    right: 0.1rem;
     background-color: var(--primary-color);
     border: solid 5px var(--secundary-color);
-    height: 6rem;
+    height: 8rem;
     overflow: hidden;
     transition: height 1s, opacity 1s;
 }
@@ -63,7 +63,6 @@
 .hide{
     height: 0px;
     overflow: hidden;
-    width: 15rem;
     opacity: 0;
     transition: height 1s, opacity 1s;
 }

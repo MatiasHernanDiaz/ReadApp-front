@@ -10,11 +10,10 @@
         </div>
         <img class="menu-hamburgesa" src="assets/hamburgesa-white.svg" alt="Menu">
             <nav [class]=dropdown>
-                <a routerLink="recoms">- Busqueda general</a>
-                <a routerLink="myrecoms">- Mis recomendaciones</a>
+                <a routerLink="recoms" (click)="goToRecoms()">- Busqueda general</a>
+                <a routerLink="recoms" (click)="goToMyRecoms()">- Mis recomendaciones</a>
                 <a routerLink="profile/info">- Mi perfil</a>
                 <a routerLink="login">- Logout</a>
             </nav>
-
     </div>
 </header>

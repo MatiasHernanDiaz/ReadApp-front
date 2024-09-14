@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core'
+import { Component } from '@angular/core'
+import { DataService } from '@src/model/DataService'
 
 @Component({
   selector: 'app-search-bar',
@@ -8,5 +9,14 @@ import { Component, Input } from '@angular/core'
   styleUrl: './search-bar.component.css'
 })
 export class SearchBarComponent {
-  @Input() showCheck = false
+
+  constructor(public dataService: DataService){}
+  data: { myrecom: boolean } = {myrecom: false}
+
+  ngOnInit(){
+    this.dataService.currentData.subscribe(newData => {
+      this.data = newData
+    })
+  }
+
 }
