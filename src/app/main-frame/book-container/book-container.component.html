@@ -1,0 +1,16 @@
+<h1>Book Search</h1>
+
+<div class="card-container">
+    @for (book of books; track book){
+        <app-book
+        [title]="book.title"
+        [autor]="book.autor"
+        [imageURL]="book.imageURL"
+        [pages]="book.pages"
+        [words]="book.words"
+        [date]="book.date"
+        [lenguages]="book.lenguages"
+        [sales]="book.sales"
+        ></app-book>
+    }
+</div>

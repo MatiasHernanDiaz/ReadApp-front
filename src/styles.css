@@ -1,0 +1,102 @@
+/* You can add global styles to this file, and also import other style files */
+/*PALETA DE COLORES
+DE CLARO A OSCURO
+#ffedd6 -> nueva sugerencia
+#FFC171 -> fondo
+#FCA858
+#F98F3E
+#F57625
+#F25D0B
+*/
+
+/*FUNTE*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;900&family=Roboto+Mono:wght@100;300;400;600;700&display=swap');
+
+/*VARIABLES*/
+:root {
+    --primary-color: #ffedd6; /*tomar a ejemplo, modificar mas adelante*/
+    --secundary-color: #F25D0B;
+    --tertiary-color: #F98F3E;
+    --white: #F2F2F2;
+    --card-background :#fad2b3;
+    --light-border: 1px solid #aaa;
+    --font-family:  "Cantarell", Arial, sans-serif; /*Definir fuentes*/
+    /*espaciado, margenes, etc etc*/
+    --max-width-mobile: 400px;
+    --header-height: 10%;
+    --search-height:12%;
+  }
+
+
+html {
+  font-size: 16px;
+  font-family: var(--font-family);
+}
+
+body{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--primary-color);
+  box-sizing: border-box;
+}
+
+main{
+  height: calc(100% - var(--header-height) - var(--search-height));
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+main.without-search{
+  height: calc(100% - var(--header-height));
+}
+
+input {
+  outline: none;
+}
+
+.icons{
+  width: 1.2rem;
+  margin: 2px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+button{
+  padding: 10px 12px;
+
+  font-size: .8rem;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  
+  transition: 1s;        
+}
+
+button.accept {
+  background:#F25D0B;
+}
+
+button.accept:hover, button.cancel:hover {
+  background-color: rgb(124, 139, 153);
+}
+
+button.cancel {
+  background:var(--primary-color);
+  border: var(--light-border);
+}
