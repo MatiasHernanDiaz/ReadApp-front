@@ -12,8 +12,7 @@ import { ExplorerComponent } from './main-frame/recommendations/explorer/explore
 import { MyrecomsComponent } from './main-frame/myrecoms/myrecoms.component'
 import { GralrecomsComponent } from './main-frame/gralrecoms/gralrecoms.component'
 import { RecomdetailsComponent } from './main-frame/myrecoms/recomdetails/recomdetails.component'
-import { BooksComponent } from './main-frame/books/books.component'
-
+import { BookContainerComponent } from './main-frame/book-container/book-container.component'
 
 export const routes: Routes = [
     { 
@@ -49,8 +48,8 @@ export const routes: Routes = [
                 component: GralrecomsComponent
             },
             { 
-                path: 'books',
-                component: BooksComponent
+                path: 'book-search',
+                component: BookContainerComponent
             },
             { 
                 path: 'profile', // ----> /app/profile
