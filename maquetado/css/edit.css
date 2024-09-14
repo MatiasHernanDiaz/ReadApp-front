@@ -1,13 +1,13 @@
-.title-edit .form-item {
+.title-edit .form-item, .recom-edit{
     display: flex;
-    flex-direction: column;
     flex-grow: 1;
+} 
+
+.title-edit .form-item {
+    flex-direction: column;
 }
 
 .recom-edit {
-    display: flex;
-    flex-grow: 1;
-
     font-weight: bold;
 }
 
@@ -21,24 +21,32 @@
     width: 90%;
     padding: 6px 10px;
     height: 16px;
-
+    
     font-size: .8rem;
 
     border: var(--light-border);
     border-radius: 4px
 }
 
-.title-edit{
-    padding: 1.4rem;
+.title-edit, .label-check-edit, .wrapper-title-edit{
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 
+.title-edit{
+    padding: 1.4rem;
+    justify-content: space-between;
+    width: 67%;
+    min-width: 60%;
+}
+
 .label-check-edit{
-    display: flex;
     font-size: 0.7rem;
-    align-items: center;
+}
+
+.wrapper-title-edit{
+    width: 100%;
+    flex-direction: column;
 }
 
 .title-edit .content-check{
@@ -58,7 +66,6 @@
 .recom-description textarea{
     width: 100%;
 }
-
 
 @media (max-width: 480px) {
     .title-edit{
