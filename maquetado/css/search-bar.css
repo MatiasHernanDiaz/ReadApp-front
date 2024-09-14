@@ -1,20 +1,19 @@
-/*SEARCH BAR*/
+.contain_search_bar, .search_bar, .label-check{
+    display: flex;    
+    align-items: center;
+}
 
 .contain_search_bar{
     width: 100%;
     height: 12%;
     background-color: var(--tertiary-color);
-    display: flex;
     justify-content: center;
     box-sizing: border-box;
-    align-items: center;
 }
 
 .search_bar{
     height: 3rem;
     width: 70%; 
-    display: flex;
-    align-items: center;
     padding: 1rem;
     flex: 1;
 }
@@ -41,14 +40,12 @@
 }
 
 .content-check{
-    color: var(--white);
+    color: var(--fourth-color);
     font-size: 0.8rem;
     display: flex;
 }
 
 .label-check{
-    display: flex;
-    align-items: center;
     gap: 0.2rem;
 }
 
@@ -56,7 +53,6 @@
     width: 70%;
     display: flex;
 }
-
 
 @media (max-width: 480px) {
     .wrapper{

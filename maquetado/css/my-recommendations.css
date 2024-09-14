@@ -3,29 +3,29 @@
     margin-bottom: 0.5rem;
     font-size: 0.8rem;
 }
-.card-footer{
+
+.header-recomendation, .header-recomendation-edit, .card-footer{
     display: flex;
     justify-content: space-between;
+}
+
+.header-recomendation-edit{
+    gap: 1rem;
+}
+
+.card-footer{
     align-items: center;
     font-size: 0.85rem;
     margin: 0.2rem;
 }
+
 .footer-item {
     display: flex;
     align-items: center;
-  }
+}
 
 .line-divide{
  border-style:solid;
  color: var(--secundary-color);
 }
 
-.header-recomendation{
-    display: flex;
-    justify-content: space-between;
-}
-.header-recomendation-edit{
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-}
