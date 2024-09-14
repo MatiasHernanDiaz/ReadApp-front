@@ -24,7 +24,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/XXXXXX'), // <-- reemplazar XXXXXX por nombre del proyecto
+      dir: require('path').join(__dirname, './coverage/readapp-2024-grupo-7'),
       subdir: '.',
       reporters: [
         { type: 'html' },
@@ -35,5 +35,5 @@ module.exports = function (config) {
     reporters: ['progress', 'kjhtml'],
     browsers: ['Chrome'],
     restartOnFileChange: true
-  });
-};
+  })
+}
