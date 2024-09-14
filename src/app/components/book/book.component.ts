@@ -29,13 +29,13 @@ export class BookComponent {
   @Input() 
   autor: string = ""
   @Input() 
-  pages: string = "0"
+  pages: number = 0
   @Input() 
-  words: string = "0"
+  words: number = 0
   @Input() 
-  date: string = "0/0/0"
+  date: Date = new Date(0,0,0)
   @Input() 
   lenguages: string = "english"
   @Input() 
-  sales: string = "0"
+  sales: number = 0
 }
