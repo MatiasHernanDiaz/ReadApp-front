@@ -70,3 +70,57 @@ a.active {
     border-radius: 0.5rem; 
     /* padding: 0.5rem; */
 }
+
+
+@media (max-width: 768px) and (min-width: 481px) {
+    :host {
+        flex-direction: column;
+        overflow-y: auto;
+    }
+
+    aside {
+        width: 100%;
+    }
+
+    .img-name-aside {
+        flex-direction: row;
+        height: auto;
+        margin: 2rem 0;
+    }
+
+    .img-name-aside h3{
+        font-size: 2.2rem;
+    }
+
+    aside nav {
+        margin: 10px 0;
+    }
+}
+
+/*Mobile*/
+
+@media (max-width: 480px) {
+    :host {
+        flex-direction: column;
+        overflow-y: auto;
+    }
+
+    aside {
+        width: 100%;
+        
+    }
+
+    .img-name-aside {
+        flex-direction: column;
+        height: auto;
+        margin: 2rem 0;
+    }
+
+    .img-name-aside h3{
+        font-size: 2.2rem;
+    }
+
+    aside nav {
+        margin: 10px 0;
+    }
+}

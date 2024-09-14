@@ -1,23 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { RecomComponent } from './recom.component';
+import { RecomComponent } from './recom.component'
 
 describe('RecomComponent', () => {
-  let component: RecomComponent;
-  let fixture: ComponentFixture<RecomComponent>;
+  let component: RecomComponent
+  let fixture: ComponentFixture<RecomComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RecomComponent]
     })
-    .compileComponents();
+    .compileComponents()
 
-    fixture = TestBed.createComponent(RecomComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(RecomComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})
