@@ -124,6 +124,9 @@ input:focus {
     box-shadow: 0 0 0 0.2rem rgba(242, 93, 11, 0.3);
     outline: none;
 }
+.login-form input.error {
+    border-left: 0.5rem solid red;
+  }
 
 .alert-message {
     display: flex;

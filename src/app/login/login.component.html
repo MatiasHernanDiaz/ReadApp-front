@@ -12,8 +12,14 @@
                 <section class="login-form">
                     <div class="input-group">
                         <label for="Username">Usuario<span class="required">*</span></label>
-                        <input formControlName="user" type="text" id="Username" required>
-                        <div *ngIf="user?.invalid && (user!.dirty || user!.touched)" class="alert-message">
+                        <input 
+                            formControlName="user" 
+                            type="text" 
+                            id="Username" 
+                            [ngClass]="{'error': hasUserError() || loginFailed}"
+                            required
+                        >
+                        <div *ngIf="hasUserError()" class="alert-message">
                             <img src="assets/warning.svg" alt="Advertencia">
                             El nombre de usuario es obligatorio.
                         </div>
@@ -21,12 +27,16 @@
 
                     <div class="input-group">
                         <label for="Password">Contraseña<span class="required">*</span></label>
-                        <input formControlName="password" type="password" id="Password" required>
+                        <input 
+                            formControlName="password" 
+                            type="password" 
+                            id="Password" 
+                            [ngClass]="{'error': hasPasswordError() || loginFailed}"
+                            required
+                        >
                         <i><img src="assets/eye.svg" alt="Ocultar"></i>
-                        <div *ngIf="password!.invalid && (password!.dirty || password!.touched)" class="alert-message">
-                            <small *ngIf="password!.errors?.['required']">
-                                La contraseña es obligatoria.
-                            </small>
+                        <div *ngIf="hasPasswordError()" class="alert-message">
+                            <small>{{getPasswordErrorMessage()}}</small>
                         </div>
                     </div>
 

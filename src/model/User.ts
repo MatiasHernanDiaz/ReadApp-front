@@ -55,7 +55,7 @@ export class StubLoginService {
             lastName: "Simpson",
             firstName: "Homero",
             username: "hsimpson", 
-            password: "simpsonfamily",
+            password: "mandarina",
             birthday: new Date(1968, 4, 4), 
             email: 'homer@simps.com', 
             readTimeAvg: 100,
@@ -65,7 +65,7 @@ export class StubLoginService {
             lastName: "Simpson",
             firstName: "Marge",
             username: "msimpson", 
-            password: "simpsonfamily",
+            password: "mandarina",
             birthday: new Date(1970, 4, 4), 
             email: 'marge@simps.com', 
             readTimeAvg: 110,
@@ -75,7 +75,7 @@ export class StubLoginService {
             lastName: "Simpson",
             firstName: "Bart",
             username: "bsimpson", 
-            password: "simpsonfamily",
+            password: "mandarina",
             birthday: new Date(1989, 4, 4), 
             email: 'bart@simps.com', 
             readTimeAvg: 80,
@@ -85,7 +85,7 @@ export class StubLoginService {
             lastName: "Simpson",
             firstName: "Lisa",
             username: "lsimpson", 
-            password: "simpsonfamily",
+            password: "mandarina",
             birthday: new Date(1991, 4, 4), 
             email: 'lisa@simps.com', 
             readTimeAvg: 150,
@@ -93,9 +93,13 @@ export class StubLoginService {
         }
     ] 
 
-    login( credentials: { username: string, password: string }) {
-        const userData: User & { password: string } = this.dummyUserPayloads.find( data => data.username === credentials.username ) as unknown as User & { password: string }
-
+    //login( credentials: { username: string, password: string }) {
+    //const userData: User & { password: string } = this.dummyUserPayloads.find( data => data.username === credentials.username ) 
+    //as unknown as User & { password: string }
+        
+    login(credentials: { email: string, password: string }) {
+        const userData: User & { password: string } = this.dummyUserPayloads.find(data => data.email === credentials.email) as unknown as User & { password: string }
+        
         if( ! userData || userData.password !== credentials.password ) {
             return { ok: false, res: "Credenciales inválidas."}
         }
