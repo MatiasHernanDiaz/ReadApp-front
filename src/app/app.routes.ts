@@ -25,8 +25,8 @@ export const routes: Routes = [
         
         children: [
             {
-                path: "layout",
-                component: RecommendationsScreen,
+                path: "recoms",
+              
                 children: [
                     {
                         path: "explorer",
@@ -42,16 +42,17 @@ export const routes: Routes = [
                         path: "recoms",
                         component: BookContainerComponent
                     },
-                    { 
-                        path: 'book-search',
-                        component: BookContainerComponent
-                    },
+                   
                     { 
                         path: '', 
                         redirectTo: 'explorer', 
                         pathMatch: 'full' 
                     }
                 ]
+            },
+            { 
+                path: 'book-search',
+                component: BookContainerComponent
             },
             { 
                 path: 'profile', // ----> /app/profile
