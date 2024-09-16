@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core'
-import { BookComponent } from '../../components/book/book.component'
+import { BookComponent } from '@src/app/components/book/book.component'
+import { SearchBarComponent } from '@src/app/components/search-bar/search-bar.component'
 
 @Component({
   selector: 'app-book-container',
   standalone: true,
-  imports: [BookComponent],
+  imports: [BookComponent, SearchBarComponent],
   templateUrl: './book-container.component.html',
   styleUrl: './book-container.component.css'
 })

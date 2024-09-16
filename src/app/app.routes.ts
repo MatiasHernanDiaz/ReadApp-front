@@ -40,19 +40,19 @@ export const routes: Routes = [
                     },
                     {
                         path: "recoms",
-                        component: BookContainerComponent
+                        component: RecommendationsScreen
                     },
                    
+                    { 
+                        path: 'books',
+                        component: BookContainerComponent
+                    },
                     { 
                         path: '', 
                         redirectTo: 'explorer', 
                         pathMatch: 'full' 
                     }
                 ]
-            },
-            { 
-                path: 'book-search',
-                component: BookContainerComponent
             },
             { 
                 path: 'profile', // ----> /app/profile
