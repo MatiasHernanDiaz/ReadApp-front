@@ -36,7 +36,7 @@
 }
 
 .content-check{
-    color: var(--white);
+    color: var(--fourth-color);
     font-size: 0.8rem;
     display: flex;
 }
@@ -57,6 +57,11 @@ main {
 
 
 @media (max-width: 480px) {
+
+    #search-bar-container{
+        flex-direction: column;
+    }
+
     .wrapper{
         flex-direction: column;
         justify-content: center;

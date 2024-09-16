@@ -33,7 +33,7 @@ export class BookComponent {
   @Input() 
   words: number = 0
   @Input() 
-  date: Date = new Date(0,0,0)
+  date1: Date = new Date(0,0,0)
   @Input() 
   lenguages: string = "english"
   @Input() 

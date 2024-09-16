@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core'
+import { Component } from '@angular/core'
 import { RouterLink, RouterLinkActive } from '@angular/router'
-import { DataService } from '@src/model/DataService'
+import { StubLoginService, User } from '@src/model/User'
+
 
 @Component({
   selector: 'app-header',
@@ -10,24 +11,22 @@ import { DataService } from '@src/model/DataService'
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  @Input() name: string = 'Homero Simpson'
-  @Input() img: string = 'assets/avatar.jpeg'
+
+  user: User = new User( '', '', '', new Date(), '', 0 , )
   click: boolean = false
   dropdown: string = "hide"
+  
+  constructor( public loginService: StubLoginService ) {}
 
-  constructor(public dataService: DataService){}
+  ngOnInit() {
+    this.user = this.loginService.getSignedUser()!
+    console.log(this.user)
+  }
+
 
   handleClickMenu(){
     this.click = !this.click
     this.dropdown = this.click ? "dropdown-menu" : "hide"
-  }
-
-  goToMyRecoms(){
-    this.dataService.updateData({myrecom:true})
-  }
-
-  goToRecoms(){
-    this.dataService.updateData({myrecom:false})
   }
 
 }

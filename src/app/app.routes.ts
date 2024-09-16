@@ -26,11 +26,19 @@ export const routes: Routes = [
         children: [
             {
                 path: "recoms",
-                component: RecommendationsScreen,
                 children: [
                     {
                         path: "explorer",
-                        component: ExplorerComponent
+                        component: RecommendationsScreen //no check
+                    },
+                    {
+                        path: "myrecoms",
+                        component: RecommendationsScreen //check
+                    },
+                    { 
+                        path: '', 
+                        redirectTo: 'explorer', 
+                        pathMatch: 'full' 
                     }
                 ]
             },
