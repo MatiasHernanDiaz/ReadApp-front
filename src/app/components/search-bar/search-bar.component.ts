@@ -1,4 +1,4 @@
-import { Component  } from '@angular/core'
+import { Component, NgModule   } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms'
 
@@ -12,5 +12,11 @@ import { FormsModule } from '@angular/forms'
 export class SearchBarComponent {
 
   myRecomsFlag: boolean = location.pathname.includes('myrecoms')
+
+  lookup: string = ''
+
+  getLookup(){
+    alert(this.lookup)
+  }
 
 }
