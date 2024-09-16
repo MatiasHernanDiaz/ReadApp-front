@@ -25,15 +25,26 @@ export const routes: Routes = [
         
         children: [
             {
-                path: "recoms",
+                path: "layout",
+                component: RecommendationsScreen,
                 children: [
                     {
                         path: "explorer",
-                        component: RecommendationsScreen //no check
+                        component: RecommendationsScreen,
+                        data:{myrecoms : false}
                     },
                     {
                         path: "myrecoms",
-                        component: RecommendationsScreen //check
+                        component: RecommendationsScreen,
+                        data:{myrecoms : true}
+                    },
+                    {
+                        path: "recoms",
+                        component: BookContainerComponent
+                    },
+                    { 
+                        path: 'book-search',
+                        component: BookContainerComponent
                     },
                     { 
                         path: '', 
@@ -41,14 +52,6 @@ export const routes: Routes = [
                         pathMatch: 'full' 
                     }
                 ]
-            },
-            { 
-                path: 'gralrecoms',
-                component: GralrecomsComponent
-            },
-            { 
-                path: 'book-search',
-                component: BookContainerComponent
             },
             { 
                 path: 'profile', // ----> /app/profile

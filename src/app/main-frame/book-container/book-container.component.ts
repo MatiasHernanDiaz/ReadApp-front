@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, Input } from '@angular/core'
 import { BookComponent } from '../../components/book/book.component'
 
 @Component({
@@ -17,6 +17,8 @@ export class BookContainerComponent {
     { title: "Gaturro Gigante", imageURL: "https://images.cdn2.buscalibre.com/fit-in/360x360/cd/12/cd120253f636098c134b6b21e2d9a3a3.jpg", autor: "Nik", pages: 300, words: 2200, date: new Date(2024, 8, 8), lenguages: "Español", sales: 70000 },
     { title: "Gaturro Gigante", imageURL: "https://images.cdn2.buscalibre.com/fit-in/360x360/cd/12/cd120253f636098c134b6b21e2d9a3a3.jpg", autor: "Nik", pages: 300, words: 2200, date: new Date(2024, 8, 8), lenguages: "Español", sales: 70000 }
   ]
+
+  @Input() test = false
 }
 
 type Book = {

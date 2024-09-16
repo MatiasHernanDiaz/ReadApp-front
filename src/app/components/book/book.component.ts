@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core'
+import { CommonModule } from '@angular/common'
 
 @Component({
   selector: 'app-book',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, ],
   templateUrl: './book.component.html',
   styleUrl: './book.component.css'
 })
@@ -33,7 +34,7 @@ export class BookComponent {
   @Input() 
   words: number = 0
   @Input() 
-  date1: Date = new Date(0,0,0)
+  date: Date = new Date(0,0,0)
   @Input() 
   lenguages: string = "english"
   @Input() 
