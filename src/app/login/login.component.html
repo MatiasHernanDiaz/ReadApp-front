@@ -11,7 +11,7 @@
 
                 <section class="login-form">
                     <div class="input-group">
-                        <label for="Username">Usuario<span class="required">*</span></label>
+                        <label for="Username">Email<span class="required">*</span></label>
                         <input 
                             formControlName="user" 
                             type="text" 
@@ -21,7 +21,7 @@
                         >
                         <div *ngIf="hasUserError()" class="alert-message">
                             <img src="assets/warning.svg" alt="Advertencia">
-                            El nombre de usuario es obligatorio.
+                            El mail de usuario es obligatorio.
                         </div>
                     </div>
 
