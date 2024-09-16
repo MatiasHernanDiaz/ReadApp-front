@@ -13,6 +13,6 @@ import {  RouterOutlet } from '@angular/router'
 })
 export class RecommendationsScreen {
 
-  myRecomsFlag: boolean = location.pathname.includes('myrecoms')
+  
   
 }

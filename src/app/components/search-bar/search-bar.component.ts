@@ -1,4 +1,4 @@
-import { Component , Input } from '@angular/core'
+import { Component  } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms'
 
@@ -11,6 +11,6 @@ import { FormsModule } from '@angular/forms'
 })
 export class SearchBarComponent {
 
-  @Input() showCheck: boolean = false
+  myRecomsFlag: boolean = location.pathname.includes('myrecoms')
 
 }
