@@ -1,9 +1,9 @@
 <article (mouseenter)="entrar()" (mouseleave)="salir()" class="card">
     <div class="image-center"><!DOCTYPE html>
-        <img width="{{tamanio}}" class="bookImage" src={{imageURL}} alt="Portada de libro"/>
+        <img width="{{tamanio}}" class="bookImage" src={{book.imageURL}} alt="Portada de libro"/>
     </div>
     <div class="card-header">
-        <h2>{{title}}</h2>
+      <h2>{{book.title}}</h2>
         <span class="images">
             <img class="icons" src="img/medal.svg" alt="Premio">
             <img class="icons" src="img/star.svg" alt="Ícono de Destacado">
@@ -11,13 +11,13 @@
     </div>
     <div>
         @if(enter){
-        <p>Por {{autor}} </p>
+      <p>Por {{book.autor}} </p>
         <ul class="comments">
-            <li class="comment"><img class="icons" src="img/article.svg" alt="Icono de paginas">{{pages}} Paginas</li>
-            <li class="comment"><img class="icons" src="img/text.svg" alt="Ícono de palabras">{{words}} Palabras</li>
-            <li class="comment"><img class="icons" src="img/calendar.svg" alt="Ícono de fecha"></li>
-            <li class="comment"><img class="icons" src="img/globe.svg" alt="Icono de lenguajes">{{lenguages}}</li>
-            <li class="comment"><img class="icons" src="img/money.svg" alt="Ícono de ventas">{{sales}} Ventas</li>
+          <li class="comment"><img class="icons" src="img/article.svg" alt="Icono de paginas">{{book.pages}} Paginas</li>
+          <li class="comment"><img class="icons" src="img/text.svg" alt="Ícono de palabras">{{book.words}} Palabras</li>
+          <li class="comment"><img class="icons" src="img/calendar.svg" alt="Ícono de fecha">{{book.date | date: 'dd/MM/yyyy'}}</li>
+            <li class="comment"><img class="icons" src="img/globe.svg" alt="Icono de lenguajes">{{book.lenguages}}</li>
+            <li class="comment"><img class="icons" src="img/money.svg" alt="Ícono de ventas">{{book.sales}} Ventas</li>
         </ul>
     }
     </div>
