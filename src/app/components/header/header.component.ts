@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input } from '@angular/core'
 import { RouterLink, RouterLinkActive } from '@angular/router'
 
 @Component({
@@ -9,14 +9,14 @@ import { RouterLink, RouterLinkActive } from '@angular/router'
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  @Input() name: String = 'Homero Simpson';
-  @Input() img: String = 'assets/avatar.jpeg';
-  click: boolean = false;
-  dropdown: String = "hide"
+  @Input() name: string = 'Homero Simpson'
+  @Input() img: string = 'assets/avatar.jpeg'
+  click: boolean = false
+  dropdown: string = "hide"
 
   handleClickMenu(){
-    this.click = !this.click;
-    this.dropdown = this.click ? "dropdown-menu" : "hide";
+    this.click = !this.click
+    this.dropdown = this.click ? "dropdown-menu" : "hide"
   }
 
 }

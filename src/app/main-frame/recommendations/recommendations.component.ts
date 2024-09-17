@@ -1,7 +1,7 @@
 import { Component } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { RouterOutlet } from '@angular/router'
-import { SearchBarComponent } from "../../components/search-bar/search-bar.component";
+import { SearchBarComponent } from "../../components/search-bar/search-bar.component"
 
 @Component({
   selector: 'recommendations-screen',
