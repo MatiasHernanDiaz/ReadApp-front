@@ -12,6 +12,7 @@ export class User {
     readTimeMinAvg: number
     readMode: ReadMode
     searchCriteria: SearchCriteria[]
+    avatar: string
 
     constructor( 
         lastName: string, 
@@ -22,6 +23,7 @@ export class User {
         readTimeMinAvg: number,
         readMode: ReadMode = readerModes.avgReader, 
         searchCriteria: SearchCriteria[] = [],
+        avatar: string = ''
     ) {
         this.lastName = lastName
         this.firstName = firstName
@@ -31,6 +33,7 @@ export class User {
         this.readTimeMinAvg = readTimeMinAvg
         this.readMode = readMode
         this.searchCriteria = searchCriteria
+        this.avatar = avatar
     }
 
     baseReadTime( book: Book ) {
@@ -40,13 +43,26 @@ export class User {
     readTime( book: Book ) {
         return this.readMode.readTime( book, this )
     }
+
+    get displayName(){
+        return this.firstName + ' ' + this.lastName
+    }
+
   }
 
 @Injectable({ providedIn: 'root' })
 export class StubLoginService {
     // TODO: inicialización temporal hasta que se implemente el flujo de autenticación
     private signedUser?: User = new User(
-        "Simpson", "Homero", "hsimpson", new Date(1968, 4, 4), 'homer@simps.com', 100
+        "Simpson", 
+        "Homero", 
+        "hsimpson", 
+        new Date(1968, 4, 4), 
+        'homer@simps.com', 
+        100, 
+        readerModes.avgReader, 
+        [] ,
+        'assets/avatar.jpeg'
     )
 
     // TODO: provisorio hasta que tengamos un servicio externo
@@ -58,7 +74,10 @@ export class StubLoginService {
             password: "mandarina",
             birthday: new Date(1968, 4, 4), 
             email: 'homer@simps.com', 
-            readTimeAvg: 100,
+            readTimeAvg: 100, 
+            readerMode : readerModes.avgReader, 
+            searchCriterial : [] , 
+            avatar: 'assets/avatar.jpeg'
 
         },
         {
@@ -69,6 +88,9 @@ export class StubLoginService {
             birthday: new Date(1970, 4, 4), 
             email: 'marge@simps.com', 
             readTimeAvg: 110,
+            readerMode : readerModes.avgReader, 
+            searchCriterial : [] , 
+            avatar: 'assets/avatar.jpeg'
 
         },
         {
@@ -79,6 +101,9 @@ export class StubLoginService {
             birthday: new Date(1989, 4, 4), 
             email: 'bart@simps.com', 
             readTimeAvg: 80,
+            readerMode : readerModes.avgReader, 
+            searchCriterial : [] , 
+            avatar: 'assets/avatar.jpeg'
 
         },
         {
@@ -89,6 +114,9 @@ export class StubLoginService {
             birthday: new Date(1991, 4, 4), 
             email: 'lisa@simps.com', 
             readTimeAvg: 150,
+            readerMode : readerModes.avgReader, 
+            searchCriterial : [] , 
+            avatar: 'assets/avatar.jpeg'
 
         }
     ] 
@@ -131,7 +159,8 @@ export class StubLoginService {
             this.signedUser?.email ?? '',
             this.signedUser?.readTimeMinAvg ?? 0,
             this.signedUser?.readMode,
-            this.signedUser?.searchCriteria
+            this.signedUser?.searchCriteria,
+            this.signedUser?.avatar
         )
     }
 
@@ -144,7 +173,8 @@ export class StubLoginService {
             newUserData?.email ?? '',
             newUserData?.readTimeMinAvg ?? 0,
             newUserData?.readMode,
-            newUserData?.searchCriteria
+            newUserData?.searchCriteria,
+            newUserData?.avatar
         )
     }
 }

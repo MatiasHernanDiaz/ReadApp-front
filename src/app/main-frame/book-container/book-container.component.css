@@ -1,3 +1,7 @@
+:host{
+    overflow-y: auto;
+}
+
 .card-container{
     width: 70%;
     grid-template-columns: repeat(3,1fr) ;

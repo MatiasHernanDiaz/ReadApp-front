@@ -5,19 +5,19 @@
     <div class="card-header">
         <h2>{{title}}</h2>
         <span class="images">
-            <img class="icons" src="img/medal.svg" alt="Premio">
-            <img class="icons" src="img/star.svg" alt="Ícono de Destacado">
+            <img class="icons" src="assets/medal.svg" alt="Premio">
+            <img class="icons" src="assets/star.svg" alt="Ícono de Destacado">
         </span>
     </div>
     <div>
         @if(enter){
         <p>Por {{autor}} </p>
         <ul class="comments">
-            <li class="comment"><img class="icons" src="img/article.svg" alt="Icono de paginas">{{pages}} Paginas</li>
-            <li class="comment"><img class="icons" src="img/text.svg" alt="Ícono de palabras">{{words}} Palabras</li>
-            <li class="comment"><img class="icons" src="img/calendar.svg" alt="Ícono de fecha"></li>
-            <li class="comment"><img class="icons" src="img/globe.svg" alt="Icono de lenguajes">{{lenguages}}</li>
-            <li class="comment"><img class="icons" src="img/money.svg" alt="Ícono de ventas">{{sales}} Ventas</li>
+            <li class="comment"><img class="icons" src="assets/article.svg" alt="Icono de paginas">{{pages}} Paginas</li>
+            <li class="comment"><img class="icons" src="assets/text.svg" alt="Ícono de palabras">{{words}} Palabras</li>
+            <li class="comment"><img class="icons" src="assets/calendar.svg" alt="Ícono de fecha"> {{date | date: 'dd-MM-yyyy'}}</li>
+            <li class="comment"><img class="icons" src="assets/globe.svg" alt="Icono de lenguajes">{{lenguages}}</li>
+            <li class="comment"><img class="icons" src="assets/money.svg" alt="Ícono de ventas">{{sales}} Ventas</li>
         </ul>
     }
     </div>
