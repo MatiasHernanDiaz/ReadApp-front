@@ -22,34 +22,37 @@ export const routes: Routes = [
     {
         path: 'app',
         component: MainFrameComponent,
+        
         children: [
             {
                 path: "recoms",
-                component: RecommendationsScreen,
+              
                 children: [
                     {
                         path: "explorer",
-                        component: ExplorerComponent
-                    }
-                ]
-            },
-            { 
-                path: 'myrecoms',
-                component: MyrecomsComponent,
-                children: [
+                        component: RecommendationsScreen,
+                        data:{myrecoms : false}
+                    },
                     {
-                        path: 'recom-details',
-                        component: RecomdetailsComponent
+                        path: "myrecoms",
+                        component: RecommendationsScreen,
+                        data:{myrecoms : true}
+                    },
+                    {
+                        path: "recoms",
+                        component: RecommendationsScreen
+                    },
+                   
+                    { 
+                        path: 'books',
+                        component: BookContainerComponent
+                    },
+                    { 
+                        path: '', 
+                        redirectTo: 'explorer', 
+                        pathMatch: 'full' 
                     }
                 ]
-            },
-            { 
-                path: 'gralrecoms',
-                component: GralrecomsComponent
-            },
-            { 
-                path: 'book-search',
-                component: BookContainerComponent
             },
             { 
                 path: 'profile', // ----> /app/profile

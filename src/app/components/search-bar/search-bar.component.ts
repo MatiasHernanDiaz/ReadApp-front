@@ -1,12 +1,22 @@
-import { Component, Input } from '@angular/core'
+import { Component } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { FormsModule } from '@angular/forms'
 
 @Component({
   selector: 'app-search-bar',
   standalone: true,
-  imports: [],
+  imports: [FormsModule, CommonModule],
   templateUrl: './search-bar.component.html',
   styleUrl: './search-bar.component.css'
 })
 export class SearchBarComponent {
-  @Input() showCheck = false
+
+  myRecomsFlag: boolean = location.pathname.includes('myrecoms')
+
+  lookup: string = ''
+
+  getLookup(){
+    alert(this.lookup)
+  }
+
 }

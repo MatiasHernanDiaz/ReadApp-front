@@ -17,7 +17,7 @@ DE CLARO A OSCURO
     --primary-color: #ffedd6; /*tomar a ejemplo, modificar mas adelante*/
     --secundary-color: #F25D0B;
     --tertiary-color: #F98F3E;
-    --white: #F2F2F2;
+    --fourth-color: #F2F2F2;
     --card-background :#fad2b3;
     --light-border: 1px solid #aaa;
     --font-family:  "Cantarell", Arial, sans-serif; /*Definir fuentes*/
@@ -46,15 +46,15 @@ body{
   box-sizing: border-box;
 }
 
-main{
+/* main{
   height: calc(100% - var(--header-height) - var(--search-height));
   overflow-y: auto;
   box-sizing: border-box;
-}
+} */
 
-main.without-search{
+/* main.without-search{
   height: calc(100% - var(--header-height));
-}
+} */
 
 input {
   outline: none;

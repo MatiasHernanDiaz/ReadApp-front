@@ -1,11 +1,12 @@
-import { Component } from '@angular/core'
-import { BookComponent } from '../../components/book/book.component'
-import { Book } from '../../../model/Book'
+import { Component, Input } from '@angular/core'
+import { BookComponent } from '@src/app/components/book/book.component'
+import { Book } from '@src/model/Book'
+import { SearchBarComponent } from '@src/app/components/search-bar/search-bar.component'
 
 @Component({
   selector: 'app-book-container',
   standalone: true,
-  imports: [BookComponent],
+  imports: [BookComponent, SearchBarComponent],
   templateUrl: './book-container.component.html',
   styleUrl: './book-container.component.css'
 })
@@ -18,4 +19,6 @@ export class BookContainerComponent {
     { title: "Dragon Ball", imageURL: "https://acdn.mitiendanube.com/stores/001/455/161/products/dragon-ball-saga-freezer-05-ivrea-manga-viducomics-akira-toriyama-toyotaro-z-gt-super-49e3b537e0176388f517111400543922-480-0.jpg", autor: "Akira Toriyama", pages: 360, words: 6000, date: new Date(1984, 3, 10), lenguages: "Español- Japonés", sales: 850000 },
     { title: "Historia del arte", imageURL: "https://m.media-amazon.com/images/I/81sawrUEiYL._AC_UF894,1000_QL80_.jpg", autor: "Ernst Gombrich", pages: 700, words: 78000, date: new Date(1950, 1, 1), lenguages: "Español-English", sales: 597400 }
   ]
+
+  @Input() test = false
 }
