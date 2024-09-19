@@ -1,1 +1,11 @@
-<p>friends works!</p>
+<h2 class="friends-title">Amigos</h2>
+<div class="friends-container">
+  <div *ngFor="let user of friends" class="friend-card">
+    <img [src]="user.avatar" alt="{{user.displayName}}" class="avatar">
+    <div class="user-info">
+      <h3>{{user.displayName}}</h3>
+      <p>Email: {{user.email}}</p>
+      <p>Username: {{user.username}}</p>
+    </div>
+  </div>
+</div>
