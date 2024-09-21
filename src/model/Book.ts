@@ -10,7 +10,6 @@ export class Book {
     lenguages: string = ""
     sales: number = 0
 
-    constructor( pages: number ) {
-        this.pages = pages
+    constructor() {
     }
 }

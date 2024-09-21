@@ -4,11 +4,9 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\components",
-    "\\src\\app\\components\\book",
-    "\\src\\app\\main-frame",
-    "\\src\\app\\main-frame\\book-container",
+    "\\src\\app\\main-frame\\recommendations",
     "\\src\\model"
   ],
-  "SelectedNode": "\\src\\app\\main-frame\\book-container\\book-container.component.ts",
+  "SelectedNode": "\\src\\app\\app.routes.ts",
   "PreviewInSolutionExplorer": false
 }
