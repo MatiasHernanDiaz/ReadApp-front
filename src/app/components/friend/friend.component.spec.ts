@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { SearchBarComponent } from './search-bar.component'
+import { FriendComponent } from './friend.component'
 
-describe('SearchBarComponent', () => {
-  let component: SearchBarComponent
-  let fixture: ComponentFixture<SearchBarComponent>
+describe('FriendComponent', () => {
+  let component: FriendComponent
+  let fixture: ComponentFixture<FriendComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SearchBarComponent]
+      imports: [FriendComponent]
     })
     .compileComponents()
 
-    fixture = TestBed.createComponent(SearchBarComponent)
+    fixture = TestBed.createComponent(FriendComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })
