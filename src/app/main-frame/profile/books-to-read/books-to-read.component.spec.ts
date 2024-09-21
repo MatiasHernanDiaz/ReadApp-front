@@ -1,23 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { BooksToReadComponent } from './books-to-read.component';
+import { BooksToReadComponent } from './books-to-read.component'
 
 describe('BooksToReadComponent', () => {
-  let component: BooksToReadComponent;
-  let fixture: ComponentFixture<BooksToReadComponent>;
+  let component: BooksToReadComponent
+  let fixture: ComponentFixture<BooksToReadComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [BooksToReadComponent]
     })
-    .compileComponents();
+    .compileComponents()
 
-    fixture = TestBed.createComponent(BooksToReadComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(BooksToReadComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})
