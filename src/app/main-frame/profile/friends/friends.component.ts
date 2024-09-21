@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { StubLoginService } from '@src/model/User'
 import { User } from '@src/model/User'
+import { FriendComponent } from "../../../components/friend/friend.component"
 
 @Component({
   selector: 'app-friends',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FriendComponent],
   templateUrl: './friends.component.html',
   styleUrls: ['./friends.component.css']
 })

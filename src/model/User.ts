@@ -69,8 +69,8 @@ export class StubLoginService {
         new Date(1968, 4, 4), 
         'homer@simps.com', 
         [],
-        100, 
-        readerModes.avgReader, 
+        100,
+        readerModes.avgReader,
         [] ,
         'assets/avatar.jpeg',
     )
@@ -110,7 +110,9 @@ export class StubLoginService {
                 {username: "mvanhouten"},
                 {username: "bgumble"},
                 {username: "lsimpson"},     
-            ], 
+            ],
+
+
             readTimeAvg: 100, 
             readerMode : readerModes.avgReader, 
             searchCriterial : [] , 
