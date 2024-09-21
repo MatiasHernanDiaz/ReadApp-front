@@ -1,1 +1,7 @@
-<p>friends works!</p>
+<h2 class="friends-title">Amigos</h2>
+<div class="friends-container">
+  <div *ngFor="let friend of friends" class="friend-card">
+    <app-friend [user]="friend"></app-friend>
+  </div>
+</div>
+
