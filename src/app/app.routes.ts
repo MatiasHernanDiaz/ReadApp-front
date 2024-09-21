@@ -6,13 +6,10 @@ import { MainFrameComponent } from './main-frame/main-frame.component'
 import { InfoComponent } from './main-frame/profile/info/info.component'
 import { FriendsComponent } from './main-frame/profile/friends/friends.component'
 import { ReadbooksComponent } from './main-frame/profile/readbooks/readbooks.component'
-import { BookstoreadComponent } from './main-frame/profile/bookstoread/bookstoread.component'
+import { BooksToReadComponent } from './main-frame/profile/books-to-read/books-to-read.component'
 import { RecomstoevaluateComponent } from './main-frame/profile/recomstoevaluate/recomstoevaluate.component'
-import { ExplorerComponent } from './main-frame/recommendations/explorer/explorer.component'
-import { MyrecomsComponent } from './main-frame/myrecoms/myrecoms.component'
-import { GralrecomsComponent } from './main-frame/gralrecoms/gralrecoms.component'
-import { RecomdetailsComponent } from './main-frame/myrecoms/recomdetails/recomdetails.component'
 import { BookContainerComponent } from './main-frame/book-container/book-container.component'
+import { MyrecomsComponent } from './main-frame/myrecoms/myrecoms.component'
 
 export const routes: Routes = [
     { 
@@ -35,7 +32,7 @@ export const routes: Routes = [
                     },
                     {
                         path: "myrecoms",
-                        component: RecommendationsScreen,
+                        component: MyrecomsComponent,
                         data:{myrecoms : true}
                     },
                     {
@@ -72,7 +69,7 @@ export const routes: Routes = [
                     },
                     {
                         path: "bookstoread",
-                        component: BookstoreadComponent
+                        component: BooksToReadComponent
                     },
                     {
                         path: "recomstoevaluate",

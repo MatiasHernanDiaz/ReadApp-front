@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { LoginScreen } from './login.component'
+import { RemoveRecomComponent } from './remove-recom.component'
 
-describe('BookContainerComponent', () => {
-  let component: LoginScreen
-  let fixture: ComponentFixture<LoginScreen>
+describe('RemoveRecomComponent', () => {
+  let component: RemoveRecomComponent
+  let fixture: ComponentFixture<RemoveRecomComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LoginScreen]
+      imports: [RemoveRecomComponent]
     })
     .compileComponents()
 
-    fixture = TestBed.createComponent(LoginScreen)
+    fixture = TestBed.createComponent(RemoveRecomComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })

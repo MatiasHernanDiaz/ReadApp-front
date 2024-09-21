@@ -1,11 +1,125 @@
-p {
-    padding: 14px;
-
-    background-color: orange;
-
-    border: none;
+article.card{
+    border : 2px solid var(--secundary-color);
+    width: 13rem;    
+    border-radius: 1.2rem;
+    padding: 1rem;
+    background-color: var(--card-background);
+    box-shadow: 0 0.55rem 0.3rem rgba(0, 0, 0, 0.1);
+    justify-content: center;
 }
 
-hr {
-    display: none;
+.imageText{
+    height: 1.5rem;
+    display: flex;
+    line-height: 1.5rem;
+}
+
+.card-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.comment{
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    margin-top: 0.3rem;
+}
+
+.comments{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0.5rem
+}
+
+.image-center, .favorite-icon{
+    display: flex;
+    justify-content: center;
+}
+
+.favorite-icon{
+    justify-content: space-between;
+}
+
+.card-header h3{
+    font-size: 1rem;
+}
+
+.description{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    display: -webkit-box;        /* Para navegadores basados en WebKit y Blink */
+    -webkit-line-clamp: 2;       /* Limita el texto a 2 líneas */
+    -webkit-box-orient: vertical; /* Necesario para el -webkit-box */
+    overflow: hidden;            /* Oculta el texto que desborda */
+    text-overflow: ellipsis;     /* Agrega puntos suspensivos (...) al final del texto si se desborda */
+    
+    line-clamp: 2;               /* Limita el texto a 2 líneas */
+    box-orient: vertical;  
+}
+h1,h2,h3{
+    white-space: nowrap; /* No permite que el texto se divida en varias líneas */
+    overflow: hidden; /* Oculta el texto que desborda el contenedor */
+    text-overflow: ellipsis;
+}
+
+.header-recomendation, .header-recomendation-edit, .card-footer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-recomendation-edit{
+    gap: 1rem;
+}
+
+.card-footer{
+    align-items: center;
+    font-size: 0.85rem;
+    margin: 0.2rem;
+}
+
+.footer-item {
+    display: flex;
+    align-items: center;
+}
+
+.line-divide{
+ border-style:solid;
+ color: var(--secundary-color);
+}
+.btn-transition{
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  color: var(--primary-color);
+  background-color: var(--tertiary-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+article.card,.btn-transition:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+article.card:hover{
+    transform: scale(1.05);
+}
+.removeIcon{
+    background-color: transparent;
+}
+
+@media (max-width:480px ) {
+    article.card{
+        text-align:left;
+    }
+}
+@media (min-width: 481px) and (max-width:768px ) {
+    article.card{
+        display: block;
+    }
+
 }

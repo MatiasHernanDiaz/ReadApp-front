@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { LoginScreen } from './login.component'
+import { FriendComponent } from './friend.component'
 
-describe('BookContainerComponent', () => {
-  let component: LoginScreen
-  let fixture: ComponentFixture<LoginScreen>
+describe('FriendComponent', () => {
+  let component: FriendComponent
+  let fixture: ComponentFixture<FriendComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LoginScreen]
+      imports: [FriendComponent]
     })
     .compileComponents()
 
-    fixture = TestBed.createComponent(LoginScreen)
+    fixture = TestBed.createComponent(FriendComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })

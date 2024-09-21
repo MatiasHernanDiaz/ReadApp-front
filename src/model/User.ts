@@ -3,37 +3,44 @@ import { Book } from "./Book"
 import { Recommendation } from "./Recommendation"
 
 
+
 export class User {
     lastName: string
     firstName: string
     username: string
     birthday: Date
     email: string
+    friends: User[]
     readTimeMinAvg: number
     readMode: ReadMode
     searchCriteria: SearchCriteria[]
     avatar: string
+    
 
     constructor( 
         lastName: string, 
         firstName: string, 
         username: string, 
         birthday: Date, 
-        email: string, 
+        email: string,
+        friends: User[] ,
         readTimeMinAvg: number,
         readMode: ReadMode = readerModes.avgReader, 
         searchCriteria: SearchCriteria[] = [],
         avatar: string = ''
+
     ) {
         this.lastName = lastName
         this.firstName = firstName
         this.username = username
         this.birthday = birthday
         this.email = email
+        this.friends = friends
         this.readTimeMinAvg = readTimeMinAvg
         this.readMode = readMode
         this.searchCriteria = searchCriteria
         this.avatar = avatar
+        
     }
 
     baseReadTime( book: Book ) {
@@ -52,6 +59,8 @@ export class User {
 
 @Injectable({ providedIn: 'root' })
 export class StubLoginService {
+    private localStorageKey = 'signedUser'
+
     // TODO: inicialización temporal hasta que se implemente el flujo de autenticación
     private signedUser?: User = new User(
         "Simpson", 
@@ -59,11 +68,31 @@ export class StubLoginService {
         "hsimpson", 
         new Date(1968, 4, 4), 
         'homer@simps.com', 
-        100, 
-        readerModes.avgReader, 
+        [],
+        100,
+        readerModes.avgReader,
         [] ,
-        'assets/avatar.jpeg'
+        'assets/avatar.jpeg',
     )
+    constructor() {
+        const storedUser = localStorage.getItem(this.localStorageKey)
+        if (storedUser) {
+            const userData = JSON.parse(storedUser)
+            this.signedUser = new User(
+                userData.lastName,
+                userData.firstName,
+                userData.username,
+                new Date(userData.birthday),
+                userData.email,
+                userData.friends,
+                userData.readTimeMinAvg,
+                userData.readMode,
+                userData.searchCriteria,
+                userData.avatar
+            )
+        }
+    }
+
 
     // TODO: provisorio hasta que tengamos un servicio externo
     dummyUserPayloads = [
@@ -73,12 +102,21 @@ export class StubLoginService {
             username: "hsimpson", 
             password: "mandarina",
             birthday: new Date(1968, 4, 4), 
-            email: 'homer@simps.com', 
+            email: 'homer@simps.com',
+            friends: [
+                {username: "ccarlson"},
+                {username: "msimpson"}, 
+                {username: "bsimpson"},
+                {username: "mvanhouten"},
+                {username: "bgumble"},
+                {username: "lsimpson"},     
+            ],
+
+
             readTimeAvg: 100, 
             readerMode : readerModes.avgReader, 
             searchCriterial : [] , 
-            avatar: 'assets/avatar.jpeg'
-
+            avatar: 'assets/avatar.jpeg',
         },
         {
             lastName: "Simpson",
@@ -86,12 +124,19 @@ export class StubLoginService {
             username: "msimpson", 
             password: "mandarina",
             birthday: new Date(1970, 4, 4), 
-            email: 'marge@simps.com', 
+            email: 'marge@simps.com',
+            friends: [
+                {username: "hsimpson"},
+                {username: "lsimpson"}, 
+                {username: "bsimpson"},
+                {username: "sbouvier"}, 
+                {username: "pbouvier"}
+            ],
             readTimeAvg: 110,
             readerMode : readerModes.avgReader, 
             searchCriterial : [] , 
-            avatar: 'assets/avatar.jpeg'
-
+            avatar: 'assets/marge.jpg',
+            
         },
         {
             lastName: "Simpson",
@@ -99,12 +144,20 @@ export class StubLoginService {
             username: "bsimpson", 
             password: "mandarina",
             birthday: new Date(1989, 4, 4), 
-            email: 'bart@simps.com', 
+            email: 'bart@simps.com',
+            friends: [
+                {username: "ccarlson"}, 
+                {username: "hsimpson"},
+                {username: "mvanhouten"},
+                {username: "bgumble"},
+                {username: "nmuntz"}, 
+                
+            ],
             readTimeAvg: 80,
             readerMode : readerModes.avgReader, 
             searchCriterial : [] , 
-            avatar: 'assets/avatar.jpeg'
-
+            avatar: 'assets/bart.jpg',
+            
         },
         {
             lastName: "Simpson",
@@ -113,12 +166,144 @@ export class StubLoginService {
             password: "mandarina",
             birthday: new Date(1991, 4, 4), 
             email: 'lisa@simps.com', 
+            friends: [
+                
+                {username: "msimpson"}, 
+                {username: "hsimpson"},
+                {username: "mvanhouten"},
+                {username: "bgumble"},
+                {username: "bsimpson"}, 
+                {username: "sbouvier"},
+                {username: "pbouvier"},
+               
+            ],
             readTimeAvg: 150,
             readerMode : readerModes.avgReader, 
             searchCriterial : [] , 
-            avatar: 'assets/avatar.jpeg'
-
-        }
+            avatar: 'assets/lisa.jpeg',
+           
+        },
+        {
+            lastName: "Van Houten",
+            firstName: "Milhouse",
+            username: "mvanhouten",
+            password: "bluehair",
+            birthday: new Date(1989, 7, 1), 
+            email: 'milhouse@simps.com', 
+            friends: [
+                {username: "msimpson"}, 
+                {username: "bsimpson"},
+                {username: "hsimpson"},
+                {username: "lsimpson"},
+            ],
+            readTimeAvg: 120,
+            readerMode : readerModes.avgReader, 
+            searchCriterial : [], 
+            avatar: 'assets/milhouse.jpg',
+            
+        },
+        {
+            lastName: "Gumble",
+            firstName: "Barney",
+            username: "bgumble",
+            password: "duffbeer",
+            birthday: new Date(1956, 3, 20), 
+            email: 'barney@simps.com',
+            friends: [
+                {username: "ccarlson"},
+                {username: "msimpson"}, 
+                {username: "bsimpson"},
+                {username: "mvanhouten"},
+                {username: "hsimpson"},
+                {username: "nmuntz"}, 
+            ],
+            readTimeAvg: 90,
+            readerMode : readerModes.avgReader, 
+            searchCriterial : [], 
+            avatar: 'assets/barney.jpg',
+            
+        },
+        {
+            lastName: "Bouvier",
+            firstName: "Selma",
+            username: "sbouvier",
+            password: "iguana123",
+            birthday: new Date(1951, 6, 2), 
+            email: 'selma@simps.com', 
+            friends: [
+                {username: "msimpson"}, 
+                {username: "bsimpson"},
+                {username: "mvanhouten"},
+                {username: "lsimpson"},
+                {username: "pbouvier"},
+            ],
+            readTimeAvg: 100,
+            readerMode : readerModes.avgReader, 
+            searchCriterial : [], 
+            avatar: 'assets/selma.png',
+            
+        },
+        {
+            lastName: "Bouvier",
+            firstName: "Patty",
+            username: "pbouvier",
+            password: "cigars456",
+            birthday: new Date(1951, 6, 2), 
+            email: 'patty@simps.com',
+            friends: [
+                {username: "ccarlson"},
+                {username: "msimpson"}, 
+                {username: "lsimpson"},
+                {username: "sbouvier"},
+            ],
+            readTimeAvg: 110,
+            readerMode : readerModes.avgReader, 
+            searchCriterial : [], 
+            avatar: 'assets/patty.png',
+        },
+        {
+            lastName: "Muntz",
+            firstName: "Nelson",
+            username: "nmuntz",
+            password: "ha-ha123",
+            birthday: new Date(1991, 9, 30), 
+            email: 'nelson@simps.com', 
+            friends: [
+                {username: "ccarlson"},
+                {username: "bsimpson"},
+                {username: "mvanhouten"},
+                {username: "bgumble"},
+                {username: "lsimpson"},
+                {username: "hsimpson"}, 
+                 
+            ],
+            readTimeAvg: 80,
+            readerMode : readerModes.avgReader, 
+            searchCriterial : [], 
+            avatar: 'assets/nelson.jpg',
+        },
+        {
+            lastName: "Carlson",
+            firstName: "Carl",
+            username: "ccarlson",
+            password: "nuclear123",
+            birthday: new Date(1955, 3, 20), 
+            email: 'carl@simps.com',
+            friends: [
+                {username: "msimpson"}, 
+                {username: "bsimpson"},
+                {username: "mvanhouten"},
+                {username: "bgumble"},
+                {username: "hsimpson"},
+                {username: "nmuntz"}, 
+                
+            ],
+            readTimeAvg: 130,
+            readerMode : readerModes.anxiousReader, 
+            searchCriterial : [], 
+            avatar: 'assets/carl.jpg',
+           
+        }      
     ] 
 
     //login( credentials: { username: string, password: string }) {
@@ -138,16 +323,21 @@ export class StubLoginService {
             userData.username,
             userData.birthday,
             userData.email,
+            userData.friends,
             userData.readTimeMinAvg,
             userData.readMode,
-            userData.searchCriteria
+            userData.searchCriteria,
+            userData.avatar
         )
+
+        localStorage.setItem(this.localStorageKey, JSON.stringify(this.signedUser))
 
         return { ok: true, res: this.getSignedUser() }
     }
 
     logout() {
         this.signedUser = undefined
+        localStorage.removeItem(this.localStorageKey)
     }
 
     getSignedUser() {
@@ -157,10 +347,11 @@ export class StubLoginService {
             this.signedUser?.username ?? '',
             this.signedUser?.birthday ?? new Date(),
             this.signedUser?.email ?? '',
+            this.signedUser?.friends?? [],
             this.signedUser?.readTimeMinAvg ?? 0,
             this.signedUser?.readMode,
             this.signedUser?.searchCriteria,
-            this.signedUser?.avatar
+            this.signedUser?.avatar,
         )
     }
 
@@ -171,12 +362,47 @@ export class StubLoginService {
             newUserData?.username ?? '',
             newUserData?.birthday ?? new Date(),
             newUserData?.email ?? '',
+            newUserData?.friends??[],
             newUserData?.readTimeMinAvg ?? 0,
             newUserData?.readMode,
             newUserData?.searchCriteria,
-            newUserData?.avatar
+            newUserData?.avatar,
+            
         )
     }
+
+    getUsers(): User[] {
+        // Primero crea todos los usuarios
+        const users = this.dummyUserPayloads.map(data => new User(
+            data.lastName,
+            data.firstName,
+            data.username,
+            data.birthday,
+            data.email,
+            [], // Amigos se asignarán después
+            data.readTimeAvg,
+            data.readerMode,
+            data.searchCriterial,
+            data.avatar
+        ))
+    
+        // Crea un mapa para acceder rápidamente a los usuarios por username
+        const userMap = new Map(users.map(user => [user.username, user]))
+    
+        // Ahora asigna los amigos
+        users.forEach(user => {
+            const userData = this.dummyUserPayloads.find(data => data.username === user.username)
+            if (userData?.friends) {
+                user.friends = userData.friends
+                    .map(friendData => userMap.get(friendData!.username) || new User(
+                        '', '', '', new Date(), '', [], 0, readerModes.avgReader, [], ''
+                    ))
+            }
+        })
+    
+        return users
+    }
+
 }
 
 interface ReadMode {

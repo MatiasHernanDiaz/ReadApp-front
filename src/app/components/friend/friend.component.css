@@ -1,0 +1,41 @@
+:host {
+    display: flex;
+    align-items: start;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    gap: 1rem;
+    border: 1px solid  var(--secundary-color);
+    background-color: hsla(26, 88%, 84%, 0.38);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 300px;
+    height: 100px; 
+    box-sizing: border-box;
+    transition: background-color 0.3s, box-shadow 0.3s; 
+    cursor: pointer;
+}
+
+:host:hover {
+    background-color: #f25c0b5e;
+    box-shadow: 0 4px 8px rgb(0, 0, 0); 
+}
+
+.avatar {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info h3 {
+    font-size: 1.25rem;
+}
+
+.user-info p {
+    font-size: 0.875rem;
+    color: #555;
+}

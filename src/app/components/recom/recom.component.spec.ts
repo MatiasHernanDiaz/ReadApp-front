@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { RecomComponent } from './recom.component'
 
-describe('RecomComponent', () => {
+describe('CardComponent', () => {
   let component: RecomComponent
   let fixture: ComponentFixture<RecomComponent>
 
@@ -21,3 +21,5 @@ describe('RecomComponent', () => {
     expect(component).toBeTruthy()
   })
 })
+
+

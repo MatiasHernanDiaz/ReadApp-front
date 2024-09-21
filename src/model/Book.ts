@@ -1,4 +1,3 @@
-
 export class Book {
 
     pages: number = 0

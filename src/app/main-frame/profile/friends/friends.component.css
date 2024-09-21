@@ -1,0 +1,32 @@
+.friends-title {
+    margin: 0;
+    font-size: 2rem;
+    text-align:start;
+    color: black;
+    padding-left: 2rem;
+    padding-top: 0.5rem;
+}
+
+.friends-container {
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: flex-start;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) and (min-width: 481px) {
+    .friends-container{
+        justify-content: center;
+    }
+    
+}
+
+@media (max-width: 480px) {
+    .friends-container{
+        justify-content: center;
+    }
+  
+}
