@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { RecomComponent } from './recom.component'
+import { RemoveRecomComponent } from './remove-recom.component'
 
-describe('CardComponent', () => {
-  let component: RecomComponent
-  let fixture: ComponentFixture<RecomComponent>
+describe('RemoveRecomComponent', () => {
+  let component: RemoveRecomComponent
+  let fixture: ComponentFixture<RemoveRecomComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RecomComponent]
+      imports: [RemoveRecomComponent]
     })
     .compileComponents()
 
-    fixture = TestBed.createComponent(RecomComponent)
+    fixture = TestBed.createComponent(RemoveRecomComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })
@@ -21,5 +21,3 @@ describe('CardComponent', () => {
     expect(component).toBeTruthy()
   })
 })
-
-

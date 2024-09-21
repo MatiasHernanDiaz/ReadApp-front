@@ -1,1 +1,26 @@
-<p>{{getText}}</p>
+<article *ngFor="let recommendation of recommendations" class="card">
+    <div class="card-header">
+        <h3>{{ recommendation.title }}</h3>
+        <div class="favorite-icon">
+            <button class="removeIcon"(click)="removeRecom(recommendation.id)">
+                <ng-icon name="bootstrapTrash"></ng-icon>
+            </button>
+        </div>
+    </div>
+    <hr class="line-divide">
+    <p class="description">{{ recommendation.description }}</p>
+    <ul class="comments">
+        <li *ngFor="let comment of recommendation.comments" class="comment">
+            <ng-icon class="icons" name="bootstrapBookmark"></ng-icon> {{ comment }}
+          </li>
+    </ul>
+    <hr class="line-divide">
+    <div class="card-footer">
+        <p class="footer-item"><ng-icon name="bootstrapStar"></ng-icon> {{ recommendation.rating }}</p>
+        <p class="footer-item"><ng-icon name="bootstrapBook"></ng-icon> {{ recommendation.books_count }}</p>
+        <p class="footer-item"><ng-icon name="bootstrapClock"></ng-icon>  {{ recommendation.time_to_read }}</p>
+    </div>
+    <p (click)="goToDetail(recommendation.id)" class="btn-transition">
+        Ver más  <ng-icon name="bootstrapArrowRight"></ng-icon>
+    </p>
+</article>
