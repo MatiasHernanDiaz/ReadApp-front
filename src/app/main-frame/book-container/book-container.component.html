@@ -6,3 +6,10 @@
         ></app-book>
     }
 </div>
+
+<section class="card-container rating-card-without-item-center section-rating">
+    @for (iRating of listOfRating; track iRating.user.email) {
+        <app-rating [rating]="iRating" ></app-rating>
+    }
+    <app-rating [rating]="{user: this.user1 , nRating: 4, text: 'Aca hay un texto que habla de una valoracion!!!'}"></app-rating>
+</section>

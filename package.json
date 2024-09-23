@@ -27,6 +27,7 @@
     "@ng-icons/core": "^29.5.0",
     "@ng-icons/heroicons": "^29.5.0",
     "axios": "^1.7.7",
+    "ng-bootstrap-icons": "^13.1.2-canary.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"

@@ -10,6 +10,7 @@ import { BooksToReadComponent } from './main-frame/profile/books-to-read/books-t
 import { RecomstoevaluateComponent } from './main-frame/profile/recomstoevaluate/recomstoevaluate.component'
 import { BookContainerComponent } from './main-frame/book-container/book-container.component'
 import { MyrecomsComponent } from './main-frame/myrecoms/myrecoms.component'
+import { RecomdetailsComponent } from './main-frame/myrecoms/recomdetails/recomdetails.component'
 
 export const routes: Routes = [
     { 
@@ -22,11 +23,11 @@ export const routes: Routes = [
         
         children: [
             {
-                path: "recoms",
+                path: "layout",
               
                 children: [
                     {
-                        path: "explorer",
+                        path: "recoms",
                         component: RecommendationsScreen,
                         data:{myrecoms : false}
                     },
@@ -36,8 +37,8 @@ export const routes: Routes = [
                         data:{myrecoms : true}
                     },
                     {
-                        path: "recoms",
-                        component: RecommendationsScreen
+                        path: "recom/:id",
+                        component: RecomdetailsComponent
                     },
                    
                     { 

@@ -15,6 +15,11 @@
     box-sizing: border-box; 
 }
 
+/*para las valoraciones, despues borrar*/
+.section-rating {
+    align-items: start;
+}
+
 @media (max-width:480px ) {
     .card-container{
         grid-template-columns: 1fr ;
