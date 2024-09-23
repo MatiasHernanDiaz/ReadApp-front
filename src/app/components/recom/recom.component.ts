@@ -23,7 +23,7 @@ export class RecomComponent {
   constructor(private router: Router) {}
 
   goToDetail(id: number) {
-    this.router.navigate(['app/recoms/recom-details/', id])
+    this.router.navigate(['app/layout/myrecoms/', id])
   }
 
   removeRecom(id: number): void {
