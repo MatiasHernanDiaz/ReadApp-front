@@ -12,7 +12,7 @@ import { StubLoginService, User } from '@src/model/User'
 })
 export class HeaderComponent {
 
-  user: User = new User( '', '', '', new Date(), '',[], 0 , )
+  user: User = new User( '', '', '', new Date(), '',[],[], 0 , )
   click: boolean = false
   dropdown: string = "hide"
   
