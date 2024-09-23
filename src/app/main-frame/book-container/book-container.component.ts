@@ -2,11 +2,16 @@ import { Component, Input } from '@angular/core'
 import { BookComponent } from '@src/app/components/book/book.component'
 import { Book } from '@src/model/Book'
 import { SearchBarComponent } from '@src/app/components/search-bar/search-bar.component'
+import { RatingComponent } from "../../components/rating/rating.component"
+
+import { User } from '@src/model/User'
+import { StubLoginService } from '@src/model/User'
+import { CommonModule } from '@angular/common'
 
 @Component({
   selector: 'app-book-container',
   standalone: true,
-  imports: [BookComponent, SearchBarComponent],
+  imports: [BookComponent, SearchBarComponent, RatingComponent, CommonModule],
   templateUrl: './book-container.component.html',
   styleUrl: './book-container.component.css'
 })
@@ -21,4 +26,24 @@ export class BookContainerComponent {
   ]
 
   @Input() test = false
+
+
+  //logica provisoria de valoraciones para mostrar no mas
+  constructor( public loginService: StubLoginService ) {}
+  
+  user1 = new User( '', '', '', new Date(), '',[],[], 0 , )
+  listOfRating: { user: User; nRating: number; text: string; }[] = []
+  
+  
+  ngOnInit() {
+    this.user1 = this.loginService.getSignedUser()!
+    console.info("este es el usuario " , this.user1)
+    
+    this.listOfRating = [
+      {user: this.user1 , nRating: 4, text: 'Aca hay un texto que habla de una valoracion, y que hacemos si la valoracion es muuuuuuuuuuuuuuy larga, eso romperia todo??!!!'},
+      {user: this.user1 , nRating: 4, text: 'Aca hay un texto que habla de una valoracion, a mira vos, que esta no es una valoracion media!!!'},
+      {user: this.user1 , nRating: 4, text: 'Aca hay un texto que habla de una valoracion!!!'}
+    ]
+  }
+
 }
