@@ -37,7 +37,12 @@ export const routes: Routes = [
                         data:{myrecoms : true}
                     },
                     {
-                        path: "recom/:id",
+                        path: "myrecoms/:id",
+                        component: RecomdetailsComponent,
+                        data:{myrecoms : true}
+                    },
+                    {
+                        path: "recoms/:id",
                         component: RecomdetailsComponent
                     },
                    
@@ -47,7 +52,7 @@ export const routes: Routes = [
                     },
                     { 
                         path: '', 
-                        redirectTo: 'explorer', 
+                        redirectTo: 'recoms', 
                         pathMatch: 'full' 
                     }
                 ]

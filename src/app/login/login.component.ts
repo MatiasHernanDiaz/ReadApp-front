@@ -51,7 +51,7 @@ export class LoginScreen implements OnInit {
         this.loginFailed = false
 
         localStorage.setItem('loggedInUser', loginData.user)
-        this.router.navigateByUrl('/app')
+        this.router.navigateByUrl('/app/layout/recoms')
 
       } else {
         this.loginError = 'Email o contraseña incorrectos.'

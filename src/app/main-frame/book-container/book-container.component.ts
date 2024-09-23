@@ -32,14 +32,21 @@ export class BookContainerComponent {
   constructor( public loginService: StubLoginService ) {}
   
   user1 = new User( '', '', '', new Date(), '',[], 0 , )
-  listOfRating: { user: User; nRating: number; text: string; }[] = [
-    {user: this.user1 , nRating: 4, text: 'Aca hay un texto que habla de una valoracion, y que hacemos si la valoracion es muuuuuuuuuuuuuuy larga, eso romperia todo??!!!'},
-    {user: this.user1 , nRating: 4, text: 'Aca hay un texto que habla de una valoracion, a mira vos, que esta no es una valoracion media!!!'},
-    {user: this.user1 , nRating: 4, text: 'Aca hay un texto que habla de una valoracion!!!'}
-  ]
+  user2 = new User( '', '', '', new Date(), '',[], 0 , )
+  listOfRating: { user: User; nRating: number; text: string; }[] = []
+  
+  
   ngOnInit() {
     this.user1 = this.loginService.getSignedUser()!
-    console.info("en los books " + this.listOfRating[0].user)
+    this.user2 = this.loginService.getSignedUser()!
+    console.info("este es el usuario " , this.user1)
+    console.info("este es el usuario 2 ", this.user2)
+    
+    this.listOfRating = [
+      {user: this.user1 , nRating: 4, text: 'Aca hay un texto que habla de una valoracion, y que hacemos si la valoracion es muuuuuuuuuuuuuuy larga, eso romperia todo??!!!'},
+      {user: this.user1 , nRating: 4, text: 'Aca hay un texto que habla de una valoracion, a mira vos, que esta no es una valoracion media!!!'},
+      {user: this.user1 , nRating: 4, text: 'Aca hay un texto que habla de una valoracion!!!'}
+    ]
   }
 
 }
