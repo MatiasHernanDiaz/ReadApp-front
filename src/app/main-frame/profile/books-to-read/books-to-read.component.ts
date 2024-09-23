@@ -14,7 +14,7 @@ import { StubLoginService } from '@src/model/User'
 
 export class BooksToReadComponent implements OnInit {
   @Input() readToBooks: Book[] = [] 
-  @Input() user : User = new User( '', '', '', new Date(),'',[],[], 0 )
+  @Input() user : User = new User( '', '', '', new Date(),'',[],[],[], 0 )
   
   constructor(
     private userService: StubLoginService, 
@@ -23,11 +23,11 @@ export class BooksToReadComponent implements OnInit {
   ngOnInit(): void {
     const currentUser = this.userService.getSignedUser()
 
-    if (currentUser.readBooks && currentUser.readBooks.length > 0) {
+    if (currentUser.readToBooks && currentUser.readToBooks.length > 0) {
       const allBooks = this.userService.getAllBooks()
 
       this.readToBooks = allBooks.filter(book => {
-        return currentUser.readBooks.some(userBook => userBook.title === book.title)
+        return currentUser.readToBooks.some(userBook => userBook.title === book.title)
       })
 
     } else {

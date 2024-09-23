@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common'
   styleUrl: './info.component.css'
 })
 export class InfoComponent {
-  user: User = new User( '', '', '', new Date(),'',[],[], 0 )
+  user: User = new User( '', '', '', new Date(),'',[],[],[], 0 )
   readModes = readerModes
   searchCriteria: Record<
     string,{ 
