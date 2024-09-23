@@ -1,12 +1,36 @@
-import { Component } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
+import { Book } from '@src/model/Book'
+import { User } from '@src/model/User'  
+import { BookComponent } from '@src/app/components/book/book.component'
+import { CommonModule } from '@angular/common'
+import { StubLoginService } from '@src/model/User'
 
 @Component({
   selector: 'app-readbooks',
   standalone: true,
-  imports: [],
+  imports: [BookComponent,CommonModule],
   templateUrl: './readbooks.component.html',
-  styleUrl: './readbooks.component.css'
+  styleUrls: ['./readbooks.component.css']
 })
-export class ReadbooksComponent {
+export class ReadbooksComponent implements OnInit {
+  @Input() readBooks: Book[] = [] 
+  @Input() user : User = new User( '', '', '', new Date(),'',[],[], 0 )
+  
+  constructor(
+    private userService: StubLoginService, 
+  ) {}
+  ngOnInit(): void {
+    const currentUser = this.userService.getSignedUser()
 
+    if (currentUser.readBooks && currentUser.readBooks.length > 0) {
+      
+      const allBooks = this.userService.getAllBooks()
+      
+      this.readBooks = allBooks.filter(book => {
+        return currentUser.readBooks.some(userBook => userBook.title === book.title)
+      })
+    } else {
+    }
+  }
+  
 }
