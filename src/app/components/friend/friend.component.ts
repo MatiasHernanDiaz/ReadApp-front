@@ -10,5 +10,5 @@ import { User } from '@src/model/User'
 })
 
 export class FriendComponent {
-  @Input() user : User = new User( '', '', '', new Date(),'',[],[], 0 )
+  @Input() user : User = new User( '', '', '', new Date(),'',[],[],[], 0 )
 }

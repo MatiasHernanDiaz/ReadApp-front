@@ -31,7 +31,7 @@ export class BookContainerComponent {
   //logica provisoria de valoraciones para mostrar no mas
   constructor( public loginService: StubLoginService ) {}
   
-  user1 = new User( '', '', '', new Date(), '',[],[], 0 , )
+  user1 = new User( '', '', '', new Date(), '',[],[],[], 0 , )
   listOfRating: { user: User; nRating: number; text: string; }[] = []
   
   
