@@ -16,7 +16,8 @@ import { Recommendation } from '@src/model/Recommendation'
   styleUrls: ['./recom.component.css']
 })
 export class RecomComponent {
-  @Input() recommendation!: Recommendation //  solo una recomendación
+  @Input() recommendation: Recommendation =new Recommendation(0,'','',0,0,'',[])
+    //  solo una recomendación
   @Output() onDeleteRecom = new EventEmitter<number>()
 
   constructor(private router: Router) {}
