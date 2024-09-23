@@ -1,1 +1,8 @@
-<p>books-to-read works!</p>
+<div class="card-container">
+    <ng-container *ngFor="let book of readToBooks">
+      <app-book
+        [book]="book"
+      ></app-book>
+    </ng-container>
+  </div>
+  <!--Donde hacer el ngFor, en el contenedor ó en el componenete directamente -->
