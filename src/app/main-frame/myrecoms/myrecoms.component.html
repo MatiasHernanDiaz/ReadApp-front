@@ -1,8 +1,16 @@
 <div class="container">
     <app-search-bar></app-search-bar>
-        <app-recom class="card-container" (onDeleteRecom)="onDeleteRecom($event)"></app-recom>
-        <app-remove-recom *ngIf="dialogOpen"
-         [recommendationId]="recommendationId"
-         (click)="closeDialog()"
-         ></app-remove-recom>
-</div>
+    <div class="card-container">
+      <app-recom
+        *ngFor="let recommendation of recommendations"
+        [recommendation]="recommendation"
+        (onDeleteRecom)="onDeleteRecom($event)"
+      ></app-recom>
+    </div>
+    <app-remove-recom
+      *ngIf="dialogOpen"
+      [recommendationId]="recommendationId"
+      (click)="closeDialog()"
+    ></app-remove-recom>
+  </div>
+  

@@ -3,6 +3,8 @@ import { SearchBarComponent } from '../../components/search-bar/search-bar.compo
 import { RecomComponent } from '../../components/recom/recom.component'
 import { RemoveRecomComponent } from '../../components/remove-recom/remove-recom.component'
 import { CommonModule } from '@angular/common'
+import { RecommendationService } from '@src/app/services/recom.service'
+import { Recommendation } from '@src/model/Recommendation'
 
 
 @Component({
@@ -13,24 +15,26 @@ import { CommonModule } from '@angular/common'
   styleUrl: './myrecoms.component.css'
 })
 export class MyrecomsComponent {
+  recommendations: Recommendation[] = []
+  dialogOpen = false
+  recommendationId?: number
 
- dialogOpen = false 
- recommendationId?: number
- onDeleteRecom(id: number) {
-  console.log('ID de la recomendación a eliminar:', id)
-  this.recommendationId = id
-  this.dialogOpen = true
-}
+  constructor(private recommendationService: RecommendationService) {}
 
+  async ngOnInit() {
+    this.recommendations = await this.recommendationService.getRecommendations()
+  }
 
-closeDialog(): void {
-  this.dialogOpen = false // Cierra el diálogo.
-}
-openDialog(): void {
-  this.dialogOpen = true 
+  onDeleteRecom(id: number) {
+    console.log('ID de la recomendación a eliminar:', id)
+    this.recommendationId = id
+    this.dialogOpen = true
+  }
+
+  closeDialog(): void {
+    this.dialogOpen = false
+  }
 }
 // deleteRecommendation(id: number) {
 //   this.recommendations = this.recommendations.filter(item => item.id !== id)
 //   }
-
-}
