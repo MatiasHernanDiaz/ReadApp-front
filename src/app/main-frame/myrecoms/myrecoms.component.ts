@@ -19,12 +19,14 @@ export class MyrecomsComponent {
   dialogOpen = false
   recommendationId?: number
 
-  constructor(private recommendationService: RecommendationService) {}
-
-  ngOnInit() {
-    this.recommendationService.items.subscribe((recomms =>{
+  constructor(private recommendationService: RecommendationService) {
+    this.recommendationService.items.subscribe( (recomms) =>{
       this.recommendations = recomms
-    }))
+    })
+  }
+
+  async ngOnInit() {
+    this.recommendationService.items = await this.recommendationService.fetchRecomms()
     console.log( 'lista de recom' , this.recommendations)
   }
 

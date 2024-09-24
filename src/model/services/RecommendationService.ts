@@ -14,9 +14,9 @@ export class RecommendationService extends Service<Recommendation>{
     //     console.log('en el servicio =>', this._items)
     //   }
 
-    async ngOnInit(){
-      this._items.next( await this.fetchRecomms() )
-    }
+    // async ngOnInit(){
+    //   this.items = await this.fetchRecomms()
+    // }
     
 
     async fetchRecomms(){
