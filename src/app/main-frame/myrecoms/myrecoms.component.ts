@@ -22,7 +22,9 @@ export class MyrecomsComponent {
   constructor(private recommendationService: RecommendationService) {}
 
   ngOnInit() {
-    this.recommendations =   this.recommendationService.items
+    this.recommendationService.items.subscribe((recomms =>{
+      this.recommendations = recomms
+    }))
     console.log( 'lista de recom' , this.recommendations)
   }
 

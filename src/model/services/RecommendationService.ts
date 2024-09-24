@@ -9,11 +9,15 @@ export class RecommendationService extends Service<Recommendation>{
 
     private apiUrl = 'https://private-5b78cb-recommendations11.apiary-mock.com/recommendations'
 
-    async ngOnInit(){
-        this._items = await this.fetchRecomms()
-        console.log('en el servicio =>', this._items)
-      }
+    // async ngOnInit(){
+    //     this._items = await this.fetchRecomms()
+    //     console.log('en el servicio =>', this._items)
+    //   }
 
+    async ngOnInit(){
+      this._items.next( await this.fetchRecomms() )
+    }
+    
 
     async fetchRecomms(){
         try {

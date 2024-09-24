@@ -2,7 +2,7 @@ import { Component, Output } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms'
 import { Recommendation } from '@src/model/Recommendation'
-import { RecommendationService } from '@src/model/services/RecommendationService'
+//import { RecommendationService } from '@src/model/services/RecommendationService'
 
 @Component({
   selector: 'app-search-bar',
@@ -17,7 +17,7 @@ export class SearchBarComponent {
   myRecomsFlag: boolean = location.pathname.includes('myrecoms')
   @Output() lookup: string = ''
 
-  constructor(private recommendationService: RecommendationService) {}
+  //constructor(private recommendationService: RecommendationService) {}
   //como sabe si tiene que ir a buscar un libro, o una reco?? o siempre busca recomendaciones??
 
   async sendLookup(){
