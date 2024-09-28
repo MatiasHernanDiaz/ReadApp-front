@@ -23,6 +23,7 @@ export class MyrecomsComponent {
     this.recommendationService.items.subscribe( (recomms) =>{
       this.recommendations = recomms
     })
+
   }
 
   async ngOnInit() {
@@ -40,6 +41,6 @@ export class MyrecomsComponent {
     this.dialogOpen = false
   }
 }
-// deleteRecommendation(id: number) {
+//TODO: deleteRecommendation(id: number) {
 //   this.recommendations = this.recommendations.filter(item => item.id !== id)
 //   }

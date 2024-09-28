@@ -13,7 +13,7 @@ import { FriendComponent } from "../../../components/friend/friend.component"
 })
 export class FriendsComponent implements OnInit {
   users: User[] = []
-  friends: User[] = []
+  friend: User[] = []
 
   constructor(private userService: StubLoginService) {}
 
@@ -25,7 +25,7 @@ export class FriendsComponent implements OnInit {
         const friendUsernames = new Set(currentUser.friends.map(friend => friend.username))
         
         // Filtrar usuarios para encontrar amigos
-        this.friends = this.userService.getUsers().filter(user => {
+        this.friend = this.userService.getUsers().filter(user => {
           const isFriend = friendUsernames.has(user.username)
           return isFriend 
         })
