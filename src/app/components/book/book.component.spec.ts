@@ -36,11 +36,7 @@ describe('BookComponent', () => {
     expect(component.isEnter).toBeFalse()
   })
 
-<<<<<<< HEAD
-  /*it('normal size',() => {
-    expect(component.size).toBe(180);
-  })*/
-=======
+
   it('normal size',() => {
     expect(component.size).toBe(180)
   })
@@ -55,5 +51,4 @@ describe('BookComponent', () => {
     component.enter()
     expect(component.size).toBe(100)
   })
->>>>>>> develop
 })
