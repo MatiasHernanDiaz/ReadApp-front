@@ -11,17 +11,17 @@ import { Book } from '@src/model/Book'
 })
 
 export class BookComponent {
-  enter: boolean = false
-  tamanio = 180
+  isEnter: boolean = false
+  size = 180
 
-  entrar(){
-    this.enter = true
-    this.tamanio = 100
+  enter(){
+    this.isEnter = true
+    this.size = 100
   }
 
-  salir(){
-    this.enter = false
-    this.tamanio = 180
+  exit(){
+    this.isEnter = false
+    this.size = 180
   }
 
   @Input()
