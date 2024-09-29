@@ -20,7 +20,6 @@ export class HeaderComponent {
 
   ngOnInit() {
     this.user = this.loginService.getSignedUser()!
-    console.log(this.user)
   }
 
 
