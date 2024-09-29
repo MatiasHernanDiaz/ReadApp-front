@@ -21,12 +21,9 @@ export class SearchBarComponent {
 
   constructor(private router: ActivatedRoute){
     this.router.data.subscribe((data: any)=>{
-
       this.myRecomsFlag = data.myrecoms
     })
   }
-  //constructor(private recommendationService: RecommendationService) {}
-  //como sabe si tiene que ir a buscar un libro, o una reco?? o siempre busca recomendaciones??
 
   async sendLookup(){
     //aca va de una a buscar todo lo que hay, no filtra nada.

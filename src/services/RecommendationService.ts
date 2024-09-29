@@ -1,4 +1,4 @@
-import { Service } from '@src/model/services/Service'
+import { Service } from '@src/services/Service'
 import { Recommendation, RecommendationJSON } from '@src/model/Recommendation'
 import { Injectable } from '@angular/core'
 import axios  from 'axios'
@@ -7,17 +7,8 @@ import axios  from 'axios'
 @Injectable({ providedIn: 'root' })
 export class RecommendationService extends Service<Recommendation>{
 
-    private apiUrl = 'https://private-5b78cb-recommendations11.apiary-mock.com/recommendations'
-
-    // async ngOnInit(){
-    //     this._items = await this.fetchRecomms()
-    //     console.log('en el servicio =>', this._items)
-    //   }
-
-    // async ngOnInit(){
-    //   this.items = await this.fetchRecomms()
-    // }
-    
+    //https://app.apiary.io/mockrecomms/editor
+    private apiUrl = 'https://private-bf707-mockrecomms.apiary-mock.com/questions'
 
     async fetchRecomms(){
         try {
@@ -26,12 +17,25 @@ export class RecommendationService extends Service<Recommendation>{
             const recomendations = response.data.map((recomendacionJSON: RecommendationJSON) =>
               Recommendation.fromRecomendacionJSON(recomendacionJSON)
           ) 
-            console.log('y aca tenes algo??' , recomendations)
+            console.info('y aca tenes algo??' , recomendations)
             return recomendations
           } catch (error) {
             console.error('Error fetching recommendations:', error)
             return []
           }
+    }
+
+    async getRecomm(id: number){
+      try{
+        const response = await axios.get(this.apiUrl)
+        const recomendations = response.data.map((recomendacionJSON: RecommendationJSON) =>
+          Recommendation.fromRecomendacionJSON(recomendacionJSON))
+        return  recomendations[id]
+      }
+      catch(error){
+        console.error('Error fetching recommendations:', error)
+        return []
+      }
     }
 
 }

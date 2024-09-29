@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common'
 import { Router } from '@angular/router'
 import { Recommendation } from '@src/model/Recommendation'
 import { User } from '@src/model/User'
+import { Rating } from '@src/model/rating'
 
 @Component({
   selector: 'app-recom',
@@ -17,7 +18,7 @@ import { User } from '@src/model/User'
   styleUrls: ['./recom.component.css']
 })
 export class RecomComponent {
-  @Input() recommendation: Recommendation = new Recommendation(0,'','',0,0,'',[],new User( '', '', '', new Date(),'',[],[],[], 0 ),[],false)
+  @Input() recommendation: Recommendation = new Recommendation(0,'','',0,0,'',[],new User( '', '', '', new Date(),'',[],[],[], 0 ),[],false, [])
     //  solo una recomendación
   @Output() onDeleteRecom = new EventEmitter<number>()
 

@@ -7,12 +7,5 @@
     }
 </div>
 
-<!-- <section class="card-container rating-card-without-item-center section-rating">
-    @for (iRating of listOfRating; track iRating.user.username) {
-        <app-rating [rating]="iRating" ></app-rating>
-    }
-</section> -->
 
-<section class="card-container rating-card-without-item-center section-rating">
-    <app-rating *ngFor="let i of listOfRating" [rating]="i"></app-rating>
-</section>
+
