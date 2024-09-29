@@ -1,6 +1,6 @@
-<article (mouseenter)="entrar()" (mouseleave)="salir()" class="card">
+<article (mouseenter)="enter()" (mouseleave)="exit()" class="card">
     <div class="image-center"><!DOCTYPE html>
-        <img width="{{tamanio}}" class="bookImage" src={{book.imageURL}} alt="Portada de libro"/>
+        <img width="{{size}}" class="bookImage" src={{book.imageURL}} alt="Portada de libro"/>
     </div>
     <div class="card-header">
       <h2>{{book.title}}</h2>
@@ -10,7 +10,7 @@
         </span>
     </div>
     <div>
-        @if(enter){
+        @if(isEnter){
       <p>Por {{book.autor}} </p>
         <ul class="comments">
           <li class="comment"><img class="icons" src="assets/article.svg" alt="Icono de paginas">{{book.pages}} Paginas</li>
