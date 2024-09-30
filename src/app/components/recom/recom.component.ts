@@ -6,6 +6,7 @@ import { heroUsers } from '@ng-icons/heroicons/outline'
 import { CommonModule } from '@angular/common'
 import { Router } from '@angular/router'
 import { Recommendation } from '@src/model/Recommendation'
+import { User } from '@src/model/User'
 
 @Component({
   selector: 'app-recom',
@@ -16,7 +17,7 @@ import { Recommendation } from '@src/model/Recommendation'
   styleUrls: ['./recom.component.css']
 })
 export class RecomComponent {
-  @Input() recommendation: Recommendation =new Recommendation(0,'','',0,0,'',[])
+  @Input() recommendation: Recommendation = new Recommendation(0,'','',0,0,'',[],new User( '', '', '', new Date(),'',[],[],[], 0 ),[],false)
     //  solo una recomendación
   @Output() onDeleteRecom = new EventEmitter<number>()
 

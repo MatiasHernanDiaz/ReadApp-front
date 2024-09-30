@@ -36,6 +36,7 @@ describe('BookComponent', () => {
     expect(component.isEnter).toBeFalse()
   })
 
+
   it('normal size',() => {
     expect(component.size).toBe(180)
   })

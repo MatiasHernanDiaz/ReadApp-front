@@ -2,8 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { ReactiveFormsModule } from '@angular/forms'
 import { LoginScreen } from './login.component'
 import { Router } from '@angular/router'
-import { StubLoginService } from '../../model/User'
 import { CommonModule } from '@angular/common'
+import { StubLoginService } from '@src/services/UserService'
 
 describe('LoginScreen', () => {
   let component: LoginScreen

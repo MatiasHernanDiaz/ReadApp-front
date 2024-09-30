@@ -3,7 +3,7 @@ import { SearchBarComponent } from '../../components/search-bar/search-bar.compo
 import { RecomComponent } from '../../components/recom/recom.component'
 import { RemoveRecomComponent } from '../../components/remove-recom/remove-recom.component'
 import { CommonModule } from '@angular/common'
-import { RecommendationService } from '@src/app/services/recom.service'
+import { RecommendationService } from '@src/model/services/RecommendationService'
 import { Recommendation } from '@src/model/Recommendation'
 
 
@@ -15,14 +15,19 @@ import { Recommendation } from '@src/model/Recommendation'
   styleUrl: './myrecoms.component.css'
 })
 export class MyrecomsComponent {
-  recommendations: Recommendation[] = []
+  recommendations: Array<Recommendation> = []
   dialogOpen = false
   recommendationId?: number
 
-  constructor(private recommendationService: RecommendationService) {}
+  constructor(private recommendationService: RecommendationService) {
+    this.recommendationService.items.subscribe( (recomms) =>{
+      this.recommendations = recomms
+    })
+  }
 
   async ngOnInit() {
-    this.recommendations = await this.recommendationService.getRecommendations()
+    this.recommendationService.items = await this.recommendationService.fetchRecomms()
+    console.log( 'lista de recom' , this.recommendations)
   }
 
   onDeleteRecom(id: number) {

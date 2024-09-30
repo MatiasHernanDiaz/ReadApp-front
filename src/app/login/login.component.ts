@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
-import { StubLoginService } from '../../model/User'
 import { ReactiveFormsModule } from '@angular/forms'
 import { NgIf, CommonModule } from '@angular/common'
+import { StubLoginService } from '@src/services/UserService'
 
 @Component({
   selector: 'login-screen',
