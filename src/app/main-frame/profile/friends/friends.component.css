@@ -1,3 +1,10 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
 .friends-title {
     margin: 0;
     font-size: 2rem;

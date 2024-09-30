@@ -47,7 +47,6 @@
 .dropdown-menu{
     position: absolute;
     display: flex;
-    /* gap: 10px; */
     flex-direction: column;
     color: black;
     width: 13rem;
@@ -57,7 +56,6 @@
     background-color: #ccc;
     border: solid 1px #888;
     border-radius: 5px;
-    /* height: 8rem; */
     overflow: hidden;
     transition: height 0.5s, width 0.5s, opacity 0.5s, margin 0.5s, padding 0.5s;
 }
