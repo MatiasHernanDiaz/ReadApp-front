@@ -1,21 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
-
-import { MyrecomsComponent } from './myrecoms.component'
+import { BtnNavigateComponent } from './btn-navigate.component'
 import { routes } from '@src/app/app.routes'
 import { provideRouter } from '@angular/router'
 
-describe('MyrecomsComponent', () => {
-  let component: MyrecomsComponent
-  let fixture: ComponentFixture<MyrecomsComponent>
+describe('BtnNavigateComponent', () => {
+  let component: BtnNavigateComponent
+  let fixture: ComponentFixture<BtnNavigateComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MyrecomsComponent],
+      imports: [BtnNavigateComponent],
       providers: [provideRouter(routes)]
     })
     .compileComponents()
 
-    fixture = TestBed.createComponent(MyrecomsComponent)
+    fixture = TestBed.createComponent(BtnNavigateComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })

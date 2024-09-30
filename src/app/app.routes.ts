@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router'
 import { LoginScreen } from './login/login.component'
-import { RecommendationsScreen } from './main-frame/recommendations/recommendations.component'
 import { ProfileScreen } from './main-frame/profile/profile.component'
 import { MainFrameComponent } from './main-frame/main-frame.component'
 import { InfoComponent } from './main-frame/profile/info/info.component'
@@ -11,6 +10,7 @@ import { RecomstoevaluateComponent } from './main-frame/profile/recomstoevaluate
 import { BookContainerComponent } from './main-frame/book-container/book-container.component'
 import { MyrecomsComponent } from './main-frame/myrecoms/myrecoms.component'
 import { RecomdetailsComponent } from './main-frame/myrecoms/recomdetails/recomdetails.component'
+
 
 export const routes: Routes = [
     { 
@@ -23,39 +23,33 @@ export const routes: Routes = [
         
         children: [
             {
-                path: "layout",
-              
-                children: [
-                    {
-                        path: "recoms",
-                        component: RecommendationsScreen,
-                        data:{myrecoms : false}
-                    },
-                    {
-                        path: "myrecoms",
-                        component: MyrecomsComponent,
-                        data:{myrecoms : true}
-                    },
-                    {
-                        path: "myrecoms/:id",
-                        component: RecomdetailsComponent,
-                        data:{myrecoms : true}
-                    },
-                    {
-                        path: "recoms/:id",
-                        component: RecomdetailsComponent
-                    },
-                   
-                    { 
-                        path: 'books',
-                        component: BookContainerComponent
-                    },
-                    { 
-                        path: '', 
-                        redirectTo: 'recoms', 
-                        pathMatch: 'full' 
-                    }
-                ]
+                path: "recoms",
+                component: MyrecomsComponent,
+                data:{ myrecoms : false }
+            },
+            {
+                path: "myrecoms",
+                component: MyrecomsComponent,
+                data:{myrecoms : true}
+            },
+            {
+                path: "myrecoms/:id",
+                component: RecomdetailsComponent,
+                data:{myrecoms : true}
+            },
+            {
+                path: "recoms/:id",
+                component: RecomdetailsComponent
+            },
+            
+            { 
+                path: 'books',
+                component: BookContainerComponent
+            },
+            { 
+                path: '', 
+                redirectTo: 'recoms', 
+                pathMatch: 'full' 
             },
             { 
                 path: 'profile', // ----> /app/profile

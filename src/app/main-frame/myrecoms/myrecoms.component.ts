@@ -3,7 +3,7 @@ import { SearchBarComponent } from '../../components/search-bar/search-bar.compo
 import { RecomComponent } from '../../components/recom/recom.component'
 import { RemoveRecomComponent } from '../../components/remove-recom/remove-recom.component'
 import { CommonModule } from '@angular/common'
-import { RecommendationService } from '@src/model/services/RecommendationService'
+import { RecommendationService } from '@src/services/RecommendationService'
 import { Recommendation } from '@src/model/Recommendation'
 
 
@@ -23,6 +23,7 @@ export class MyrecomsComponent {
     this.recommendationService.items.subscribe( (recomms) =>{
       this.recommendations = recomms
     })
+
   }
 
   async ngOnInit() {
@@ -40,6 +41,6 @@ export class MyrecomsComponent {
     this.dialogOpen = false
   }
 }
-// deleteRecommendation(id: number) {
+//TODO: deleteRecommendation(id: number) {
 //   this.recommendations = this.recommendations.filter(item => item.id !== id)
 //   }

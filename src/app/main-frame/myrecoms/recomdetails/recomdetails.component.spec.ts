@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { RecomdetailsComponent } from './recomdetails.component'
+import { routes } from '@src/app/app.routes'
+import { provideRouter } from '@angular/router'
 
 describe('RecomdetailsComponent', () => {
   let component: RecomdetailsComponent
@@ -8,7 +10,7 @@ describe('RecomdetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RecomdetailsComponent]
+      imports: [RecomdetailsComponent],   providers: [provideRouter(routes)]
     })
     .compileComponents()
 

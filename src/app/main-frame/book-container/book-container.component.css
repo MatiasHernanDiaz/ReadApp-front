@@ -15,19 +15,3 @@
     box-sizing: border-box; 
 }
 
-/*para las valoraciones, despues borrar*/
-.section-rating {
-    align-items: start;
-}
-
-@media (max-width:480px ) {
-    .card-container{
-        grid-template-columns: 1fr ;
-        padding: 0;
-    }
-}
-@media (min-width: 481px) and (max-width:768px ) {
-    .card-container{
-        grid-template-columns: repeat(2,1fr) ;
-    }
-}

@@ -2,7 +2,9 @@ import { Component, Output } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms'
 import { Recommendation } from '@src/model/Recommendation'
+import { ActivatedRoute } from '@angular/router'
 //import { RecommendationService } from '@src/model/services/RecommendationService'
+
 
 @Component({
   selector: 'app-search-bar',
@@ -17,8 +19,11 @@ export class SearchBarComponent {
   myRecomsFlag: boolean = location.pathname.includes('myrecoms')
   @Output() lookup: string = ''
 
-  //constructor(private recommendationService: RecommendationService) {}
-  //como sabe si tiene que ir a buscar un libro, o una reco?? o siempre busca recomendaciones??
+  constructor(private router: ActivatedRoute){
+    this.router.data.subscribe((data)=>{
+      this.myRecomsFlag = data['myrecoms']
+    })
+  }
 
   async sendLookup(){
     //aca va de una a buscar todo lo que hay, no filtra nada.

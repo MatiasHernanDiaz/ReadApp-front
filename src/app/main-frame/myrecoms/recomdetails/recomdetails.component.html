@@ -1,1 +1,37 @@
-<p>recomdetails works!</p>
+<div class="title-reco">
+    <h1 class="title-recomendation">{{recom.title}}</h1>
+    <img class="icons" src="assets/globe-simple-x.svg" alt="Ícono de idioma no disponible"/>
+</div>
+<main class="without-search">
+    <h3 class="books-title">Libros</h3>
+    
+    <article class="card-container">
+        @for (book of recom.books; track book){
+            <app-book [book]="book"></app-book>
+        }
+    </article>
+
+    <article class="recom-description">
+        <h3>Reseña</h3>
+        La mayoría de estos libros me hicieron pasar un buen momento, son divertidos pero no mucho mas, 
+        siento que tenían el potencial para ser mucho mas pero se quedaron en solo contar una historia como las demás. 
+        Mi parte favoria es cuando jalamañeco sala mandia salacadaasasa nininin rururu, pero flanqueó un poco cuando didhidi jupeño
+        salamaleco sala mandarina quilombo martinez peres rupestre.
+    </article>
+
+    <br>
+    <div class="recom-description">
+        <hr>
+    </div>
+    
+    
+    <section class="card-container rating-card-without-item-center section-rating">
+        @for (iRating of recom.ratings; track iRating) {
+            <app-rating [rating]="iRating" ></app-rating>
+        }
+    </section>
+
+    <div class="items-container buttons-container btn-reco-detail">
+        <app-btn-navigate [data]="volver"></app-btn-navigate>
+    </div>
+</main>

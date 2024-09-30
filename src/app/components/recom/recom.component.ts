@@ -17,14 +17,14 @@ import { User } from '@src/model/User'
   styleUrls: ['./recom.component.css']
 })
 export class RecomComponent {
-  @Input() recommendation: Recommendation = new Recommendation(0,'','',0,0,'',[],new User( '', '', '', new Date(),'',[],[],[], 0 ),[],false)
+  @Input() recommendation: Recommendation = new Recommendation(0,'','',0,0,'',[],new User( '', '', '', new Date(),'',[],[],[], 0 ),[],false, [])
     //  solo una recomendación
   @Output() onDeleteRecom = new EventEmitter<number>()
 
   constructor(private router: Router) {}
 
   goToDetail(id: number) {
-    this.router.navigate(['app/layout/myrecoms/', id])
+    this.router.navigate(['app/myrecoms/', id])
   }
 
   removeRecom(id: number): void {
