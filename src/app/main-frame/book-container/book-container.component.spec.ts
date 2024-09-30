@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { BookContainerComponent } from './book-container.component'
+import { routes } from '@src/app/app.routes'
+import { provideRouter } from '@angular/router'
 
 describe('BookContainerComponent', () => {
   let component: BookContainerComponent
@@ -8,7 +10,7 @@ describe('BookContainerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BookContainerComponent]
+      imports: [BookContainerComponent],  providers: [provideRouter(routes)]
     })
     .compileComponents()
 
