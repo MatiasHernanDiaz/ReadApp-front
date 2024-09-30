@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core'
 import { User } from '@src/model/User'
-import { StubLoginService } from '@src/model/User'
 import { CommonModule } from '@angular/common'
+import { StubLoginService } from '@src/services/UserService'
 
 
 @Component({

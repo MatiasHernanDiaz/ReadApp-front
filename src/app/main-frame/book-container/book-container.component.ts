@@ -4,7 +4,6 @@ import { Book } from '@src/model/Book'
 import { SearchBarComponent } from '@src/app/components/search-bar/search-bar.component'
 
 
-
 @Component({
   selector: 'app-book-container',
   standalone: true,
@@ -23,9 +22,5 @@ export class BookContainerComponent {
   ]
 
   @Input() test = false
-
-
-  //logica provisoria de valoraciones para mostrar no mas
-  
 
 }

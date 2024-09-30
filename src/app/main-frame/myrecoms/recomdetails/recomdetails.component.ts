@@ -4,7 +4,7 @@ import { Recommendation } from '@src/model/Recommendation'
 import { User } from '@src/model/User'
 import { RecommendationService } from '@src/services/RecommendationService'
 import { RatingComponent } from '@src/app/components/rating/rating.component'
-import { StubLoginService } from '@src/model/User'
+import { StubLoginService } from '@src/services/UserService'
 import { CommonModule } from '@angular/common'
 import { BookComponent } from '@src/app/components/book/book.component'
 import { BtnNavigateComponent } from "../../../components/btn-navigate/btn-navigate.component"

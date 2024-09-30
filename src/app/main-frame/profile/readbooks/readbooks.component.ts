@@ -3,7 +3,8 @@ import { Book } from '@src/model/Book'
 import { User } from '@src/model/User'  
 import { BookComponent } from '@src/app/components/book/book.component'
 import { CommonModule } from '@angular/common'
-import { StubLoginService } from '@src/model/User'
+import { StubLoginService } from '@src/services/UserService'
+
 
 @Component({
   selector: 'app-readbooks',
