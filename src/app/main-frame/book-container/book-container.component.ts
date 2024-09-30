@@ -5,8 +5,8 @@ import { SearchBarComponent } from '@src/app/components/search-bar/search-bar.co
 import { RatingComponent } from "../../components/rating/rating.component"
 
 import { User } from '@src/model/User'
-import { StubLoginService } from '@src/model/User'
 import { CommonModule } from '@angular/common'
+import { StubLoginService } from '@src/services/UserService'
 
 @Component({
   selector: 'app-book-container',

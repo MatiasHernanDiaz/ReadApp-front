@@ -1,6 +1,7 @@
 import { Component } from '@angular/core'
 import { RouterLink, RouterLinkActive } from '@angular/router'
-import { StubLoginService, User } from '@src/model/User'
+import { User } from '@src/model/User'
+import { StubLoginService } from '@src/services/UserService'
 
 
 @Component({

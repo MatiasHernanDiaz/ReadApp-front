@@ -21,12 +21,19 @@ export class AddButtonComponent<T extends { displayName: string }> {
   itemsToDisplay = [] as T[]
 
 
-  toggleSelector() { this.displaySelector = !this.displaySelector }
+  toggleSelector() { 
+    this.displaySelector = !this.displaySelector 
+    this.itemsToDisplay = []
+    this.searchWord = ''
+  }
 
   async search( ev: { key: string} ) {
     if( ev.key === 'Enter' ) {
       this.itemsToDisplay = await this.searchService( this.searchWord )
       this.searchWord = ''
+    } else if( ev.key === 'Escape' ) {
+      this.searchWord = ''
+      this.itemsToDisplay = []
     }
   }
 

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { StubLoginService } from '@src/model/User'
 import { User } from '@src/model/User'
 import { FriendComponent } from "../../../components/friend/friend.component"
 import { AddButtonComponent } from "../../../components/add-button/add-button.component"
+import { StubLoginService } from '@src/services/UserService'
 
 @Component({
   selector: 'app-friends',

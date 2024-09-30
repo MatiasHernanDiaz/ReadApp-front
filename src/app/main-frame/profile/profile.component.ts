@@ -1,7 +1,9 @@
 import { Component } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router'
-import { StubLoginService, User } from '@src/model/User'
+import { User } from '@src/model/User'
+import { StubLoginService } from '@src/services/UserService'
+
 
 @Component({
   selector: 'profile-screen',
