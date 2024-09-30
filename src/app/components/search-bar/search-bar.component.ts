@@ -20,8 +20,8 @@ export class SearchBarComponent {
   @Output() lookup: string = ''
 
   constructor(private router: ActivatedRoute){
-    this.router.data.subscribe((data: any)=>{
-      this.myRecomsFlag = data.myrecoms
+    this.router.data.subscribe((data)=>{
+      this.myRecomsFlag = data['myrecoms']
     })
   }
 

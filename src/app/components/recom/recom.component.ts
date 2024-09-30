@@ -7,7 +7,6 @@ import { CommonModule } from '@angular/common'
 import { Router } from '@angular/router'
 import { Recommendation } from '@src/model/Recommendation'
 import { User } from '@src/model/User'
-import { Rating } from '@src/model/rating'
 
 @Component({
   selector: 'app-recom',
