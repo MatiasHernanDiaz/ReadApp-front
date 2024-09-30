@@ -13,7 +13,6 @@ export class Rating{
         this.nRating = nRating
         this.text = text
     }
-
 }
 
 

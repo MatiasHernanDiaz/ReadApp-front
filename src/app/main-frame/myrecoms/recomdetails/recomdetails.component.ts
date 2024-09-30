@@ -6,17 +6,20 @@ import { RecommendationService } from '@src/services/RecommendationService'
 import { RatingComponent } from '@src/app/components/rating/rating.component'
 import { StubLoginService } from '@src/model/User'
 import { CommonModule } from '@angular/common'
-import { Book } from '@src/model/Book'
 import { BookComponent } from '@src/app/components/book/book.component'
+import { BtnNavigateComponent } from "../../../components/btn-navigate/btn-navigate.component"
+
 
 @Component({
   selector: 'app-recomdetails',
   standalone: true,
-  imports: [RatingComponent, CommonModule, BookComponent],
+  imports: [RatingComponent, CommonModule, BookComponent, BtnNavigateComponent],
   templateUrl: './recomdetails.component.html',
   styleUrl: './recomdetails.component.css'
 })
 export class RecomdetailsComponent {
+
+  volver = {action:'Volver', url:['app/myrecoms']}
   
   recom: Recommendation = new Recommendation(0,'','',0,0,'',[],new User( '', '', '', new Date(),'',[],[],[], 0 ),[],false, [])
   id!: number
