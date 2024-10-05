@@ -2,13 +2,22 @@ import { Service } from '@src/services/Service'
 import { Recommendation, RecommendationJSON } from '@src/model/Recommendation'
 import { Injectable } from '@angular/core'
 import axios  from 'axios'
+import { HttpClient } from '@angular/common/http'
 
 
 @Injectable({ providedIn: 'root' })
 export class RecommendationService extends Service<Recommendation>{
 
     //https://app.apiary.io/mockrecomms/editor
-    private apiUrl = 'https://private-bf707-mockrecomms.apiary-mock.com/questions'
+    private apiUrl = 'http://localhost:9000/recommendations'
+
+    constructor(private httpClient: HttpClient){
+      super()
+    }
+
+    async getAllRecoms(){
+      this.httpClient.get<RecomJSON[]>('http://localhost:9000/recommendations')
+    }
 
     async fetchRecomms(){
         try {

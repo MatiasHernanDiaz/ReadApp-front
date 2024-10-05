@@ -17,6 +17,10 @@ export type RecommendationJSON = {
     ratings: Array<Rating>
   }
   
+export type RecomJSON = {
+
+}
+
   export class Recommendation implements ItemService {
     
     constructor(
