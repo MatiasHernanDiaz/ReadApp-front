@@ -1,7 +1,7 @@
 import { User } from '@src/model/User'
 import { Book } from '@src/model/Book'
 import { ItemService } from '@src/services/Service'
-import { Rating } from './rating'
+import { Rating } from '@src/model/rating'
 
 export type RecommendationJSON = {
     id: number
@@ -17,9 +17,14 @@ export type RecommendationJSON = {
     ratings: Array<Rating>
   }
   
-export type RecomJSON = {
+  export type RecomJSON = {
+     id: number 
+     title: string
+     description: string
+     ratings: Array<Rating>
+     books: Array<Book>
+  }
 
-}
 
   export class Recommendation implements ItemService {
     

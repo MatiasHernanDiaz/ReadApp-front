@@ -1,24 +1,24 @@
 import { User } from "./User"
 
 export class Rating{
-    user: User
+    creator: User
     nRating: number
-    text: string
+    description: string
     constructor(
-        user: User,
+        creator: User,
         nRating: number,
-        text: string
+        description: string
     ){
-        this.user = user
+        this.creator = creator
         this.nRating = nRating
-        this.text = text
+        this.description = description
     }
 }
 
 
 
 export type JSONtoRating = {
-    user: User
+    creator: User
     nRating: number
-    text: string
+    description: string
 }

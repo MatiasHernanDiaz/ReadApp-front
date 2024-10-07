@@ -27,7 +27,7 @@ export class MyrecomsComponent {
   }
 
   async ngOnInit() {
-    this.recommendationService.items = await this.recommendationService.fetchRecomms()
+    this.recommendationService.items = await this.recommendationService.fetchRecomms2()
     console.log( 'lista de recom' , this.recommendations)
   }
 
@@ -41,6 +41,3 @@ export class MyrecomsComponent {
     this.dialogOpen = false
   }
 }
-//TODO: deleteRecommendation(id: number) {
-//   this.recommendations = this.recommendations.filter(item => item.id !== id)
-//   }

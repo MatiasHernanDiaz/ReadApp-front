@@ -35,7 +35,7 @@ export class RecomdetailsComponent {
 
   async ngOnInit(){
     this.recom = await this.recommendationService.getRecomm(this.id)
-    console.log(this.recom)
+    console.info(this.recom)
   }
   
   
