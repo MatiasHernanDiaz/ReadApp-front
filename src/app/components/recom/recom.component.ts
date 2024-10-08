@@ -17,7 +17,7 @@ import { User } from '@src/model/User'
   styleUrls: ['./recom.component.css']
 })
 export class RecomComponent {
-  @Input() recommendation: Recommendation = new Recommendation(0,'','',0,0,'',[],new User( '', '', '', new Date(),'',[],[],[], 0 ),[],false, [])
+  @Input() recommendation: Recommendation = new Recommendation(0,'','',0,0,'',[],new User(0, '', '', '', new Date(),'',[],[],[], 0 ),[],false, [])
     //  solo una recomendación
   @Output() onDeleteRecom = new EventEmitter<number>()
 

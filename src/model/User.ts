@@ -4,6 +4,7 @@ import { Recommendation } from "./Recommendation"
 
 
 export class User {
+    id: number
     lastName: string
     firstName: string
     username: string
@@ -19,6 +20,7 @@ export class User {
     
 
     constructor( 
+        id: number,
         lastName: string, 
         firstName: string, 
         username: string, 
@@ -33,6 +35,7 @@ export class User {
         avatar: string = ''
 
     ) {
+        this.id = id
         this.lastName = lastName
         this.firstName = firstName
         this.username = username

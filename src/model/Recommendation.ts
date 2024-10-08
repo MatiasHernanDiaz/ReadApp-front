@@ -13,7 +13,7 @@ export type RecommendationJSON = {
     comments: string[]
     creator: User
     books: Array<Book>
-    isPublic: boolean
+    publicIs: boolean
     ratings: Array<Rating>
   }
   
@@ -38,7 +38,7 @@ export type RecommendationJSON = {
       public comments: string[],
       public creator: User,
       public books: Array<Book>,
-      public isPublic: boolean = false,
+      public publicIs: boolean,
       public ratings: Array<Rating>
     ) {}
   
@@ -53,7 +53,7 @@ export type RecommendationJSON = {
         recomendacionJSON.comments,
         recomendacionJSON.creator,
         recomendacionJSON.books,
-        recomendacionJSON.isPublic,
+        recomendacionJSON.publicIs,
         recomendacionJSON.ratings
       )
     }

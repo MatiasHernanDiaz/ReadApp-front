@@ -15,7 +15,7 @@ import { Rating } from '@src/model/rating'
 export class RatingComponent {
 
   dateOfCreation = new Date
-  @Input() rating: Rating = new Rating(new User( '', '', '', new Date(), '',[],[],[], 0 , ), 4, '')
+  @Input() rating: Rating = new Rating(new User(0, '', '', '', new Date(), '',[],[],[], 0 , ), 4, '')
 
   constructor( public loginService: StubLoginService ) {}
 

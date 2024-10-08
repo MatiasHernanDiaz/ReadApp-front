@@ -13,7 +13,7 @@ import { StubLoginService } from '@src/services/UserService'
   styleUrl: './profile.component.css'
 })
 export class ProfileScreen {
-  user: User = new User( '', '', '', new Date(), '',[],[],[], 0 , )
+  user: User = new User(0, '', '', '', new Date(), '',[],[],[], 0 , )
   click: boolean = false
   dropdown: string = "hide"
   

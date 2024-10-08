@@ -5,6 +5,8 @@ import { RemoveRecomComponent } from '../../components/remove-recom/remove-recom
 import { CommonModule } from '@angular/common'
 import { RecommendationService } from '@src/services/RecommendationService'
 import { Recommendation } from '@src/model/Recommendation'
+import { ActivatedRoute } from '@angular/router'
+import { StubLoginService } from '@src/services/UserService'
 
 
 @Component({
@@ -18,17 +20,20 @@ export class MyrecomsComponent {
   recommendations: Array<Recommendation> = []
   dialogOpen = false
   recommendationId?: number
+  myRecomsFlag = false
+  private = false
 
-  constructor(private recommendationService: RecommendationService) {
+
+  constructor(private recommendationService: RecommendationService, private router: ActivatedRoute, private userService: StubLoginService) {
     this.recommendationService.items.subscribe( (recomms) =>{
       this.recommendations = recomms
     })
-
+    this.router.data.subscribe((data)=>{this.myRecomsFlag = data['myrecoms']})
   }
 
   async ngOnInit() {
-    this.recommendationService.items = await this.recommendationService.fetchRecomms2()
-    console.log( 'lista de recom' , this.recommendations)
+    this.recommendationService.items = await this.recommendationService.fetchRecoms(this.myRecomsFlag ? this.userService.getSignedUser().id : undefined)
+    //console.log( 'lista de recom' , this.private)
   }
 
   onDeleteRecom(id: number) {
@@ -40,4 +45,9 @@ export class MyrecomsComponent {
   closeDialog(): void {
     this.dialogOpen = false
   }
+
+  setPrivate(evPrivate: boolean){
+    this.private = evPrivate
+  }
+
 }

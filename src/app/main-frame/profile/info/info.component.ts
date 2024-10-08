@@ -13,7 +13,7 @@ import { StubLoginService } from '@src/services/UserService'
   styleUrl: './info.component.css'
 })
 export class InfoComponent {
-  user: User = new User( '', '', '', new Date(),'',[],[],[], 0 )
+  user: User = new User(0, '', '', '', new Date(),'',[],[],[], 0 )
   readModes = readerModes
   searchCriteria: Record<
     string,{ 

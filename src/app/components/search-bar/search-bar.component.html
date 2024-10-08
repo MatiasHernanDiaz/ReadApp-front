@@ -6,7 +6,7 @@
     @if(myRecomsFlag){
         <div class="content-check">
             <label class="label-check">
-                <input type="checkbox"/> Solo ver recomendaciones privadas
+                <input type="checkbox" (change)="onlyPrivate($event)"/> Solo ver recomendaciones privadas
             </label>
         </div>
     }
