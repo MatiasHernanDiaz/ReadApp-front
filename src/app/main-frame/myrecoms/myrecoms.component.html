@@ -1,7 +1,11 @@
 <div class="container">
-    <app-search-bar></app-search-bar>
+    <app-search-bar (isPrivate)="setPrivate($event)"></app-search-bar>
     <div class="card-container">
-      <app-recom *ngFor="let recommendation of recommendations" [recommendation]="recommendation" (onDeleteRecom)="onDeleteRecom($event)"></app-recom>
+      @for (recommendation of recommendations; track recommendation) {
+        @if(!private || !recommendation.publicIs){
+          <app-recom [recommendation]="recommendation" (onDeleteRecom)="onDeleteRecom($event)"></app-recom>
+        }
+      }
     </div>
     <app-remove-recom *ngIf="dialogOpen" [recommendationId]="recommendationId" (click)="closeDialog()"></app-remove-recom>
 </div>

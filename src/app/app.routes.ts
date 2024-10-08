@@ -39,7 +39,8 @@ export const routes: Routes = [
             },
             {
                 path: "recoms/:id",
-                component: RecomdetailsComponent
+                component: RecomdetailsComponent,
+                data:{ myrecoms : false }
             },
             
             { 

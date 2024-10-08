@@ -1,7 +1,7 @@
 import { User } from '@src/model/User'
 import { Book } from '@src/model/Book'
 import { ItemService } from '@src/services/Service'
-import { Rating } from './rating'
+import { Rating } from '@src/model/rating'
 
 export type RecommendationJSON = {
     id: number
@@ -13,10 +13,19 @@ export type RecommendationJSON = {
     comments: string[]
     creator: User
     books: Array<Book>
-    isPublic: boolean
+    publicIs: boolean
     ratings: Array<Rating>
   }
   
+  export type RecomJSON = {
+     id: number 
+     title: string
+     description: string
+     ratings: Array<Rating>
+     books: Array<Book>
+  }
+
+
   export class Recommendation implements ItemService {
     
     constructor(
@@ -29,7 +38,7 @@ export type RecommendationJSON = {
       public comments: string[],
       public creator: User,
       public books: Array<Book>,
-      public isPublic: boolean = false,
+      public publicIs: boolean,
       public ratings: Array<Rating>
     ) {}
   
@@ -44,7 +53,7 @@ export type RecommendationJSON = {
         recomendacionJSON.comments,
         recomendacionJSON.creator,
         recomendacionJSON.books,
-        recomendacionJSON.isPublic,
+        recomendacionJSON.publicIs,
         recomendacionJSON.ratings
       )
     }

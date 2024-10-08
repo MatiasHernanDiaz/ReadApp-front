@@ -15,7 +15,7 @@ import { StubLoginService } from '@src/services/UserService'
 })
 export class ReadbooksComponent implements OnInit {
   @Input() readBooks: Book[] = [] 
-  @Input() user : User = new User( '', '', '', new Date(),'',[],[],[], 0 )
+  @Input() user : User = new User(0, '', '', '', new Date(),'',[],[],[], 0 )
   
   constructor(
     private userService: StubLoginService, 

@@ -21,7 +21,7 @@ export class RecomdetailsComponent {
 
   volver = {action:'Volver', url:['app/myrecoms']}
   
-  recom: Recommendation = new Recommendation(0,'','',0,0,'',[],new User( '', '', '', new Date(),'',[],[],[], 0 ),[],false, [])
+  recom: Recommendation = new Recommendation(0,'','',0,0,'',[],new User(0, '', '', '', new Date(),'',[],[],[], 0 ),[],false, [])
   id!: number
 
   constructor(private recommendationService: RecommendationService, private router: ActivatedRoute, public loginService: StubLoginService){ 
@@ -35,7 +35,7 @@ export class RecomdetailsComponent {
 
   async ngOnInit(){
     this.recom = await this.recommendationService.getRecomm(this.id)
-    console.log(this.recom)
+    console.info(this.recom)
   }
   
   

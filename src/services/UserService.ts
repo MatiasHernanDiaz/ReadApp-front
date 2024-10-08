@@ -8,25 +8,13 @@ export class StubLoginService {
     private localStorageKey = 'signedUser'
 
     // TODO: inicialización temporal hasta que se implemente el flujo de autenticación
-    private signedUser?: User = new User(
-        "Simpson", 
-        "Homero", 
-        "hsimpson", 
-        new Date(1968, 4, 4), 
-        'homer@simps.com', 
-        [],
-        [],
-        [],
-        100,
-        readerModes.avgReader,
-        [] ,
-        'assets/avatar.jpeg',
-    )
+    private signedUser?: User
     constructor() {
         const storedUser = localStorage.getItem(this.localStorageKey)
         if (storedUser) {
             const userData = JSON.parse(storedUser)
             this.signedUser = new User(
+                userData.id,
                 userData.lastName,
                 userData.firstName,
                 userData.username,
@@ -43,10 +31,6 @@ export class StubLoginService {
         }
     }
 
-    //login( credentials: { username: string, password: string }) {
-    //const userData: User & { password: string } = this.dummyUserPayloads.find( data => data.username === credentials.username ) 
-    //as unknown as User & { password: string }
-        
     login(credentials: { email: string, password: string }) {
         const userData: User & { password: string } = dummyUserPayloads.find(data => data.email === credentials.email) as unknown as User & { password: string }
         
@@ -55,6 +39,7 @@ export class StubLoginService {
         }
 
         this.signedUser = new User(
+            userData.id,
             userData.lastName,
             userData.firstName,
             userData.username,
@@ -81,6 +66,7 @@ export class StubLoginService {
 
     getSignedUser() {
         return new User(
+            this.signedUser?.id ?? 0,
             this.signedUser?.lastName ?? '',
             this.signedUser?.firstName ?? '',
             this.signedUser?.username ?? '',
@@ -98,6 +84,7 @@ export class StubLoginService {
 
     updateSignedUserData( newUserData: User ) {
         this.signedUser = new User(
+            newUserData?.id ?? 0,
             newUserData?.lastName ?? '',
             newUserData?.firstName ?? '',
             newUserData?.username ?? '',
@@ -117,6 +104,7 @@ export class StubLoginService {
     getUsers(): User[] {
         // Primero crea todos los usuarios
         const users = dummyUserPayloads.map(data => new User(
+            data.id,
             data.lastName,
             data.firstName,
             data.username,
@@ -140,7 +128,7 @@ export class StubLoginService {
             if (userData?.friends) {
                 user.friends = userData.friends
                     .map(friendData => userMap.get(friendData!.username) || new User(
-                        '', '', '', new Date(), '', [],[],[], 0, readerModes.avgReader, [], ''
+                        0,'', '', '', new Date(), '', [],[],[], 0, readerModes.avgReader, [], ''
                     ))
             }
         })
@@ -152,6 +140,7 @@ export class StubLoginService {
         const dummyUsers = dummyUserPayloads
     
         const users = dummyUsers.map(data => new User(
+            data.id,
             data.lastName,
             data.firstName,
             data.username,
@@ -195,6 +184,7 @@ export class StubLoginService {
 // TODO: provisorio hasta que tengamos un servicio externo
 const dummyUserPayloads = [
     {
+        id:1,
         lastName: "Simpson",
         firstName: "Homero",
         username: "hsimpson", 
@@ -227,6 +217,7 @@ const dummyUserPayloads = [
         avatar: 'assets/avatar.jpeg',
     },
     {
+        id:2,
         lastName: "Simpson",
         firstName: "Marge",
         username: "msimpson", 
@@ -257,6 +248,7 @@ const dummyUserPayloads = [
         
     },
     {
+        id:3,
         lastName: "Simpson",
         firstName: "Bart",
         username: "bsimpson", 
@@ -288,6 +280,7 @@ const dummyUserPayloads = [
         
     },
     {
+        id:4,
         lastName: "Simpson",
         firstName: "Lisa",
         username: "lsimpson", 
@@ -322,6 +315,7 @@ const dummyUserPayloads = [
        
     },
     {
+        id:5,
         lastName: "Van Houten",
         firstName: "Milhouse",
         username: "mvanhouten",
@@ -350,6 +344,7 @@ const dummyUserPayloads = [
         
     },
     {
+        id:6,
         lastName: "Gumble",
         firstName: "Barney",
         username: "bgumble",
@@ -381,6 +376,7 @@ const dummyUserPayloads = [
         
     },
     {
+        id:7,
         lastName: "Bouvier",
         firstName: "Selma",
         username: "sbouvier",
@@ -409,6 +405,7 @@ const dummyUserPayloads = [
         
     },
     {
+        id:8,
         lastName: "Bouvier",
         firstName: "Patty",
         username: "pbouvier",
@@ -436,6 +433,7 @@ const dummyUserPayloads = [
         avatar: 'assets/patty.png',
     },
     {
+        id:9,
         lastName: "Muntz",
         firstName: "Nelson",
         username: "nmuntz",
@@ -449,7 +447,6 @@ const dummyUserPayloads = [
             {username: "bgumble"},
             {username: "lsimpson"},
             {username: "hsimpson"}, 
-             
         ],
         readBooks:[
             {title: "El libro de Bill", imageURL:"assets/Book.jpg", autor:"Alex Hirsch", pages:224, words:15000, date:new Date(2024,8,1), lenguages:"Español-English", sales:50300},
@@ -466,6 +463,7 @@ const dummyUserPayloads = [
         avatar: 'assets/nelson.jpg',
     },
     {
+        id:10,
         lastName: "Carlson",
         firstName: "Carl",
         username: "ccarlson",
