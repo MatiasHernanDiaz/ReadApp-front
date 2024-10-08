@@ -26,8 +26,8 @@ export class RecommendationService extends Service<Recommendation>{
       catch(error){
         console.error('Error fetching recommendations:', error)
         return []
+      }
     }
-  }
 
 
     async getRecomm(id: number): Promise<Recommendation>{

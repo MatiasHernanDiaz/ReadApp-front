@@ -31,10 +31,10 @@ export class SearchBarComponent {
 
   find(){
 
-    if(this.userInput.length > 3){
+    //if(this.userInput.length > 3){
       this.lookup.emit(this.userInput)
       this.userInput = ''
-    }
+    //}
   }
 
 }
