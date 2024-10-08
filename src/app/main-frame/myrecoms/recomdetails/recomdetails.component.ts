@@ -30,6 +30,13 @@ export class RecomdetailsComponent {
       console.info(params['id'])
       console.info(this.id)
     })
+
+    this.router.url.subscribe((u) => {
+      this.volver.url = ['app/'+u[0].path]
+      console.log('acaaaa ', ['app/'+u[0].path])
+      console.log(this.volver)
+    })
+
    }
 
 

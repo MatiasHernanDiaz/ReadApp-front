@@ -16,7 +16,6 @@ export class BtnNavigateComponent{
 
 
   onClick(){
-    console.log('btn volver')
     this.router.navigate(this.data.url)
   }
 }
