@@ -4,7 +4,7 @@ import { bootstrapBookmark, bootstrapStar, bootstrapBook,
 import { NgIconComponent, provideIcons } from '@ng-icons/core'
 import { heroUsers } from '@ng-icons/heroicons/outline'
 import { CommonModule } from '@angular/common'
-import { Router } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router'
 import { Recommendation } from '@src/model/Recommendation'
 import { User } from '@src/model/User'
 
@@ -20,11 +20,15 @@ export class RecomComponent {
   @Input() recommendation: Recommendation = new Recommendation(0,'','',0,0,'',[],new User(0, '', '', '', new Date(),'',[],[],[], 0 ),[],false, [])
     //  solo una recomendación
   @Output() onDeleteRecom = new EventEmitter<number>()
-
-  constructor(private router: Router) {}
+  url = ''
+  constructor(private router: Router, private acRouter: ActivatedRoute) {
+    this.acRouter.url.subscribe((url) =>{
+      this.url = url[0].path
+    })
+  }
 
   goToDetail(id: number) {
-    this.router.navigate(['app/myrecoms/', id])
+    this.router.navigate(['app/'+this.url+'/', id])
   }
 
   removeRecom(id: number): void {

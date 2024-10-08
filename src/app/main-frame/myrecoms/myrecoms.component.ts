@@ -33,7 +33,6 @@ export class MyrecomsComponent {
 
   async ngOnInit() {
     this.recommendationService.items = await this.recommendationService.fetchRecoms(this.myRecomsFlag ? this.userService.getSignedUser().id : undefined)
-    //console.log( 'lista de recom' , this.private)
   }
 
   onDeleteRecom(id: number) {
