@@ -22,6 +22,7 @@ export class MyrecomsComponent {
   recommendationId?: number
   myRecomsFlag = false
   private = false
+  find = ''
 
 
   constructor(private recommendationService: RecommendationService, private router: ActivatedRoute, private userService: StubLoginService) {
@@ -47,6 +48,10 @@ export class MyrecomsComponent {
 
   setPrivate(evPrivate: boolean){
     this.private = evPrivate
+  }
+
+  async goToFind(text: string){
+    this.recommendationService.items = await this.recommendationService.fetchRecoms(this.myRecomsFlag ? this.userService.getSignedUser().id : undefined, text)
   }
 
 }

@@ -15,10 +15,9 @@ export class RecommendationService extends Service<Recommendation>{
       super()
     }
 
-    async fetchRecoms(id?: number): Promise<Recommendation[]>{
-      const url = this.apiUrl + (id ? '?id='+id : '')
-      console.log('id ', id)
-      console.log('url' , url)
+    async fetchRecoms(id?: number, text?: string): Promise<Recommendation[]>{
+      const url = this.apiUrl + (id ? '?id='+id : '') + (text ? '?text='+text : '')
+      
       try{
         const recoms$ = this.httpClient.get<RecommendationJSON[]>(url)
         const recomsJSON = await lastValueFrom(recoms$)
