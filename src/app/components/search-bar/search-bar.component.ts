@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms'
 import { Recommendation } from '@src/model/Recommendation'
 import { ActivatedRoute } from '@angular/router'
-//import { RecommendationService } from '@src/model/services/RecommendationService'
-
 
 @Component({
   selector: 'app-search-bar',
@@ -17,8 +15,9 @@ export class SearchBarComponent {
 
   @Output() recommendations: Recommendation[] = []
   myRecomsFlag: boolean = location.pathname.includes('myrecoms')
-  @Output() lookup: string = ''
   @Output() isPrivate: EventEmitter<boolean> = new EventEmitter()
+  @Output() lookup: EventEmitter<string> = new EventEmitter<string>()
+  userInput: string = ''
 
   constructor(private router: ActivatedRoute){
     this.router.data.subscribe((data)=>{
@@ -27,12 +26,15 @@ export class SearchBarComponent {
   }
 
   onlyPrivate($event: Event){
-    console.log(this.isPrivate)
     this.isPrivate.emit(($event.target as HTMLInputElement).checked)
   }
 
-  async sendLookup(){
-    console.log('terminar')
+  find(){
+
+    //if(this.userInput.length > 3){
+      this.lookup.emit(this.userInput)
+      this.userInput = ''
+    //}
   }
 
 }

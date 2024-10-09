@@ -1,7 +1,7 @@
 <div id="search-bar-container">
     <div class="search_bar">
-        <input class="search_input" type="search" placeholder="Buscar" [(ngModel)]="lookup" >
-        <button class="search_button" (click)="sendLookup()"><img src="assets/magnifying-glass.svg" alt="Buscar"/></button>
+        <input class="search_input" type="search" placeholder="Buscar" [(ngModel)]="userInput" >
+        <button class="search_button" (click)="find()"><img src="assets/magnifying-glass.svg" alt="Buscar"/></button>
     </div>
     @if(myRecomsFlag){
         <div class="content-check">
