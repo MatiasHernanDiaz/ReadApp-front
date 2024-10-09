@@ -13,15 +13,10 @@ export class RecommendationService extends Service<Recommendation> {
     async fetchRecoms(id?: number, text?: string): Promise<Recommendation[]>{
       const url = this.apiUrl + (id ? '?id='+id : '') + (text ? '?text='+text : '')
       
-      try{
-        const recoms$ = this.httpClient.get<RecommendationJSON[]>(url)
-        const recomsJSON = await lastValueFrom(recoms$)
-        return recomsJSON.map((recommendarionJSON) => Recommendation.fromRecomendacionJSON(recommendarionJSON))
-      }
-      catch(error){
-        console.error('Error fetching recommendations:', error)
-        return []
-      }
+      const recoms$ = this.httpClient.get<RecommendationJSON[]>(url)
+      const recomsJSON = await lastValueFrom(recoms$)
+      return recomsJSON.map((recommendarionJSON) => Recommendation.fromRecomendacionJSON(recommendarionJSON))
+      
     }
 
 
