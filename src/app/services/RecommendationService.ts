@@ -1,16 +1,14 @@
 import { Recommendation, RecommendationJSON } from '@src/app/model/Recommendation'
 import { Injectable } from '@angular/core'
-import { HttpClient } from '@angular/common/http'
 import { lastValueFrom } from 'rxjs'
+import { Service } from './AbstractService'
 
 
 
 @Injectable({ providedIn: 'root' })
-export class RecommendationService {
+export class RecommendationService extends Service<Recommendation> {
 
     private apiUrl = 'http://localhost:9000/recommendations'
-
-    constructor(private httpClient: HttpClient){}
 
     async fetchRecoms(id?: number, text?: string): Promise<Recommendation[]>{
       const url = this.apiUrl + (id ? '?id='+id : '') + (text ? '?text='+text : '')
