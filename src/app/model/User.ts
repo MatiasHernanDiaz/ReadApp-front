@@ -1,8 +1,6 @@
 import { Book } from "./Book"
 import { Recommendation } from "./Recommendation"
 
-
-
 export class User {
     id: number
     lastName: string

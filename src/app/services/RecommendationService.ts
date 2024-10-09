@@ -1,5 +1,4 @@
-import { Service } from '@src/services/Service'
-import { Recommendation, RecommendationJSON } from '@src/model/Recommendation'
+import { Recommendation, RecommendationJSON } from '@src/app/model/Recommendation'
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { lastValueFrom } from 'rxjs'
@@ -7,13 +6,11 @@ import { lastValueFrom } from 'rxjs'
 
 
 @Injectable({ providedIn: 'root' })
-export class RecommendationService extends Service<Recommendation>{
+export class RecommendationService {
 
     private apiUrl = 'http://localhost:9000/recommendations'
 
-    constructor(private httpClient: HttpClient){
-      super()
-    }
+    constructor(private httpClient: HttpClient){}
 
     async fetchRecoms(id?: number, text?: string): Promise<Recommendation[]>{
       const url = this.apiUrl + (id ? '?id='+id : '') + (text ? '?text='+text : '')

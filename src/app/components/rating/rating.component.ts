@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core'
-import { User } from '@src/model/User'
+import { User } from '@src/app/model/User'
 import { CommonModule } from '@angular/common'
-import { StubLoginService } from '@src/services/UserService'
-import { Rating } from '@src/model/rating'
+import { StubLoginService } from '@src/app/services/UserService'
+import { Rating } from '@src/app/model/rating'
 
 
 @Component({

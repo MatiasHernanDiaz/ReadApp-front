@@ -1,7 +1,6 @@
-import { User } from '@src/model/User'
-import { Book } from '@src/model/Book'
-import { ItemService } from '@src/services/Service'
-import { Rating } from '@src/model/rating'
+import { User } from '@src/app/model/User'
+import { Book } from '@src/app/model/Book'
+import { Rating } from '@src/app/model/rating'
 
 export type RecommendationJSON = {
     id: number
@@ -26,7 +25,7 @@ export type RecommendationJSON = {
   }
 
 
-  export class Recommendation implements ItemService {
+  export class Recommendation  {
     
     constructor(
       public id: number,
@@ -65,8 +64,6 @@ export type RecommendationJSON = {
     obtenerDescripcionCorta(longitud: number = 100): string {
       return this.description.length > longitud? `${this.description.substring(0, longitud)}...`: this.description
     }
-
-
 
   }
   
