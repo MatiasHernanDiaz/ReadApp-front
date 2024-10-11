@@ -8,8 +8,10 @@ export class Book {
     date: Date = new Date(0,0,0)
     lenguages: string = ""
     sales: number = 0
+    displayName? = 'libro'
 
     constructor() {
     }
 
+    
 }

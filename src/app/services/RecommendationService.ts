@@ -2,7 +2,7 @@ import { Recommendation, RecommendationJSON } from '@src/app/model/Recommendatio
 import { Injectable } from '@angular/core'
 import { lastValueFrom } from 'rxjs'
 import { pathRecom } from '@src/app/model/Path'
-import { Service } from './AbstractService'
+import { Service } from './AbstractService1'
 
 
 
@@ -27,4 +27,6 @@ export class RecommendationService extends Service<Recommendation> {
         const recomsJSON = await lastValueFrom(recoms$)
         return Recommendation.fromRecomendacionJSON(recomsJSON)
     }
+
+    
 }

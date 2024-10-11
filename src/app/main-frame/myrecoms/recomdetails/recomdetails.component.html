@@ -1,6 +1,16 @@
 <div class="title-reco">
-    <h1 class="title-recomendation">{{recom.title}}</h1>
-    <img class="icons" src="assets/globe-simple-x.svg" alt="Ícono de idioma no disponible"/>
+    @if(editMode){
+        <div class="form-item">
+            <label class="recom-edit" >Titulo<span class="required-label">*</span></label>
+            <input type="text" value={{recom.title}} (change)="titleEdit($event)"/>
+        </div>
+    }
+    @else{
+        <h1 class="title-recomendation">{{recom.title}}</h1>
+        @if(recom.publicIs){
+            <img class="icons" src="assets/globe-simple-x.svg" alt="Ícono de idioma no disponible"/>
+        }
+    }
 </div>
 <main class="without-search">
     <h3 class="books-title">Libros</h3>
@@ -9,11 +19,25 @@
         @for (book of recom.books; track book){
             <app-book [book]="book"></app-book>
         }
+        @if(editMode){
+            // este no lo pude hacer compilar [searchService]="bookService.searchBook"
+            <app-add-button  [loadService]="bookService.loadBook"></app-add-button>
+        }
     </article>
 
     <article class="recom-description">
-        <h3>Reseña</h3>
-        {{recom.description}}
+        @if(editMode){
+            <div class="recom-description">
+                <h3>Reseña</h3>   
+                <textarea id="description" name="Reseña:" rows="5" (change)="descriptionEdit($event)" >{{recom.description}}</textarea> 
+            </div>
+    
+        }
+        @else {
+            <h3>Reseña</h3>
+            {{recom.description}}
+        }
+
     </article>
 
     <br>
