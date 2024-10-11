@@ -1,7 +1,7 @@
 import { Recommendation, RecommendationJSON } from '@src/app/model/Recommendation'
 import { Injectable } from '@angular/core'
 import { lastValueFrom } from 'rxjs'
-import { PathRecom } from '@src/app/model/Recommendation'
+import { PathRecom } from '@src/app/model/Path'
 import { Service } from './AbstractService'
 
 
