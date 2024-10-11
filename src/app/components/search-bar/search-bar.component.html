@@ -1,6 +1,6 @@
 <div id="search-bar-container">
     <div class="search_bar">
-        <input class="search_input" type="search" placeholder="Buscar" [(ngModel)]="userInput" >
+        <input class="search_input" type="search" placeholder="Buscar" [(ngModel)]="userInput" (keydown)="search($event)">
         <button class="search_button" (click)="find()"><img src="assets/magnifying-glass.svg" alt="Buscar"/></button>
     </div>
     @if(myRecomsFlag){

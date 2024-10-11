@@ -30,11 +30,15 @@ export class SearchBarComponent {
   }
 
   find(){
-
-    //if(this.userInput.length > 3){
       this.lookup.emit(this.userInput)
+  }
+
+  async search( ev: { key: string} ) {
+    if( ev.key === 'Enter' ) {
+      this.lookup.emit(this.userInput)
+    } else if( ev.key === 'Escape' ) {
       this.userInput = ''
-    //}
+    }
   }
 
 }

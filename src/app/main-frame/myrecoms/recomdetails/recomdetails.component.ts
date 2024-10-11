@@ -22,26 +22,21 @@ export class RecomdetailsComponent {
   volver = {action:'Volver', url:['app/myrecoms']}
   
   recom: Recommendation = new Recommendation(0,'','',0,0,'',[],new User(0, '', '', '', new Date(),'',[],[],[], 0 ),[],false, [])
-  id!: number
+  recomid!: number
 
   constructor(private recommendationService: RecommendationService, private router: ActivatedRoute, public loginService: StubLoginService){ 
     this.router.params.subscribe((params)=>{
-      this.id = params['id']
-      console.info(params['id'])
-      console.info(this.id)
+      this.recomid = params['id']
     })
 
     this.router.url.subscribe((u) => {
       this.volver.url = ['app/'+u[0].path]
-      console.log('acaaaa ', ['app/'+u[0].path])
-      console.log(this.volver)
     })
-
-   }
+  }
 
 
   async ngOnInit(){
-    this.recom = await this.recommendationService.getRecomm(this.id)
+    this.recom = await this.recommendationService.getRecomm(this.recomid)
     console.info(this.recom)
   }
   
