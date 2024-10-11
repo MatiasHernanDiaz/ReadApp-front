@@ -20,7 +20,7 @@ import { BtnNavigateComponent } from "../../../components/btn-navigate/btn-navig
 export class RecomdetailsComponent {
 
   volver = {action:'Volver', url:['app/myrecoms']}
-  
+  editMode = false
   recom: Recommendation = new Recommendation(0,'','',0,0,'',[],new User(0, '', '', '', new Date(),'',[],[],[], 0 ),[],false, [])
   recomid!: number
 
@@ -39,6 +39,19 @@ export class RecomdetailsComponent {
     this.recom = await this.recommendationService.getRecomm(this.recomid)
   }
   
+  cancelEdit() {
+    // this.user = this.loginService.getSignedUser()!
+    // this.resetSearchCriteria()
+    this.editMode = false
+  }
+
+  saveEdit() {
+    // this.loginService.updateSignedUserData( this.user )
+    // this.editMode = false
+    // alert( JSON.stringify( this.loginService.getSignedUser() ) )
+  }
+
+  setEditMode() { this.editMode = true }
   
 
 }

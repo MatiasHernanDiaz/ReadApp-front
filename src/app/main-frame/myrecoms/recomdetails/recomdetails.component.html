@@ -28,7 +28,17 @@
         }
     </section>
 
+    
     <div class="items-container buttons-container btn-reco-detail">
+        <div class="items-container buttons-container">
+            @if( editMode) {
+                <button class="cancel" (click)="cancelEdit()">Cancelar</button>
+                <button class="accept" (click)="saveEdit()">Guardar cambios</button>
+    
+            }@else {
+                <button class="edit" (click)="setEditMode()"><img src="assets/pencil-simple.svg" alt="Editar"></button>
+            }
+        </div>
         <app-btn-navigate [data]="volver"></app-btn-navigate>
     </div>
 </main>
