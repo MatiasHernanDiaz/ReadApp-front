@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core'
 import { BookComponent } from '@src/app/components/book/book.component'
-import { Book } from '@src/model/Book'
+import { Book } from '@src/app/model/Book'
 import { SearchBarComponent } from '@src/app/components/search-bar/search-bar.component'
 
 

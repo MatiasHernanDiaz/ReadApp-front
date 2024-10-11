@@ -1,12 +1,12 @@
 import { Component } from '@angular/core'
-import { SearchBarComponent } from '../../components/search-bar/search-bar.component'
-import { RecomComponent } from '../../components/recom/recom.component'
-import { RemoveRecomComponent } from '../../components/remove-recom/remove-recom.component'
+import { SearchBarComponent } from '@src/app/components/search-bar/search-bar.component'
+import { RecomComponent } from '@src/app/components/recom/recom.component'
+import { RemoveRecomComponent } from '@src/app/components/remove-recom/remove-recom.component'
 import { CommonModule } from '@angular/common'
-import { RecommendationService } from '@src/services/RecommendationService'
-import { Recommendation } from '@src/model/Recommendation'
+import { RecommendationService } from '@src/app/services/RecommendationService'
+import { Recommendation } from '@src/app/model/Recommendation'
 import { ActivatedRoute } from '@angular/router'
-import { StubLoginService } from '@src/services/UserService'
+import { StubLoginService } from '@src/app/services/UserService'
 
 
 @Component({

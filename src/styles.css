@@ -1,14 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
-/*PALETA DE COLORES
-DE CLARO A OSCURO
-#ffedd6 -> nueva sugerencia
-#FFC171 -> fondo
-#FCA858
-#F98F3E
-#F57625
-#F25D0B
-*/
-
 /*FUNTE*/
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;900&family=Roboto+Mono:wght@100;300;400;600;700&display=swap');
 
@@ -45,16 +34,6 @@ body{
   background-color: var(--primary-color);
   box-sizing: border-box;
 }
-
-/* main{
-  height: calc(100% - var(--header-height) - var(--search-height));
-  overflow-y: auto;
-  box-sizing: border-box;
-} */
-
-/* main.without-search{
-  height: calc(100% - var(--header-height));
-} */
 
 input {
   outline: none;

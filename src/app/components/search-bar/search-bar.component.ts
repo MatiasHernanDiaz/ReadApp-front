@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms'
-import { Recommendation } from '@src/model/Recommendation'
+import { Recommendation } from '@src/app/model/Recommendation'
 import { ActivatedRoute } from '@angular/router'
 
 @Component({
@@ -38,6 +38,10 @@ export class SearchBarComponent {
       this.lookup.emit(this.userInput)
     } else if( ev.key === 'Escape' ) {
       this.userInput = ''
+      this.lookup.emit(this.userInput)
+    }else if( ev.key === 'Backspace' && this.userInput.length === 1 ) {
+      this.userInput = ''
+      this.lookup.emit(this.userInput)
     }
   }
 

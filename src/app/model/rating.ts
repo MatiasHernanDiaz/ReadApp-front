@@ -1,4 +1,4 @@
-import { User } from "./User"
+import { User } from "@src/app/model/User"
 
 export class Rating{
     creator: User
@@ -14,8 +14,6 @@ export class Rating{
         this.description = description
     }
 }
-
-
 
 export type JSONtoRating = {
     creator: User

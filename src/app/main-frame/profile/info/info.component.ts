@@ -1,8 +1,11 @@
 import { Component } from '@angular/core'
 import { FormsModule } from '@angular/forms'
-import { Calculator, Cautious, Claimant, Experiencied, GreatReader, Inconstant, Nativist, Polyglot, readerModes, SearchCriteria, User } from '@src/model/User'
+import { 
+  Calculator, Cautious, Claimant, Experiencied, GreatReader, Inconstant, Nativist, Polyglot, 
+  readerModes, SearchCriteria, User 
+} from '@src/app/model/User'
 import { CommonModule } from '@angular/common'
-import { StubLoginService } from '@src/services/UserService'
+import { StubLoginService } from '@src/app/services/UserService'
 
 
 @Component({

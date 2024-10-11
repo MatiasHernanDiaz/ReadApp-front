@@ -1,8 +1,8 @@
 import { Component } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router'
-import { User } from '@src/model/User'
-import { StubLoginService } from '@src/services/UserService'
+import { User } from '@src/app/model/User'
+import { StubLoginService } from '@src/app/services/UserService'
 
 
 @Component({
