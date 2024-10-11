@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { AddButtonComponent } from './add-button.component'
-import { User } from '@src/model/User'
+import { User } from '@src/app/model/User'
 
 describe('AddButtonComponent', () => {
   let component: AddButtonComponent<User>

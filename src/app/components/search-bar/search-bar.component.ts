@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms'
-import { Recommendation } from '@src/model/Recommendation'
+import { Recommendation } from '@src/app/model/Recommendation'
 import { ActivatedRoute } from '@angular/router'
 
 @Component({

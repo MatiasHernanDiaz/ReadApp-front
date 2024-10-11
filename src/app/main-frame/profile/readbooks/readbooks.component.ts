@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { Book } from '@src/model/Book'
-import { User } from '@src/model/User'  
+import { Book } from '@src/app/model/Book'
+import { User } from '@src/app/model/User'  
 import { BookComponent } from '@src/app/components/book/book.component'
 import { CommonModule } from '@angular/common'
-import { StubLoginService } from '@src/services/UserService'
+import { StubLoginService } from '@src/app/services/UserService'
 
 
 @Component({

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
 import { ReactiveFormsModule } from '@angular/forms'
 import { NgIf, CommonModule } from '@angular/common'
-import { StubLoginService } from '@src/services/UserService'
+import { StubLoginService } from '@src/app/services/UserService'
 
 @Component({
   selector: 'login-screen',

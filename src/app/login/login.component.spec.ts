@@ -3,7 +3,7 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { LoginScreen } from './login.component'
 import { Router } from '@angular/router'
 import { CommonModule } from '@angular/common'
-import { StubLoginService } from '@src/services/UserService'
+import { StubLoginService } from '@src/app/services/UserService'
 
 describe('LoginScreen', () => {
   let component: LoginScreen

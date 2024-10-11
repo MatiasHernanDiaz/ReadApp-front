@@ -5,8 +5,8 @@ import { NgIconComponent, provideIcons } from '@ng-icons/core'
 import { heroUsers } from '@ng-icons/heroicons/outline'
 import { CommonModule } from '@angular/common'
 import { ActivatedRoute, Router } from '@angular/router'
-import { Recommendation } from '@src/model/Recommendation'
-import { User } from '@src/model/User'
+import { Recommendation } from '@src/app/model/Recommendation'
+import { User } from '@src/app/model/User'
 
 @Component({
   selector: 'app-recom',
