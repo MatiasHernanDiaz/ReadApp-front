@@ -19,12 +19,10 @@ export class RecommendationService extends Service<Recommendation> {
 
     }
 
-
     async getRecomm(recomid: number): Promise<Recommendation>{
       const url = PathRecom.pathRecomId(recomid)
         const recoms$ = this.httpClient.get<RecommendationJSON>(url)
         const recomsJSON = await lastValueFrom(recoms$)
         return Recommendation.fromRecomendacionJSON(recomsJSON)
     }
-  
 }

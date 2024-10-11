@@ -2,7 +2,6 @@ import { User } from '@src/app/model/User'
 import { Book } from '@src/app/model/Book'
 import { Rating } from '@src/app/model/rating'
 
-
 export class PathRecom {
   
   static pathBasic(): string{
