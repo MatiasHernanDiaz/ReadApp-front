@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { InfoComponent } from './info.component'
+import { httpClientSpy } from '@src/app/services/serviceStubs'
+import { HttpClient } from '@angular/common/http'
 
 describe('InfoComponent', () => {
   let component: InfoComponent
@@ -8,7 +10,10 @@ describe('InfoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [InfoComponent]
+      imports: [InfoComponent],
+      providers: [ 
+        { provide: HttpClient, useValue: httpClientSpy }
+      ]
     })
     .compileComponents()
 

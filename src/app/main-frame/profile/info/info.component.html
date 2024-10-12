@@ -64,6 +64,7 @@
             <input
                 type="radio"
                 name="read-mode"
+                [checked]="readModeChecked === 'Promedio'"
                 [disabled]="!editMode"
                 [(ngModel)]="user.readMode"
                 [value]="readModes.avgReader"
@@ -74,6 +75,7 @@
             <input
                 type="radio"
                 name="read-mode"
+                [checked]="readModeChecked === 'Ansioso'"
                 [disabled]="!editMode"
                 [(ngModel)]="user.readMode"
                 [value]="readModes.anxiousReader"
@@ -84,6 +86,7 @@
             <input
                 type="radio"
                 name="read-mode"
+                [checked]="readModeChecked === 'Fanático'"
                 [disabled]="!editMode"
                 [(ngModel)]="user.readMode"
                 [value]="readModes.fanaticReader"
@@ -94,6 +97,7 @@
             <input
                 type="radio"
                 name="read-mode"
+                [checked]="readModeChecked === 'Recurrente'"
                 [disabled]="!editMode"
                 [(ngModel)]="user.readMode"
                 [value]="readModes.recurrentReader"
@@ -111,7 +115,7 @@
             [checked]="searchCriteria[ criteria.key ].checked"
             (change)="updateSearchCriteria( criteria.key )"
             />
-            <span>{{criteria.value.displayName}}</span>
+            <span>{{criteria.value.criteria.toCustomString()}}</span>
             @if( criteria.value.requireNumberParam ) {
                 <label class="max-limit">
                     <span>Límite máximo</span>
@@ -128,7 +132,7 @@
     <div class="items-container buttons-container">
         @if( editMode) {
             <button class="cancel" (click)="cancelUserEdit()">Cancelar</button>
-            <button class="accept" (click)="saveUserInfo()">Guardar cambios</button>
+            <button class="accept" (click)="saveUserInfo()">{{buttonState}}</button>
 
         }@else {
             <button class="edit" (click)="setEditMode()"><img src="assets/pencil-simple.svg" alt="Editar"></button>

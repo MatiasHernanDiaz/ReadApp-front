@@ -1,7 +1,7 @@
 import { Component } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { 
-  Calculator, Cautious, Claimant, Experiencied, GreatReader, Inconstant, Nativist, Polyglot, 
+  Calculator, Cautious, Claimant, Experiencied, GreatReader, Inconstant, Language, Nativist, Polyglot, 
   readerModes, SearchCriteria, User 
 } from '@src/app/model/User'
 import { CommonModule } from '@angular/common'
@@ -16,22 +16,25 @@ import { StubLoginService } from '@src/app/services/UserService'
   styleUrl: './info.component.css'
 })
 export class InfoComponent {
-  user: User = new User(0, '', '', '', new Date(),'',[],[],[], 0 )
+  user: User = new User(0, '', '', '', new Date(),'', Language.SPANISH,[],[],[], 0 )
   readModes = readerModes
+  readModeChecked = this.user.readMode.toCustomString()
   searchCriteria: Record<
     string,{ 
       checked: boolean, 
       criteria: SearchCriteria, 
-      requireNumberParam: boolean,
-      displayName: string 
+      requireNumberParam: boolean
     }
   > = {}
   editMode = false
+  buttonState = "Guardar cambios"
 
   constructor( public loginService: StubLoginService ) {}
 
   ngOnInit() {
     this.user = this.loginService.getSignedUser()!
+    console.log(this.user)
+    this.readModeChecked = this.user.readMode.toCustomString()
     this.resetSearchCriteria()
   }
   
@@ -39,52 +42,44 @@ export class InfoComponent {
   resetSearchCriteria() {
     this.searchCriteria = {
       cautious: {
-        checked: Boolean(this.user.searchCriteria.find( cri => cri instanceof Cautious )),
+        checked: Boolean(this.user.searchCriteria.find( cri => cri.toCustomString() === 'Precavido' )),
         criteria: new Cautious(),
-        requireNumberParam: false,
-        displayName: "Precavido"
+        requireNumberParam: false
       },
       claiment: {
-        checked: Boolean(this.user.searchCriteria.find( cri => cri instanceof Claimant )),
+        checked: Boolean(this.user.searchCriteria.find( cri => cri.toCustomString() === 'Demandante' )),
         criteria: new Claimant(),
-        requireNumberParam: false,
-        displayName: "Demandante"
+        requireNumberParam: false
       },
       inconstant: {
-        checked: Boolean(this.user.searchCriteria.find( cri => cri instanceof Inconstant )),
+        checked: Boolean(this.user.searchCriteria.find( cri => cri.toCustomString() === 'Cambiante' )),
         criteria: new Inconstant(),
-        requireNumberParam: true,
-        displayName: "Cambiante"
+        requireNumberParam: true
       },
       greatReader: {
-        checked: Boolean(this.user.searchCriteria.find( cri => cri instanceof GreatReader )),
+        checked: Boolean(this.user.searchCriteria.find( cri => cri.toCustomString() === 'Leedor' )),
         criteria: new GreatReader(),
-        requireNumberParam: false,
-        displayName: "Leedor"
+        requireNumberParam: false
       },
       nativist: {
-        checked: Boolean(this.user.searchCriteria.find( cri => cri instanceof Nativist )),
+        checked: Boolean(this.user.searchCriteria.find( cri => cri.toCustomString() === 'Nativista' )),
         criteria: new Nativist(),
-        requireNumberParam: false,
-        displayName: "Nativista"
+        requireNumberParam: false
       },
       polyglot: {
-        checked: Boolean(this.user.searchCriteria.find( cri => cri instanceof Polyglot )),
+        checked: Boolean(this.user.searchCriteria.find( cri => cri.toCustomString() === 'Políglota' )),
         criteria: new Polyglot(),
-        requireNumberParam: false,
-        displayName: "Políglota"
+        requireNumberParam: false
       },
       experiencied: {
-        checked: Boolean(this.user.searchCriteria.find( cri => cri instanceof Experiencied )),
+        checked: Boolean(this.user.searchCriteria.find( cri => cri.toCustomString() === 'Experimentado' )),
         criteria: new Experiencied(),
-        requireNumberParam: false,
-        displayName: "Experimentado"
+        requireNumberParam: false
       },
       calculator: {
-        checked: Boolean(this.user.searchCriteria.find( cri => cri instanceof Calculator )),
+        checked: Boolean(this.user.searchCriteria.find( cri => cri.toCustomString() === 'Calculador' )),
         criteria: new Calculator(),
-        requireNumberParam: true,
-        displayName: "Calculador"
+        requireNumberParam: true
       }
     }
   }
@@ -106,10 +101,11 @@ export class InfoComponent {
     this.editMode = false
   }
 
-  saveUserInfo() {
-    this.loginService.updateSignedUserData( this.user )
+  async saveUserInfo() {
+    this.buttonState = "Cargando..."
+    await this.loginService.editUser( this.user )
     this.editMode = false
-    alert( JSON.stringify( this.loginService.getSignedUser() ) )
+    this.buttonState = "Guardar cambios"
   }
 
   setEditMode() { this.editMode = true }
