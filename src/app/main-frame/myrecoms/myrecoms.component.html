@@ -1,12 +1,18 @@
 <div class="container">
-    <app-search-bar (isPrivate)="setPrivate($event)" (lookup)="goToFind($event)"></app-search-bar>
-    <div class="card-container">
-      @for (recommendation of recommendations; track recommendation) {
-        @if(!private || !recommendation.publicIs){
-          <app-recom [recommendation]="recommendation" (onDeleteRecom)="onDeleteRecom($event)"></app-recom>
+  <app-search-bar (isPrivate)="setPrivate($event)" (lookup)="goToFind($event)"></app-search-bar>
+@if(!loading){
+  <div class="card-container">
+        @for (recommendation of recommendations; track recommendation) {
+          @if(!private || !recommendation.publicIs){
+            <app-recom [recommendation]="recommendation" (onDeleteRecom)="onDeleteRecom($event)"></app-recom>
+          }
         }
-      }
-    </div>
-    <app-remove-recom *ngIf="dialogOpen" [recommendationId]="recommendationId" (click)="closeDialog()"></app-remove-recom>
+      </div>
+  <app-remove-recom *ngIf="dialogOpen" [recommendationId]="recommendationId" (click)="closeDialog()"></app-remove-recom>
+}
+@else {
+  <div class="spinner-container">
+    <app-spinner></app-spinner>
+  </div>
+}
 </div>
-  

@@ -10,12 +10,13 @@ import { BookComponent } from '@src/app/components/book/book.component'
 import { BtnNavigateComponent } from "../../../components/btn-navigate/btn-navigate.component"
 import { AddButtonComponent } from '@src/app/components/add-button/add-button.component'
 import { BookService } from '@src/app/services/Book/book.service'
+import { SpinnerComponent } from '@src/app/components/spinner/spinner.component'
 
 
 @Component({
   selector: 'app-recomdetails',
   standalone: true,
-  imports: [RatingComponent, CommonModule, BookComponent, BtnNavigateComponent, AddButtonComponent],
+  imports: [RatingComponent, CommonModule, BookComponent, BtnNavigateComponent, AddButtonComponent, SpinnerComponent],
   templateUrl: './recomdetails.component.html',
   styleUrl: './recomdetails.component.css'
 })
@@ -27,6 +28,7 @@ export class RecomdetailsComponent {
   recomEdit: Recommendation = new Recommendation(0,'','',0,0,'',[],new User(0, '', '', '', new Date(),'',[],[],[], 0 ),[],false, [])
   recomid!: number
   userid!: number
+  loading = true
   
 
   constructor(private recommendationService: RecommendationService, private router: ActivatedRoute, public loginService: StubLoginService, public bookService: BookService){ 
@@ -42,10 +44,17 @@ export class RecomdetailsComponent {
 
   }
   
+  isLoading(){
+    if(this.recom.title != ''){
+      this.loading = false
+    }
+  }
+  
   
   async ngOnInit(){
     this.recom = await this.recommendationService.getRecomm(this.recomid)
     this.recomEdit = structuredClone(this.recom)
+    this.isLoading()
   }
   
   cancelEdit() {

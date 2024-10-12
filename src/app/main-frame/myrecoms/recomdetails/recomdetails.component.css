@@ -1,6 +1,14 @@
 :host{
     overflow-y: auto;
 }
+
+.spinner-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50rem;
+}
+
 .title-rating{
     width: 70%;
     margin-top: 4%;
