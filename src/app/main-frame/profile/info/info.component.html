@@ -10,6 +10,7 @@
                 [disabled]="!editMode"
                 [(ngModel)]="user.lastName"
             />
+            <app-field-validation [validationFunc]="formValidation" [data]="user" [field]="'lastName'"></app-field-validation>
         </div>
         <div class="form-item">
             <label>Nombre <span class="required-label">*</span></label>
@@ -19,6 +20,7 @@
                 [disabled]="!editMode"
                 [(ngModel)]="user.firstName"
             />
+            <app-field-validation [validationFunc]="formValidation" [data]="user" [field]="'firstName'"></app-field-validation>
         </div>
         <div class="form-item">
             <label>Username <span class="required-label">*</span></label>
@@ -28,6 +30,7 @@
                 [disabled]="!editMode"
                 [(ngModel)]="user.username"
             />
+            <app-field-validation [validationFunc]="formValidation" [data]="user" [field]="'username'"></app-field-validation>
         </div>
         <div class="form-item">
             <label>Fecha de nacimiento <span class="required-label">*</span></label>
@@ -37,6 +40,7 @@
                 [disabled]="!editMode"
                 [value]="user.birthday | date: 'yyyy-MM-dd'" (change)="setBirthday($event)"
             />
+            <app-field-validation [validationFunc]="formValidation" [data]="user" [field]="'birthday'"></app-field-validation>
         </div>
         <div class="form-item">
             <label>Email <span class="required-label">*</span></label>
@@ -46,6 +50,7 @@
                 [disabled]="!editMode"
                 [(ngModel)]="user.email"
             />
+            <app-field-validation [validationFunc]="formValidation" [data]="user" [field]="'email'"></app-field-validation>
         </div>
         <div class="form-item">
             <label>Tiempo de lectura promedio</label>
@@ -55,6 +60,7 @@
                 [disabled]="!editMode"
                 [(ngModel)]="user.readTimeMinAvg"
             />
+            <app-field-validation [validationFunc]="formValidation" [data]="user" [field]="'readTimeMinAvg'"></app-field-validation>
         </div>
     </div>
     <hr/>
