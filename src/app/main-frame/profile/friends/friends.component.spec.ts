@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { FriendsComponent } from './friends.component'
+import { HttpClient } from '@angular/common/http'
+import { httpClientSpy } from '@src/app/services/serviceStubs'
 
 describe('FriendsComponent', () => {
   let component: FriendsComponent
@@ -8,7 +10,10 @@ describe('FriendsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FriendsComponent]
+      imports: [FriendsComponent],
+      providers: [ 
+        { provide: HttpClient, useValue: httpClientSpy }
+      ]
     })
     .compileComponents()
 

@@ -8,6 +8,7 @@ export class User {
     username: string
     birthday: Date
     email: string
+    nativeLanguage: Language
     friends: User[]
     readBooks: Book[] = []
     readToBooks: Book[] = []
@@ -24,14 +25,14 @@ export class User {
         username: string, 
         birthday: Date, 
         email: string,
+        nativeLanguage: Language = Language.SPANISH,
         friends: User[] ,
         readBooks: Book[],
         readToBooks: Book[],
-        readTimeMinAvg: number,
+        readTimeMinAvg: number = 100,
         readMode: ReadMode = readerModes.avgReader, 
         searchCriteria: SearchCriteria[] = [],
         avatar: string = ''
-
     ) {
         this.id = id
         this.lastName = lastName
@@ -39,6 +40,7 @@ export class User {
         this.username = username
         this.birthday = birthday
         this.email = email
+        this.nativeLanguage = nativeLanguage
         this.friends = friends
         this.readBooks = readBooks
         this.readToBooks = readToBooks
@@ -61,43 +63,52 @@ export class User {
         return this.firstName + ' ' + this.lastName
     }
 
+    editProfileJSON() {
+        console.log("readmode", this.readMode)
+        return {
+            id: this.id,
+            firstName: this.firstName,
+            lastName: this.lastName,
+            username: this.username,
+            searchCriteria: this.searchCriteria.map( cri => cri.toCustomString()),
+            email: this.email,
+            birthday: this.birthday,
+            nativeLanguage: this.nativeLanguage,
+            readTimeMinAvg: this.readTimeMinAvg,
+            readMode: this.readMode.toCustomString(),
+            avatar: this.avatar
+        }
+    }
   }
 
 
-interface ReadMode {
+export interface ReadMode {
+    toCustomString(): string
     readTime( libro: Book, usuario: User ): number
 }
 
 
-class AvgReader implements ReadMode {
-    // Para debug... ELIMINAR
-    readMode = "AvgReader"
-
+export class AvgReader implements ReadMode {
+    toCustomString(): string { return "Promedio" }
     readTime( book: Book, user: User ) { return user.baseReadTime( book ) }
 }
 
 
 // TODO: Implementar los método correctos
-class AnxiousReader implements ReadMode {
-    // Para debug... ELIMINAR
-    readMode = "AnxiousReader"
-
+export class AnxiousReader implements ReadMode {
+    toCustomString(): string { return "Ansioso" }
     readTime( book: Book, user: User ) { return user.baseReadTime( book ) }
 }
 
 
-class FanaticReader implements ReadMode {
-    // Para debug... ELIMINAR
-    readMode = "FanaticReader"
-
+export class FanaticReader implements ReadMode {
+    toCustomString(): string { return "Fanático" }
     readTime( book: Book, user: User ) { return user.baseReadTime( book ) }
 }
 
 
-class RecurrentReader implements ReadMode {
-    // Para debug... ELIMINAR
-    readMode = "RecurrentReader"
-
+export class RecurrentReader implements ReadMode {
+    toCustomString(): string { return "Recurrente" }
     readTime( book: Book, user: User ) { return user.baseReadTime( book ) }
 }
 
@@ -110,60 +121,70 @@ export const readerModes = {
 
 export interface SearchCriteria {
     isAdvisable( recom: Recommendation ): boolean
+    toCustomString(): string
 }
 
 export class Cautious implements SearchCriteria {
-    // Para debug... ELIMINAR
-    criteria = "cautious"
     // TODO: Implementar algún día
     isAdvisable( recom: Recommendation ) { return recom && true }
+    toCustomString() { return "Precavido" }
 }
 
 export class Claimant implements SearchCriteria {
-    // Para debug... ELIMINAR
-    criteria = "claimant"
     // TODO: Implementar algún día
     isAdvisable( recom: Recommendation ) { return recom && true }
+    toCustomString() { return "Demandante" }
 }
 
 export class GreatReader implements SearchCriteria {
-    // Para debug... ELIMINAR
-    criteria = "greatReader"
     // TODO: Implementar algún día
     isAdvisable( recom: Recommendation ) { return recom && true }
+    toCustomString() { return "Leedor" }
 }
 
 export class Nativist implements SearchCriteria {
-    // Para debug... ELIMINAR
-    criteria = "nativist"
     // TODO: Implementar algún día
     isAdvisable( recom: Recommendation ) { return recom && true }
+    toCustomString() { return "Nativista" }
+    
 }
 
 export class Polyglot implements SearchCriteria {
-    // Para debug... ELIMINAR
-    criteria = "polyglot"
     // TODO: Implementar algún día
     isAdvisable( recom: Recommendation ) { return recom && true }
+    toCustomString() { return "Políglota" }
 }
 
 export class Inconstant implements SearchCriteria {
-    // Para debug... ELIMINAR
-    criteria = "inconstant"
     // TODO: Implementar algún día
     isAdvisable( recom: Recommendation ) { return recom && true }
+    toCustomString() { return "Cambiante" }
 }
 
 export class Experiencied implements SearchCriteria {
-    // Para debug... ELIMINAR
-    criteria = "experiencied"
     // TODO: Implementar algún día
     isAdvisable( recom: Recommendation ) { return recom && true }
+    toCustomString() { return "Experimentado" }
 }
 
 export class Calculator implements SearchCriteria {
-    // Para debug... ELIMINAR
-    criteria = "calculator"
     // TODO: Implementar algún día
     isAdvisable( recom: Recommendation ) { return recom && true }
+    toCustomString() { return "Calculador" }
+}
+ 
+
+export enum Language {
+    SPANISH = "SPANISH",
+    ENGLISH = "ENGLISH",
+    GERMAN = "GERMAN",
+    PORTUGUESE = "PORTUGUESE",
+    RUSSIAN = "RUSSIAN",
+    ITALIAN = "ITALIAN",
+    MANDARIN = "MANDARIN",
+    ARAB = "ARAB",
+    HINDI = "HINDI",
+    FRENCH = "FRENCH",
+    BENGALI = "BENGALI",
+    JAPANESE = "JAPANESE"
 }

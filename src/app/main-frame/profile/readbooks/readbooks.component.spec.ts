@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { ReadbooksComponent } from './readbooks.component'
+import { HttpClient } from '@angular/common/http'
+import { httpClientSpy } from '@src/app/services/serviceStubs'
 
 describe('ReadbooksComponent', () => {
   let component: ReadbooksComponent
@@ -8,7 +10,10 @@ describe('ReadbooksComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ReadbooksComponent]
+      imports: [ReadbooksComponent],
+      providers: [
+        { provide: HttpClient, useValue: httpClientSpy }
+      ]
     })
     .compileComponents()
 

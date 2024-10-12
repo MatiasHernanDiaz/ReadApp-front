@@ -1,7 +1,7 @@
 import { Component } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { Recommendation } from '@src/app/model/Recommendation'
-import { User } from '@src/app/model/User'
+import { Language, User } from '@src/app/model/User'
 import { RecommendationService } from '@src/app/services/RecommendationService'
 import { RatingComponent } from '@src/app/components/rating/rating.component'
 import { StubLoginService } from '@src/app/services/UserService'
@@ -21,7 +21,7 @@ export class RecomdetailsComponent {
 
   volver = {action:'Volver', url:['app/myrecoms']}
   
-  recom: Recommendation = new Recommendation(0,'','',0,0,'',[],new User(0, '', '', '', new Date(),'',[],[],[], 0 ),[],false, [])
+  recom: Recommendation = new Recommendation(0,'','',0,0,'',[],new User(0, '', '', '', new Date(),'',Language.SPANISH,[],[],[], 0 ),[],false, [])
   recomid!: number
 
   constructor(private recommendationService: RecommendationService, private router: ActivatedRoute, public loginService: StubLoginService){ 

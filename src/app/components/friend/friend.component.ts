@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core'
-import { User } from '@src/app/model/User'
+import { Language, User } from '@src/app/model/User'
 
 @Component({
   selector: 'app-friend',
@@ -10,5 +10,5 @@ import { User } from '@src/app/model/User'
 })
 
 export class FriendComponent {
-  @Input() user : User = new User(0, '', '', '', new Date(),'',[],[],[], 0 )
+  @Input() user : User = new User(0, '', '', '', new Date(),'',Language.SPANISH,[],[],[], 0 )
 }

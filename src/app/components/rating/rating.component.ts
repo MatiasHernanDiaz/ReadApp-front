@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core'
-import { User } from '@src/app/model/User'
+import { Language, User } from '@src/app/model/User'
 import { CommonModule } from '@angular/common'
 import { StubLoginService } from '@src/app/services/UserService'
 import { Rating } from '@src/app/model/rating'
@@ -15,7 +15,7 @@ import { Rating } from '@src/app/model/rating'
 export class RatingComponent {
 
   dateOfCreation = new Date
-  @Input() rating: Rating = new Rating(new User(0, '', '', '', new Date(), '',[],[],[], 0 , ), 4, '')
+  @Input() rating: Rating = new Rating(new User(0, '', '', '', new Date(), '',Language.SPANISH,[],[],[], 0 , ), 4, '')
 
   constructor( public loginService: StubLoginService ) {}
 
