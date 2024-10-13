@@ -11,12 +11,13 @@ import { BtnNavigateComponent } from "../../../components/btn-navigate/btn-navig
 import { BookService } from '@src/app/services/Book/book.service'
 import { SpinnerComponent } from '@src/app/components/spinner/spinner.component'
 import { RecomEdit } from '@src/app/model/RecomEdit'
+import { MsjComponent } from '@src/app/components/msj/msj.component'
 
 
 @Component({
   selector: 'app-recomdetails',
   standalone: true,
-  imports: [RatingComponent, CommonModule, BookComponent, BtnNavigateComponent, SpinnerComponent],
+  imports: [RatingComponent, CommonModule, BookComponent, BtnNavigateComponent, SpinnerComponent, MsjComponent],
   templateUrl: './recomdetails.component.html',
   styleUrl: './recomdetails.component.css'
 })
@@ -29,6 +30,10 @@ export class RecomdetailsComponent {
   recomid!: number
   userid!: number
   loading = true
+  error = {timestamp: '', status: 0, error: '', message: '', path: ''}
+  message = {title: 'No puedes editar esta recomendacion', btnMsj:'Crrrar'}
+  close = true
+
   
 
   constructor(private recommendationService: RecommendationService, private router: ActivatedRoute, public loginService: StubLoginService, public bookService: BookService){ 
@@ -42,6 +47,7 @@ export class RecomdetailsComponent {
 
     this.userid = this.loginService.getSignedUser().id
 
+    console.log('hay error ',this.isError)
   }
   
   isLoading(){
@@ -72,16 +78,24 @@ export class RecomdetailsComponent {
   }
 
   async saveEdit() {
-    console.info('Que id mando a editar?? ->', this.recomEdit.id)
+
     await this.recommendationService.updateRecomEdit(this.userid, this.recomEdit ).then((res) =>{
       this.recomEdit = res
       this.recomEditToRecom()
       this.editMode = false
       console.info('recom editada: ', this.recomEdit)
+    }).catch((err) =>{
+      this.error = err.error
+      this.ngOnInit() //????? Es legal? o marche preso 30 años??
+      this.editMode = false
     })
   }
 
-  setEditMode() { this.editMode = true }
+  setEditMode() { 
+    this.editMode = true
+    this.close = true
+    this.error.message = ''
+  }
   
   titleEdit(e: Event){
     this.recomEdit.title = (e.target as HTMLInputElement).value
@@ -89,5 +103,16 @@ export class RecomdetailsComponent {
 
   descriptionEdit(e: Event){
     this.recomEdit.description = (e.target as HTMLInputElement).value
+  }
+
+  get isError(){
+    return this.error.message == ''
+  }
+
+  setClose(evClose: boolean){
+
+    console.log('antes del evento close', this.close, ' y error', this.isError )
+    this.close = evClose
+    console.log('antes del evento close', this.close, ' y error', this.isError )
   }
 }

@@ -1,6 +1,6 @@
 import { User } from '@src/app/model/User'
 import { Book } from '@src/app/model/Book'
-import { Rating } from '@src/app/model/rating'
+import { RatingWithId } from '@src/app/model/rating'
 
 
 
@@ -15,14 +15,14 @@ export type RecommendationJSON = {
     creator: User
     books: Array<Book>
     publicIs: boolean
-    ratings: Array<Rating>
+    ratings: Array<RatingWithId>
   }
   
   export type RecomJSON = {
      id: number 
      title: string
      description: string
-     ratings: Array<Rating>
+     ratings: Array<RatingWithId>
      books: Array<Book>
   }
 
@@ -40,7 +40,7 @@ export type RecommendationJSON = {
       public creator: User,
       public books: Array<Book>,
       public publicIs: boolean,
-      public ratings: Array<Rating>
+      public ratings: Array<RatingWithId>
     ) {}
   
     static fromRecomendacionJSON(recomendacionJSON: RecommendationJSON): Recommendation {

@@ -70,3 +70,9 @@
     </div>
     <app-btn-navigate [data]="volver"></app-btn-navigate>
 </div>
+
+<!--Mensaje de error-->
+
+@if(!isError && close){
+    <app-msj [error]="error" [msj]="message" (close)="setClose($event)"></app-msj>
+}

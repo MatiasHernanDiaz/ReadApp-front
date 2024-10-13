@@ -1,5 +1,8 @@
-<!-- <article>
-    <h1>{{msj.title}}</h1>
-    <p>{{msj.body}}</p>
-    <button>{{msj.btn}}</button>
-</article> -->
+
+<article class="dialog-backdrop">
+    <div class="dialog">
+        <h1>{{msj.title}}</h1>
+        <p>{{error.message}}</p>
+        <button class="button-cancel" (click)="closeDialog()">{{msj.btnMsj}}</button>
+    </div>
+</article>
