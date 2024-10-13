@@ -8,15 +8,15 @@ import { StubLoginService } from '@src/app/services/UserService'
 import { CommonModule } from '@angular/common'
 import { BookComponent } from '@src/app/components/book/book.component'
 import { BtnNavigateComponent } from "../../../components/btn-navigate/btn-navigate.component"
-import { AddButtonComponent } from '@src/app/components/add-button/add-button.component'
 import { BookService } from '@src/app/services/Book/book.service'
 import { SpinnerComponent } from '@src/app/components/spinner/spinner.component'
+import { RecomEdit } from '@src/app/model/RecomEdit'
 
 
 @Component({
   selector: 'app-recomdetails',
   standalone: true,
-  imports: [RatingComponent, CommonModule, BookComponent, BtnNavigateComponent, AddButtonComponent, SpinnerComponent],
+  imports: [RatingComponent, CommonModule, BookComponent, BtnNavigateComponent, SpinnerComponent],
   templateUrl: './recomdetails.component.html',
   styleUrl: './recomdetails.component.css'
 })
@@ -25,7 +25,7 @@ export class RecomdetailsComponent {
   volver = {action:'Volver', url:['app/myrecoms']}
   editMode = false
   recom: Recommendation = new Recommendation(0,'','',0,0,'',[],new User(0, '', '', '', new Date(),'',[],[],[], 0 ),[],false, [])
-  recomEdit: Recommendation = new Recommendation(0,'','',0,0,'',[],new User(0, '', '', '', new Date(),'',[],[],[], 0 ),[],false, [])
+  recomEdit: RecomEdit = new RecomEdit('','',false,1,{id:-1})
   recomid!: number
   userid!: number
   loading = true
@@ -52,19 +52,33 @@ export class RecomdetailsComponent {
   
   
   async ngOnInit(){
-    this.recom = await this.recommendationService.getRecomm(this.recomid)
-    this.recomEdit = structuredClone(this.recom)
-    this.isLoading()
+    await this.recommendationService.getRecomm(this.recomid).then((res)=>{
+      this.recom = res
+      this.recomEdit = res
+      console.info('Que id me trae?? ->', this.recom.id)
+      this.isLoading()
+    })
+  }
+
+  recomEditToRecom(){ 
+    this.recom.creator.id = this.recomEdit.creator.id
+    this.recom.title = this.recomEdit.title 
+    this.recom.description = this.recomEdit.description 
+    this.recomEdit.publicIs = this.recomEdit.publicIs 
   }
   
   cancelEdit() {
     this.editMode = false
   }
 
-  saveEdit() {
-    this.recommendationService.updateRecomData(this.userid, this.recomEdit )
-    this.editMode = false
-    alert( JSON.stringify( this.recomEdit ) )
+  async saveEdit() {
+    console.info('Que id mando a editar?? ->', this.recomEdit.id)
+    await this.recommendationService.updateRecomEdit(this.userid, this.recomEdit ).then((res) =>{
+      this.recomEdit = res
+      this.recomEditToRecom()
+      this.editMode = false
+      console.info('recom editada: ', this.recomEdit)
+    })
   }
 
   setEditMode() { this.editMode = true }

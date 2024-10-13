@@ -21,10 +21,6 @@
             @for (book of recom.books; track book){
                 <app-book [book]="book"></app-book>
             }
-            @if(editMode){
-                // este no lo pude hacer compilar [searchService]="bookService.searchBook"
-                <app-add-button  [loadService]="bookService.loadBook"></app-add-button>
-            }
         </article>
     
         <article class="recom-description">

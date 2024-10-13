@@ -58,6 +58,8 @@ export type RecommendationJSON = {
         recomendacionJSON.ratings
       )
     }
+
+    
   
     obtenerRatingConFormato(): string {
       return `${this.rating} estrellas`

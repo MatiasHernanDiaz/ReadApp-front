@@ -15,7 +15,8 @@ abstract class Path{
         break 
         case 'read': path += '/read?userid=' + userId + '&entityid=' + entityId
         break
-        case 'update': path += '/update?userid=' + userId + '&entityid=' + entityId
+        //case 'update': path += '/update?userid=' + userId + '&entityid=' + entityId
+        case 'update': path += '/update/' + entityId
         break
         case 'delete': path += '/delete?userid=' + userId + '&entityid=' + entityId
         break
