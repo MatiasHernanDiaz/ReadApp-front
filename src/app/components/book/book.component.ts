@@ -25,5 +25,5 @@ export class BookComponent {
   }
 
   @Input()
-  book: Book = new Book()
+  book: Book = new Book(0,'','','',0,new Date,'',0,0)
 }

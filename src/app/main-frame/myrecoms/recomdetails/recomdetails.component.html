@@ -1,34 +1,72 @@
-<div class="title-reco">
-    <h1 class="title-recomendation">{{recom.title}}</h1>
-    <img class="icons" src="assets/globe-simple-x.svg" alt="Ícono de idioma no disponible"/>
+@if(!loading){
+
+    <div class="title-reco">
+        @if(editMode){
+            <div class="form-item">
+                <label class="recom-edit" >Titulo<span class="required-label">*</span></label>
+                <input type="text" value={{recom.title}} (change)="titleEdit($event)"/>
+            </div>
+        }
+        @else{
+            <h1 class="title-recomendation">{{recom.title}}</h1>
+            @if(recom.publicIs){
+                <img class="icons" src="assets/globe-simple-x.svg" alt="Ícono de idioma no disponible"/>
+            }
+        }
+    </div>
+    <main class="without-search">
+        <h3 class="books-title">Libros</h3>
+        
+        <article class="card-container">
+            @for (book of recom.books; track book){
+                <app-book [book]="book"></app-book>
+            }
+        </article>
+    
+        <article class="recom-description">
+            @if(editMode){
+                <div class="recom-description">
+                    <h3>Reseña</h3>   
+                    <textarea id="description" name="Reseña:" rows="5" (change)="descriptionEdit($event)" >{{recom.description}}</textarea> 
+                </div>
+        
+            }
+            @else {
+                <h3>Reseña</h3>
+                {{recom.description}}
+            }
+    
+        </article>
+    
+        <br>
+        <div class="recom-description">
+            <hr>
+        </div>
+        
+        
+        <section class="card-container rating-card-without-item-center section-rating">
+            @for (iRating of recom.ratings; track iRating) {
+                <app-rating [rating]="iRating" ></app-rating>
+            }
+        </section>
+    
+        
+    </main>
+}
+@else {
+    <div class="spinner-container">
+        <app-spinner></app-spinner>
+    </div>
+}
+<div class="items-container buttons-container btn-reco-detail">
+    <div class="items-container buttons-container">
+        @if( editMode) {
+            <button class="cancel" (click)="cancelEdit()">Cancelar</button>
+            <button class="accept" (click)="saveEdit()">Guardar cambios</button>
+
+        }@else {
+            <button class="edit" (click)="setEditMode()"><img src="assets/pencil-simple.svg" alt="Editar"></button>
+        }
+    </div>
+    <app-btn-navigate [data]="volver"></app-btn-navigate>
 </div>
-<main class="without-search">
-    <h3 class="books-title">Libros</h3>
-    
-    <article class="card-container">
-        @for (book of recom.books; track book){
-            <app-book [book]="book"></app-book>
-        }
-    </article>
-
-    <article class="recom-description">
-        <h3>Reseña</h3>
-        {{recom.description}}
-    </article>
-
-    <br>
-    <div class="recom-description">
-        <hr>
-    </div>
-    
-    
-    <section class="card-container rating-card-without-item-center section-rating">
-        @for (iRating of recom.ratings; track iRating) {
-            <app-rating [rating]="iRating" ></app-rating>
-        }
-    </section>
-
-    <div class="items-container buttons-container btn-reco-detail">
-        <app-btn-navigate [data]="volver"></app-btn-navigate>
-    </div>
-</main>

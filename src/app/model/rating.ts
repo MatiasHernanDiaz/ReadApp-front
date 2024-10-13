@@ -1,5 +1,7 @@
 import { User } from "@src/app/model/User"
 
+///TODO: che pasa la clase a mayuscula que el mio no lo pude hacer
+
 export class Rating{
     creator: User
     nRating: number

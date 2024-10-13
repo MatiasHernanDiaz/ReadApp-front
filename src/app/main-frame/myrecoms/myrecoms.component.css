@@ -11,6 +11,13 @@
     gap:1rem;
 }
 
+.spinner-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50rem;
+}
+
 @media (max-width:480px ) {
     .card-container{
         grid-template-columns: 1fr ;

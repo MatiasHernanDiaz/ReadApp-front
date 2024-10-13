@@ -7,12 +7,13 @@ import { RecommendationService } from '@src/app/services/RecommendationService'
 import { Recommendation } from '@src/app/model/Recommendation'
 import { ActivatedRoute } from '@angular/router'
 import { StubLoginService } from '@src/app/services/UserService'
+import { SpinnerComponent } from '@src/app/components/spinner/spinner.component'
 
 
 @Component({
   selector: 'app-myrecoms',
   standalone: true,
-  imports: [SearchBarComponent, RecomComponent,RemoveRecomComponent,CommonModule],
+  imports: [SearchBarComponent, RecomComponent,RemoveRecomComponent,CommonModule, SpinnerComponent],
   templateUrl: './myrecoms.component.html',
   styleUrl: './myrecoms.component.css'
 })
@@ -23,13 +24,21 @@ export class MyrecomsComponent {
   myRecomsFlag = false
   private = false
   find = ''
+  loading = true
 
 
   constructor(private recommendationService: RecommendationService, private router: ActivatedRoute, private userService: StubLoginService) {
     this.recommendationService.items.subscribe( (recomms) =>{
       this.recommendations = recomms
+      this.isLoading()
     })
     this.router.data.subscribe((data)=>{this.myRecomsFlag = data['myrecoms']})
+  }
+  
+  isLoading(){
+    if(this.recommendations.length >0){
+      this.loading = false
+    }
   }
 
   async ngOnInit() {
