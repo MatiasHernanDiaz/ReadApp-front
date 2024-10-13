@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { Book } from '@src/app/model/Book'
-import { User } from '@src/app/model/User'  
+import { Language, User } from '@src/app/model/User'  
 import { BookComponent } from '@src/app/components/book/book.component'
 import { CommonModule } from '@angular/common'
 import { StubLoginService } from '@src/app/services/UserService'
@@ -15,7 +15,7 @@ import { StubLoginService } from '@src/app/services/UserService'
 })
 export class ReadbooksComponent implements OnInit {
   @Input() readBooks: Book[] = [] 
-  @Input() user : User = new User(0, '', '', '', new Date(),'',[],[],[], 0 )
+  @Input() user : User = new User(0, '', '', '', new Date(),'', Language.SPANISH,[],[],[], 0 )
   
   constructor(
     private userService: StubLoginService, 

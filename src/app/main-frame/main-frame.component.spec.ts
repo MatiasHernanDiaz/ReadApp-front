@@ -3,6 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { MainFrameComponent } from './main-frame.component'
 import { provideRouter } from '@angular/router'
 import { routes } from '../app.routes'
+import { HttpClient } from '@angular/common/http'
+import { httpClientSpy } from '../services/serviceStubs'
 
 
 describe('MainFrameComponent', () => {
@@ -12,7 +14,10 @@ describe('MainFrameComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [MainFrameComponent],
-      providers: [provideRouter(routes)]
+      providers: [
+        provideRouter(routes), 
+        { provide: HttpClient, useValue: httpClientSpy }
+      ]
     })
     .compileComponents()
 
