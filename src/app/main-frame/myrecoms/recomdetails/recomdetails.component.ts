@@ -1,7 +1,7 @@
 import { Component } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { Recommendation } from '@src/app/model/Recommendation'
-import { User } from '@src/app/model/User'
+import { Language, User } from '@src/app/model/User'
 import { RecommendationService } from '@src/app/services/Recom/recommendation.service'
 import { RatingComponent } from '@src/app/components/rating/rating.component'
 import { StubLoginService } from '@src/app/services/UserService'
@@ -24,7 +24,7 @@ export class RecomdetailsComponent {
 
   volver = {action:'Volver', url:['app/myrecoms']}
   editMode = false
-  recom: Recommendation = new Recommendation(0,'','',0,0,'',[],new User(0, '', '', '', new Date(),'',[],[],[], 0 ),[],false, [])
+  recom: Recommendation = new Recommendation(0,'','',0,0,'',[],new User(0, '', '', '', new Date(),'', Language.SPANISH,[],[],[], 0 ),[],false, [])
   recomEdit: RecomEdit = new RecomEdit('','',false,1,{id:-1})
   recomid!: number
   userid!: number

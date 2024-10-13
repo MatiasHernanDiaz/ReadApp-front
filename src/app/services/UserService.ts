@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core"
 import { Book } from "@src/app/model/Book"
 import { AvgReader, Language, readerModes, User } from "@src/app/model/User"
-import { Service } from "./AbstractService"
+import { Service } from '@src/app/services/AbstractService/abstract.service'
 import { HttpClient } from "@angular/common/http"
 import { lastValueFrom } from "rxjs"
 

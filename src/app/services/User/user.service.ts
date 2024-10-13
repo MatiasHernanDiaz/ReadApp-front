@@ -1,15 +1,20 @@
 import { Injectable } from "@angular/core"
 import { Book } from "@src/app/model/Book"
-import { readerModes, User } from "@src/app/model/User"
+import { AvgReader, Language, readerModes, User } from "@src/app/model/User"
+import { Service } from '@src/app/services/AbstractService/abstract.service'
+import { HttpClient } from "@angular/common/http"
+import { lastValueFrom } from "rxjs"
 
 
 @Injectable({ providedIn: 'root' })
-export class StubLoginService {
+export class StubLoginService extends Service<User> {
     private localStorageKey = 'signedUser'
 
     // TODO: inicialización temporal hasta que se implemente el flujo de autenticación
     private signedUser?: User
-    constructor() {
+
+    constructor(protected override httpClient: HttpClient) {
+        super(httpClient)
         const storedUser = localStorage.getItem(this.localStorageKey)
         if (storedUser) {
             const userData = JSON.parse(storedUser)
@@ -20,11 +25,12 @@ export class StubLoginService {
                 userData.username,
                 new Date(userData.birthday),
                 userData.email,
+                userData.nativeLanguage,
                 userData.friends,
                 userData.readBooks,
                 userData.readToBooks,
                 userData.readTimeMinAvg,
-                userData.readMode,
+                new AvgReader(),
                 userData.searchCriteria,
                 userData.avatar
             )
@@ -45,6 +51,7 @@ export class StubLoginService {
             userData.username,
             userData.birthday,
             userData.email,
+            userData.nativeLanguage,
             userData.friends,
             userData.readBooks,
             userData.readToBooks,
@@ -72,6 +79,7 @@ export class StubLoginService {
             this.signedUser?.username ?? '',
             this.signedUser?.birthday ?? new Date(),
             this.signedUser?.email ?? '',
+            this.signedUser?.nativeLanguage ?? Language.SPANISH,
             this.signedUser?.friends?? [],
             this.signedUser?.readBooks??[],
             this.signedUser?.readToBooks??[],
@@ -82,24 +90,25 @@ export class StubLoginService {
         )
     }
 
-    updateSignedUserData( newUserData: User ) {
-        this.signedUser = new User(
-            newUserData?.id ?? 0,
-            newUserData?.lastName ?? '',
-            newUserData?.firstName ?? '',
-            newUserData?.username ?? '',
-            newUserData?.birthday ?? new Date(),
-            newUserData?.email ?? '',
-            newUserData?.friends??[],
-            newUserData?.readBooks??[],
-            newUserData?.readToBooks??[],
-            newUserData?.readTimeMinAvg ?? 0,
-            newUserData?.readMode,
-            newUserData?.searchCriteria,
-            newUserData?.avatar,
+    // updateSignedUserData( newUserData: User ) {
+    //     this.signedUser = new User(
+    //         newUserData?.id ?? 0,
+    //         newUserData?.lastName ?? '',
+    //         newUserData?.firstName ?? '',
+    //         newUserData?.username ?? '',
+    //         newUserData?.birthday ?? new Date(),
+    //         newUserData?.email ?? '',
+    //         newUserData?.nativeLanguage ?? Language.SPANISH,
+    //         newUserData?.friends??[],
+    //         newUserData?.readBooks??[],
+    //         newUserData?.readToBooks??[],
+    //         newUserData?.readTimeMinAvg ?? 0,
+    //         newUserData?.readMode,
+    //         newUserData?.searchCriteria,
+    //         newUserData?.avatar,
             
-        )
-    }
+    //     )
+    // }
 
     getUsers(): User[] {
         // Primero crea todos los usuarios
@@ -110,6 +119,7 @@ export class StubLoginService {
             data.username,
             data.birthday,
             data.email,
+            Language.SPANISH,
             [], // Amigos se asignarán después
             data.readBooks,
             data.readToBooks,
@@ -128,7 +138,7 @@ export class StubLoginService {
             if (userData?.friends) {
                 user.friends = userData.friends
                     .map(friendData => userMap.get(friendData!.username) || new User(
-                        0,'', '', '', new Date(), '', [],[],[], 0, readerModes.avgReader, [], ''
+                        0,'', '', '', new Date(), '', Language.SPANISH, [],[],[], 0, readerModes.avgReader, []
                     ))
             }
         })
@@ -146,6 +156,7 @@ export class StubLoginService {
             data.username,
             data.birthday,
             data.email,
+            Language.SPANISH,
             [], // Amigos se asignarán después
             data.readBooks,
             data.readToBooks,
@@ -166,6 +177,14 @@ export class StubLoginService {
         return new Promise( () => {
             console.log(`cargué al usuario: ${user.displayName}` )
         })
+    }
+
+    async editUser( user: User ) {
+        const url = 'http://localhost:9000/users/editprofile'
+        
+        const recoms$ = this.httpClient.put<User>(url, user.editProfileJSON())
+        const res = await lastValueFrom(recoms$)
+        return res
     }
 
     getAllBooks(): Book[] {
@@ -312,7 +331,6 @@ const dummyUserPayloads = [
         readerMode : readerModes.avgReader, 
         searchCriterial : [] , 
         avatar: 'assets/lisa.jpeg',
-       
     },
     {
         id:5,
@@ -492,6 +510,5 @@ const dummyUserPayloads = [
         readerMode : readerModes.anxiousReader, 
         searchCriterial : [], 
         avatar: 'assets/carl.jpg',
-       
     }      
 ] 
