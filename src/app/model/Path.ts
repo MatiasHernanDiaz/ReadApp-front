@@ -61,6 +61,19 @@ class PathUser extends Path {
 
     override entity: string = 'users'
 
+    getAllFriends(userid: number){
+        return this.pathBasic() + '/' + userid + '/friends'
+    }
+
+    getBookToRead(userid: number, toread: boolean){
+        if(toread){
+            return this.pathBasic() + '/' + userid + '/bookstoread?toread=true'
+        }
+        else{
+            return this.pathBasic() + '/' + userid + '/bookstoread?toread=false'
+        }
+    }
+
 }
 
 

@@ -8,10 +8,53 @@ export class Book {
     date: Date = new Date(0,0,0)
     lenguages: string = ""
     sales: number = 0
-    displayName? = 'libro'
+    id: number = -1
 
-    constructor() {
+    constructor(
+        pages: number,
+        title: string,
+        imageURL: string,
+        autor: string,
+        words: number,
+        date: Date,
+        lenguages: string,
+        sales: number,
+        id: number
+    ) {
+        this.pages = pages
+        this.title = title
+        this.imageURL = imageURL
+        this.autor = autor
+        this.words = words
+        this.date = date
+        this.lenguages = lenguages
+        this.sales = sales
+        this.id = id
     }
 
+    static fromBookJSON(bookToJSON: BookToJSON) : Book{
+        return new Book(
+        bookToJSON.pages,
+        bookToJSON.title,
+        bookToJSON.imageURL,
+        bookToJSON.autor,
+        bookToJSON.words,
+        bookToJSON.date,
+        bookToJSON.lenguages,
+        bookToJSON.sales,
+        bookToJSON.id)
+    }
     
+}
+
+export type  BookToJSON = {
+    pages: number
+    title: string
+    imageURL: string
+    autor: string
+    words: number
+    date: Date
+    lenguages: string
+    sales: number
+    id: number
 }

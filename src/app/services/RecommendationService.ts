@@ -5,9 +5,6 @@ import { pathRecom } from '@src/app/model/Path'
 import { Service } from './AbstractService1'
 
 
-
-
-
 @Injectable({ providedIn: 'root' })
 export class RecommendationService extends Service<Recommendation> {
 

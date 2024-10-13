@@ -1,9 +1,9 @@
 <article class="rating-card ">
     <header class="header-card">
         <div class="header-wapper">
-            <img class="avatar" [src]="rating.creator.avatar" alt="Avatar del usuario">
+            <img class="avatar" [src]="user.avatar" alt="Avatar del usuario">
             <div class="name-date">
-                <h3>{{rating.creator.firstName}} {{rating.creator.lastName}}</h3>
+                <h3>{{user.firstName}} {{user.lastName}}</h3>
                 <p>{{dateOfCreation | date:'dd-MMM-yyyy'}}</p>
             </div>
         </div>

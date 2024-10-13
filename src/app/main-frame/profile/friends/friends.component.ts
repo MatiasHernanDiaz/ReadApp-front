@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common'
 import { User } from '@src/app/model/User'
 import { FriendComponent } from "@src/app/components/friend/friend.component"
 import { AddButtonComponent } from "@src/app/components/add-button/add-button.component"
-import { StubLoginService } from '@src/app/services/UserService'
+import { StubLoginService, UserService } from '@src/app/services/User/user.service'
 
 @Component({
   selector: 'app-friends',
@@ -14,22 +14,17 @@ import { StubLoginService } from '@src/app/services/UserService'
 })
 export class FriendsComponent implements OnInit {
   users: User[] = []
-  friend: User[] = []
+  friends: User[] = []
 
-  constructor(public userService: StubLoginService) {}
+  constructor(public userService: UserService, public userService1 : StubLoginService) {}
 
-  ngOnInit(): void {
-    const currentUser = this.userService.getSignedUser()
-  
-      if (currentUser.friends) {
-        // Crear un conjunto de usernames de amigos para búsqueda rápida
-        const friendUsernames = new Set(currentUser.friends.map(friend => friend.username))
-        
-        // Filtrar usuarios para encontrar amigos
-        this.friend = this.userService.getUsers().filter(user => {
-          const isFriend = friendUsernames.has(user.username)
-          return isFriend 
-        })
-      }
+  async ngOnInit() {
+    //TODO: ACA HARDCODE EL USUARIO PORQUE NO TENGO UN METODO QUE ME DIGA QUIEN CARAJO ESTA LOGEADO
+    //SERIA DEL SERVICE DE LOGIN
+    //OJOTA, NO MANEJAMOS NINGUN ERROR
+    await this.userService.getAllFriends(4).then((res) =>{
+      this.friends = res
+    })
+
   }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { Book } from '@src/app/model/Book'
+//import { Book } from '@src/app/model/Book'
 
 
 @Injectable({
@@ -7,20 +7,22 @@ import { Book } from '@src/app/model/Book'
 })
 export class BookService {
   seach = 'libro'
-  constructor() { }
+  
+  
+
 
   
-  searchBook(searchWord: string): Promise<Book[]>{
-    const books: Array<Book> = [new Book()]
-    books[0].title = searchWord
+  // searchBook(searchWord: string): Promise<Book[]>{
+  //   const books: Array<Book> = [new Book()]
+  //   books[0].title = searchWord
 
-        return new Promise( () => books )
-  }
+  //       return new Promise( () => books )
+  // }
 
-  loadBook(): Promise<void>{
-    return new Promise( () => {
-      console.log('estoy cargando un libro')
-  })
-  }
+  // loadBook(): Promise<void>{
+  //   return new Promise( () => {
+  //     console.log('estoy cargando un libro')
+  // })
+  // }
 
 }

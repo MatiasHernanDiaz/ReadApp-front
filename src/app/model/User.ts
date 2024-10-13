@@ -79,7 +79,26 @@ export class User {
             avatar: this.avatar
         }
     }
-  }
+
+    static fromUserJSON(userJSON: UserToJSON): User {
+        return new User(
+            userJSON.id,
+            userJSON.lastName,
+            userJSON.firstName,
+            userJSON.username,
+            userJSON.birthday,
+            userJSON.email,
+            userJSON.nativeLanguage,
+            userJSON.friends,
+            userJSON.readBooks,
+            userJSON.readToBooks,
+            userJSON.readTimeMinAvg,
+            userJSON.readMode,
+            userJSON.searchCriteria,
+            userJSON.avatar
+        )
+    }
+}
 
 
 export interface ReadMode {
@@ -172,7 +191,7 @@ export class Calculator implements SearchCriteria {
     isAdvisable( recom: Recommendation ) { return recom && true }
     toCustomString() { return "Calculador" }
 }
- 
+
 
 export enum Language {
     SPANISH = "SPANISH",
@@ -187,4 +206,23 @@ export enum Language {
     FRENCH = "FRENCH",
     BENGALI = "BENGALI",
     JAPANESE = "JAPANESE"
+}
+
+
+
+export type UserToJSON = {
+    id: number
+    lastName: string
+    firstName: string
+    username: string
+    birthday: Date
+    email: string
+    nativeLanguage: Language
+    friends: User[]
+    readBooks: Book[]
+    readToBooks: Book[]
+    readTimeMinAvg: number
+    readMode: ReadMode
+    searchCriteria: SearchCriteria[]
+    avatar: string
 }

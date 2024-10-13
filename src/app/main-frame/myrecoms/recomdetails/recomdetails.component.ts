@@ -55,7 +55,7 @@ export class RecomdetailsComponent {
     await this.recommendationService.getRecomm(this.recomid).then((res)=>{
       this.recom = res
       this.recomEdit = res
-      console.info('Que id me trae?? ->', this.recom.id)
+      console.info('Recom completa ->', this.recom)
       this.isLoading()
     })
   }
