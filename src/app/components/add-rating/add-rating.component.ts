@@ -16,7 +16,7 @@ export class AddRatingComponent {
   //@Input() error = {timestamp: '', status: 0, error: '', message: '', path: ''}
   //@Input() msj = {title: '', btnMsj:''}
   @Input() userId: number = -1
-  @Output() ratingRanking: RatingWithId = {creatorId:-1,description:'',nRating:0}
+  @Output() ratingRanking: RatingWithId = {creatorId:-1,description:'',rating:0}
 
   text = ''
   stars: Array<{id:number, name:string}> = [
@@ -56,7 +56,7 @@ export class AddRatingComponent {
         this.stars[i].name = 'bootstrapStar'
       }
     }
-    this.ratingRanking.nRating = selectedStar
+    this.ratingRanking.rating = selectedStar
     console.log(this.stars)
   }
 

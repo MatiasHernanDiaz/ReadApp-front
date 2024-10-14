@@ -25,12 +25,12 @@ export type JSONtoRating = {
 
 export class RatingWithId {
     creatorId: number
-    nRating: number
+    rating: number
     description: string
-    constructor(creatorId:number, nRating: number, description: string)
+    constructor(creatorId:number, rating: number, description: string)
     {
         this.creatorId = creatorId
         this.description = description
-        this.nRating = nRating
+        this.rating = rating
     }
 }
