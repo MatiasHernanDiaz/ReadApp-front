@@ -1,0 +1,17 @@
+<ng-icon name="bootstrapPlusCircleFill" class="add-icon" (click)="toggleSelector()"></ng-icon>
+@if( displaySelector ) {
+    <section class="dialog-backdrop">
+        <div class="dialog">
+            <h1>Valora esta recomendación</h1>
+            <textarea [(ngModel)]="text" rows="10" cols="40" class="textArea"></textarea>
+            <ul class="stars">
+                @for(star of stars; track star){
+                    <ng-icon [name]="star.name" (click)="starRanking(star.id)" class="starIcon"></ng-icon>
+                }
+            </ul>
+            
+            <button class="button-acept" (click)="save()">Valorar</button>
+            <button class="button-cancel" (click)="closeDialog()">Cerrar</button>
+        </div>
+    </section>
+}

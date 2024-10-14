@@ -42,8 +42,6 @@ export class MyrecomsComponent {
   }
 
   async ngOnInit() {
-    //this.recommendationService.items = await this.recommendationService.fetchRecoms(this.myRecomsFlag ? this.loginService.getSignedUser().id : undefined)
-
     this.goToFind('')
   }
 

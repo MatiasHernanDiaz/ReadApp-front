@@ -22,3 +22,15 @@ export type JSONtoRating = {
     nRating: number
     description: string
 }
+
+export class RatingWithId {
+    creatorId: number
+    nRating: number
+    description: string
+    constructor(creatorId:number, nRating: number, description: string)
+    {
+        this.creatorId = creatorId
+        this.description = description
+        this.nRating = nRating
+    }
+}
