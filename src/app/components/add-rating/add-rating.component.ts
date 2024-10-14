@@ -22,7 +22,7 @@ export class AddRatingComponent {
   ratingRanking: RatingWithId = {creatorId:-1,description:'',rating:0}
   @Output() refresh = new EventEmitter<void>()
 
-  constructor(private recomService: RecommendationService, private loginService: LoginService){}
+  constructor(private recomService: RecommendationService, public loginService: LoginService){}
 
   text = ''
   stars: Array<{id:number, name:string}> = [

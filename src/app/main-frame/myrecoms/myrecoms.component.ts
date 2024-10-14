@@ -30,7 +30,7 @@ export class MyrecomsComponent {
   loading = true
 
 
-  constructor(private recommendationService: RecommendationService, private router: ActivatedRoute, private loginService: LoginService, private route: Router) {
+  constructor(private recommendationService: RecommendationService, private router: ActivatedRoute, public loginService: LoginService, private route: Router) {
     this.recommendationService.items.subscribe( (recomms) =>{
       this.recommendations = recomms
       this.isLoading()
