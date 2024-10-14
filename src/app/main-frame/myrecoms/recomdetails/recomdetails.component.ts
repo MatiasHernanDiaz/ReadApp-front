@@ -12,12 +12,14 @@ import { BookService } from '@src/app/services/Book/book.service'
 import { SpinnerComponent } from '@src/app/components/spinner/spinner.component'
 import { RecomEdit } from '@src/app/model/RecomEdit'
 import { MsjComponent } from '@src/app/components/msj/msj.component'
+import { AddRatingComponent } from "../../../components/add-rating/add-rating.component"
+
 
 
 @Component({
   selector: 'app-recomdetails',
   standalone: true,
-  imports: [RatingComponent, CommonModule, BookComponent, BtnNavigateComponent, SpinnerComponent, MsjComponent],
+  imports: [RatingComponent, CommonModule, BookComponent, BtnNavigateComponent, SpinnerComponent, MsjComponent, AddRatingComponent],
   templateUrl: './recomdetails.component.html',
   styleUrl: './recomdetails.component.css'
 })
@@ -45,7 +47,7 @@ export class RecomdetailsComponent {
       this.volver.url = ['app/'+u[0].path]
     })
 
-    this.userid = this.loginService.getSignedUser().id
+    this.userid = this.loginService.getSignedUser().id  //REEMPLAZAR POR EL SERVICIO NUEVO
 
     console.log('hay error ',this.isError)
   }
@@ -110,9 +112,6 @@ export class RecomdetailsComponent {
   }
 
   setClose(evClose: boolean){
-
-    console.log('antes del evento close', this.close, ' y error', this.isError )
     this.close = evClose
-    console.log('antes del evento close', this.close, ' y error', this.isError )
   }
 }

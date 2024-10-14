@@ -40,7 +40,8 @@
     
         <br>
         <div class="recom-description">
-            <hr>
+            <hr><br>
+            <h3>Valoraciones</h3>
         </div>
         
         
@@ -48,6 +49,7 @@
             @for (iRating of recom.ratings; track iRating) {
                 <app-rating [rating]="iRating" ></app-rating>
             }
+            <app-add-rating [userId]="userid"></app-add-rating>
         </section>
     
         
