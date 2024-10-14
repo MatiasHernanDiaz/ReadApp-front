@@ -4,8 +4,6 @@ import { Book } from '@src/app/model/Book'
 import { SearchBarComponent } from '@src/app/components/search-bar/search-bar.component'
 import { BookService } from '@src/app/services/Book/book.service'
 import { CommonModule } from '@angular/common'
-import { ActivatedRoute } from '@angular/router'
-import { StubLoginService } from '@src/app/services/UserService'
 import { SpinnerComponent } from '@src/app/components/spinner/spinner.component'
 
 
@@ -19,7 +17,7 @@ import { SpinnerComponent } from '@src/app/components/spinner/spinner.component'
 export class BookContainerComponent {
 
   books: Array<Book> = []
-    ;
+    
 
   async ngOnInit() {
     this.BookService.items = await this.BookService.getAllBooks()
