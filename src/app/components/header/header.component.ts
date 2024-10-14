@@ -13,17 +13,17 @@ import { LoginService } from '@src/app/services/Login/login.service'
 })
 export class HeaderComponent {
 
-  user: User = new User(0, '', '', '', new Date(), '',Language.SPANISH,[],[],[], 0)
+  user: User = new User(-1, '', '', '', new Date(), '',Language.SPANISH,[],[],[], 0)
   click: boolean = false
   dropdown: string = "hide"
   
   constructor( public loginService: LoginService, private router: Router ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.user = this.loginService.getSignedUser()!
-console.log(this.user.displayName)
-    if( !this.user ) {
-      this.router.navigate(['login'])
+
+    if( !this.user || this.user.id < 0 ) {
+      this.user = User.fromUserJSON((await this.loginService.refreshSignedUser()).user)
     }
   }
 

@@ -66,49 +66,15 @@
     <hr/>
     <h3>Forma de lectura</h3>
     <div class="read-mode-items-container items-container">
-        <label>
+        <label *ngFor="let mode of readModes | keyvalue">
             <input
                 type="radio"
                 name="read-mode"
-                [checked]="readModeChecked === 'Promedio'"
                 [disabled]="!editMode"
-                [(ngModel)]="user.readMode"
-                [value]="readModes.avgReader"
+                [checked]="mode.value.toCustomString() === user.readMode.toCustomString()"
+                (change)="user.readMode = mode.value"
             />
-            <span>Lector promedio</span>
-        </label>
-        <label>
-            <input
-                type="radio"
-                name="read-mode"
-                [checked]="readModeChecked === 'Ansioso'"
-                [disabled]="!editMode"
-                [(ngModel)]="user.readMode"
-                [value]="readModes.anxiousReader"
-            />
-            <span>Ansioso</span>
-        </label>
-        <label>
-            <input
-                type="radio"
-                name="read-mode"
-                [checked]="readModeChecked === 'Fanático'"
-                [disabled]="!editMode"
-                [(ngModel)]="user.readMode"
-                [value]="readModes.fanaticReader"
-            />
-            <span>Fanático</span>
-        </label>
-        <label>
-            <input
-                type="radio"
-                name="read-mode"
-                [checked]="readModeChecked === 'Recurrente'"
-                [disabled]="!editMode"
-                [(ngModel)]="user.readMode"
-                [value]="readModes.recurrentReader"
-            />
-            <span>Recurrente</span>
+            <span>{{mode.value.toCustomString()}}</span>
         </label>
     </div>
     <hr/>
@@ -121,7 +87,7 @@
             [checked]="searchCriteria[ criteria.key ].checked"
             (change)="updateSearchCriteria( criteria.key )"
             />
-            <span>{{criteria.value.criteria.toCustomString()}}</span>
+            <span>{{criteria.value.criteria}}</span>
             @if( criteria.value.requireNumberParam ) {
                 <label class="max-limit">
                     <span>Límite máximo</span>

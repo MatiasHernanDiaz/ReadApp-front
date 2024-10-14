@@ -61,7 +61,7 @@ export class LoginService {
   async logout() {
     const url = pathLogin.logout()
 
-    const res$ = this.httpClient.get<void>(url)
+    const res$ = this.httpClient.get<loginRes>(url)
     const res = await lastValueFrom(res$)
     
     this.signedUser = null
