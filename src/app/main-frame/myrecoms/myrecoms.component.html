@@ -7,6 +7,9 @@
             <app-recom [recommendation]="recommendation" (onDeleteRecom)="onDeleteRecom($event)"></app-recom>
           }
         }
+        @if(myRecomsFlag){
+          <ng-icon name="bootstrapPlusCircleFill" class="add-icon" (click)="addRecom()"></ng-icon>
+        }
       </div>
   <app-remove-recom *ngIf="dialogOpen" [recommendationId]="recommendationId" (click)="closeDialog()"></app-remove-recom>
 }

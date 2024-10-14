@@ -17,20 +17,28 @@ export class Rating{
     }
 }
 
-export type JSONtoRating = {
-    creator: User
-    nRating: number
+export type RatingJSON = {
+    creatorId: number
+    rating: number
     description: string
 }
 
 export class RatingWithId {
     creatorId: number
-    nRating: number
+    rating: number
     description: string
-    constructor(creatorId:number, nRating: number, description: string)
+    constructor(creatorId:number, rating: number, description: string)
     {
         this.creatorId = creatorId
         this.description = description
-        this.nRating = nRating
+        this.rating = rating
+    }
+    
+    static fromRatingJSON(ratingJSON: RatingJSON): RatingWithId{
+        return new RatingWithId(
+            ratingJSON.creatorId,
+            ratingJSON.rating,
+            ratingJSON.description
+        )
     }
 }

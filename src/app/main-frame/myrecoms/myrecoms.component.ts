@@ -5,15 +5,18 @@ import { RemoveRecomComponent } from '@src/app/components/remove-recom/remove-re
 import { CommonModule } from '@angular/common'
 import { RecommendationService } from '@src/app/services/RecommendationService'
 import { Recommendation } from '@src/app/model/Recommendation'
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router'
 import { SpinnerComponent } from '@src/app/components/spinner/spinner.component'
 import { LoginService } from '@src/app/services/Login/login.service'
+import { bootstrapPlusCircleFill } from '@ng-icons/bootstrap-icons'
+import { NgIconComponent, provideIcons } from '@ng-icons/core'
 
 
 @Component({
   selector: 'app-myrecoms',
   standalone: true,
-  imports: [SearchBarComponent, RecomComponent,RemoveRecomComponent,CommonModule, SpinnerComponent],
+  imports: [SearchBarComponent, RecomComponent,RemoveRecomComponent,CommonModule, SpinnerComponent, NgIconComponent],
+  viewProviders: [provideIcons({ bootstrapPlusCircleFill })],
   templateUrl: './myrecoms.component.html',
   styleUrl: './myrecoms.component.css'
 })
@@ -27,7 +30,7 @@ export class MyrecomsComponent {
   loading = true
 
 
-  constructor(private recommendationService: RecommendationService, private router: ActivatedRoute, private loginService: LoginService) {
+  constructor(private recommendationService: RecommendationService, private router: ActivatedRoute, public loginService: LoginService, private route: Router) {
     this.recommendationService.items.subscribe( (recomms) =>{
       this.recommendations = recomms
       this.isLoading()
@@ -64,4 +67,7 @@ export class MyrecomsComponent {
       this.myRecomsFlag ? this.loginService.getSignedUser()!.id : undefined, text)
   }
 
+  addRecom(){
+    this.route.navigate(['app/myrecoms/-1'])
+  }
 }
