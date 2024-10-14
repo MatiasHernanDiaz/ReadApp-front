@@ -38,17 +38,20 @@ describe('BookComponent', () => {
 
 
   it('normal size',() => {
-    expect(component.size).toBe(180)
+    expect(component.width).toBe(180)
+    expect(component.height).toBe(270)
   })
 
   it('exit size', () => {
     component.enter()
     component.exit()
-    expect(component.size).toBe(180)
+    expect(component.width).toBe(180)
+    expect(component.height).toBe(270)
   })
 
   it('enter size', () => {
     component.enter()
-    expect(component.size).toBe(100)
+    expect(component.width).toBe(100)
+    expect(component.height).toBe(140)
   })
 })
