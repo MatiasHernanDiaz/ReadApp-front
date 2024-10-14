@@ -3,17 +3,17 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { LoginScreen } from './login.component'
 import { Router } from '@angular/router'
 import { CommonModule } from '@angular/common'
-import { StubLoginService } from '@src/app/services/UserService'
+import { LoginService } from '../services/Login/login.service'
 
 describe('LoginScreen', () => {
   let component: LoginScreen
   let fixture: ComponentFixture<LoginScreen>
   let mockRouter: jasmine.SpyObj<Router>
-  let mockLoginService: jasmine.SpyObj<StubLoginService>
+  let mockLoginService: jasmine.SpyObj<LoginService>
 
   beforeEach(() => {
     mockRouter = jasmine.createSpyObj('Router', ['navigateByUrl'])
-    mockLoginService = jasmine.createSpyObj('StubLoginService', ['login'])
+    mockLoginService = jasmine.createSpyObj('LoginService', ['login'])
 
     TestBed.configureTestingModule({
       imports: [
@@ -23,7 +23,7 @@ describe('LoginScreen', () => {
       ],
       providers: [
         { provide: Router, useValue: mockRouter },
-        { provide: StubLoginService, useValue: mockLoginService }
+        { provide: LoginService, useValue: mockLoginService }
       ]
     }).compileComponents()
 

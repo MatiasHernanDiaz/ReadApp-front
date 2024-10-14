@@ -5,8 +5,9 @@ import {
   readerModes, SearchCriteria, User 
 } from '@src/app/model/User'
 import { CommonModule } from '@angular/common'
-import { StubLoginService } from '@src/app/services/UserService'
 import { FieldValidationComponent } from "../../../components/field-validation/field-validation.component"
+import { UserService } from '@src/app/services/User/user.service'
+import { LoginService } from '@src/app/services/Login/login.service'
 
 
 @Component({
@@ -30,11 +31,11 @@ export class InfoComponent {
   editMode = false
   buttonState = "Guardar cambios"
 
-  constructor( public loginService: StubLoginService ) {}
+  constructor( public loginService: LoginService, private userService: UserService ) {}
 
   ngOnInit() {
     this.user = this.loginService.getSignedUser()!
-    console.log(this.user)
+   
     this.readModeChecked = this.user.readMode.toCustomString()
     this.resetSearchCriteria()
   }
@@ -104,7 +105,7 @@ export class InfoComponent {
 
   async saveUserInfo() {
     this.buttonState = "Cargando..."
-    await this.loginService.editUser( this.user )
+    await this.userService.editUser( this.user )
     this.editMode = false
     this.buttonState = "Guardar cambios"
   }

@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing'
 
-import { RecommendationService } from './recommendation.service'
-import { httpClientSpy } from '../serviceStubs'
+import { LoginService } from './login.service'
 import { HttpClient } from '@angular/common/http'
+import { httpClientSpy } from '../serviceStubs'
 
-describe('RecommendationService', () => {
-  let service: RecommendationService
+describe('LoginService', () => {
+  let service: LoginService
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -13,7 +13,7 @@ describe('RecommendationService', () => {
         { provide: HttpClient, useValue: httpClientSpy }
       ]
     })
-    service = TestBed.inject(RecommendationService)
+    service = TestBed.inject(LoginService)
   })
 
   it('should be created', () => {

@@ -11,7 +11,7 @@ export class RecomEdit{
         id: number,
         creator: {id:number}
     ){
-        this.creator = {id}
+        this.creator = creator
         this.title = title
         this.description = description
         this.publicIs = publicIs

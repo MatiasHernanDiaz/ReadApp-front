@@ -1,7 +1,7 @@
 import { Component } from '@angular/core'
-import { RouterLink, RouterLinkActive } from '@angular/router'
+import { Router, RouterLink, RouterLinkActive } from '@angular/router'
 import { Language, User } from '@src/app/model/User'
-import { StubLoginService } from '@src/app/services/UserService'
+import { LoginService } from '@src/app/services/Login/login.service'
 
 
 @Component({
@@ -17,16 +17,24 @@ export class HeaderComponent {
   click: boolean = false
   dropdown: string = "hide"
   
-  constructor( public loginService: StubLoginService ) {}
+  constructor( public loginService: LoginService, private router: Router ) {}
 
   ngOnInit() {
     this.user = this.loginService.getSignedUser()!
+
+    if( !this.user ) {
+      this.router.navigate(['login'])
+    }
   }
 
 
   handleClickMenu(){
     this.click = !this.click
     this.dropdown = this.click ? "dropdown-menu" : "hide"
+  }
+
+  async logout() {
+    await this.loginService.logout()
   }
 
 }
