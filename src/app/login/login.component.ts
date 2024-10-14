@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
 import { ReactiveFormsModule } from '@angular/forms'
 import { NgIf, CommonModule } from '@angular/common'
-import { StubLoginService } from '@src/app/services/UserService'
+import { LoginService } from '../services/Login/login.service'
+
 
 @Component({
   selector: 'login-screen',
@@ -18,7 +19,7 @@ export class LoginScreen implements OnInit {
   isSubmitted = false
   loginFailed = false
 
-  constructor(private fb: FormBuilder, private router: Router, private loginService: StubLoginService) {}
+  constructor(private fb: FormBuilder, private router: Router, private loginService: LoginService) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -27,7 +28,7 @@ export class LoginScreen implements OnInit {
     })
   }
 
-  login() {
+  async login() {
     this.isSubmitted = true
     this.loginFailed = false
 
@@ -40,20 +41,21 @@ export class LoginScreen implements OnInit {
     const loginData = this.loginForm.value
 
     if (this.loginForm.valid) {
-      const result = this.loginService.login({
+      const result = await this.loginService.login({
         email: loginData.user,
         password: loginData.password
       })
+      console.log(result)
 
-      if (result.ok) {
+      if (result.login) {
         console.log('Login exitoso')
         this.loginError = ''
         this.loginFailed = false
 
-        localStorage.setItem('loggedInUser', loginData.user)
         this.router.navigateByUrl('/app/recoms')
 
       } else {
+        
         this.loginError = 'Email o contraseña incorrectos.'
         this.loginFailed = true
         console.log('Login fallido: Credenciales incorrectas')

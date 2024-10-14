@@ -64,7 +64,6 @@ export class User {
     }
 
     editProfileJSON() {
-        console.log("readmode", this.readMode)
         return {
             id: this.id,
             firstName: this.firstName,

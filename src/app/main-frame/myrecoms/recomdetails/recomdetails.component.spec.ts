@@ -4,7 +4,8 @@ import { RecomdetailsComponent } from './recomdetails.component'
 import { routes } from '@src/app/app.routes'
 import { provideRouter } from '@angular/router'
 import { HttpClient } from '@angular/common/http'
-import { httpClientSpy } from '@src/app/services/serviceStubs'
+import { httpClientSpy, loginServiceStub } from '@src/app/services/serviceStubs'
+import { LoginService } from '@src/app/services/Login/login.service'
 
 describe('RecomdetailsComponent', () => {
   let component: RecomdetailsComponent
@@ -15,7 +16,8 @@ describe('RecomdetailsComponent', () => {
       imports: [RecomdetailsComponent],   
       providers: [
         provideRouter(routes),
-        { provide: HttpClient, useValue: httpClientSpy }
+        { provide: HttpClient, useValue: httpClientSpy },
+        { provide: LoginService, useValue: loginServiceStub }
       ]
     })
     .compileComponents()

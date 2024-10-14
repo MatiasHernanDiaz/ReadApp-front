@@ -3,7 +3,6 @@ import { Book } from '@src/app/model/Book'
 import { Language, User } from '@src/app/model/User'  
 import { BookComponent } from '@src/app/components/book/book.component'
 import { CommonModule } from '@angular/common'
-//import { StubLoginService } from '@src/app/services/UserService'
 import { UserService } from '@src/app/services/User/user.service'
 
 

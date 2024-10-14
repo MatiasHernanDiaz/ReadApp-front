@@ -4,13 +4,13 @@ import { Recommendation } from '@src/app/model/Recommendation'
 import { Language, User } from '@src/app/model/User'
 import { RecommendationService } from '@src/app/services/Recom/recommendation.service'
 import { RatingComponent } from '@src/app/components/rating/rating.component'
-import { StubLoginService } from '@src/app/services/UserService'
 import { CommonModule } from '@angular/common'
 import { BookComponent } from '@src/app/components/book/book.component'
 import { BtnNavigateComponent } from "../../../components/btn-navigate/btn-navigate.component"
 import { BookService } from '@src/app/services/Book/book.service'
 import { SpinnerComponent } from '@src/app/components/spinner/spinner.component'
 import { RecomEdit } from '@src/app/model/RecomEdit'
+import { LoginService } from '@src/app/services/Login/login.service'
 
 
 @Component({
@@ -31,7 +31,7 @@ export class RecomdetailsComponent {
   loading = true
   
 
-  constructor(private recommendationService: RecommendationService, private router: ActivatedRoute, public loginService: StubLoginService, public bookService: BookService){ 
+  constructor(private recommendationService: RecommendationService, private router: ActivatedRoute, public loginService: LoginService, public bookService: BookService){ 
     this.router.params.subscribe((params)=>{
       this.recomid = params['id']
     })
@@ -40,7 +40,7 @@ export class RecomdetailsComponent {
       this.volver.url = ['app/'+u[0].path]
     })
 
-    this.userid = this.loginService.getSignedUser().id
+    this.userid = this.loginService.getSignedUser()!.id
 
   }
   

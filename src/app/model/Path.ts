@@ -74,6 +74,20 @@ class PathUser extends Path {
         }
     }
 
+    getEditProfile() {
+        return `${ this.pathBasic() }/editprofile`
+    }
+
+}
+
+//==============================================================================
+class PathLogin extends Path {
+
+    override entity: string = 'auth'
+
+    getSignedUser() { return `${ this.pathBasic() }/login` }
+    login() { return `${ this.pathBasic() }/login` }
+    logout() { return `${ this.pathBasic() }/logout`}
 }
 
 
@@ -82,4 +96,5 @@ class PathUser extends Path {
 export const pathRecom: PathRecom = new PathRecom()
 export const pathBook: PathBook = new PathBook()
 export const pathUser: PathUser = new PathUser()
+export const pathLogin: PathLogin = new PathLogin()
 

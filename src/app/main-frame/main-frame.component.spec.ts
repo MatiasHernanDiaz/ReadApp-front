@@ -4,7 +4,8 @@ import { MainFrameComponent } from './main-frame.component'
 import { provideRouter } from '@angular/router'
 import { routes } from '../app.routes'
 import { HttpClient } from '@angular/common/http'
-import { httpClientSpy } from '../services/serviceStubs'
+import { httpClientSpy, loginServiceStub } from '../services/serviceStubs'
+import { LoginService } from '../services/Login/login.service'
 
 
 describe('MainFrameComponent', () => {
@@ -16,7 +17,8 @@ describe('MainFrameComponent', () => {
       imports: [MainFrameComponent],
       providers: [
         provideRouter(routes), 
-        { provide: HttpClient, useValue: httpClientSpy }
+        { provide: HttpClient, useValue: httpClientSpy },
+        { provide: LoginService, useValue: loginServiceStub }
       ]
     })
     .compileComponents()
