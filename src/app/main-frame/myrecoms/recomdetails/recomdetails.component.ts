@@ -13,13 +13,16 @@ import { RecomEdit } from '@src/app/model/RecomEdit'
 import { MsjComponent } from '@src/app/components/msj/msj.component'
 import { AddRatingComponent } from "../../../components/add-rating/add-rating.component"
 import { LoginService } from '@src/app/services/Login/login.service'
+import { bootstrapPlusCircleFill } from '@ng-icons/bootstrap-icons'
+import { NgIconComponent, provideIcons } from '@ng-icons/core'
 
 
 
 @Component({
   selector: 'app-recomdetails',
   standalone: true,
-  imports: [RatingComponent, CommonModule, BookComponent, BtnNavigateComponent, SpinnerComponent, MsjComponent, AddRatingComponent],
+  imports: [RatingComponent, CommonModule, BookComponent, BtnNavigateComponent, SpinnerComponent, MsjComponent, AddRatingComponent, NgIconComponent],
+  viewProviders: [provideIcons({ bootstrapPlusCircleFill })],
   templateUrl: './recomdetails.component.html',
   styleUrl: './recomdetails.component.css'
 })
@@ -35,24 +38,23 @@ export class RecomdetailsComponent {
   error = {timestamp: '', status: 0, error: '', message: '', path: ''}
   message = {title: 'No puedes editar esta recomendacion', btnMsj:'Crrrar'}
   close = true
+  
 
   
 
   constructor(private recommendationService: RecommendationService, private router: ActivatedRoute, public loginService: LoginService, public bookService: BookService){ 
     this.router.params.subscribe((params)=>{
       this.recomid = params['id']
+      
     })
 
     this.router.url.subscribe((u) => {
       this.volver.url = ['app/'+u[0].path]
     })
-
-
     this.userid = this.loginService.getSignedUser()!.id
-
-
-    console.log('hay error ',this.isError)
   }
+
+
   
   isLoading(){
     if(this.recom.title != ''){
@@ -62,7 +64,7 @@ export class RecomdetailsComponent {
   
   
   async ngOnInit(){
-    await this.recommendationService.getRecomm(this.recomid).then((res)=>{
+      this.recommendationService.getRecomm(this.recomid).then((res)=>{
       this.recom = res
       this.recomEdit = res
       console.info('Recom completa ->', this.recom)
@@ -82,7 +84,7 @@ export class RecomdetailsComponent {
   }
 
   async saveEdit() {
-    await this.recommendationService.updateRecomEdit(this.userid, this.recomEdit ).then((res) =>{
+      this.recommendationService.updateRecomEdit(this.userid, this.recomEdit ).then((res) =>{
       this.recomEdit = res
       this.recomEditToRecom()
       this.editMode = false
@@ -113,5 +115,20 @@ export class RecomdetailsComponent {
 
   setClose(evClose: boolean){
     this.close = evClose
+  }
+
+
+  async reload(){
+      this.editMode = false
+      this.recommendationService.getRecomm(this.recomid).then((res)=>{
+      this.recom = res
+      this.recomEdit = res
+      console.info('Recom completa ->', this.recom)
+      this.isLoading()
+    })
+  }
+
+  goToAddBook(){
+    console.log('viajo a la pag de libros, que deberia ser hija de esta para mi')
   }
 }

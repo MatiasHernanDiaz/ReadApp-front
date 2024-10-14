@@ -1,3 +1,5 @@
+
+
 abstract class Path{
 
     _pathBasic = 'http://localhost:9000/'
@@ -8,10 +10,11 @@ abstract class Path{
         return this._pathBasic + this.entity
     }
 
-    pathEntityCRUD(userId: number, entityId: number, action: string): string{
+    pathEntityCRUD(userId: number, entityId: number, action: string, entityName?: string): string{
         let path: string = this.pathBasic()
         switch(action){
-        case 'create': path += '/create?userid=' + userId + '&entityid=' + entityId
+        //case 'create': path += '/create?userid=' + userId + '&entityid=' + entityId
+        case 'create': path += '/create/' + entityName + '?userid=' + userId + '&entityid=' + entityId
         break 
         case 'read': path += '/read?userid=' + userId + '&entityid=' + entityId
         break
@@ -45,6 +48,14 @@ class PathRecom extends Path {
         else{
         return this.pathBasic()
         }
+    }
+
+    ratingCRUD(userid: number, recomid: number ,action:string): string{
+        let path: string = this.pathBasic()
+        switch(action){
+            case('create'): path += '/create/rating?recomid=' + recomid
+        }
+        return path
     }
 
 }

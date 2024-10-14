@@ -1,8 +1,10 @@
-import { Component, Input, Output  } from '@angular/core'
+import { Component, EventEmitter, Input, Output  } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { bootstrapPlusCircleFill, bootstrapStar, bootstrapStarFill } from '@ng-icons/bootstrap-icons'
 import { provideIcons, NgIconComponent } from '@ng-icons/core'
 import { RatingWithId } from '@src/app/model/rating'
+import { LoginService } from '@src/app/services/Login/login.service'
+import { RecommendationService } from '@src/app/services/Recom/recommendation.service'
 
 @Component({
   selector: 'app-add-rating',
@@ -16,7 +18,11 @@ export class AddRatingComponent {
   //@Input() error = {timestamp: '', status: 0, error: '', message: '', path: ''}
   //@Input() msj = {title: '', btnMsj:''}
   @Input() userId: number = -1
-  @Output() ratingRanking: RatingWithId = {creatorId:-1,description:'',rating:0}
+  @Input() recomid: number = -1
+  ratingRanking: RatingWithId = {creatorId:-1,description:'',rating:0}
+  @Output() refresh = new EventEmitter<void>()
+
+  constructor(private recomService: RecommendationService, private loginService: LoginService){}
 
   text = ''
   stars: Array<{id:number, name:string}> = [
@@ -29,7 +35,7 @@ export class AddRatingComponent {
   displaySelector = false
   
   ngOnInit(){
-    
+   console.log('id de recom ',this.recomid)
   }
 
   closeDialog(): void {
@@ -57,12 +63,15 @@ export class AddRatingComponent {
       }
     }
     this.ratingRanking.rating = selectedStar
-    console.log(this.stars)
   }
 
   save(){
     this.ratingRanking.description = this.text
-    console.log(this.ratingRanking)
+    const userid = this.loginService.getSignedUser().id
+    this.ratingRanking.creatorId = userid
+    this.recomService.createRating(userid, this.recomid, this.ratingRanking)
+    this.refresh.emit()
+    this.closeDialog()
   }
 
 }

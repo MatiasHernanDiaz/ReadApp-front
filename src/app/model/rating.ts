@@ -17,9 +17,9 @@ export class Rating{
     }
 }
 
-export type JSONtoRating = {
-    creator: User
-    nRating: number
+export type RatingJSON = {
+    creatorId: number
+    rating: number
     description: string
 }
 
@@ -32,5 +32,13 @@ export class RatingWithId {
         this.creatorId = creatorId
         this.description = description
         this.rating = rating
+    }
+    
+    static fromRatingJSON(ratingJSON: RatingJSON): RatingWithId{
+        return new RatingWithId(
+            ratingJSON.creatorId,
+            ratingJSON.rating,
+            ratingJSON.description
+        )
     }
 }

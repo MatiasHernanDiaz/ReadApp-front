@@ -11,6 +11,10 @@
     gap:1rem;
 }
 
+.add-icon {
+    font-size: 40px;
+}
+
 .spinner-container{
     display: flex;
     justify-content: center;
