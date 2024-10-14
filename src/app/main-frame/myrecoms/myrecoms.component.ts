@@ -3,13 +3,14 @@ import { SearchBarComponent } from '@src/app/components/search-bar/search-bar.co
 import { RecomComponent } from '@src/app/components/recom/recom.component'
 import { RemoveRecomComponent } from '@src/app/components/remove-recom/remove-recom.component'
 import { CommonModule } from '@angular/common'
-import { RecommendationService } from '@src/app/services/RecommendationService'
+import {RecommendationService} from '@src/app/services/Recom/recommendation.service'
 import { Recommendation } from '@src/app/model/Recommendation'
 import { ActivatedRoute, Router } from '@angular/router'
 import { SpinnerComponent } from '@src/app/components/spinner/spinner.component'
 import { LoginService } from '@src/app/services/Login/login.service'
 import { bootstrapPlusCircleFill } from '@ng-icons/bootstrap-icons'
 import { NgIconComponent, provideIcons } from '@ng-icons/core'
+
 
 
 @Component({
@@ -70,4 +71,15 @@ export class MyrecomsComponent {
   addRecom(){
     this.route.navigate(['app/myrecoms/-1'])
   }
+
+  async onConfirmDelete(recomId: number) {
+    console.log("Confirmando eliminación en MyrecomsComponent", recomId)
+    const userId = this.loginService.getSignedUser()!.id // Obtener el ID del usuario logueado
+    await this.recommendationService.deleteRecom(userId, recomId) // Eliminar la recomendación
+    this.dialogOpen = false
+    this.recommendationId = undefined // Reiniciar el ID
+    console.log(`Recomendación con ID ${recomId} eliminada`)
+    this.goToFind('') // Actualizar las recomendaciones
+  }
+  
 }

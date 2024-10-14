@@ -49,4 +49,9 @@ export class RecommendationService extends Service<Recommendation> {
       const ratingJSON = await lastValueFrom(rating$)
       return  RatingWithId.fromRatingJSON(ratingJSON)
     }
+    async deleteRecom(userId: number, recomid: number): Promise<void> {
+      const url = pathRecom.pathEntityCRUD(userId, recomid, 'delete')
+      const recoms$ = this.httpClient.delete<void>(url)
+      return await lastValueFrom(recoms$)
+    }
 }

@@ -11,7 +11,10 @@
           <ng-icon name="bootstrapPlusCircleFill" class="add-icon" (click)="addRecom()"></ng-icon>
         }
       </div>
-  <app-remove-recom *ngIf="dialogOpen" [recommendationId]="recommendationId" (click)="closeDialog()"></app-remove-recom>
+  <app-remove-recom   *ngIf="dialogOpen"
+  [recommendationId]="recommendationId"
+  (confirmDelete)="onConfirmDelete($event)"
+  (close)="closeDialog()"></app-remove-recom>
 }
 @else {
   <div class="spinner-container">
