@@ -12,24 +12,17 @@ import { Output,EventEmitter,Input } from '@angular/core'
 export class RemoveRecomComponent {
 
   @Output() close = new EventEmitter<void>()
-  @Output() confirmDelete = new EventEmitter<number>() // Emitirá el ID de la recomendación
+  @Output() confirmDelete = new EventEmitter<number>() 
   @Input() recommendationId?: number
 
-  confirmDeletes() {
-    // const idUser = localStorage.getItem('signedUser')
-
-    // console.log('idUser', this.recommendationId)
-    // console.info('usuario',idUser)
-  }
   closeDialog(): void {
     console.log("Cierro el evento")
-    this.close.emit() // cierra el evento
+    this.close.emit() 
   }
   onConfirm(): void {
-    //const idUser = localStorage.getItem('signedUser')
     console.log('recom', this.recommendationId)
     if (this.recommendationId !== undefined) {
-      this.confirmDelete.emit(this.recommendationId) // Emitimos el ID de la recomendación
+      this.confirmDelete.emit(this.recommendationId) 
     }
     this.close.emit()
   }

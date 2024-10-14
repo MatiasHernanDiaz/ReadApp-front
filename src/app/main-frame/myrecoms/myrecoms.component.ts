@@ -73,13 +73,11 @@ export class MyrecomsComponent {
   }
 
   async onConfirmDelete(recomId: number) {
-    console.log("Confirmando eliminación en MyrecomsComponent", recomId)
-    const userId = this.loginService.getSignedUser()!.id // Obtener el ID del usuario logueado
-    await this.recommendationService.deleteRecom(userId, recomId) // Eliminar la recomendación
+    const userId = this.loginService.getSignedUser()!.id 
+    await this.recommendationService.deleteRecom(userId, recomId) 
     this.dialogOpen = false
-    this.recommendationId = undefined // Reiniciar el ID
-    console.log(`Recomendación con ID ${recomId} eliminada`)
-    this.goToFind('') // Actualizar las recomendaciones
+    this.recommendationId = undefined 
+    this.goToFind('') 
   }
   
 }
