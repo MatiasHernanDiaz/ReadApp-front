@@ -1,0 +1,24 @@
+<article (mouseenter)="enter()" (mouseleave)="exit()" class="card">
+    <div class="image-center"><!DOCTYPE html>
+        <img width="{{width}}" height="{{height}}" class="bookImage" src={{book.imageURL}} alt="Portada de libro"/>
+    </div>
+    <div class="card-header">
+      <h2>{{book.title}}</h2>
+        <span class="images">
+            <img class="icons" src="assets/medal.svg" alt="Premio">
+            <img class="icons" src="assets/star.svg" alt="Ícono de Destacado">
+        </span>
+    </div>
+    <div>
+        @if(isEnter){
+      <p class="autor">Por {{book.autor}} </p>
+        <ul class="comments">
+          <li class="comment"><img class="icons" src="assets/article.svg" alt="Icono de paginas">{{book.pages}} Paginas</li>
+          <li class="comment"><img class="icons" src="assets/text.svg" alt="Ícono de palabras">{{book.words}} Palabras</li>
+          <li class="comment"><img class="icons" src="assets/calendar.svg" alt="Ícono de fecha"> {{book.date | date: 'dd-MM-yyyy'}}</li>
+          <li class="comment"><img class="icons" src="assets/globe.svg" alt="Icono de lenguajes">{{book.lenguages}}</li>
+          <li class="comment"><img class="icons" src="assets/money.svg" alt="Ícono de ventas">{{book.sales}} Ventas</li>
+        </ul>
+    }
+    </div>
+</article>

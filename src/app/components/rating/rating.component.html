@@ -1,0 +1,17 @@
+<article class="rating-card ">
+    <header class="header-card">
+        <div class="header-wapper">
+            <img class="avatar" [src]="user.avatar" alt="Avatar del usuario">
+            <div class="name-date">
+                <h3>{{user.firstName}} {{user.lastName}}</h3>
+                <p>{{dateOfCreation | date:'dd-MMM-yyyy'}}</p>
+            </div>
+        </div>
+        <div class="rating">
+            <img src="assets/star.svg" alt="Valoración"> <p>{{rating.nRating}}</p>
+        </div>
+    </header>
+    <main class="main-card">
+        <p>{{rating.description}}</p>
+    </main>
+</article>

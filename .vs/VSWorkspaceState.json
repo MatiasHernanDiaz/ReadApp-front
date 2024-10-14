@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\components\\book",
+    "\\src\\app\\components\\recom",
+    "\\src\\app\\main-frame\\myrecoms",
+    "\\src\\app\\main-frame\\myrecoms\\recomdetails",
+    "\\src\\model"
+  ],
+  "SelectedNode": "\\src\\model\\Book.ts",
+  "PreviewInSolutionExplorer": false
+}

@@ -1,0 +1,19 @@
+<header class="header-bar">
+    <div class="title">
+        <img src="assets/book-white.svg" alt="Icono de libro"/>
+        <h1>ReadApp</h1>
+    </div>
+    <div class="menu-container" (click)="handleClickMenu()">
+        <div class="user" >
+            <img class="avatar" [src]="user.avatar" alt="Avatar del usuario">
+            <p>{{user.displayName}}</p>
+        </div>
+        <img class="menu-hamburgesa" src="assets/hamburgesa-white.svg" alt="Menu">
+            <nav [class]="dropdown">
+                <a routerLink="recoms" routerLinkActive="active">Busqueda general</a>
+                <a routerLink="myrecoms" routerLinkActive="active">Mis recomendaciones</a>
+                <a routerLink="profile/info" routerLinkActive="active">Mi perfil</a>
+                <a routerLink="login" routerLinkActive="active" (click)="logout()">Logout</a>
+            </nav>
+    </div>
+</header>

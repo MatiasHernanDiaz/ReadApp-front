@@ -1,0 +1,31 @@
+.card-container{
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr;
+    padding: 0.1rem;
+    margin-top: 2rem;
+    justify-items: center;
+    box-sizing: border-box; 
+    gap:1rem;
+}
+
+.spinner-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50rem;
+}
+
+@media (max-width:480px ) {
+    .card-container{
+        grid-template-columns: 1fr ;
+        padding: 0;
+    }
+}
+@media (min-width: 481px) and (max-width:768px ) {
+    .card-container{
+        grid-template-columns: repeat(2,1fr) ;
+    }
+}

@@ -1,0 +1,11 @@
+<app-search-bar></app-search-bar>
+<div class="card-container">
+    @for (book of books; track book){
+        <app-book
+        [book]="book"
+        ></app-book>
+    }
+</div>
+
+
+

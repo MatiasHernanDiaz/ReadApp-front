@@ -1,0 +1,160 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+h2 {
+    margin: 0 1rem;
+    margin-top: 1rem;
+
+    font-size: 1.8rem;
+}
+
+h3 {
+    margin: 1rem;
+
+    font-size: 1.2rem;
+}
+
+hr {
+    margin: 1rem;
+    margin-top: 2%;
+}
+
+.items-container {
+    margin: 1rem 2rem;
+    justify-content: space-between;
+}
+
+.items-container label{
+    font-size: .9rem;
+}
+
+/*Estilos particulares para los inputs*/
+.gral-info-items-container {
+    display: grid;
+    grid-template-columns: 47% 47%;
+    gap: 1.5rem;
+    
+}
+
+.gral-info-items-container .form-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.gral-info-items-container label {
+    display: flex;
+    flex-grow: 1;
+
+    font-weight: bold;
+}
+
+.gral-info-items-container label .required-label {
+    margin-left: .4rem;
+    color: rgb(178, 0, 0);
+}
+
+.gral-info-items-container input {
+    margin-top: .5rem;
+    flex-grow: 1;
+    padding: 6px 10px;
+    font-size: .8rem;
+
+    border: var(--light-border);
+    border-radius: 4px
+}
+
+.read-mode-items-container {
+    display: flex;
+    gap: 10px;
+}
+
+.search-criteria-items-container {
+    display: grid;
+    grid-template-columns: 32% 32% 32%;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.search-criteria-items-container label {
+    position: relative;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.search-criteria-items-container label input {
+    margin-right: 6px;
+}
+
+.search-criteria-items-container label .max-limit {
+    position: absolute;
+    right: 0;
+    display: none;
+    width: 50%;
+
+    margin: 6px;
+    width: 40%;
+    padding: 2px 6px;
+
+    font-size: .7rem;
+
+    background-color: var(--fourth-color);
+    border: var(--light-border);
+    border-radius: 4px;
+}
+
+.search-criteria-items-container label .max-limit input {
+    width: 60%;
+    font-size: .7rem;
+}
+
+.search-criteria-items-container label input:checked ~ .max-limit {
+    display: flex;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: end;
+    margin-top: 2rem;
+    width: 90%;
+}
+
+.buttons-container button {
+    margin: .5rem;
+}
+
+nav a.active {
+    background-color: rgba(128, 128, 128, 0.447); 
+    color: black; 
+    font-weight: bold; 
+    border-radius: 0.5rem; 
+    /* padding: 0.5rem; */
+}
+
+
+@media (max-width: 768px) and (min-width: 481px) {
+    :host {
+        overflow-y: visible;
+    }
+}
+
+/*Mobile*/
+
+@media (max-width: 480px) {
+    :host {
+        overflow-y: visible;
+    }
+
+    .gral-info-items-container, .search-criteria-items-container {
+        grid-template-columns: 100%;
+    }
+
+    .read-mode-items-container {
+        flex-direction: column;
+
+    }
+}
