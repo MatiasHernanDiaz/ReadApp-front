@@ -80,12 +80,10 @@ export class RecomdetailsComponent {
   }
 
   async saveEdit() {
-
     await this.recommendationService.updateRecomEdit(this.userid, this.recomEdit ).then((res) =>{
       this.recomEdit = res
       this.recomEditToRecom()
       this.editMode = false
-      console.info('recom editada: ', this.recomEdit)
     }).catch((err) =>{
       this.error = err.error
       this.ngOnInit() //????? Es legal? o marche preso 30 años??
