@@ -4,6 +4,7 @@ import { Language, User } from '@src/app/model/User'
 import { BookComponent } from '@src/app/components/book/book.component'
 import { CommonModule } from '@angular/common'
 import { UserService } from '@src/app/services/User/user.service'
+import { LoginService } from '@src/app/services/Login/login.service'
 
 
 @Component({
@@ -18,13 +19,13 @@ export class ReadbooksComponent implements OnInit {
   @Input() user : User = new User(0, '', '', '', new Date(),'', Language.SPANISH,[],[],[], 0 )
   
   constructor(
-    private userService: UserService, 
+    private userService: UserService, private loginService: LoginService
   ) {}
   async ngOnInit() {
-    //hardcodeado el userid porque no tengo el metodo y bla bla bla lo que dije en friends
-    this.userService.getBookToRead(7,false).then((res)=>{
+    const user = this.loginService.getSignedUser()!
+
+    this.userService.getBookToRead(user.id, false).then((res)=>{
       this.readBooks = res
-      console.log(res)
     })
   }
   

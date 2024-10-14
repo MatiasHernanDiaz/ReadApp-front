@@ -21,7 +21,7 @@ export class HeaderComponent {
 
   ngOnInit() {
     this.user = this.loginService.getSignedUser()!
-
+console.log(this.user.displayName)
     if( !this.user ) {
       this.router.navigate(['login'])
     }
