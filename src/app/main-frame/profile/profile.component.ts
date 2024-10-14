@@ -2,7 +2,7 @@ import { Component } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router'
 import { Language, User } from '@src/app/model/User'
-import { StubLoginService } from '@src/app/services/UserService'
+import { LoginService } from '@src/app/services/Login/login.service'
 
 
 @Component({
@@ -17,7 +17,7 @@ export class ProfileScreen {
   click: boolean = false
   dropdown: string = "hide"
   
-  constructor( public loginService: StubLoginService ) {}
+  constructor( public loginService: LoginService ) {}
 
   ngOnInit() {
     this.user = this.loginService.getSignedUser()!

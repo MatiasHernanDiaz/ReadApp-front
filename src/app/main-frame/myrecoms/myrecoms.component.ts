@@ -6,8 +6,8 @@ import { CommonModule } from '@angular/common'
 import { RecommendationService } from '@src/app/services/RecommendationService'
 import { Recommendation } from '@src/app/model/Recommendation'
 import { ActivatedRoute } from '@angular/router'
-import { StubLoginService } from '@src/app/services/UserService'
 import { SpinnerComponent } from '@src/app/components/spinner/spinner.component'
+import { LoginService } from '@src/app/services/Login/login.service'
 
 
 @Component({
@@ -27,7 +27,7 @@ export class MyrecomsComponent {
   loading = true
 
 
-  constructor(private recommendationService: RecommendationService, private router: ActivatedRoute, private userService: StubLoginService) {
+  constructor(private recommendationService: RecommendationService, private router: ActivatedRoute, private loginService: LoginService) {
     this.recommendationService.items.subscribe( (recomms) =>{
       this.recommendations = recomms
       this.isLoading()
@@ -60,7 +60,8 @@ export class MyrecomsComponent {
   }
 
   async goToFind(text: string){
-    this.recommendationService.items = await this.recommendationService.fetchRecoms(this.myRecomsFlag ? this.userService.getSignedUser().id : undefined, text)
+    this.recommendationService.items = await this.recommendationService.fetchRecoms(
+      this.myRecomsFlag ? this.loginService.getSignedUser()!.id : undefined, text)
   }
 
 }

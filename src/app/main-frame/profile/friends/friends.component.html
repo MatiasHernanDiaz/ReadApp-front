@@ -3,6 +3,6 @@
   <div *ngFor="let friend of friends" class="friend-card">
     <app-friend [user]="friend"></app-friend>
   </div>
-  <app-add-button [searchService]="userService1.searchUsers" [loadService]="userService1.loadUser"></app-add-button>
+  <app-add-button [searchService]="temporalService.searchUsers" [loadService]="temporalService.loadUser"></app-add-button>
 </div>
 

@@ -3,7 +3,8 @@ import { HeaderComponent } from './header.component'
 import { provideRouter } from '@angular/router'
 import { routes } from '@src/app/app.routes'
 import { HttpClient } from '@angular/common/http'
-import { httpClientSpy } from '@src/app/services/serviceStubs'
+import { httpClientSpy, loginServiceStub } from '@src/app/services/serviceStubs'
+import { LoginService } from '@src/app/services/Login/login.service'
 
 
 describe('HeaderComponent', () => {
@@ -14,7 +15,8 @@ describe('HeaderComponent', () => {
     await TestBed.configureTestingModule({
       imports: [HeaderComponent],
       providers: [provideRouter(routes), 
-        { provide: HttpClient, useValue: httpClientSpy }
+        { provide: HttpClient, useValue: httpClientSpy },
+        { provide: LoginService, useValue: loginServiceStub }
       ]
     })
     .compileComponents()
