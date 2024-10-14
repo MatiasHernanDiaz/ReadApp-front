@@ -12,16 +12,19 @@ import { Book } from '@src/app/model/Book'
 
 export class BookComponent {
   isEnter: boolean = false
-  size = 180
+  width = 180
+  height = 270
 
   enter(){
     this.isEnter = true
-    this.size = 100
+    this.width = 100
+    this.height = 140
   }
 
   exit(){
     this.isEnter = false
-    this.size = 180
+    this.width = 180
+    this.height = 270
   }
 
   @Input()

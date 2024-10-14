@@ -1,15 +1,23 @@
+import { Book, BookToJSON } from '@src/app/model/Book'
 import { Injectable } from '@angular/core'
-//import { Book } from '@src/app/model/Book'
+import { Service } from '@src/app/services/AbstractService1'
+import { lastValueFrom } from 'rxjs'
+import { pathBook } from '@src/app/model/Path'
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class BookService {
-  seach = 'libro'
-  
-  
+export class BookService extends Service<Book>{
 
+  async getAllBooks(text?: string): Promise<Book[]> {
+    const url = pathBook.pathBook(text)
+    const book$ = this.httpClient.get<BookToJSON[]>(url)
+    const booksJSON = await lastValueFrom(book$)
+    return booksJSON.map((BookJSON) => Book.fromBookJSON(BookJSON))
+  }
+
+}
 
   
   // searchBook(searchWord: string): Promise<Book[]>{
@@ -25,4 +33,3 @@ export class BookService {
   // })
   // }
 
-}

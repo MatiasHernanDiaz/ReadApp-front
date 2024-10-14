@@ -1,8 +1,10 @@
 
 
 .bookImage{
-    height: auto;
     margin-bottom: 0.8rem;
+}
+.autor{
+    font-size:0.9rem
 }
 
 .images{
@@ -32,7 +34,7 @@ article.card{
     height: 2rem;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     margin: 0;
     margin-bottom:0.5rem
   }
