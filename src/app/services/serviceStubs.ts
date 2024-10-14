@@ -1,5 +1,5 @@
 import { of } from "rxjs"
-import { AvgReader, readerModes } from "../model/User"
+import { AvgReader, GreatReader, readerModes } from "../model/User"
 
 
 export const httpClientSpy = jasmine.createSpyObj('HttpClient', ['get', 'put', 'post'])
@@ -70,6 +70,6 @@ loginServiceStub.getSignedUser.and.returnValue({
 
     ],
     readTimeAvg: 100,
-    searchCriteria: [] , 
+    searchCriteria: new GreatReader(), 
     avatar: 'assets/avatar.jpeg',
 })
