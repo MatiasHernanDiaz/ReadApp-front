@@ -52,7 +52,16 @@ class PathRecom extends Path {
 //======================================================================================================
 
 class PathBook extends Path {
-    override entity: string = 'books'
+  override entity: string = 'books'
+
+  pathBook(wordToFind?: string): string {
+    if (wordToFind) {
+      return this.pathBasic() + '?text=' + wordToFind
+    }
+    else {
+      return this.pathBasic()
+    }
+  }
 }
 
 //======================================================================================================
