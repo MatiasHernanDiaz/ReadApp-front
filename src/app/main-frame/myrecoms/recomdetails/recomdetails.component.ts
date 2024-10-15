@@ -36,7 +36,7 @@ export class RecomdetailsComponent {
   useridLog!: number
   loading = true
   error = {timestamp: '', status: 0, error: '', message: '', path: ''}
-  message = {title: 'No puedes editar esta recomendacion', btnMsj:'Crrrar'}
+  message = {title: 'No puedes editar esta recomendacion', btnMsj:'Cerrar'}
   close = true
   canRating = 'false'
   
