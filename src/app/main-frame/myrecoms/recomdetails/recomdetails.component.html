@@ -53,7 +53,7 @@
                 <app-rating [rating]="iRating" ></app-rating>
             }
             @if(canRating){
-                <app-add-rating [userId]="useridLog" [recomid]="recom.id" (refresh)="reload()"></app-add-rating>
+                <app-add-rating [userId]="useridLog" [recomid]="recom.id" (refresh)="getNewRating($event)"></app-add-rating>
             }
         </section>
     
