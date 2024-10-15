@@ -1,5 +1,5 @@
 import { Book } from "./Book"
-import { Recommendation } from "./Recommendation"
+
 
 export class User {
     id: number
@@ -14,7 +14,7 @@ export class User {
     readToBooks: Book[] = []
     readTimeMinAvg: number
     readMode: ReadMode
-    searchCriteria: SearchCriteria
+    searchCriteria: SearchCriteria[]
     avatar: string
     
 
@@ -31,7 +31,7 @@ export class User {
         readToBooks: Book[],
         readTimeMinAvg: number = 100,
         readMode: ReadMode = readerModes.avgReader, 
-        searchCriteria: SearchCriteria = new GreatReader(),
+        searchCriteria: SearchCriteria[] = [SearchCriteria.GreatReader],
         avatar: string = ''
     ) {
         this.id = id
@@ -69,7 +69,7 @@ export class User {
             firstName: this.firstName,
             lastName: this.lastName,
             username: this.username,
-            searchCriteria: this.searchCriteria instanceof Combined ? this.searchCriteria.criterias.map( cri => cri.toCustomString()) : [this.searchCriteria.toCustomString()],
+            searchCriteria: this.searchCriteria,
             email: this.email,
             birthday: this.birthday,
             nativeLanguage: this.nativeLanguage,
@@ -96,7 +96,7 @@ export class User {
             userJSON.readToBooks,
             userJSON.readTimeMinAvg,
             User.fromReadModeString(userJSON.readMode),
-            User.fromSearchCriteriaStrings(userJSON.searchCriteria),
+            userJSON.searchCriteria,
             userJSON.avatar
         )
     }
@@ -113,56 +113,6 @@ export class User {
                 return new RecurrentReader()
             default:
                 return new AvgReader()
-        }
-    }
-
-    static fromSearchCriteriaStrings( searchCriterias: string[] ): SearchCriteria {
-        if( searchCriterias.length > 1 ) {
-            return new Combined(
-                searchCriterias.map( cri => {
-                    switch( cri ) {
-                        case "Precavido":
-                            return new Cautious()
-                        case "Leedor":
-                            return new GreatReader()
-                        case "Políglota":
-                            return new Polyglot()
-                        case "Nativista":
-                            return new Nativist()
-                        case "Calculador":
-                            return new Calculator()
-                        case "Demandante":
-                            return new Claimant()
-                        case "Experimentado":
-                            return new Experiencied()
-                        case "Cambiante":
-                            return new Inconstant()
-                        default:
-                            return new AvgReader()
-                    }
-                }) as SearchCriteria[]
-            )
-        } else {
-            switch( searchCriterias[0] ) {
-                case "Precavido":
-                    return new Cautious()
-                case "Leedor":
-                    return new GreatReader()
-                case "Políglota":
-                    return new Polyglot()
-                case "Nativista":
-                    return new Nativist()
-                case "Calculador":
-                    return new Calculator()
-                case "Demandante":
-                    return new Claimant()
-                case "Experimentado":
-                    return new Experiencied()
-                case "Cambiante":
-                    return new Inconstant()
-                default:
-                    return new GreatReader()
-            }
         }
     }
 }
@@ -205,68 +155,15 @@ export const readerModes = {
     recurrentReader: new RecurrentReader()
 }
 
-export interface SearchCriteria {
-    isAdvisable( recom: Recommendation ): boolean
-    toCustomString(): string
-}
-
-export class Cautious implements SearchCriteria {
-    // TODO: Implementar algún día
-    isAdvisable( recom: Recommendation ) { return recom && true }
-    toCustomString() { return "Precavido" }
-}
-
-export class Claimant implements SearchCriteria {
-    // TODO: Implementar algún día
-    isAdvisable( recom: Recommendation ) { return recom && true }
-    toCustomString() { return "Demandante" }
-}
-
-export class GreatReader implements SearchCriteria {
-    // TODO: Implementar algún día
-    isAdvisable( recom: Recommendation ) { return recom && true }
-    toCustomString() { return "Leedor" }
-}
-
-export class Nativist implements SearchCriteria {
-    // TODO: Implementar algún día
-    isAdvisable( recom: Recommendation ) { return recom && true }
-    toCustomString() { return "Nativista" }
-    
-}
-
-export class Polyglot implements SearchCriteria {
-    // TODO: Implementar algún día
-    isAdvisable( recom: Recommendation ) { return recom && true }
-    toCustomString() { return "Políglota" }
-}
-
-export class Inconstant implements SearchCriteria {
-    // TODO: Implementar algún día
-    isAdvisable( recom: Recommendation ) { return recom && true }
-    toCustomString() { return "Cambiante" }
-}
-
-export class Experiencied implements SearchCriteria {
-    // TODO: Implementar algún día
-    isAdvisable( recom: Recommendation ) { return recom && true }
-    toCustomString() { return "Experimentado" }
-}
-
-export class Calculator implements SearchCriteria {
-    // TODO: Implementar algún día
-    isAdvisable( recom: Recommendation ) { return recom && true }
-    toCustomString() { return "Calculador" }
-}
-
-export class Combined implements SearchCriteria {
-    criterias: SearchCriteria[]
-    constructor( criterias: SearchCriteria[] ) {
-        this.criterias = criterias
-    }
-
-    isAdvisable( recom: Recommendation ) { return recom && true }
-    toCustomString() { return "Combinado" }
+export enum SearchCriteria {
+    Cautious = "Precavido",
+    Claimant = "Demandante",
+    GreatReader = "Leedor",
+    Nativist = "Nativista",
+    Polyglot = "Políglota",
+    Inconstant = "Cambiante",
+    Experiencied = "Experimentado",
+    Calculator = "Calculador",
 }
 
 
@@ -300,6 +197,6 @@ export type UserToJSON = {
     readToBooks: Book[]
     readTimeMinAvg: number
     readMode: string
-    searchCriteria: string[]
+    searchCriteria: SearchCriteria[]
     avatar: string
 }

@@ -36,8 +36,9 @@ export class UserService extends Service<User>{
 
     async editUser( user: User ) {
         const url = pathUser.getEditProfile()
+        const payload = user.editProfileJSON()
         
-        const recoms$ = this.httpClient.put<User>(url, user.editProfileJSON())
+        const recoms$ = this.httpClient.put<User>(url, payload)
         const res = await lastValueFrom(recoms$)
         return res
     }
