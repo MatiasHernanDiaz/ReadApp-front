@@ -7,12 +7,13 @@ import { CommonModule } from '@angular/common'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Recommendation } from '@src/app/model/Recommendation'
 import { Language, User } from '@src/app/model/User'
+import { LoginService } from '@src/app/services/Login/login.service'
 
 @Component({
   selector: 'app-recom',
   standalone: true,
   imports: [NgIconComponent, CommonModule],
-  viewProviders: [provideIcons({ heroUsers, bootstrapBookmark, bootstrapStar, bootstrapBook, bootstrapClock, bootstrapHeart, bootstrapArrowRight, bootstrapTrash })],
+  viewProviders: [LoginService,provideIcons({ heroUsers, bootstrapBookmark, bootstrapStar, bootstrapBook, bootstrapClock, bootstrapHeart, bootstrapArrowRight, bootstrapTrash })],
   templateUrl: './recom.component.html',
   styleUrls: ['./recom.component.css']
 })
@@ -21,7 +22,7 @@ export class RecomComponent {
     //  solo una recomendación
   @Output() onDeleteRecom = new EventEmitter<number>()
   url = ''
-  constructor(private router: Router, private acRouter: ActivatedRoute) {
+  constructor(private router: Router, private acRouter: ActivatedRoute,public LoginService:LoginService) {
     this.acRouter.url.subscribe((url) =>{
       this.url = url[0].path
     })
