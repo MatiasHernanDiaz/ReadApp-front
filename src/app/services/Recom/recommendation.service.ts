@@ -64,4 +64,10 @@ export class RecommendationService extends Service<Recommendation> {
       const _canRating = await lastValueFrom(canRating$)
       return _canRating 
     }
+
+    async deleteRecom(userId: number, recomid: number): Promise<void> {
+      const url = pathRecom.pathEntityCRUD(userId, recomid, 'delete')
+      const recoms$ = this.httpClient.delete<void>(url)
+      return await lastValueFrom(recoms$)
+    }
 }
