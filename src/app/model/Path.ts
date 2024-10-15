@@ -98,6 +98,14 @@ class PathUser extends Path {
         return `${ this.pathBasic() }/editprofile`
     }
 
+    getCandidatesToFriend(userid: number, searchWord: string) {
+        return `${ this.pathBasic()}/${ userid }/candidatestofriend${ searchWord ? `?search=${ searchWord }` : ''}`
+    }
+
+    getAddFriend(userid: number) {
+        return `${ this.pathBasic()}/${ userid }/addfriend`
+    }
+
 }
 
 //==============================================================================
