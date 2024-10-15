@@ -36,7 +36,7 @@ export class UserService extends Service<User>{
 
     async editUser( user: User ) {
         const url = pathUser.getEditProfile()
-        const payload = user.editProfileJSON()
+        const payload = user.userToJSON()
         
         const recoms$ = this.httpClient.put<User>(url, payload)
         const res = await lastValueFrom(recoms$)
@@ -52,10 +52,10 @@ export class UserService extends Service<User>{
     }
 
     async loadFriend( user: User, newFriend: User ) {
-        console.log('user', user)
-        console.log('friend', newFriend)
         const url = pathUser.getAddFriend( user.id )
-        const friend$ = this.httpClient.post<UserToJSON[]>(url, newFriend)
+        const payload = newFriend.userToJSON()
+
+        const friend$ = this.httpClient.post<UserToJSON[]>(url, payload)
         const friend = await lastValueFrom(friend$)
         return friend
     }

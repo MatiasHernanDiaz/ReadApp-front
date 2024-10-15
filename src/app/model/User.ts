@@ -63,7 +63,7 @@ export class User {
         return this.firstName + ' ' + this.lastName
     }
 
-    editProfileJSON(): UserToJSON {
+    userToJSON(): UserToJSON {
         return {
             id: this.id,
             firstName: this.firstName,
