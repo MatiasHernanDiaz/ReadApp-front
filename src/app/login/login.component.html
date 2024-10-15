@@ -29,12 +29,12 @@
                         <label for="Password">Contraseña<span class="required">*</span></label>
                         <input 
                             formControlName="password" 
-                            type="password" 
+                            [type]="show ? 'text' : 'password'" 
                             id="Password" 
                             [ngClass]="{'error': hasPasswordError() || loginFailed}"
                             required
                         >
-                        <i><img src="assets/eye.svg" alt="Ocultar"></i>
+                        <i><img src="assets/eye.svg" alt="Ocultar" (click)="setShow()"></i>
                         <div *ngIf="hasPasswordError()" class="alert-message">
                             <small>{{getPasswordErrorMessage()}}</small>
                         </div>
