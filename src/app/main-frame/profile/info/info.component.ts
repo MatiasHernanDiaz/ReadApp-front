@@ -1,9 +1,6 @@
 import { Component } from '@angular/core'
 import { FormsModule } from '@angular/forms'
-import { 
-  Calculator, Cautious, Claimant, Combined, Experiencied, GreatReader, Inconstant, Language, Nativist, Polyglot, 
-  readerModes, SearchCriteria, User 
-} from '@src/app/model/User'
+import { Language, readerModes, ReadMode, SearchCriteria, User } from '@src/app/model/User'
 import { CommonModule } from '@angular/common'
 import { FieldValidationComponent } from "../../../components/field-validation/field-validation.component"
 import { UserService } from '@src/app/services/User/user.service'
@@ -19,7 +16,7 @@ import { LoginService } from '@src/app/services/Login/login.service'
 })
 export class InfoComponent {
   user: User = new User(-1, '', '', '', new Date(),'', Language.SPANISH,[],[],[], 0 )
-  readModes = readerModes
+  readModes = (readerModes)
   readModeChecked = this.user.readMode.toCustomString()
   searchCriteria: Record<
     string,{ 
@@ -41,46 +38,51 @@ export class InfoComponent {
   }
   
 
+  getReadModeChecked(readMode: ReadMode) {
+    return Boolean(readMode.toCustomString() === this.readModeChecked)
+  }
+
+
   resetSearchCriteria() {
     this.searchCriteria = {
       cautious: {
-        checked: Boolean(this.user.searchCriteria.toCustomString() === 'Precavido' ),
-        criteria: new Cautious(),
+        checked: this.user.searchCriteria.includes( SearchCriteria.Cautious ),
+        criteria: SearchCriteria.Cautious,
         requireNumberParam: false
       },
       claiment: {
-        checked: Boolean(this.user.searchCriteria.toCustomString() === 'Demandante' ),
-        criteria: new Claimant(),
+        checked: this.user.searchCriteria.includes( SearchCriteria.Claimant ),
+        criteria: SearchCriteria.Claimant,
         requireNumberParam: false
       },
       inconstant: {
-        checked: Boolean(this.user.searchCriteria.toCustomString() === 'Cambiante' ),
-        criteria: new Inconstant(),
+        checked: this.user.searchCriteria.includes( SearchCriteria.Inconstant ),
+        criteria: SearchCriteria.Inconstant,
         requireNumberParam: true
       },
       greatReader: {
-        checked: Boolean(this.user.searchCriteria.toCustomString() === 'Leedor' ),
-        criteria: new GreatReader(),
+        checked: this.user.searchCriteria.includes( SearchCriteria.GreatReader ),
+        criteria: SearchCriteria.GreatReader,
         requireNumberParam: false
       },
       nativist: {
-        checked: Boolean(this.user.searchCriteria.toCustomString() === 'Nativista' ),
-        criteria: new Nativist(),
+        checked: this.user.searchCriteria.includes( SearchCriteria.Nativist ),
+        criteria: SearchCriteria.Nativist,
         requireNumberParam: false
       },
       polyglot: {
-        checked: Boolean(this.user.searchCriteria.toCustomString() === 'Políglota' ),
-        criteria: new Polyglot(),
+        checked: this.user.searchCriteria.includes( SearchCriteria.Polyglot ),
+        criteria: SearchCriteria.Polyglot,
         requireNumberParam: false
       },
       experiencied: {
-        checked: Boolean(this.user.searchCriteria.toCustomString() === 'Experimentado' ),
-        criteria: new Experiencied(),
+        checked: this.user.searchCriteria.includes( SearchCriteria.Experiencied ),
+        criteria: SearchCriteria.Experiencied,
         requireNumberParam: false
       },
       calculator: {
-        checked: Boolean(this.user.searchCriteria.toCustomString() === 'Calculador' ),
-        criteria: new Calculator(),
+        checked: this.user.searchCriteria.includes( SearchCriteria.Calculator ),
+        criteria: SearchCriteria.Calculator,
         requireNumberParam: true
       }
     }
@@ -93,10 +95,7 @@ export class InfoComponent {
   updateSearchCriteria( criteria: string) {
     this.searchCriteria[ criteria ].checked = !this.searchCriteria[ criteria ].checked
 
-    const criterias = Object.values( this.searchCriteria ).filter(
-      cri => cri.checked
-    ).map( cri => cri.criteria )
-    this.user.searchCriteria = criterias.length > 1 ? new Combined( criterias ) : criterias[0]
+    this.user.searchCriteria = Object.values(this.searchCriteria).filter( cri => cri.checked ).map( cri => cri.criteria )
   }
 
   cancelUserEdit() {
@@ -124,7 +123,7 @@ export class InfoComponent {
       case "username":
         return (data as User).username === '' ? "El username es requerido" : ''
       case "birthday":
-        return (data as User).birthday < new Date(1900, 1, 1) ? "No existen personas tan viejas!!" : (data as User).birthday < new Date() ? '' : "Debe ingresar una fecha válida"
+        return (data as User).birthday < new Date(1900, 1, 1) ? "No existen personas tan viejas!!" : ''
       case "email":
         return (data as User).email === '' ? "El email es requerido" : !(data as User).email.includes('@') ? 'Debe contener @' : ''
       case "readTimeMinAvg":
