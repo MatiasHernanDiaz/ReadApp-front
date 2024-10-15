@@ -10,12 +10,12 @@ import { SpinnerComponent } from '@src/app/components/spinner/spinner.component'
 import { LoginService } from '@src/app/services/Login/login.service'
 import { bootstrapPlusCircleFill } from '@ng-icons/bootstrap-icons'
 import { NgIconComponent, provideIcons } from '@ng-icons/core'
-
+import { AddRecomComponent } from '@src/app/components/add-recom/add-recom.component'
 
 @Component({
   selector: 'app-myrecoms',
   standalone: true,
-  imports: [SearchBarComponent, RecomComponent,RemoveRecomComponent,CommonModule, SpinnerComponent, NgIconComponent],
+  imports: [SearchBarComponent, RecomComponent,RemoveRecomComponent,CommonModule, SpinnerComponent, NgIconComponent, AddRecomComponent],
   viewProviders: [provideIcons({ bootstrapPlusCircleFill })],
   templateUrl: './myrecoms.component.html',
   styleUrl: './myrecoms.component.css'

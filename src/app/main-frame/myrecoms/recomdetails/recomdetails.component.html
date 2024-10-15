@@ -52,7 +52,9 @@
             @for (iRating of recom.ratings; track iRating) {
                 <app-rating [rating]="iRating" ></app-rating>
             }
-            <app-add-rating [userId]="userid" [recomid]="recom.id" (refresh)="reload()"></app-add-rating>
+            @if(canRating){
+                <app-add-rating [userId]="useridLog" [recomid]="recom.id" (refresh)="reload()"></app-add-rating>
+            }
         </section>
     
         

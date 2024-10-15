@@ -42,11 +42,26 @@ export class RecommendationService extends Service<Recommendation> {
       return RecomEdit.fromRecomEditJSON(recomsJSON)
     }
 
-    async createRating(userid: number, recomid: number, rating: RatingWithId): Promise<RatingWithId>{
-      const url = pathRecom.ratingCRUD(userid, recomid, 'create')
+    async createRating(recomid: number, rating: RatingWithId): Promise<RatingWithId>{
+      const url = pathRecom.ratingCRUD(recomid, 'create')
       console.log(url)
       const rating$ = this.httpClient.post<RatingJSON>(url, rating)
       const ratingJSON = await lastValueFrom(rating$)
       return  RatingWithId.fromRatingJSON(ratingJSON)
+    }
+
+    async createRecom(newRecom: {userid:number, title:string}): Promise<Recommendation>{
+      const url = pathRecom.recomCreate()
+      const recom$ = this.httpClient.post<RecommendationJSON>(url, newRecom)
+      const recomsJSON = await lastValueFrom(recom$)
+      return Recommendation.fromRecomendacionJSON(recomsJSON)
+    }
+
+    async canRating(userid: number, recomid: number): Promise<string>{
+      const url = pathRecom.canRating(userid, recomid)
+      console.log('>>>>>>>>>>>>>>>>>',url)
+      const canRating$ = this.httpClient.get<string>(url)
+      const _canRating = await lastValueFrom(canRating$)
+      return _canRating 
     }
 }

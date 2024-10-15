@@ -33,11 +33,12 @@ export class RecomdetailsComponent {
   recom: Recommendation = new Recommendation(0,'','',0,0,'',[],new User(0, '', '', '', new Date(),'', Language.SPANISH,[],[],[], 0 ),[],false, [])
   recomEdit: RecomEdit = new RecomEdit('','',false,1,{id:-1})
   recomid!: number
-  userid!: number
+  useridLog!: number
   loading = true
   error = {timestamp: '', status: 0, error: '', message: '', path: ''}
   message = {title: 'No puedes editar esta recomendacion', btnMsj:'Crrrar'}
   close = true
+  canRating = 'false'
   
 
   
@@ -51,7 +52,7 @@ export class RecomdetailsComponent {
     this.router.url.subscribe((u) => {
       this.volver.url = ['app/'+u[0].path]
     })
-    this.userid = this.loginService.getSignedUser()!.id
+    this.useridLog = this.loginService.getSignedUser()!.id
   }
 
 
@@ -69,7 +70,12 @@ export class RecomdetailsComponent {
       this.recomEdit = res
       console.info('Recom completa ->', this.recom)
       this.isLoading()
+      return this.recommendationService.canRating(this.useridLog, this.recom.id)
+    }).then((res2)=>{
+      this.canRating = res2 
+      console.log('puede valorar?? >> ', this.canRating, typeof this.canRating)
     })
+
   }
 
   recomEditToRecom(){ 
@@ -84,7 +90,7 @@ export class RecomdetailsComponent {
   }
 
   async saveEdit() {
-      this.recommendationService.updateRecomEdit(this.userid, this.recomEdit ).then((res) =>{
+      this.recommendationService.updateRecomEdit(this.useridLog, this.recomEdit ).then((res) =>{
       this.recomEdit = res
       this.recomEditToRecom()
       this.editMode = false
@@ -131,4 +137,6 @@ export class RecomdetailsComponent {
   goToAddBook(){
     console.log('viajo a la pag de libros, que deberia ser hija de esta para mi')
   }
+
+  
 }

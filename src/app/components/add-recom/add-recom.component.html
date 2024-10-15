@@ -1,0 +1,16 @@
+<ng-icon name="bootstrapPlusCircleFill" (click)="addRecom()" class="add-icon"></ng-icon>
+@if( displaySelector ) {
+    <section class="dialog-backdrop">
+        <div class="dialog">
+            <h1>Titulo de la recomendación</h1>
+            <input [(ngModel)]="title" rows="10" cols="40" class="title" required>
+            @if(emptyInput){
+                <p>{{msjHelp}}</p>
+            }
+            <div class="btn-container">
+                <button class="button-acept" (click)="save()" [disabled]="emptyInput">Crear</button>
+                <button class="button-cancel" (click)="closeDialog()">Cerrar</button>
+            </div>
+        </div>
+    </section>
+}
