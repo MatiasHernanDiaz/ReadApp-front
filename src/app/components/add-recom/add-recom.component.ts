@@ -21,7 +21,6 @@ export class AddRecomComponent {
   createRecom : {userid: number, title: string} = {userid:-1,title:''}
   recom : Recommendation = new Recommendation(0,'','',0,0,'',[],new User(0, '', '', '', new Date(),'',Language.SPANISH,[],[],[], 0 ),[],false, [])
 
-
   constructor(private recomService: RecommendationService, private loginService: LoginService, private router: Router){}
 
   async ngOnInit(){
@@ -30,12 +29,15 @@ export class AddRecomComponent {
 
   displaySelector: boolean = false
   title = ''
+  msjHelp = '¡Debes darle un titulo!'
 
   async save(){
-    this.createRecom.title = this.title
-    this.recom = await this.recomService.createRecom(this.createRecom)
-    this.displaySelector = false
-    this.navigateToEditRecom()
+    if(this.title != ''){
+      this.createRecom.title = this.title
+      this.recom = await this.recomService.createRecom(this.createRecom)
+      this.displaySelector = false
+      this.navigateToEditRecom()
+    }
   }
   
   closeDialog(){
@@ -51,4 +53,9 @@ export class AddRecomComponent {
     this.router.navigate(['app/recoms/'+this.recom.id])
   }
 
+  get emptyInput(){
+    return this.title === ''
+  }
+
+  
 }

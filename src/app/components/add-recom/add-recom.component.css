@@ -58,3 +58,6 @@ border: 2px solid var(--tertiary-color);
     width: 100%;
     text-align: center; 
 }
+p{
+    color: red;
+}

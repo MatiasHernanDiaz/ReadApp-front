@@ -69,7 +69,7 @@ export class AddRatingComponent {
     this.ratingRanking.description = this.text
     const userid = this.loginService.getSignedUser().id
     this.ratingRanking.creatorId = userid
-    this.recomService.createRating(userid, this.recomid, this.ratingRanking)
+    this.recomService.createRating(this.recomid, this.ratingRanking)
     this.refresh.emit()
     this.closeDialog()
   }

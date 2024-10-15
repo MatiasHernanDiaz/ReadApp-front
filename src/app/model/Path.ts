@@ -50,7 +50,7 @@ class PathRecom extends Path {
         }
     }
 
-    ratingCRUD(userid: number, recomid: number ,action:string): string{
+    ratingCRUD(recomid: number ,action:string): string{
         let path: string = this.pathBasic()
         switch(action){
             case('create'): path += '/create/rating?recomid=' + recomid
@@ -61,6 +61,11 @@ class PathRecom extends Path {
     recomCreate(){
         let path: string = this.pathBasic()
         return path += '/create/recom'
+    }
+
+    canRating(userid: number, recomid: number): string{
+        let path: string = this.pathBasic()
+        return path += '/rating?userid=' + userid + '&recomid=' + recomid
     }
 
 }
