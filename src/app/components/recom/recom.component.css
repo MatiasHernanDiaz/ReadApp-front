@@ -15,7 +15,7 @@ article.card {
     line-height: 1.5rem;
 }
 
-.image-center,.removeIcon,
+.image-center,.icon-select,
 .favorite-icon {
     display: flex;
     justify-content: center;
@@ -121,7 +121,7 @@ article.card:hover {
     transform: scale(1.05);
 }
 
-.removeIcon:hover {
+.icon-select:hover {
     transform: scale(1.2); 
 }
 

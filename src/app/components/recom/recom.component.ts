@@ -13,7 +13,7 @@ import { LoginService } from '@src/app/services/Login/login.service'
   selector: 'app-recom',
   standalone: true,
   imports: [NgIconComponent, CommonModule],
-  viewProviders: [LoginService,provideIcons({ heroUsers, bootstrapBookmark, bootstrapStar, bootstrapBook, bootstrapClock, bootstrapHeart, bootstrapArrowRight, bootstrapTrash })],
+  viewProviders: [provideIcons({ heroUsers, bootstrapBookmark, bootstrapStar, bootstrapBook, bootstrapClock, bootstrapHeart, bootstrapArrowRight, bootstrapTrash })],
   templateUrl: './recom.component.html',
   styleUrls: ['./recom.component.css']
 })
@@ -22,10 +22,17 @@ export class RecomComponent {
     //  solo una recomendación
   @Output() onDeleteRecom = new EventEmitter<number>()
   url = ''
-  constructor(private router: Router, private acRouter: ActivatedRoute,public LoginService:LoginService) {
+  userIdLogin: number = -1
+
+  constructor(private router: Router, private acRouter: ActivatedRoute, public loginService:LoginService) {
     this.acRouter.url.subscribe((url) =>{
       this.url = url[0].path
     })
+  }
+
+  async ngOnInit(){
+    this.userIdLogin = await this.loginService.getSignedUser().id
+    console.log(this.userIdLogin)
   }
 
   goToDetail(id: number) {
@@ -34,5 +41,10 @@ export class RecomComponent {
 
   removeRecom(id: number): void {
     this.onDeleteRecom.emit(id)
+  }
+
+  get isCreator(){
+    // console.log('id>> ', this.userIdLogin, 'recomid', this.recommendation.creator.id)
+    return this.userIdLogin === this.recommendation.creator.id
   }
 }

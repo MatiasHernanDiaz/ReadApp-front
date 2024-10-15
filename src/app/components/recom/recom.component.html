@@ -2,15 +2,12 @@
     <div class="card-header">
         <h3>{{ recommendation.title }}</h3>
         <div class="favorite-icon">
-        @if ( this.LoginService.getSignedUser() === recommendation.creator) {
-            <button class="removeIcon" (click)="removeRecom(recommendation.id)">
+        @if ( isCreator) {
+            <button class="icon-select" (click)="removeRecom(recommendation.id)">
             <ng-icon name="bootstrapTrash"></ng-icon>
             </button>
         } @else {
-            <button class="removeIcon" (click)="removeRecom(recommendation.id)">
-                <ng-icon name="bootstrapTrash"></ng-icon>
-                </button>
-            <!-- <ng-icon name="bootstrapHeart"></ng-icon> -->
+            <ng-icon class="icon-select" name="bootstrapHeart"></ng-icon>
               }
         </div>
     </div>

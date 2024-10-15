@@ -15,8 +15,6 @@ import { RecommendationService } from '@src/app/services/Recom/recommendation.se
   styleUrl: './add-rating.component.css'
 })
 export class AddRatingComponent {
-  //@Input() error = {timestamp: '', status: 0, error: '', message: '', path: ''}
-  //@Input() msj = {title: '', btnMsj:''}
   @Input() userId: number = -1
   @Input() recomid: number = -1
   ratingRanking: RatingWithId = {creatorId:-1,description:'',rating:0}
