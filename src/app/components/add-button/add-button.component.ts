@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, EventEmitter, Input, Output } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { bootstrapPlusCircleFill } from '@ng-icons/bootstrap-icons'
 import { NgIconComponent, provideIcons } from '@ng-icons/core'
@@ -13,13 +13,13 @@ import { NgIconComponent, provideIcons } from '@ng-icons/core'
   styleUrl: './add-button.component.css'
 })
 export class AddButtonComponent<T extends { displayName: string }> {
-  @Input() searchService: ( searchWord: string ) => Promise<T[]> = () => new Promise( () => [] )
-  @Input() loadService: ( item: T ) => Promise<void> = ( item: T) => new Promise( () => console.log(item.displayName) )
+  @Input() itemsToDisplay: T[] = []
+  @Output() searchAction: EventEmitter<string> = new EventEmitter<string>()
+  @Output() loadItemAction: EventEmitter<T> = new EventEmitter<T>()
 
   displaySelector = false
   searchWord = ''
-  itemsToDisplay = [] as T[]
-
+  // itemsToDisplay = [] as T[]
 
   toggleSelector() { 
     this.displaySelector = !this.displaySelector 
@@ -29,7 +29,8 @@ export class AddButtonComponent<T extends { displayName: string }> {
 
   async search( ev: { key: string} ) {
     if( ev.key === 'Enter' ) {
-      this.itemsToDisplay = await this.searchService( this.searchWord )
+      // this.itemsToDisplay = await this.searchService( this.loginService.getSignedUser(), this.searchWord )
+      this.searchAction.emit(this.searchWord)
       this.searchWord = ''
     } else if( ev.key === 'Escape' ) {
       this.searchWord = ''
@@ -38,7 +39,7 @@ export class AddButtonComponent<T extends { displayName: string }> {
   }
 
   async load( item: T) {
-    this.loadService( item )
+    this.loadItemAction.emit( item )
     this.displaySelector = false
     this.searchWord = ''
     this.itemsToDisplay = []
