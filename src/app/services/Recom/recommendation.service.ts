@@ -49,4 +49,11 @@ export class RecommendationService extends Service<Recommendation> {
       const ratingJSON = await lastValueFrom(rating$)
       return  RatingWithId.fromRatingJSON(ratingJSON)
     }
+
+    async createRecom(newRecom: {userid:number, title:string}): Promise<Recommendation>{
+      const url = pathRecom.recomCreate()
+      const recom$ = this.httpClient.post<RecommendationJSON>(url, newRecom)
+      const recomsJSON = await lastValueFrom(recom$)
+      return Recommendation.fromRecomendacionJSON(recomsJSON)
+    }
 }

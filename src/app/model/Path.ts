@@ -58,6 +58,11 @@ class PathRecom extends Path {
         return path
     }
 
+    recomCreate(){
+        let path: string = this.pathBasic()
+        return path += '/create/recom'
+    }
+
 }
 
 //======================================================================================================

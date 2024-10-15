@@ -8,7 +8,7 @@
           }
         }
         @if(myRecomsFlag){
-          <ng-icon name="bootstrapPlusCircleFill" class="add-icon" (click)="addRecom()"></ng-icon>
+          <app-add-recom></app-add-recom>
         }
       </div>
   <app-remove-recom *ngIf="dialogOpen" [recommendationId]="recommendationId" (click)="closeDialog()"></app-remove-recom>

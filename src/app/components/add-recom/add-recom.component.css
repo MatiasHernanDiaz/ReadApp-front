@@ -1,0 +1,60 @@
+.add-icon {
+    font-size: 40px;
+}
+
+.button-acept,.button-cancel {
+    height: 2.5rem;
+    margin: 0 10px;
+    min-width: 100px; 
+border: 2px solid var(--tertiary-color);
+}
+
+.button-acept,.button-cancel {
+    background-color: var(--tertiary-color);
+}
+
+.button-acept:hover,.button-cancel:hover {
+    background-color: darken(var(--tertiary-color), 10%);
+}
+
+.add-icon {
+    font-size: 40px;
+}
+
+.starIcon{
+    height: 1rem;
+}
+
+.title{
+    padding: 0.5rem;
+    width: 100%;
+    margin: 5px;
+}
+
+.btn-container{
+    display: flex;
+    justify-content: space-around;
+}
+
+.dialog-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /*queda adelante de todo*/
+}
+
+.dialog {
+    background-color: var(--fourth-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    text-align: center; 
+}
