@@ -10,19 +10,20 @@ import { Output,EventEmitter,Input } from '@angular/core'
   styleUrl: './remove-recom.component.css'
 })
 export class RemoveRecomComponent {
-  //recibe datos que se van a mostrar en el dialog
-  @Output() close = new EventEmitter<void>()//nuevo evento modal
+
+  @Output() close = new EventEmitter<void>()
+  @Output() confirmDelete = new EventEmitter<number>() 
   @Input() recommendationId?: number
 
-  confirmDelete() {
-    console.log('Eliminar recomendación con ID:', this.recommendationId)
-  }
   closeDialog(): void {
     console.log("Cierro el evento")
-    this.close.emit() // cierra el evento
+    this.close.emit() 
   }
   onConfirm(): void {
-    console.log("Elimino la card")
-    this.close.emit() 
+    console.log('recom', this.recommendationId)
+    if (this.recommendationId !== undefined) {
+      this.confirmDelete.emit(this.recommendationId) 
+    }
+    this.close.emit()
   }
 }
