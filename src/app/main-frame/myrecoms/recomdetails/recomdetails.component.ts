@@ -13,6 +13,8 @@ import { AddRatingComponent } from "../../../components/add-rating/add-rating.co
 import { LoginService } from '@src/app/services/Login/login.service'
 import { bootstrapPlusCircleFill } from '@ng-icons/bootstrap-icons'
 import { NgIconComponent, provideIcons } from '@ng-icons/core'
+import { Book } from '@src/app/model/Book'
+import { User } from '@src/app/model/User'
 
 
 
@@ -35,6 +37,7 @@ export class RecomdetailsComponent {
   loading = true
   error = {timestamp: '', status: 0, error: '', message: '', path: ''}
   message = {title: 'No puedes editar esta recomendacion', btnMsj:'Cerrar'}
+  booksToSearch: Array<Book> = [] 
   close = true
   // canRating = 'false'
   
@@ -128,5 +131,14 @@ export class RecomdetailsComponent {
     this.recom = recom
   }
 
+
+  async findBooks( searchWord: string ) {
+    this.booksToSearch = await this.bookService.searchBooks( this.loginService.getSignedUser(), searchWord )
+  }
+
+  async loadNewFriend( newFriend: User ) {
+    const newFriendList = await this.userService.loadFriend( this.loginService.getSignedUser(), newFriend )
+    this.friends = newFriendList.map( fri => User.fromUserJSON(fri) )
+  }
   
 }

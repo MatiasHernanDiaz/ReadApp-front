@@ -22,6 +22,7 @@
                 <app-book [book]="book"></app-book>
             }
             @if(editMode){
+                <app-add-button [itemsToDisplay]="friendsToSearch" (searchAction)="findFriends($event)" (loadItemAction)="loadNewFriend($event)"></app-add-button>
                 <ng-icon name="bootstrapPlusCircleFill" class="add-icon" (click)="goToAddBook()"></ng-icon>
             }
         </article>
