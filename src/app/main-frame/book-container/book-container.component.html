@@ -1,11 +1,18 @@
-<app-search-bar></app-search-bar>
-<div class="card-container">
+<app-search-bar (lookup)="goToFind($event)"></app-search-bar>
+
+
+@if(!loading){
+  <div class="card-container">
     @for (book of books; track book){
-        <app-book
-        [book]="book"
-        ></app-book>
+    <app-book [book]="book" (click)="selected(book)"></app-book>
     }
+  </div>
+}
+@else {
+<div class="spinner-container">
+  <app-spinner></app-spinner>
 </div>
+}
 
 
 

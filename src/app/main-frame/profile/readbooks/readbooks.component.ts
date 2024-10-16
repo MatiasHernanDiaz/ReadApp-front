@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { Book } from '@src/app/model/Book'
 import { Language, User } from '@src/app/model/User'  
 import { BookComponent } from '@src/app/components/book/book.component'
@@ -16,7 +16,7 @@ import { LoginService } from '@src/app/services/Login/login.service'
 })
 export class ReadbooksComponent implements OnInit {
   @Input() readBooks: Book[] = [] 
-  @Input() user : User = new User(0, '', '', '', new Date(),'', Language.SPANISH,[],[],[], 0 )
+  @Input() user: User = new User(0, '', '', '', new Date(), '', Language.SPANISH, [], [], [], 0)
   
   constructor(
     private userService: UserService, private loginService: LoginService
@@ -27,6 +27,11 @@ export class ReadbooksComponent implements OnInit {
     this.userService.getBookToRead(user.id, false).then((res)=>{
       this.readBooks = res
     })
+  }
+
+  @Output()
+  newBook(book: Book) {
+    console.log(book)
   }
   
 }

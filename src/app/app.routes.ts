@@ -66,11 +66,25 @@ export const routes: Routes = [
                     },
                     {
                         path: "readbooks",
-                        component: ReadbooksComponent
+                        component: ReadbooksComponent,
+                        children: [
+                        {
+                          path: 'books',
+                          component: BookContainerComponent,
+                          //data: { bookRead: }
+                        }
+                        ]
                     },
                     {
                         path: "bookstoread",
-                        component: BooksToReadComponent
+                      component: BooksToReadComponent,
+                      children: [
+                        {
+                          path: 'books',
+                          component: BookContainerComponent,
+                          //data: { bookRead: }
+                        }
+                      ]
                     },
                     {
                         path: "recomstoevaluate",
