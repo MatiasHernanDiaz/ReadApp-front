@@ -59,4 +59,7 @@ export class RecomComponent {
   get ratingAvg(){
     return this.recommendation.ratingsAvg.toFixed(2)
   }
+  get recomReadTime(){
+    return this.loginService.getSignedUser().recomReadTime(this.recommendation)
+  }
 }

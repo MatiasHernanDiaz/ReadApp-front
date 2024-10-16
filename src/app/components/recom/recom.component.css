@@ -92,7 +92,12 @@ h1, h2, h3 {
 
 .footer-item {
     display: flex;
-    align-items: center;
+    align-items: center; /* Alinea cada ícono y número horizontalmente */
+    margin-right: 1.5rem; /* Agrega espacio entre cada grupo ícono-número */
+}
+
+.footer-item ng-icon {
+    margin-right: 0.5rem; /* Agrega espacio entre el ícono y el texto */
 }
 
 .line-divide {
