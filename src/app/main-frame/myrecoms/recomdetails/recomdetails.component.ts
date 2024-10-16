@@ -1,7 +1,5 @@
 import { Component } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { Recommendation } from '@src/app/model/Recommendation'
-import { Language, User } from '@src/app/model/User'
 import { RecommendationService } from '@src/app/services/Recom/recommendation.service'
 import { RatingComponent } from '@src/app/components/rating/rating.component'
 import { CommonModule } from '@angular/common'
@@ -30,8 +28,8 @@ export class RecomdetailsComponent {
 
   volver = {action:'Volver', url:['app/myrecoms']}
   editMode = false
-  recom: Recommendation = new Recommendation(0,'','',0,0,'',[],new User(0, '', '', '', new Date(),'', Language.SPANISH,[],[],[], 0 ),[],false, [])
-  recomEdit: RecomEdit = new RecomEdit('','',false,1,{id:-1})
+  recom: RecomEdit = new RecomEdit('','',false,1,{id:-1,fullName:''},false, false, [])
+  recomEdit: RecomEdit = new RecomEdit('','',false,1,{id:-1,fullName:''},false, false, [])
   recomid!: number
   useridLog!: number
   loading = true
@@ -65,9 +63,10 @@ export class RecomdetailsComponent {
   
   
   async ngOnInit(){
-      this.recommendationService.getRecomm(this.recomid).then((res)=>{
+      this.recommendationService.getRecomm(this.recomid, this.useridLog).then((res)=>{
       this.recom = res
       this.recomEdit = res
+      console.log('RecomEdit >>>>>> ', this.recom)
       this.isLoading()
       return this.recommendationService.canRating(this.useridLog, this.recom.id)
     }).then((res2)=>{
@@ -126,7 +125,7 @@ export class RecomdetailsComponent {
     console.log('viajo a la pag de libros, que deberia ser hija de esta para mi')
   }
   
-  getNewRating(recom: Recommendation){
+  getNewRating(recom: RecomEdit){
     this.editMode = false
     this.recom = recom
   }

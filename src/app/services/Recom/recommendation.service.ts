@@ -20,11 +20,11 @@ export class RecommendationService extends Service<Recommendation> {
 
     }
 
-    async getRecomm(recomid: number): Promise<Recommendation>{
-      const url = pathRecom.pathEntityId(recomid)
-      const recoms$ = this.httpClient.get<RecommendationJSON>(url)
+    async getRecomm(recomid: number, userid: number): Promise<RecomEdit>{
+      const url = pathRecom.pathEntityCRUD(userid, recomid, 'read')
+      const recoms$ = this.httpClient.get<JSONRecomEdit>(url)
       const recomsJSON = await lastValueFrom(recoms$)
-      return Recommendation.fromRecomendacionJSON(recomsJSON)
+      return RecomEdit.fromRecomEditJSON(recomsJSON)
     }
 
     async updateRecomData(userId: number, recom: Recommendation): Promise<Recommendation>{
