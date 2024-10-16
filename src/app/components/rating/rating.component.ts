@@ -16,21 +16,12 @@ export class RatingComponent {
 
   dateOfCreation = new Date
   
-  //ratingComplete : Rating = new Rating(new User(0, '', '', '', new Date(),'', Language.SPANISH,[],[],[], 0 ),1,'')
-
-  @Input() rating: RatingWithId = new RatingWithId(-1, 0, '')
+  @Input() rating: RatingWithId = {creatorId:-1,description:'',rating:0, creatorFullName:'',createDate:new Date,avatar:''}
 
   user: User = new User(0, '', '', '', new Date(),'', Language.SPANISH,[],[],[], 0 )
 
   constructor( public userService: UserService ) {
     
-  }
-
-  async ngOnInit() {
-    await this.userService.getUser(this.rating.creatorId).then((res)=>{
-       this.user = res
-       console.log('rating?? -> ', this.rating)
-     })
   }
 
 }

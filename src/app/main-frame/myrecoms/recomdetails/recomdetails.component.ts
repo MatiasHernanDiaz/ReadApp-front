@@ -28,15 +28,15 @@ export class RecomdetailsComponent {
 
   volver = {action:'Volver', url:['app/myrecoms']}
   editMode = false
-  recom: RecomEdit = new RecomEdit('','',false,1,{id:-1,fullName:''},false, false, [])
-  recomEdit: RecomEdit = new RecomEdit('','',false,1,{id:-1,fullName:''},false, false, [])
+  recom: RecomEdit = new RecomEdit('','',false,1,{id:-1,fullName:''},false, false, [], [])
+  recomEdit: RecomEdit = new RecomEdit('','',false,1,{id:-1,fullName:''},false, false, [], [])
   recomid!: number
   useridLog!: number
   loading = true
   error = {timestamp: '', status: 0, error: '', message: '', path: ''}
   message = {title: 'No puedes editar esta recomendacion', btnMsj:'Cerrar'}
   close = true
-  canRating = 'false'
+  // canRating = 'false'
   
 
   
@@ -68,10 +68,8 @@ export class RecomdetailsComponent {
       this.recomEdit = res
       console.log('RecomEdit >>>>>> ', this.recom)
       this.isLoading()
-      return this.recommendationService.canRating(this.useridLog, this.recom.id)
-    }).then((res2)=>{
-      this.canRating = res2 
     })
+    
 
   }
 

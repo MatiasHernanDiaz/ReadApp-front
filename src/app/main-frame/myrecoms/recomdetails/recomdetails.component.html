@@ -52,7 +52,7 @@
             @for (iRating of recom.ratings; track iRating) {
                 <app-rating [rating]="iRating" ></app-rating>
             }
-            @if(canRating){
+            @if(recom.canRating){
                 <app-add-rating [userId]="useridLog" [recomid]="recom.id" (refresh)="getNewRating($event)"></app-add-rating>
             }
         </section>
@@ -66,15 +66,17 @@
     </div>
 }
 <div class="items-container buttons-container btn-reco-detail">
-    <div class="items-container buttons-container">
-        @if( editMode) {
-            <button class="cancel" (click)="cancelEdit()">Cancelar</button>
-            <button class="accept" (click)="saveEdit()">Guardar cambios</button>
-
-        }@else {
-            <button class="edit" (click)="setEditMode()"><img src="assets/pencil-simple.svg" alt="Editar"></button>
-        }
-    </div>
+    @if(recom.canEdit){
+        <div class="items-container buttons-container">
+            @if( editMode) {
+                <button class="cancel" (click)="cancelEdit()">Cancelar</button>
+                <button class="accept" (click)="saveEdit()">Guardar cambios</button>
+    
+            }@else {
+                <button class="edit" (click)="setEditMode()"><img src="assets/pencil-simple.svg" alt="Editar"></button>
+            }
+        </div>
+    }
     <app-btn-navigate [data]="volver"></app-btn-navigate>
 </div>
 

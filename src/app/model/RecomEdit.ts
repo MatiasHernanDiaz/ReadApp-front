@@ -1,4 +1,5 @@
 import { Book } from "./Book"
+import { RatingWithId } from "./rating"
 
 
 export class RecomEdit{
@@ -10,6 +11,7 @@ export class RecomEdit{
     canRating: boolean
     canEdit: boolean
     books: Array<Book>
+    ratings: Array<RatingWithId>
     
     constructor(
         title: string,
@@ -19,7 +21,8 @@ export class RecomEdit{
         creator: {id:number, fullName: string},
         canRating: boolean,
         canEdit: boolean,
-        books: Array<Book>
+        books: Array<Book>,
+        ratings: Array<RatingWithId>
     ){
         this.creator = creator
         this.title = title
@@ -29,6 +32,7 @@ export class RecomEdit{
         this.canRating = canRating
         this.canEdit = canEdit
         this.books = books
+        this.ratings = ratings
     }
 
 
@@ -41,9 +45,10 @@ export class RecomEdit{
             recomendacionJSON.creator,
             recomendacionJSON.canRating,
             recomendacionJSON.canEdit,
-            recomendacionJSON.books
+            recomendacionJSON.books,
+            recomendacionJSON.ratings
         )
-      }
+    }
 }
 
 export type JSONRecomEdit = {
@@ -55,5 +60,6 @@ export type JSONRecomEdit = {
     canRating: boolean
     canEdit: boolean
     books: Array<Book>
+    ratings: Array<RatingWithId>
 }
 
