@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms'
 import { bootstrapPlusCircleFill, bootstrapStar, bootstrapStarFill } from '@ng-icons/bootstrap-icons'
 import { provideIcons, NgIconComponent } from '@ng-icons/core'
 import { RatingWithId } from '@src/app/model/rating'
+import { Recommendation } from '@src/app/model/Recommendation'
 import { LoginService } from '@src/app/services/Login/login.service'
 import { RecommendationService } from '@src/app/services/Recom/recommendation.service'
 
@@ -18,7 +19,7 @@ export class AddRatingComponent {
   @Input() userId: number = -1
   @Input() recomid: number = -1
   ratingRanking: RatingWithId = {creatorId:-1,description:'',rating:0}
-  @Output() refresh = new EventEmitter<void>()
+  @Output() refresh = new EventEmitter<Recommendation>()
 
   constructor(private recomService: RecommendationService, public loginService: LoginService){}
 
@@ -63,12 +64,12 @@ export class AddRatingComponent {
     this.ratingRanking.rating = selectedStar
   }
 
-  save(){
+  async save(){
     this.ratingRanking.description = this.text
     const userid = this.loginService.getSignedUser().id
     this.ratingRanking.creatorId = userid
-    this.recomService.createRating(this.recomid, this.ratingRanking)
-    this.refresh.emit()
+    const newRecom = await this.recomService.createRating(this.recomid, this.ratingRanking)
+    this.refresh.emit(newRecom)
     this.closeDialog()
   }
 

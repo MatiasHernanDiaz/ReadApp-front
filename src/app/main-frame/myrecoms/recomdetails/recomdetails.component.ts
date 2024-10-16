@@ -68,12 +68,10 @@ export class RecomdetailsComponent {
       this.recommendationService.getRecomm(this.recomid).then((res)=>{
       this.recom = res
       this.recomEdit = res
-      console.info('Recom completa ->', this.recom)
       this.isLoading()
       return this.recommendationService.canRating(this.useridLog, this.recom.id)
     }).then((res2)=>{
       this.canRating = res2 
-      console.log('puede valorar?? >> ', this.canRating, typeof this.canRating)
     })
 
   }
@@ -89,14 +87,13 @@ export class RecomdetailsComponent {
     this.editMode = false
   }
 
-  async saveEdit() {
+  saveEdit() {
       this.recommendationService.updateRecomEdit(this.useridLog, this.recomEdit ).then((res) =>{
       this.recomEdit = res
       this.recomEditToRecom()
       this.editMode = false
     }).catch((err) =>{
       this.error = err.error
-      this.ngOnInit() //????? Es legal? o marche preso 30 años??
       this.editMode = false
     })
   }
@@ -124,18 +121,14 @@ export class RecomdetailsComponent {
   }
 
 
-  async reload(){
-      this.editMode = false
-      this.recommendationService.getRecomm(this.recomid).then((res)=>{
-      this.recom = res
-      this.recomEdit = res
-      console.info('Recom completa ->', this.recom)
-      this.isLoading()
-    })
-  }
-
+  
   goToAddBook(){
     console.log('viajo a la pag de libros, que deberia ser hija de esta para mi')
+  }
+  
+  getNewRating(recom: Recommendation){
+    this.editMode = false
+    this.recom = recom
   }
 
   

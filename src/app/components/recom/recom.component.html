@@ -23,9 +23,9 @@
       
     <hr class="line-divide">
     <div class="card-footer">
-        <p class="footer-item"><ng-icon name="bootstrapStar"></ng-icon> {{ recommendation.rating }}</p>
-        <p class="footer-item"><ng-icon name="bootstrapBook"></ng-icon> {{ recommendation.books_count }}</p>
-        <p class="footer-item"><ng-icon name="bootstrapClock"></ng-icon>  {{ recommendation.time_to_read }}</p>
+        <p class="footer-item"><ng-icon name="bootstrapStar"></ng-icon> {{ ratingAvg }}</p>
+        <p class="footer-item"><ng-icon name="bootstrapBook"></ng-icon> {{ countBooks }}</p>
+        <p class="footer-item"><ng-icon name="bootstrapClock"></ng-icon>  {{ timeToRead }}</p>
     </div>
     <p (click)="goToDetail(recommendation.id)" class="btn-transition">
         Ver más  <ng-icon name="bootstrapArrowRight"></ng-icon>
