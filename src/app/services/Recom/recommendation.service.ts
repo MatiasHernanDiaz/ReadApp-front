@@ -44,7 +44,6 @@ export class RecommendationService extends Service<Recommendation> {
 
     async createRating(recomid: number, rating: RatingWithId): Promise<RecomEdit>{
       const url = pathRecom.ratingCRUD(recomid, 'create')
-      console.log('>>>>>>>>>>>>>>>>',url)
       const recom$ = this.httpClient.post<JSONRecomEdit>(url, rating)
       const recomJSON = await lastValueFrom(recom$)
       return  RecomEdit.fromRecomEditJSON(recomJSON)

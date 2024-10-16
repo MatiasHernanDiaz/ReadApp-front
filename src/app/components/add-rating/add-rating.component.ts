@@ -70,7 +70,6 @@ export class AddRatingComponent {
     this.ratingRanking.creatorId = userid
     const newRecom = await this.recomService.createRating(this.recomid, this.ratingRanking)
     this.refresh.emit(newRecom)
-    console.log('>>>>> TE DEVUELVO ESTA RECOM>>>>',newRecom)
     this.closeDialog()
   }
 
