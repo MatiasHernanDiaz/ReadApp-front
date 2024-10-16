@@ -83,6 +83,15 @@ class PathBook extends Path {
       return this.pathBasic()
     }
   }
+
+  getAddBook( recomid: number, userid: number ): string{
+    
+    return this.pathBasic() + '/' + recomid + '/addbook?userid=' + userid
+  }
+
+  getCandidatesToBookOfRecom( recomid: number, userLogId: number, searchWord?:string ): string{
+    return this.pathBasic() + '/' + recomid + '/candidatestobook?userid=' + userLogId + '&search=' + searchWord
+  }
 }
 
 //======================================================================================================

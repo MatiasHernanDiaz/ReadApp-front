@@ -14,14 +14,13 @@ import { LoginService } from '@src/app/services/Login/login.service'
 import { bootstrapPlusCircleFill } from '@ng-icons/bootstrap-icons'
 import { NgIconComponent, provideIcons } from '@ng-icons/core'
 import { Book } from '@src/app/model/Book'
-import { User } from '@src/app/model/User'
-
+import { AddButtonComponent } from '@src/app/components/add-button/add-button.component'
 
 
 @Component({
   selector: 'app-recomdetails',
   standalone: true,
-  imports: [RatingComponent, CommonModule, BookComponent, BtnNavigateComponent, SpinnerComponent, MsjComponent, AddRatingComponent, NgIconComponent],
+  imports: [RatingComponent, CommonModule, BookComponent, BtnNavigateComponent, SpinnerComponent, MsjComponent, AddRatingComponent, NgIconComponent, AddButtonComponent],
   viewProviders: [provideIcons({ bootstrapPlusCircleFill })],
   templateUrl: './recomdetails.component.html',
   styleUrl: './recomdetails.component.css'
@@ -39,7 +38,7 @@ export class RecomdetailsComponent {
   message = {title: 'No puedes editar esta recomendacion', btnMsj:'Cerrar'}
   booksToSearch: Array<Book> = [] 
   close = true
-  // canRating = 'false'
+ 
   
 
   
@@ -69,7 +68,6 @@ export class RecomdetailsComponent {
       this.recommendationService.getRecomm(this.recomid, this.useridLog).then((res)=>{
       this.recom = res
       this.recomEdit = res
-      console.log('RecomEdit >>>>>> ', this.recom)
       this.isLoading()
     })
     
@@ -133,12 +131,11 @@ export class RecomdetailsComponent {
 
 
   async findBooks( searchWord: string ) {
-    this.booksToSearch = await this.bookService.searchBooks( this.loginService.getSignedUser(), searchWord )
+    this.booksToSearch = await this.bookService.searchBooks(this.recom, this.useridLog, searchWord )
   }
 
-  async loadNewFriend( newFriend: User ) {
-    const newFriendList = await this.userService.loadFriend( this.loginService.getSignedUser(), newFriend )
-    this.friends = newFriendList.map( fri => User.fromUserJSON(fri) )
+  async loadNewBook( newBook: Book ) {
+    this.recom = await this.bookService.loadBook(this.recom, newBook, this.useridLog )
   }
   
 }
