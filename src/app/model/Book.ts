@@ -33,7 +33,7 @@ export class Book {
     }
 
     get displayName(){
-        return this.title
+        return this.title + ' ' + this.autor
     }
 
     static fromBookJSON(bookToJSON: BookToJSON) : Book{

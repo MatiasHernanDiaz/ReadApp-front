@@ -78,7 +78,9 @@ export class RecomdetailsComponent {
     this.recom.creator.id = this.recomEdit.creator.id
     this.recom.title = this.recomEdit.title 
     this.recom.description = this.recomEdit.description 
-    this.recomEdit.publicIs = this.recomEdit.publicIs 
+    this.recom.publicIs = this.recomEdit.publicIs 
+    this.recom.creator.fullName = this.recomEdit.creator.fullName
+  
   }
   
   cancelEdit() {
