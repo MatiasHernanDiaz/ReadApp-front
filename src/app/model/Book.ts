@@ -44,7 +44,12 @@ export class Book {
         bookToJSON.sales,
         bookToJSON.id)
     }
+
+    static largeBookPages = 300
     
+    isBestSeller() {
+        return this.sales > 10000 || this.lenguages.length > 5
+    }
 }
 
 export type  BookToJSON = {

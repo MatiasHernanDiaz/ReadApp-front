@@ -1,4 +1,5 @@
 import { Book } from "./Book"
+import { Recommendation } from "./Recommendation"
 
 
 export class User {
@@ -55,8 +56,12 @@ export class User {
         return book.pages / this.readTimeMinAvg
     }
 
-    readTime( book: Book ) {
+    bookReadTime( book: Book ) {
         return this.readMode.readTime( book, this )
+    }
+
+    recomReadTime( recom: Recommendation ) {
+        return recom.books.reduce(( ac, book ) => ac + this.bookReadTime(book), 0)
     }
 
     get displayName(){
@@ -130,22 +135,37 @@ export class AvgReader implements ReadMode {
 }
 
 
-// TODO: Implementar los método correctos
 export class AnxiousReader implements ReadMode {
     toCustomString(): string { return "Ansioso" }
-    readTime( book: Book, user: User ) { return user.baseReadTime( book ) }
+    readTime( book: Book, user: User ) {
+        if (book.isBestSeller()) {
+            return user.baseReadTime(book) * 0.5
+        } else {
+            return user.baseReadTime(book) * 0.8
+        }
+    }
 }
 
 
 export class FanaticReader implements ReadMode {
     toCustomString(): string { return "Fanático" }
-    readTime( book: Book, user: User ) { return user.baseReadTime( book ) }
-}
+    readTime( book: Book, user: User ) {
+        const extraTime = !user.readToBooks.includes(book) ? 
+            book.pages > Book.largeBookPages ?
+            Book.largeBookPages * 2 + (book.pages - Book.largeBookPages) :
+            book.pages * 2 : 
+        0
 
+        return user.baseReadTime(book) + extraTime
+    }
+}
 
 export class RecurrentReader implements ReadMode {
     toCustomString(): string { return "Recurrente" }
-    readTime( book: Book, user: User ) { return user.baseReadTime( book ) }
+    readTime( book: Book, user: User ) {
+        return user.baseReadTime(book) - user.baseReadTime(book) *
+                ( user.readBooks.includes(book) ? 0.05: 0.01 )
+    }
 }
 
 export const readerModes = {
