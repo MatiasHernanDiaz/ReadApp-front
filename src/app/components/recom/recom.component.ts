@@ -24,14 +24,15 @@ export class RecomComponent {
   url = ''
   userIdLogin: number = -1
 
+
   constructor(private router: Router, private acRouter: ActivatedRoute, public loginService:LoginService) {
     this.acRouter.url.subscribe((url) =>{
       this.url = url[0].path
     })
   }
 
-  async ngOnInit(){
-    this.userIdLogin = await this.loginService.getSignedUser().id
+   ngOnInit(){
+    this.userIdLogin = this.loginService.getSignedUser().id
     console.log(this.userIdLogin)
   }
 
@@ -44,7 +45,18 @@ export class RecomComponent {
   }
 
   get isCreator(){
-    // console.log('id>> ', this.userIdLogin, 'recomid', this.recommendation.creator.id)
     return this.userIdLogin === this.recommendation.creator.id
+  }
+
+  
+  get countBooks(){
+    return this.recommendation.books.length
+  }
+  get timeToRead(){
+    return this.recommendation.time_to_read
+  }
+
+  get ratingAvg(){
+    return this.recommendation.ratingsAvg.toFixed(2)
   }
 }

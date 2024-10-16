@@ -4,7 +4,7 @@ import { lastValueFrom } from 'rxjs'
 import { pathRecom } from '@src/app/model/Path'
 import { Service } from '@src/app/services/AbstractService1'
 import { RecomEdit, JSONRecomEdit } from '@src/app/model/RecomEdit'
-import { RatingJSON, RatingWithId } from '@src/app/model/rating'
+import { RatingWithId } from '@src/app/model/rating'
 
 
 @Injectable({ providedIn: 'root' })
@@ -42,12 +42,12 @@ export class RecommendationService extends Service<Recommendation> {
       return RecomEdit.fromRecomEditJSON(recomsJSON)
     }
 
-    async createRating(recomid: number, rating: RatingWithId): Promise<RatingWithId>{
+    async createRating(recomid: number, rating: RatingWithId): Promise<Recommendation>{
       const url = pathRecom.ratingCRUD(recomid, 'create')
       console.log(url)
-      const rating$ = this.httpClient.post<RatingJSON>(url, rating)
-      const ratingJSON = await lastValueFrom(rating$)
-      return  RatingWithId.fromRatingJSON(ratingJSON)
+      const recom$ = this.httpClient.post<RecommendationJSON>(url, rating)
+      const recomJSON = await lastValueFrom(recom$)
+      return  Recommendation.fromRecomendacionJSON(recomJSON)
     }
 
     async createRecom(newRecom: {userid:number, title:string}): Promise<Recommendation>{

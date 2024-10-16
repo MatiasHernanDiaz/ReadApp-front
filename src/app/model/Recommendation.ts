@@ -16,6 +16,7 @@ export type RecommendationJSON = {
     books: Array<Book>
     publicIs: boolean
     ratings: Array<RatingWithId>
+    ratingsAvg: number 
   }
   
   export type RecomJSON = {
@@ -24,6 +25,7 @@ export type RecommendationJSON = {
      description: string
      ratings: Array<RatingWithId>
      books: Array<Book>
+     ratingsAvg: number
   }
 
 
@@ -40,7 +42,8 @@ export type RecommendationJSON = {
       public creator: User,
       public books: Array<Book>,
       public publicIs: boolean,
-      public ratings: Array<RatingWithId>
+      public ratings: Array<RatingWithId>,
+      public ratingsAvg: number = 0.0
     ) {}
   
     static fromRecomendacionJSON(recomendacionJSON: RecommendationJSON): Recommendation {
@@ -55,7 +58,8 @@ export type RecommendationJSON = {
         recomendacionJSON.creator,
         recomendacionJSON.books,
         recomendacionJSON.publicIs,
-        recomendacionJSON.ratings
+        recomendacionJSON.ratings,
+        recomendacionJSON.ratingsAvg
       )
     }
 
@@ -68,5 +72,6 @@ export type RecommendationJSON = {
     obtenerDescripcionCorta(longitud: number = 100): string {
       return this.description.length > longitud? `${this.description.substring(0, longitud)}...`: this.description
     }
+    
 
   }

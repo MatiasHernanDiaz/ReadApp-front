@@ -18,6 +18,7 @@ export class LoginScreen implements OnInit {
   loginForm!: FormGroup
   isSubmitted = false
   loginFailed = false
+  show = false
 
   constructor(private fb: FormBuilder, private router: Router, private loginService: LoginService) {}
 
@@ -87,5 +88,9 @@ export class LoginScreen implements OnInit {
 
   get password() {
     return this.loginForm.get('password')
+  }
+
+  setShow(){
+    this.show = !this.show 
   }
 }
