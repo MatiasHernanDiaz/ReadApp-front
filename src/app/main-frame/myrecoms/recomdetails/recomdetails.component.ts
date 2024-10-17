@@ -34,7 +34,7 @@ export class RecomdetailsComponent {
   useridLog!: number
   loading = true
   error = {timestamp: '', status: 0, error: '', message: '', path: ''}
-  message = {title: 'No puedes editar esta recomendacion', btnMsj:'Cerrar'}
+  message = {title: 'Algo salio muy mal, reintenar', btnMsj:'Cerrar'}
   booksToSearch: Array<Book> = [] 
   close = true
   eye = {name:""}
@@ -65,6 +65,8 @@ export class RecomdetailsComponent {
       this.recom = res
       this.recomEdit = res
       this.isLoading()
+    }).catch((err)=>{
+      this.error = err
     })
     
 
