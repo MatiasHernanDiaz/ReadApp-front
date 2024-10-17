@@ -1,3 +1,4 @@
+import { Book } from "./Book"
 
 
 abstract class Path{
@@ -103,6 +104,16 @@ class PathUser extends Path {
             return this.pathBasic() + '/' + userid + '/bookstoread?toread=false'
         }
     }
+
+    getAddBook(userid: number, toread: boolean) {
+      if (toread) {
+        return `${this.pathBasic()}/${userid}/addtoread`
+      }
+      else {
+        return `${this.pathBasic()}/${userid}/addreadbook`
+      }
+      
+      }
 
     getEditProfile() {
         return `${ this.pathBasic() }/editprofile`

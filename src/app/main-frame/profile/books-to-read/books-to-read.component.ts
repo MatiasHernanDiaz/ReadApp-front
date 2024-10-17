@@ -5,11 +5,12 @@ import { BookComponent } from '@src/app/components/book/book.component'
 import { CommonModule } from '@angular/common'
 import { UserService } from '@src/app/services/User/user.service'
 import { LoginService } from '@src/app/services/Login/login.service'
+import { AddBookComponent } from '../../../components/add-book/add-book.component'
 
 @Component({
   selector: 'app-books-to-read',
   standalone: true,
-  imports: [BookComponent,CommonModule],
+  imports: [BookComponent, CommonModule, AddBookComponent],
   templateUrl: './books-to-read.component.html',
   styleUrl: './books-to-read.component.css'
 })

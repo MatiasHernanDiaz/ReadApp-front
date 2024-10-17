@@ -1,7 +1,6 @@
 <div class="card-container">
-    <ng-container *ngFor="let book of readToBooks">
-      <app-book
-        [book]="book"
-      ></app-book>
-    </ng-container>
-  </div>
+  <ng-container *ngFor="let book of readToBooks">
+    <app-book [book]="book"></app-book>
+  </ng-container>
+  <app-add-book [url]="'bookstoread'"></app-add-book>
+</div>

@@ -43,7 +43,22 @@ export class Book {
         bookToJSON.lenguages,
         bookToJSON.sales,
         bookToJSON.id)
+  }
+
+  bookToJSON(): BookToJSON {
+    return {
+      pages: this.pages,
+      title: this.title,
+      imageURL: this.imageURL,
+      autor: this.autor,
+      words: this.words,
+      date: this.date,
+      lenguages: this.lenguages,
+      sales: this.sales,
+      id: this.id
     }
+  }
+
 
     static largeBookPages = 300
     

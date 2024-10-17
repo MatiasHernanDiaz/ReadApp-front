@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core'
+import { Component } from '@angular/core'
 import { BookComponent } from '@src/app/components/book/book.component'
 import { Book } from '@src/app/model/Book'
 import { SearchBarComponent } from '@src/app/components/search-bar/search-bar.component'
@@ -6,6 +6,8 @@ import { BookService } from '@src/app/services/Book/book.service'
 import { CommonModule } from '@angular/common'
 import { SpinnerComponent } from '@src/app/components/spinner/spinner.component'
 import { ReadbooksComponent } from '../profile/readbooks/readbooks.component'
+import { UserService } from '../../services/User/user.service'
+import { LoginService } from '../../services/Login/login.service'
 
 
 @Component({
@@ -16,9 +18,7 @@ import { ReadbooksComponent } from '../profile/readbooks/readbooks.component'
   styleUrl: './book-container.component.css'
 })
 export class BookContainerComponent {
-  @Output()
-  bookRead: EventEmitter<Book> = new EventEmitter<Book>()
-
+  isToRead?: Boolean
   books: Array<Book> = []
   loading: boolean = true
 
@@ -28,7 +28,7 @@ export class BookContainerComponent {
 
     this.goToFind('')
   }
-  constructor(private BookService: BookService) {
+  constructor(private BookService: BookService, private UserService: UserService, private loginService: LoginService) {
     this.BookService.items.subscribe((allBooks) => {
       this.books = allBooks
       this.isLoading()
@@ -48,7 +48,21 @@ export class BookContainerComponent {
   }
 
   selected(book: Book) {
-    this.bookRead.emit(book)
+    if (this.isToRead) {
+      this.loadToRead(book)
+    }
+    else if (!this.isToRead) {
+      this.loadReadBook
+    }
+  }
+
+  async loadToRead(newBook: Book) {
+    const newBookList = await this.UserService.loadToRead(this.loginService.getSignedUser(), newBook)
+    console.log(newBook.title + " fue agregado a ToRead")
+  }
+  async loadReadBook(newBook: Book) {
+    const newBookList = await this.UserService.loadReadBook(this.loginService.getSignedUser(), newBook)
+    console.log(newBook.title + " fue agregado a ReadBook")
   }
 
 

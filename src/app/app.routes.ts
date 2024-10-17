@@ -69,9 +69,9 @@ export const routes: Routes = [
                         component: ReadbooksComponent,
                         children: [
                         {
-                          path: 'books',
+                          path: 'addbook',
                           component: BookContainerComponent,
-                          //data: { bookRead: }
+                            data: { isToRead : false}
                         }
                         ]
                     },
@@ -80,9 +80,9 @@ export const routes: Routes = [
                       component: BooksToReadComponent,
                       children: [
                         {
-                          path: 'books',
+                          path: 'addbook',
                           component: BookContainerComponent,
-                          //data: { bookRead: }
+                          data: { isToRead: true }
                         }
                       ]
                     },

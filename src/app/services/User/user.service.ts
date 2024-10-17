@@ -58,5 +58,25 @@ export class UserService extends Service<User>{
         const friend$ = this.httpClient.post<UserToJSON[]>(url, payload)
         const friend = await lastValueFrom(friend$)
         return friend
-    }
+  }
+
+  async loadToRead(user: User, newBook: Book) {
+    const url = pathUser.getAddBook(user.id, true)
+    const payload = newBook.bookToJSON()
+
+    const book$ = this.httpClient.post<BookToJSON[]>(url, payload)
+    const book = await lastValueFrom(book$)
+    return book
+  }
+  async loadReadBook(user: User, newBook: Book) {
+    const url = pathUser.getAddBook(user.id, false)
+    const payload = newBook.bookToJSON()
+
+    const book$ = this.httpClient.post<BookToJSON[]>(url, payload)
+    const book = await lastValueFrom(book$)
+    return book
+  }
+
+
+
 }
