@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core'
 import { Language, User, UserToJSON } from '@src/app/model/User'
 import { HttpClient } from '@angular/common/http'
 import { pathLogin } from '@src/app/model/Path'
-import { lastValueFrom } from 'rxjs'
+import { lastValueFrom, Subject } from 'rxjs'
 
 
 @Injectable({ providedIn: 'root' })
 export class LoginService {
   
   private signedUser?: User | null
+  
+  changeSignedUserSubject: Subject<User> = new Subject<User>()
 
   constructor(protected httpClient: HttpClient){}
 
@@ -43,6 +45,7 @@ export class LoginService {
     const res = await lastValueFrom(res$)
     
     this.signedUser = User.fromUserJSON(res.user)
+    this.changeSignedUserSubject.next( this.signedUser )
 
     return res
   }

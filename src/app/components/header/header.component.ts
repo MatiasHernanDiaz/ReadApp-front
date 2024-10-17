@@ -2,6 +2,7 @@ import { Component } from '@angular/core'
 import { Router, RouterLink, RouterLinkActive } from '@angular/router'
 import { Language, User } from '@src/app/model/User'
 import { LoginService } from '@src/app/services/Login/login.service'
+import { Subscription } from 'rxjs'
 
 
 @Component({
@@ -14,6 +15,7 @@ import { LoginService } from '@src/app/services/Login/login.service'
 export class HeaderComponent {
 
   user: User = new User(-1, '', '', '', new Date(), '',Language.SPANISH,[],[],[], 0)
+  private userObserver: Subscription = new Subscription()
   click: boolean = false
   dropdown: string = "hide"
   
@@ -22,9 +24,18 @@ export class HeaderComponent {
   async ngOnInit() {
     this.user = this.loginService.getSignedUser()!
 
+    this.userObserver = this.loginService.changeSignedUserSubject.asObservable().subscribe(
+      newUser => { this.user = newUser }
+    )
+
     if( !this.user || this.user.id < 0 ) {
       this.user = User.fromUserJSON((await this.loginService.refreshSignedUser()).user)
     }
+  }
+
+
+  ngOnDestroy() {
+    this.userObserver.unsubscribe()
   }
 
 

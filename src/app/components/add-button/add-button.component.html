@@ -1,7 +1,7 @@
 <ng-icon name="bootstrapPlusCircleFill" class="add-icon" (click)="toggleSelector()"></ng-icon>
 @if( displaySelector ) {
     <div class="add-selector">
-        <input type="search" [(ngModel)]="searchWord" (keydown)="search($event)">
+        <input type="search" [(ngModel)]="searchWord" (keydown)="search($event)" placeholder="Enter para todos los items">
         <ul class="add-options-container">
             @for( item of itemsToDisplay; track item.displayName ) {
                 <li>
