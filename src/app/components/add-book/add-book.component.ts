@@ -20,6 +20,6 @@ export class AddBookComponent {
   constructor(private router: Router) { }
 
   goToAdd() {
-    this.router.navigate(['app/profile/' + this.url + '/', 'addbook'])
+    this.router.navigate(['app/' + this.url])
   }
 }

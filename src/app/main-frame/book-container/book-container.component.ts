@@ -8,6 +8,7 @@ import { SpinnerComponent } from '@src/app/components/spinner/spinner.component'
 import { ReadbooksComponent } from '../profile/readbooks/readbooks.component'
 import { UserService } from '../../services/User/user.service'
 import { LoginService } from '../../services/Login/login.service'
+import { ActivatedRoute, Router } from '@angular/router'
 
 
 @Component({
@@ -28,11 +29,12 @@ export class BookContainerComponent {
 
     this.goToFind('')
   }
-  constructor(private BookService: BookService, private UserService: UserService, private loginService: LoginService) {
+  constructor(private BookService: BookService, private UserService: UserService, private loginService: LoginService, private router: ActivatedRoute, private route: Router) {
     this.BookService.items.subscribe((allBooks) => {
       this.books = allBooks
       this.isLoading()
     })
+    this.router.data.subscribe((data) => { this.isToRead = data['isToRead'] })
   }
 
 
@@ -50,9 +52,11 @@ export class BookContainerComponent {
   selected(book: Book) {
     if (this.isToRead) {
       this.loadToRead(book)
+      this.route.navigate(['app/profile/bookstoread'])
     }
     else if (!this.isToRead) {
-      this.loadReadBook
+      this.loadReadBook(book)
+      this.route.navigate(['app/profile/readbooks'])
     }
   }
 
