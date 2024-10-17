@@ -34,7 +34,7 @@ export class RecomdetailsComponent {
   useridLog!: number
   loading = true
   error = {timestamp: '', status: 0, error: '', message: '', path: ''}
-  message = {title: 'Algo salio muy mal, reintenar', btnMsj:'Cerrar'}
+  message = {title: 'Ups, algo salio muy mal, reintenar más tarde!', btnMsj:'Cerrar'}
   booksToSearch: Array<Book> = [] 
   close = true
   eye = {name:""}
