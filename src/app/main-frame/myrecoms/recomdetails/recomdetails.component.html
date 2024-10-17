@@ -6,11 +6,17 @@
                 <label class="recom-edit" >Titulo<span class="required-label">*</span></label>
                 <input type="text" value={{recom.title}} (change)="titleEdit($event)"/>
             </div>
+            <ng-icon [name]="eye.name" (click)="isPublic()" class="checkPublic" ></ng-icon>
         }
         @else{
             <h1 class="title-recomendation">{{recom.title}}</h1>
-            @if(recom.publicIs){
-                <img class="icons" src="assets/globe-simple-x.svg" alt="Ícono de idioma no disponible"/>
+            @if(recom.canEdit){
+                @if(!recom.publicIs){
+                    <ng-icon name="bootstrapEyeSlash"  class="checkPublic" ></ng-icon>
+                }
+                @else {
+                    <ng-icon name="bootstrapEye"  class="checkPublic" ></ng-icon>
+                } 
             }
         }
     </div>

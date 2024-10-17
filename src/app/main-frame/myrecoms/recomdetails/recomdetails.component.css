@@ -82,9 +82,13 @@
     width: 85%;
 }
 
-.title-reco img{
+.title-reco {
     width: 2.5rem;
     flex: 0;
+}
+
+.checkPublic{
+    font-size: 40px;
 }
 
 @media (max-width: 768px) and (min-width: 481px) {
