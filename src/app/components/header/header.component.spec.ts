@@ -29,4 +29,16 @@ describe('HeaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy()
   })
+
+  it('Inicialmente el menu esta plegado', () =>{
+    const menu = fixture.debugElement.nativeElement.querySelector(`[data-test="menuNav"]`)
+    expect(menu.getAttribute('class')).toEqual('hide')
+  })
+
+   it('Se clickea el menu y se despliega', () =>{
+    const menu = fixture.debugElement.nativeElement.querySelector(`[data-test="menu"]`)
+    menu.click()
+    fixture.detectChanges()
+    expect(component.dropdown).toEqual('dropdown-menu')
+   })
 })
