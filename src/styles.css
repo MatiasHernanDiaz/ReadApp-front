@@ -69,7 +69,7 @@ button{
   cursor: pointer;
   outline: none;
   
-  transition: 1s;        
+  transition: 0.3s;        
 }
 
 button.accept {

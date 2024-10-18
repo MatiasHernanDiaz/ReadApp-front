@@ -8,8 +8,8 @@
                 <p>{{msjHelp}}</p>
             }
             <div class="btn-container">
-                <button class="button-acept" (click)="save()" [disabled]="emptyInput">Crear</button>
-                <button class="button-cancel" (click)="closeDialog()">Cerrar</button>
+                <button class="cancel" (click)="closeDialog()">Cerrar</button>
+                <button class="accept" (click)="save()" [disabled]="emptyInput">Crear</button>
             </div>
         </div>
     </section>
