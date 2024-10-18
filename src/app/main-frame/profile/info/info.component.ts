@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common'
 import { FieldValidationComponent } from "../../../components/field-validation/field-validation.component"
 import { UserService } from '@src/app/services/User/user.service'
 import { LoginService } from '@src/app/services/Login/login.service'
+import Swal from 'sweetalert2'
 
 
 @Component({
@@ -105,10 +106,28 @@ export class InfoComponent {
   }
 
   async saveUserInfo() {
-    this.buttonState = "Cargando..."
-    await this.userService.editUser( this.user )
-    this.editMode = false
-    this.buttonState = "Guardar cambios"
+    if( !this.hasError() ) {
+      this.buttonState = "Cargando..."
+  
+      try {
+        await this.userService.editUser( this.user )
+      } catch {
+        Swal.fire({
+          title: "¡Problemas para editar este perfil!",
+          icon: 'error'
+        })
+      }
+      this.editMode = false
+      this.buttonState = "Guardar cambios"
+      this.user = User.fromUserJSON((await this.loginService.refreshSignedUser()).user)
+    } else {
+      Swal.fire({
+        title: "¡Formulario con errores!",
+        icon: 'error'
+      })
+
+      this.user = this.loginService.getSignedUser()
+    }
   }
 
   setEditMode() { this.editMode = true }
@@ -132,5 +151,8 @@ export class InfoComponent {
         return ''
     }
   }
-}
 
+  hasError() {
+    return Object.keys(this.user).some( field => this.formValidation(field, this.user) !== '' )
+  }
+}
