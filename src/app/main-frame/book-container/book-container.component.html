@@ -14,5 +14,11 @@
 </div>
 }
 
+<app-book-add-msg *ngIf="dialogOpen"
+                  [title] ="this.title"
+                  [book]="this.bookSelected"
+                  (addbook)="loadBook($event)"
+                  (close)="closeDialog()"></app-book-add-msg>
+
 
 

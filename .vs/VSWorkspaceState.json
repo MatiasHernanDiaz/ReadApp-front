@@ -4,13 +4,13 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\components",
-    "\\src\\app\\components\\btn-navigate",
+    "\\src\\app\\components\\add-book",
+    "\\src\\app\\components\\book",
     "\\src\\app\\main-frame",
     "\\src\\app\\main-frame\\myrecoms",
-    "\\src\\app\\main-frame\\myrecoms\\recomdetails",
     "\\src\\app\\main-frame\\profile",
-    "\\src\\app\\main-frame\\profile\\books-to-read"
+    "\\src\\app\\main-frame\\profile\\friends"
   ],
-  "SelectedNode": "\\src\\app\\components\\btn-navigate\\btn-navigate.component.html",
+  "SelectedNode": "\\src\\app\\components\\add-book\\add-book.component.ts",
   "PreviewInSolutionExplorer": false
 }
