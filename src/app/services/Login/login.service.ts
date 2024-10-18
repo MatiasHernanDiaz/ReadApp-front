@@ -53,16 +53,24 @@ export class LoginService {
     try {
       const res$ = this.httpClient.post<loginRes>(url, credentials)
       const res = await lastValueFrom(res$)
+   
+      if (res.login) {
       this.signedUser = User.fromUserJSON(res.user)
       return res
+    } else {
+ 
+      throw new Error(res.message || 'Error al iniciar sesion')
+    }
+
   } catch (error) {
     if (error instanceof HttpErrorResponse) {
       if (error.status === 0) {
         throw new Error('Error de conexion')
-    } else {
-      throw new Error(error.message || 'Error al iniciar sesion')
+      } else {
+        throw new Error(error.message || 'Error al iniciar sesion')
       }
     }
+    throw error // Lanza cualquier otro tipo de error que no sea HttpErrorResponse
   }
   return null
 }
@@ -79,4 +87,4 @@ export class LoginService {
   }
 }
 
-type loginRes = { login: boolean, user: UserToJSON }
+type loginRes = { login: boolean, user: UserToJSON, message: string}
