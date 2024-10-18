@@ -1,7 +1,5 @@
 import { Component } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { Recommendation } from '@src/app/model/Recommendation'
-import { Language, User } from '@src/app/model/User'
 import { RecommendationService } from '@src/app/services/Recom/recommendation.service'
 import { RatingComponent } from '@src/app/components/rating/rating.component'
 import { CommonModule } from '@angular/common'
@@ -13,16 +11,16 @@ import { RecomEdit } from '@src/app/model/RecomEdit'
 import { MsjComponent } from '@src/app/components/msj/msj.component'
 import { AddRatingComponent } from "../../../components/add-rating/add-rating.component"
 import { LoginService } from '@src/app/services/Login/login.service'
-import { bootstrapPlusCircleFill } from '@ng-icons/bootstrap-icons'
+import { bootstrapPlusCircleFill, bootstrapEye, bootstrapEyeSlash } from '@ng-icons/bootstrap-icons'
 import { NgIconComponent, provideIcons } from '@ng-icons/core'
-
-
+import { Book } from '@src/app/model/Book'
+import { AddButtonComponent } from '@src/app/components/add-button/add-button.component'
 
 @Component({
   selector: 'app-recomdetails',
   standalone: true,
-  imports: [RatingComponent, CommonModule, BookComponent, BtnNavigateComponent, SpinnerComponent, MsjComponent, AddRatingComponent, NgIconComponent],
-  viewProviders: [provideIcons({ bootstrapPlusCircleFill })],
+  imports: [RatingComponent, CommonModule, BookComponent, BtnNavigateComponent, SpinnerComponent, MsjComponent, AddRatingComponent, NgIconComponent, AddButtonComponent],
+  viewProviders: [provideIcons({ bootstrapPlusCircleFill, bootstrapEye,bootstrapEyeSlash })],
   templateUrl: './recomdetails.component.html',
   styleUrl: './recomdetails.component.css'
 })
@@ -30,19 +28,17 @@ export class RecomdetailsComponent {
 
   volver = {action:'Volver', url:['app/myrecoms']}
   editMode = false
-  recom: Recommendation = new Recommendation(0,'','',0,0,'',[],new User(0, '', '', '', new Date(),'', Language.SPANISH,[],[],[], 0 ),[],false, [])
-  recomEdit: RecomEdit = new RecomEdit('','',false,1,{id:-1})
+  recom: RecomEdit = new RecomEdit('','',false,1,{id:-1,fullName:''},false, false, [], [])
+  recomEdit: RecomEdit = new RecomEdit('','',false,1,{id:-1,fullName:''},false, false, [], [])
   recomid!: number
   useridLog!: number
   loading = true
   error = {timestamp: '', status: 0, error: '', message: '', path: ''}
-  message = {title: 'No puedes editar esta recomendacion', btnMsj:'Cerrar'}
+  message = {title: 'Ups, algo salio muy mal, reintenar más tarde!', btnMsj:'Cerrar'}
+  booksToSearch: Array<Book> = [] 
   close = true
-  canRating = 'false'
+  eye = {name:""}
   
-
-  
-
   constructor(private recommendationService: RecommendationService, private router: ActivatedRoute, public loginService: LoginService, public bookService: BookService){ 
     this.router.params.subscribe((params)=>{
       this.recomid = params['id']
@@ -65,14 +61,14 @@ export class RecomdetailsComponent {
   
   
   async ngOnInit(){
-      this.recommendationService.getRecomm(this.recomid).then((res)=>{
+      this.recommendationService.getRecomm(this.recomid, this.useridLog).then((res)=>{
       this.recom = res
       this.recomEdit = res
       this.isLoading()
-      return this.recommendationService.canRating(this.useridLog, this.recom.id)
-    }).then((res2)=>{
-      this.canRating = res2 
+    }).catch((err)=>{
+      this.error = err
     })
+    
 
   }
 
@@ -80,7 +76,9 @@ export class RecomdetailsComponent {
     this.recom.creator.id = this.recomEdit.creator.id
     this.recom.title = this.recomEdit.title 
     this.recom.description = this.recomEdit.description 
-    this.recomEdit.publicIs = this.recomEdit.publicIs 
+    this.recom.publicIs = this.recomEdit.publicIs 
+    this.recom.creator.fullName = this.recomEdit.creator.fullName
+  
   }
   
   cancelEdit() {
@@ -88,6 +86,7 @@ export class RecomdetailsComponent {
   }
 
   saveEdit() {
+      this.recomEdit.publicIs = this.recom.publicIs
       this.recommendationService.updateRecomEdit(this.useridLog, this.recomEdit ).then((res) =>{
       this.recomEdit = res
       this.recomEditToRecom()
@@ -98,7 +97,8 @@ export class RecomdetailsComponent {
     })
   }
 
-  setEditMode() { 
+  setEditMode() {
+    this.setInitClassEye()
     this.editMode = true
     this.close = true
     this.error.message = ''
@@ -119,17 +119,43 @@ export class RecomdetailsComponent {
   setClose(evClose: boolean){
     this.close = evClose
   }
-
-
   
-  goToAddBook(){
-    console.log('viajo a la pag de libros, que deberia ser hija de esta para mi')
-  }
-  
-  getNewRating(recom: Recommendation){
+  getNewRating(recom: RecomEdit){
     this.editMode = false
     this.recom = recom
   }
 
+
+  async findBooks( searchWord: string ) {
+    this.booksToSearch = await this.bookService.searchBooks(this.recom, this.useridLog, searchWord )
+  }
+
+  async loadNewBook( newBook: Book ) {
+    this.recom = await this.bookService.loadBook(this.recom, newBook, this.useridLog )
+  }
   
+  isPublic(){
+      if(this.recom.publicIs){
+        this.eye.name = 'bootstrapEyeSlash'
+        this.recom.publicIs = !this.recom.publicIs
+      }
+      else{
+        this.eye.name = 'bootstrapEye'
+        this.recom.publicIs = !this.recom.publicIs
+      }
+      // me gustaria que esto suceda aca, pero por alguna razon no le gusta
+      //y lo hago en save()
+      // ++this.recomEdit.publicIs = (e.target as HTMLInputElement).checked
+      // o esto
+      //this.recomEdit.publicIs = this.recom.publicIs
+  }
+
+  setInitClassEye(){
+    if(this.recom.publicIs){
+      this.eye.name = "bootstrapEye"
+    }
+    else{
+      this.eye.name = "bootstrapEyeSlash"
+    }
+  }
 }

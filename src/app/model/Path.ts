@@ -16,12 +16,12 @@ abstract class Path{
         //case 'create': path += '/create?userid=' + userId + '&entityid=' + entityId
         case 'create': path += '/create/' + entityName + '?userid=' + userId + '&entityid=' + entityId
         break 
-        case 'read': path += '/read?userid=' + userId + '&entityid=' + entityId
+        case 'read': path += '/'+ entityId + '/' + userId
         break
         //case 'update': path += '/update?userid=' + userId + '&entityid=' + entityId
         case 'update': path += '/update/' + entityId + '?userid=' + userId
         break
-        case 'delete': path += '/' + userId + '/' + entityId
+        case 'delete': path += '/delete/' + entityId + '/' + userId
         break
         }
         return path
@@ -82,6 +82,15 @@ class PathBook extends Path {
     else {
       return this.pathBasic()
     }
+  }
+
+  getAddBook( recomid: number, userid: number ): string{
+    
+    return this.pathBasic() + '/' + recomid + '/addbook?userid=' + userid
+  }
+
+  getCandidatesToBookOfRecom( recomid: number, userLogId: number, searchWord?:string ): string{
+    return this.pathBasic() + '/' + recomid + '/candidatestobook?userid=' + userLogId + '&search=' + searchWord
   }
 }
 
