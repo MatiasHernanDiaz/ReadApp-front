@@ -20,11 +20,11 @@ export class RecommendationService extends Service<Recommendation> {
 
     }
 
-    async getRecomm(recomid: number): Promise<Recommendation>{
-      const url = pathRecom.pathEntityId(recomid)
-      const recoms$ = this.httpClient.get<RecommendationJSON>(url)
+    async getRecomm(recomid: number, userid: number): Promise<RecomEdit>{
+      const url = pathRecom.pathEntityCRUD(userid, recomid, 'read')
+      const recoms$ = this.httpClient.get<JSONRecomEdit>(url)
       const recomsJSON = await lastValueFrom(recoms$)
-      return Recommendation.fromRecomendacionJSON(recomsJSON)
+      return RecomEdit.fromRecomEditJSON(recomsJSON)
     }
 
     async updateRecomData(userId: number, recom: Recommendation): Promise<Recommendation>{
@@ -42,12 +42,11 @@ export class RecommendationService extends Service<Recommendation> {
       return RecomEdit.fromRecomEditJSON(recomsJSON)
     }
 
-    async createRating(recomid: number, rating: RatingWithId): Promise<Recommendation>{
+    async createRating(recomid: number, rating: RatingWithId): Promise<RecomEdit>{
       const url = pathRecom.ratingCRUD(recomid, 'create')
-      console.log(url)
-      const recom$ = this.httpClient.post<RecommendationJSON>(url, rating)
+      const recom$ = this.httpClient.post<JSONRecomEdit>(url, rating)
       const recomJSON = await lastValueFrom(recom$)
-      return  Recommendation.fromRecomendacionJSON(recomJSON)
+      return  RecomEdit.fromRecomEditJSON(recomJSON)
     }
 
     async createRecom(newRecom: {userid:number, title:string}): Promise<Recommendation>{
@@ -59,7 +58,6 @@ export class RecommendationService extends Service<Recommendation> {
 
     async canRating(userid: number, recomid: number): Promise<string>{
       const url = pathRecom.canRating(userid, recomid)
-      console.log('>>>>>>>>>>>>>>>>>',url)
       const canRating$ = this.httpClient.get<string>(url)
       const _canRating = await lastValueFrom(canRating$)
       return _canRating 

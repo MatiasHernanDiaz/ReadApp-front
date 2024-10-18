@@ -20,10 +20,10 @@ export class FriendsComponent implements OnInit {
 
   constructor(public userService: UserService, private loginService: LoginService) {}
 
-  async ngOnInit() {
+  ngOnInit() {
     const user = this.loginService.getSignedUser()
 
-    await this.userService.getAllFriends(user.id).then((res) =>{
+    this.userService.getAllFriends(user.id).then((res) =>{
       this.friends = res
     })
 

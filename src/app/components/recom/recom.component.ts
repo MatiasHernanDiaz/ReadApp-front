@@ -33,7 +33,6 @@ export class RecomComponent {
 
    ngOnInit(){
     this.userIdLogin = this.loginService.getSignedUser().id
-    console.log(this.userIdLogin)
   }
 
   goToDetail(id: number) {
