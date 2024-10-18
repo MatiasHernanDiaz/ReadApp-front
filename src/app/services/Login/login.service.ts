@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core'
 import { Language, User, UserToJSON } from '@src/app/model/User'
 import { HttpClient } from '@angular/common/http'
 import { pathLogin } from '@src/app/model/Path'
-import { lastValueFrom } from 'rxjs'
+import { lastValueFrom, Subject } from 'rxjs'
+import { HttpErrorResponse } from '@angular/common/http'
 
 
 @Injectable({ providedIn: 'root' })
 export class LoginService {
   
   private signedUser?: User | null
+  
+  changeSignedUserSubject: Subject<User> = new Subject<User>()
 
   constructor(protected httpClient: HttpClient){}
 
@@ -43,20 +46,37 @@ export class LoginService {
     const res = await lastValueFrom(res$)
     
     this.signedUser = User.fromUserJSON(res.user)
+    this.changeSignedUserSubject.next( this.signedUser )
 
     return res
   }
 
   async login(credentials: { email: string, password: string }) {
     const url = pathLogin.login()
+    try {
+      const res$ = this.httpClient.post<loginRes>(url, credentials)
+      const res = await lastValueFrom(res$)
+   
+      if (res.login) {
+      this.signedUser = User.fromUserJSON(res.user)
+      return res
+    } else {
+ 
+      throw new Error(res.message || 'Error al iniciar sesion')
+    }
 
-    const res$ = this.httpClient.post<loginRes>(url, credentials)
-    const res = await lastValueFrom(res$)
-    
-    this.signedUser = User.fromUserJSON(res.user)
-
-    return res
+  } catch (error) {
+    if (error instanceof HttpErrorResponse) {
+      if (error.status === 0) {
+        throw new Error('Error de conexion')
+      } else {
+        throw new Error(error.message || 'Error al iniciar sesion')
+      }
+    }
+    throw error // Lanza cualquier otro tipo de error que no sea HttpErrorResponse
   }
+  return null
+}
 
   async logout() {
     const url = pathLogin.logout()
@@ -70,4 +90,4 @@ export class LoginService {
   }
 }
 
-type loginRes = { login: boolean, user: UserToJSON }
+type loginRes = { login: boolean, user: UserToJSON, message: string}

@@ -32,6 +32,10 @@ export class Book {
         this.id = id
     }
 
+    get displayName(){
+        return this.title + ' ' + this.autor
+    }
+
     static fromBookJSON(bookToJSON: BookToJSON) : Book{
         return new Book(
         bookToJSON.pages,

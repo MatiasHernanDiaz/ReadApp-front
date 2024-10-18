@@ -60,6 +60,7 @@
     border-radius: 5px;
     overflow: hidden;
     transition: height 0.5s, width 0.5s, opacity 0.5s, margin 0.5s, padding 0.5s;
+    z-index: 1000;
 }
 
 .hide{
