@@ -1,16 +1,24 @@
-import { Component, Input } from '@angular/core'
+import { Component, EventEmitter, Input, Output } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { Book } from '@src/app/model/Book'
+import { RemoveRecomComponent } from '../remove-recom/remove-recom.component'
+import { NgIconComponent, provideIcons } from '@ng-icons/core'
+import { bootstrapTrash } from '@ng-icons/bootstrap-icons'
 
 @Component({
   selector: 'app-book',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RemoveRecomComponent, NgIconComponent],
+  viewProviders: [provideIcons({ bootstrapTrash})],
   templateUrl: './book.component.html',
   styleUrl: './book.component.css'
 })
 
 export class BookComponent {
+  @Input()
+  isDeleteable: boolean = false
+  @Output() onDeleteBook = new EventEmitter<number>()
+
   isEnter: boolean = false
   width = 180
   height = 270
@@ -25,6 +33,10 @@ export class BookComponent {
     this.isEnter = false
     this.width = 180
     this.height = 270
+  }
+
+  removeBook(id: number): void {
+    this.onDeleteBook.emit(id)
   }
 
   @Input()

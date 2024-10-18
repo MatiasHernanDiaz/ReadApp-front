@@ -35,5 +35,6 @@ export class ReadbooksComponent implements OnInit {
   newBook(book: Book) {
     console.log(book)
   }
-  
+
+
 }

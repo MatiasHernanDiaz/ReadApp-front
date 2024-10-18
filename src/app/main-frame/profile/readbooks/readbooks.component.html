@@ -1,6 +1,6 @@
 <div class="card-container">
   <ng-container *ngFor="let book of readBooks">
-    <app-book [book]="book"></app-book>
+    <app-book [book]="book" [isDeleteable]="true"></app-book>
   </ng-container>
   <app-add-book [url]="'addreadbook'"></app-add-book>
 </div>

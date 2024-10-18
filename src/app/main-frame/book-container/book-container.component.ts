@@ -43,7 +43,12 @@ export class BookContainerComponent {
 
 
   async goToFind(text: string) {
-    this.BookService.items = await this.BookService.getAllBooks(text)
+    if (this.isToRead) {
+      this.BookService.items = await this.BookService.getToReadBooks(this.loginService.getSignedUser().id, text)
+    }
+    else {
+      this.BookService.items = await this.BookService.getReadBooks(this.loginService.getSignedUser().id, text)
+    }
   }
 
 
@@ -67,25 +72,19 @@ export class BookContainerComponent {
     }
   }
 
-  async loadBook(newBook: Book) {
+  loadBook(newBook: Book) {
     if (this.isToRead) {
-      const newBookList = await this.UserService.loadToRead(this.loginService.getSignedUser(), newBook)
+      this.UserService.loadToRead(this.loginService.getSignedUser(), newBook)
+      this.route.navigate(['app/profile/bookstoread'])
     }
     else if (!this.isToRead) {
-      const newBookList = await this.UserService.loadReadBook(this.loginService.getSignedUser(), newBook)
+      this.UserService.loadReadBook(this.loginService.getSignedUser(), newBook)
+      this.route.navigate(['app/profile/readbooks'])
     }
   }
 
   closeDialog(): void {
     this.dialogOpen = false
   }
-
-  async loadToRead(newBook: Book) {
-    const newBookList = await this.UserService.loadToRead(this.loginService.getSignedUser(), newBook)
-  }
-  async loadReadBook(newBook: Book) {
-    const newBookList = await this.UserService.loadReadBook(this.loginService.getSignedUser(), newBook)
-  }
-
 
 }

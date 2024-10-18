@@ -1,3 +1,4 @@
+import { numberAttribute } from "@angular/core"
 import { Book } from "./Book"
 
 
@@ -84,6 +85,23 @@ class PathBook extends Path {
       return this.pathBasic()
     }
   }
+  pathToRead(userID: number, wordToFind?: string): string {
+    if (wordToFind) {
+      return this.pathBasic() + '/nottoread' + '/' + String(userID) + '?text=' + wordToFind
+    }
+    else {
+      return this.pathBasic() + '/nottoread' + '/' + String(userID)
+    }
+  }
+
+  pathRead(userID: number, wordToFind?: string): string {
+    if (wordToFind) {
+      return this.pathBasic() + '/notread' + '/' + String(userID) + '?text=' + wordToFind
+    }
+    else {
+      return this.pathBasic() + '/notread' + '/' + String(userID)
+    }
+  }
 }
 
 //======================================================================================================
@@ -104,7 +122,6 @@ class PathUser extends Path {
             return this.pathBasic() + '/' + userid + '/bookstoread?toread=false'
         }
     }
-
     getAddBook(userid: number, toread: boolean) {
       if (toread) {
         return `${this.pathBasic()}/${userid}/addtoread`
@@ -112,8 +129,16 @@ class PathUser extends Path {
       else {
         return `${this.pathBasic()}/${userid}/addreadbook`
       }
-      
+  }
+
+    getDelBook(userid: number, toread: boolean) {
+      if (toread) {
+        return `${this.pathBasic()}/${userid}/deltoread`
       }
+      else {
+       return `${this.pathBasic()}/${userid}/delreadbook`
+     }
+    }
 
     getEditProfile() {
         return `${ this.pathBasic() }/editprofile`
