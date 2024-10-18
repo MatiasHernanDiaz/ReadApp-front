@@ -90,7 +90,7 @@
     flex-direction: column;
     z-index: 3;
     margin: 1rem;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .input-group {
@@ -128,12 +128,16 @@ input:focus {
     border-left: 0.5rem solid red;
   }
 
-.alert-message {
+.alert-message, .invalid{
     display: flex;
     align-items: center;
     color: red;
     font-size: 0.75rem;
     margin-top: 0.5rem;
+}
+.invalid {  
+    top: 68%;
+    position: absolute;
 }
 
 .alert-message img {
