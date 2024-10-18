@@ -84,12 +84,14 @@ class PathBook extends Path {
     }
   }
   pathToRead(userID: number, wordToFind?: string): string {
+
     if (wordToFind) {
       return this.pathBasic() + '/nottoread' + '/' + String(userID) + '?text=' + wordToFind
     }
     else {
       return this.pathBasic() + '/nottoread' + '/' + String(userID)
     }
+
   }
 
   pathRead(userID: number, wordToFind?: string): string {
@@ -99,6 +101,7 @@ class PathBook extends Path {
     else {
       return this.pathBasic() + '/notread' + '/' + String(userID)
     }
+  }
 
   getAddBook( recomid: number, userid: number ): string{
     
