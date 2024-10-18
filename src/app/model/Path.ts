@@ -1,5 +1,3 @@
-import { numberAttribute } from "@angular/core"
-import { Book } from "./Book"
 
 
 abstract class Path{
@@ -131,12 +129,12 @@ class PathUser extends Path {
       }
   }
 
-    getDelBook(userid: number, toread: boolean) {
+    getDelBook(userid: number, toread: boolean, bookID: number) {
       if (toread) {
-        return `${this.pathBasic()}/${userid}/deltoread`
+        return `${this.pathBasic()}/${userid}/deltoread` + '?bookid=' + bookID
       }
       else {
-       return `${this.pathBasic()}/${userid}/delreadbook`
+        return `${this.pathBasic()}/${userid}/delreadbook` + '?bookid=' + bookID
      }
     }
 

@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms'
 import { Recommendation } from '@src/app/model/Recommendation'
 import { ActivatedRoute } from '@angular/router'
-import { Book } from '../../model/Book'
 
 @Component({
   selector: 'app-search-bar',

@@ -77,5 +77,15 @@ export class UserService extends Service<User>{
     return book
   }
 
+  async deleteToRead(userId: number, bookID: number): Promise<void> {
+    const url = pathUser.getDelBook(userId, true, bookID)
+    const book$ = this.httpClient.delete<void>(url)
+    return await lastValueFrom(book$)
+  }
+  async deleteRead(userId: number, bookID: number): Promise<void> {
+    const url = pathUser.getDelBook(userId, false, bookID)
+    const book$ = this.httpClient.delete<void>(url)
+    return await lastValueFrom(book$)
+  }
 
 }

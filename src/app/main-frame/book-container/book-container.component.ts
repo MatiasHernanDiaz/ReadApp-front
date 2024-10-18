@@ -20,7 +20,7 @@ import { BookAddMsgComponent } from 'src/app/components/book-add-msg/book-add-ms
   styleUrl: './book-container.component.css'
 })
 export class BookContainerComponent {
-  isToRead?: Boolean
+  isToRead?: boolean
   books: Array<Book> = []
   loading: boolean = true
   dialogOpen: boolean = false

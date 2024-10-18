@@ -6,7 +6,7 @@
       <h2>{{book.title}}</h2>
       <span class="images">
         @if (isDeleteable) {
-        <button class="icon-select" (click)="removeBook(this.book.id)">
+        <button class="icon-select" (click)="removeBook()">
           <ng-icon name="bootstrapTrash"></ng-icon>
         </button>
         }

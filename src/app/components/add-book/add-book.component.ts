@@ -1,6 +1,6 @@
 import { Component, Input} from '@angular/core'
 import { FormsModule } from '@angular/forms'
-import { ActivatedRoute, Router } from '@angular/router'
+import { Router } from '@angular/router'
 import { bootstrapPlusCircleFill } from '@ng-icons/bootstrap-icons'
 import { provideIcons, NgIconComponent } from '@ng-icons/core'
 

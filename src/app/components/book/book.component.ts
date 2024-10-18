@@ -17,7 +17,7 @@ import { bootstrapTrash } from '@ng-icons/bootstrap-icons'
 export class BookComponent {
   @Input()
   isDeleteable: boolean = false
-  @Output() onDeleteBook = new EventEmitter<number>()
+  @Output() onDeleteBook = new EventEmitter<Book>()
 
   isEnter: boolean = false
   width = 180
@@ -35,8 +35,8 @@ export class BookComponent {
     this.height = 270
   }
 
-  removeBook(id: number): void {
-    this.onDeleteBook.emit(id)
+  removeBook(): void {
+    this.onDeleteBook.emit(this.book)
   }
 
   @Input()
