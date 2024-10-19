@@ -1,8 +1,15 @@
 <h2 class="friends-title">Amigos</h2>
 <div class="friends-container">
   <div *ngFor="let friend of friends" class="friend-card">
-    <app-friend [user]="friend"></app-friend>
+    <app-friend [user]="friend" (onDeleteFriend)="toDelete(friend)"></app-friend>
   </div>
   <app-add-button [itemsToDisplay]="friendsToSearch" (searchAction)="findFriends($event)" (loadItemAction)="loadNewFriend($event)"></app-add-button>
 </div>
 
+
+                
+<app-book-add-msg *ngIf="dialogOpen"
+                  [title]="title"
+                  [friend]="friendSelected"
+                  (removeFriend)="deleteFriend($event)" 
+                  (close)="dialogOpen = false"></app-book-add-msg>
