@@ -90,15 +90,14 @@ hr {
     margin-right: 6px;
 }
 
-.search-criteria-items-container label .max-limit {
+.search-criteria-items-container .limits {
     position: absolute;
     right: 0;
     display: none;
     width: 50%;
 
-    margin: 6px;
-    width: 40%;
-    padding: 2px 6px;
+    /* margin: 6px; */
+    padding: 3px 6px;
 
     font-size: .7rem;
 
@@ -107,13 +106,22 @@ hr {
     border-radius: 4px;
 }
 
-.search-criteria-items-container label .max-limit input {
-    width: 60%;
-    font-size: .7rem;
+.search-criteria-items-container .limits label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
-.search-criteria-items-container label input:checked ~ .max-limit {
+.search-criteria-items-container label .limit input {
+    width: 60%;
+    font-size: .7rem;
+    text-align: right;
+}
+
+.search-criteria-items-container label input:checked ~ .limits {
     display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .buttons-container {

@@ -89,15 +89,28 @@
             />
             <span>{{criteria.value.criteria}}</span>
             @if( criteria.value.requireNumberParam ) {
-                <label class="max-limit">
-                    <span>Límite máximo</span>
-                    <input
-                    type="number"
-                    placeholder="Límite"
-                    name="chang-max-limit"
-                    value=""
-                    />
-                </label>
+                <div class="limits">
+                    <label class="limit">
+                        <span>Mín</span>
+                        <input
+                        type="number"
+                        [disabled]="!editMode"
+                        placeholder="Mínimo"
+                        name="chang-min-limit"
+                        [(ngModel)]="user.minTime"
+                        />
+                    </label>
+                    <label class="limit">
+                        <span>Máx</span>
+                        <input
+                        type="number"
+                        [disabled]="!editMode"
+                        placeholder="Máximo"
+                        name="chang-max-limit"
+                        [(ngModel)]="user.maxTime"
+                        />
+                    </label>
+                </div>
             }
         </label>
     </div>

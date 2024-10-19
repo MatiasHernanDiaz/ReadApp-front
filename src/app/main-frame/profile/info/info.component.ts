@@ -111,6 +111,10 @@ export class InfoComponent {
   
       try {
         await this.userService.editUser( this.user )
+        Swal.fire({
+          title: "¡Perfil guardado!",
+          icon: 'info'
+        })
       } catch {
         Swal.fire({
           title: "¡Problemas para editar este perfil!",
