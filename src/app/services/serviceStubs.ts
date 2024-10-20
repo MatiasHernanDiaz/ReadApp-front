@@ -1,5 +1,5 @@
-import { of } from "rxjs"
-import { AvgReader, readerModes, SearchCriteria } from "../model/User"
+import { Observable, of } from "rxjs"
+import { AvgReader, readerModes, SearchCriteria, User } from "../model/User"
 
 
 export const httpClientSpy = jasmine.createSpyObj('HttpClient', ['get', 'put', 'post'])
@@ -40,7 +40,11 @@ httpClientSpy.post.withArgs('http://localhost:9000/auth/login').and.returnValue(
 },))
 
 
-export const loginServiceStub = jasmine.createSpyObj('LoginService', ['getSignedUser'])
+export const loginServiceStub = jasmine.createSpyObj('LoginService', ['getSignedUser'], {
+    changeSignedUserSubject: {
+        asObservable: (() => { return new Observable<User>() })
+    }
+})
 loginServiceStub.getSignedUser.and.returnValue({
     id:1,
     lastName: "Simpson",
@@ -73,3 +77,4 @@ loginServiceStub.getSignedUser.and.returnValue({
     searchCriteria: SearchCriteria.GreatReader, 
     avatar: 'assets/avatar.jpeg',
 })
+
