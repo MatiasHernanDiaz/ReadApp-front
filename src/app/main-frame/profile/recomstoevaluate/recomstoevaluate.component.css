@@ -1,0 +1,40 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.add-icon {
+    font-size: 40px;
+}
+
+.card-container{
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: flex-start;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) and (min-width: 481px) {
+    .card-container{
+        justify-content: center;
+    }
+    
+}
+
+@media (max-width: 480px) {
+    .card-container{
+        justify-content: center;
+    }
+  
+}
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50rem; 
+}

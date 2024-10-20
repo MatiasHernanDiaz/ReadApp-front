@@ -1,1 +1,17 @@
-<p>recomstoevaluate works!</p>
+@if(!loading) {
+    <div class="card-container">
+      @for (recommendation of favoriteRecoms; track recommendation) {
+        <app-recom 
+          [recommendation]="recommendation" 
+          (onDeleteRecom)="toggleFavorite(recommendation.id)">
+        </app-recom>
+      }
+    </div>
+    
+  }
+  @else {
+    <div class="spinner-container">
+      <app-spinner></app-spinner>
+    </div>
+  }
+  
