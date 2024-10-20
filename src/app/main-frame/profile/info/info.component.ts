@@ -5,13 +5,14 @@ import { CommonModule } from '@angular/common'
 import { FieldValidationComponent } from "../../../components/field-validation/field-validation.component"
 import { UserService } from '@src/app/services/User/user.service'
 import { LoginService } from '@src/app/services/Login/login.service'
-import Swal from 'sweetalert2'
+import { SpinnerComponent } from '@src/app/components/spinner/spinner.component'
+import { MsjComponent } from '@src/app/components/msj/msj.component'
 
 
 @Component({
   selector: 'app-info',
   standalone: true,
-  imports: [FormsModule, CommonModule, FieldValidationComponent],
+  imports: [FormsModule, CommonModule, FieldValidationComponent, SpinnerComponent, MsjComponent],
   templateUrl: './info.component.html',
   styleUrl: './info.component.css'
 })
@@ -28,6 +29,9 @@ export class InfoComponent {
   > = {}
   editMode = false
   buttonState = "Guardar cambios"
+  isLoading = false
+  banner = false
+  message = {title: '', btnMsj:''}
 
   constructor( public loginService: LoginService, private userService: UserService ) {}
 
@@ -110,28 +114,33 @@ export class InfoComponent {
       this.buttonState = "Cargando..."
   
       try {
+        this.isLoading = true
+
         await this.userService.editUser( this.user )
-        Swal.fire({
-          title: "¡Perfil guardado!",
-          icon: 'info'
-        })
+
+        this.isLoading = false
+        
+        this.message = {title: '¡Perfil guardado!', btnMsj:'Ok'}
+        this.banner = true
+        
       } catch {
-        Swal.fire({
-          title: "¡Problemas para editar este perfil!",
-          icon: 'error'
-        })
+        this.message = {title: '¡Problemas para editar este perfil!', btnMsj:'Ok'}
+        this.banner = true
+        
       }
       this.editMode = false
       this.buttonState = "Guardar cambios"
       this.user = User.fromUserJSON((await this.loginService.refreshSignedUser()).user)
     } else {
-      Swal.fire({
-        title: "¡Formulario con errores!",
-        icon: 'error'
-      })
+      this.message = {title: '¡Formulario con errores!', btnMsj:'Ok'}
+      this.banner = true
 
       this.user = this.loginService.getSignedUser()
     }
+  }
+
+  closeBanner() {
+    this.banner = false
   }
 
   setEditMode() { this.editMode = true }
