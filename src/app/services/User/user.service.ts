@@ -61,13 +61,13 @@ export class UserService extends Service<User>{
         return friend
     }
 
-    async addFavorite(recomId: number, userId: number): Promise<Recommendation[]> {
+    async addFavorite(userId: number, recomId: number): Promise<Recommendation[]> {
         const url = pathUser.favoriteCRUD(userId, recomId, 'addFavorite')
         const res= await lastValueFrom(this.httpClient.post<Recommendation[]>(url, {}))
         return res.map((recom) => Recommendation.fromRecomendacionJSON(recom) )
       }
     
-      async removeFavorite(recomId: number, userId: number): Promise<Recommendation[]> {
+      async removeFavorite( userId: number , recomId: number): Promise<Recommendation[]> {
         const url = pathUser.favoriteCRUD(userId, recomId, 'removeFavorite')
         const res= await lastValueFrom(this.httpClient.delete<Recommendation[]>(url))
         return res.map((recom) => Recommendation.fromRecomendacionJSON(recom) )
