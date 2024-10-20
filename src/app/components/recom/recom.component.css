@@ -42,13 +42,34 @@ article.card {
     text-overflow: ellipsis; 
     line-clamp: 1; 
     box-orient: vertical;
+    margin-bottom: 0.5rem;
 }
 
 .comments {
-    display: flex;
-    flex-direction: column;
-    height: 4.6rem;
+    display: block; 
+    height: 5rem; 
+    overflow-y: auto; 
+    scrollbar-width: thin; 
+    scrollbar-color: var(--primary-color) var(--tertiary-color); 
 }
+
+.comments::-webkit-scrollbar {
+    width: 0.4rem; 
+}
+
+.comments::-webkit-scrollbar-track {
+    background: var(--tertiary-color); 
+}
+
+.comments::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color); 
+    border-radius: 0.5rem; 
+}
+
+.comments::-webkit-scrollbar-thumb:hover {
+    background-color: var(--secundary-color); 
+}
+
 
 .card-header h3 {
     font-size: 1rem;
@@ -83,26 +104,27 @@ h1, h2, h3 {
 }
 
 .card-footer {
-    padding-top: 0.5rem; /* Añade algo de espacio si es necesario */
-    align-items: center; /* Asegura que los íconos y textos estén centrados verticalmente */
+    align-items: center; 
     font-size: 0.85rem;
-    margin-bottom: 1.6rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.3rem;
 }
 
 
 .footer-item {
     display: flex;
-    align-items: center; /* Alinea cada ícono y número horizontalmente */
-    margin-right: 1.5rem; /* Agrega espacio entre cada grupo ícono-número */
+    align-items: center; 
+    margin-right: 1.5rem; 
 }
 
 .footer-item ng-icon {
-    margin-right: 0.5rem; /* Agrega espacio entre el ícono y el texto */
+    margin-right: 0.5rem; 
 }
 
 .line-divide {
     border-style: solid;
     color: var(--secundary-color);
+    margin-top: 0.3rem;
 }
 
 .btn-transition {

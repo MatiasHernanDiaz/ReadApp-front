@@ -29,7 +29,7 @@ export class UserService extends Service<User>{
 
     async getBookToRead(userid: number, toread: boolean): Promise<Book[]>{
         const url = pathUser.getBookToRead(userid, toread)
-        console.log('url ->', url)
+        //console.log('url ->', url)
         const user$ = this.httpClient.get<BookToJSON[]>(url)
         const userJSON = await lastValueFrom(user$)
         return userJSON.map((res) => Book.fromBookJSON(res))

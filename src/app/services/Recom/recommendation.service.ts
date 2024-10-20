@@ -16,7 +16,7 @@ export class RecommendationService extends Service<Recommendation> {
       const url = pathRecom.pathRecom(userid, text)
       const recoms$ = this.httpClient.get<RecommendationJSON[]>(url)
       const recomsJSON = await lastValueFrom(recoms$)
-      console.log(recomsJSON,"aca")
+      //console.log(recomsJSON,"aca")
       return recomsJSON.map((recommendarionJSON) => Recommendation.fromRecomendacionJSON(recommendarionJSON))
 
     }
@@ -37,7 +37,7 @@ export class RecommendationService extends Service<Recommendation> {
 
     async updateRecomEdit(userId: number, recom: RecomEdit): Promise<RecomEdit>{
       const url = pathRecom.pathEntityCRUD(userId, recom.id, 'update')
-      console.log('url ',url)
+      //console.log('url ',url)
       const recoms$ = this.httpClient.put<JSONRecomEdit>(url, recom)
       const recomsJSON = await lastValueFrom(recoms$)
       return RecomEdit.fromRecomEditJSON(recomsJSON)
