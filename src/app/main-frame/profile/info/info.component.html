@@ -1,113 +1,137 @@
-<h2>Información</h2>
-<form>
-    <h3>General</h3>
-    <div class="gral-info-items-container items-container">
-        <div class="form-item">
-            <label>Apellido <span class="required-label">*</span></label>
-            <input
-                type="text"
-                name="last-name"
-                [disabled]="!editMode"
-                [(ngModel)]="user.lastName"
-            />
-            <app-field-validation [validationFunc]="formValidation" [data]="user" [field]="'lastName'"></app-field-validation>
-        </div>
-        <div class="form-item">
-            <label>Nombre <span class="required-label">*</span></label>
-            <input
-                type="text"
-                name="first-name"
-                [disabled]="!editMode"
-                [(ngModel)]="user.firstName"
-            />
-            <app-field-validation [validationFunc]="formValidation" [data]="user" [field]="'firstName'"></app-field-validation>
-        </div>
-        <div class="form-item">
-            <label>Username <span class="required-label">*</span></label>
-            <input
-                type="text"
-                name="username"
-                [disabled]="!editMode"
-                [(ngModel)]="user.username"
-            />
-            <app-field-validation [validationFunc]="formValidation" [data]="user" [field]="'username'"></app-field-validation>
-        </div>
-        <div class="form-item">
-            <label>Fecha de nacimiento <span class="required-label">*</span></label>
-            <input
-                type="date"
-                name="birthday"
-                [disabled]="!editMode"
-                [value]="user.birthday | date: 'yyyy-MM-dd'" (change)="setBirthday($event)"
-            />
-            <app-field-validation [validationFunc]="formValidation" [data]="user" [field]="'birthday'"></app-field-validation>
-        </div>
-        <div class="form-item">
-            <label>Email <span class="required-label">*</span></label>
-            <input
-                type="email"
-                name="email"
-                [disabled]="!editMode"
-                [(ngModel)]="user.email"
-            />
-            <app-field-validation [validationFunc]="formValidation" [data]="user" [field]="'email'"></app-field-validation>
-        </div>
-        <div class="form-item">
-            <label>Tiempo de lectura promedio</label>
-            <input
-                type="number"
-                name="read-time"
-                [disabled]="!editMode"
-                [(ngModel)]="user.readTimeMinAvg"
-            />
-            <app-field-validation [validationFunc]="formValidation" [data]="user" [field]="'readTimeMinAvg'"></app-field-validation>
-        </div>
-    </div>
-    <hr/>
-    <h3>Forma de lectura</h3>
-    <div class="read-mode-items-container items-container">
-        <label *ngFor="let mode of readModes | keyvalue">
-            <input
-                type="radio"
-                name="read-mode"
-                [disabled]="!editMode"
-                [checked]="mode.value.toCustomString() === user.readMode.toCustomString()"
-                (change)="user.readMode = mode.value"
-            />
-            <span>{{mode.value.toCustomString()}}</span>
-        </label>
-    </div>
-    <hr/>
-    <h3>Criterio de búsqueda</h3>
-    <div class="search-criteria-items-container items-container">
-        <label *ngFor="let criteria of searchCriteria | keyvalue">
-            <input
-            type="checkbox"
-            [disabled]="!editMode"
-            [checked]="searchCriteria[ criteria.key ].checked"
-            (change)="updateSearchCriteria( criteria.key )"
-            />
-            <span>{{criteria.value.criteria}}</span>
-            @if( criteria.value.requireNumberParam ) {
-                <label class="max-limit">
-                    <span>Límite máximo</span>
-                    <input
-                    type="number"
-                    placeholder="Límite"
-                    name="chang-max-limit"
-                    value=""
-                    />
-                </label>
-            }
-        </label>
-    </div>
-    <div class="items-container buttons-container">
-        @if( editMode) {
-            <button class="cancel" (click)="cancelUserEdit()">Cancelar</button>
-            <button class="accept" (click)="saveUserInfo()">{{buttonState}}</button>
+@if( !isLoading ) {
 
-        }@else {
-            <button class="edit" (click)="setEditMode()"><img src="assets/pencil-simple.svg" alt="Editar"></button>
-        }
+    <h2>Información</h2>
+    <form>
+        <h3>General</h3>
+        <div class="gral-info-items-container items-container">
+            <div class="form-item">
+                <label>Apellido <span class="required-label">*</span></label>
+                <input
+                    type="text"
+                    name="last-name"
+                    [disabled]="!editMode"
+                    [(ngModel)]="user.lastName"
+                />
+                <app-field-validation [validationFunc]="formValidation" [data]="user" [field]="'lastName'"></app-field-validation>
+            </div>
+            <div class="form-item">
+                <label>Nombre <span class="required-label">*</span></label>
+                <input
+                    type="text"
+                    name="first-name"
+                    [disabled]="!editMode"
+                    [(ngModel)]="user.firstName"
+                />
+                <app-field-validation [validationFunc]="formValidation" [data]="user" [field]="'firstName'"></app-field-validation>
+            </div>
+            <div class="form-item">
+                <label>Username <span class="required-label">*</span></label>
+                <input
+                    type="text"
+                    name="username"
+                    [disabled]="!editMode"
+                    [(ngModel)]="user.username"
+                />
+                <app-field-validation [validationFunc]="formValidation" [data]="user" [field]="'username'"></app-field-validation>
+            </div>
+            <div class="form-item">
+                <label>Fecha de nacimiento <span class="required-label">*</span></label>
+                <input
+                    type="date"
+                    name="birthday"
+                    [disabled]="!editMode"
+                    [value]="user.birthday | date: 'yyyy-MM-dd'" (change)="setBirthday($event)"
+                />
+                <app-field-validation [validationFunc]="formValidation" [data]="user" [field]="'birthday'"></app-field-validation>
+            </div>
+            <div class="form-item">
+                <label>Email <span class="required-label">*</span></label>
+                <input
+                    type="email"
+                    name="email"
+                    [disabled]="!editMode"
+                    [(ngModel)]="user.email"
+                />
+                <app-field-validation [validationFunc]="formValidation" [data]="user" [field]="'email'"></app-field-validation>
+            </div>
+            <div class="form-item">
+                <label>Tiempo de lectura promedio</label>
+                <input
+                    type="number"
+                    name="read-time"
+                    [disabled]="!editMode"
+                    [(ngModel)]="user.readTimeMinAvg"
+                />
+                <app-field-validation [validationFunc]="formValidation" [data]="user" [field]="'readTimeMinAvg'"></app-field-validation>
+            </div>
+        </div>
+        <hr/>
+        <h3>Forma de lectura</h3>
+        <div class="read-mode-items-container items-container">
+            <label *ngFor="let mode of readModes | keyvalue">
+                <input
+                    type="radio"
+                    name="read-mode"
+                    [disabled]="!editMode"
+                    [checked]="mode.value.toCustomString() === user.readMode.toCustomString()"
+                    (change)="user.readMode = mode.value"
+                />
+                <span>{{mode.value.toCustomString()}}</span>
+            </label>
+        </div>
+        <hr/>
+        <h3>Criterio de búsqueda</h3>
+        <div class="search-criteria-items-container items-container">
+            <label *ngFor="let criteria of searchCriteria | keyvalue">
+                <input
+                type="checkbox"
+                [disabled]="!editMode"
+                [checked]="searchCriteria[ criteria.key ].checked"
+                (change)="updateSearchCriteria( criteria.key )"
+                />
+                <span>{{criteria.value.criteria}}</span>
+                @if( criteria.value.requireNumberParam ) {
+                    <div class="limits">
+                        <label class="limit">
+                            <span>Mín</span>
+                            <input
+                            type="number"
+                            [disabled]="!editMode"
+                            placeholder="Mínimo"
+                            name="chang-min-limit"
+                            [(ngModel)]="user.minTime"
+                            />
+                        </label>
+                        <label class="limit">
+                            <span>Máx</span>
+                            <input
+                            type="number"
+                            [disabled]="!editMode"
+                            placeholder="Máximo"
+                            name="chang-max-limit"
+                            [(ngModel)]="user.maxTime"
+                            />
+                        </label>
+                    </div>
+                }
+            </label>
+        </div>
+        <div class="items-container buttons-container">
+            @if( editMode) {
+                <button class="cancel" (click)="cancelUserEdit()">Cancelar</button>
+                <button class="accept" (click)="saveUserInfo()">{{buttonState}}</button>
+    
+            }@else {
+                <button class="edit" (click)="setEditMode()"><img src="assets/pencil-simple.svg" alt="Editar"></button>
+            }
+        </div>
+    </form>
+    @if(banner){
+        <app-msj [msj]="message" (close)="closeBanner()"></app-msj>
+    }
+}
+@else {
+    <div class="spinner-container">
+      <app-spinner></app-spinner>
     </div>
-</form>
+  }
