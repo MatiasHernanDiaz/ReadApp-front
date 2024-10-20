@@ -68,6 +68,10 @@ class PathRecom extends Path {
         return path += '/rating?userid=' + userid + '&recomid=' + recomid
     }
 
+    deleteBookToRecom(userid: number, recomid: number, bookid: number){
+        return this.pathBasic() + '/' + userid + '/' + recomid + '/' + bookid
+    }
+
 }
 
 //======================================================================================================

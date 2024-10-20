@@ -15,8 +15,7 @@ import { bootstrapTrash } from '@ng-icons/bootstrap-icons'
 })
 
 export class BookComponent {
-  @Input()
-  isDeleteable: boolean = false
+  @Input() isDeleteable: boolean = false
   @Output() onDeleteBook = new EventEmitter<Book>()
 
   isEnter: boolean = false

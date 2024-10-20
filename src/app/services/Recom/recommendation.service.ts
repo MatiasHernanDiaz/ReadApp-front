@@ -5,6 +5,7 @@ import { pathRecom } from '@src/app/model/Path'
 import { Service } from '@src/app/services/AbstractService1'
 import { RecomEdit, JSONRecomEdit } from '@src/app/model/RecomEdit'
 import { RatingWithId } from '@src/app/model/rating'
+import { Book } from '@src/app/model/Book'
 
 
 @Injectable({ providedIn: 'root' })
@@ -67,5 +68,12 @@ export class RecommendationService extends Service<Recommendation> {
       const url = pathRecom.pathEntityCRUD(userId, recomid, 'delete')
       const recoms$ = this.httpClient.delete<void>(url)
       return await lastValueFrom(recoms$)
+    }
+
+    async deleteBookToRecom(userid: number, recomid: number, book: Book): Promise<RecomEdit>{
+      const url = pathRecom.deleteBookToRecom(userid, recomid, book.id)
+      const recom$ = this.httpClient.post<JSONRecomEdit>(url,book)
+      const recomJSON = await lastValueFrom(recom$)
+      return RecomEdit.fromRecomEditJSON(recomJSON)
     }
 }

@@ -25,8 +25,13 @@
         
         <article class="card-container">
             @for (book of recom.books; track book){
-                <app-book [book]="book"></app-book>
+                <app-book [book]="book" [isDeleteable]="editMode" (onDeleteBook) ="toDelete(this.book)"></app-book>
             }
+            <app-book-add-msg *ngIf="dialogOpen" 
+                  [title]="this.title"
+                  [book]="this.bookSelected"
+                  (addbook)="onConfirmDelete($event)"
+                  (close)="closeDialog()"></app-book-add-msg>
             @if(editMode){
                 <app-add-button [itemsToDisplay]="booksToSearch" (searchAction)="findBooks($event)" (loadItemAction)="loadNewBook($event)"></app-add-button>
             }
