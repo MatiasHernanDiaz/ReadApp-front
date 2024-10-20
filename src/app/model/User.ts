@@ -19,6 +19,7 @@ export class User {
     avatar: string
     minTime: number
     maxTime: number
+    favorites:Recommendation[]=[]
     
 
     constructor( 
@@ -37,7 +38,8 @@ export class User {
         searchCriteria: SearchCriteria[] = [SearchCriteria.GreatReader],
         avatar: string = '',
         minTime: number = 0,
-        maxTime: number = 0
+        maxTime: number = 0,
+        favorites:Recommendation[]=[]
     ) {
         this.id = id
         this.lastName = lastName
@@ -55,6 +57,7 @@ export class User {
         this.avatar = avatar
         this.minTime = minTime
         this.maxTime = maxTime
+        this.favorites=favorites
     }
 
     baseReadTime( book: Book ) {
@@ -90,7 +93,8 @@ export class User {
             readBooks: this.readBooks,
             readToBooks: this.readToBooks,
             minTime: this.minTime,
-            maxTime: this.maxTime
+            maxTime: this.maxTime,
+            favorites: this.favorites
         }
     }
 
@@ -131,7 +135,8 @@ export class User {
             userJSON.searchCriteria,
             userJSON.avatar,
             userJSON.minTime,
-            userJSON.maxTime
+            userJSON.maxTime,
+            userJSON.favorites.map(recom=>Recommendation.fromRecomendacionJSON(recom))
         )
     }
 
@@ -250,4 +255,5 @@ export type UserToJSON = {
     avatar: string
     minTime: number
     maxTime: number
+    favorites:Recommendation[]
 }

@@ -19,7 +19,7 @@ import { RecommendationService } from '@src/app/services/Recom/recommendation.se
 export class AddRecomComponent {
 
   createRecom : {userid: number, title: string} = {userid:-1,title:''}
-  recom : Recommendation = new Recommendation(0,'','',0,0,'',[],new User(0, '', '', '', new Date(),'',Language.SPANISH,[],[],[], 0 ),[],false, [])
+  recom : Recommendation = new Recommendation(0,'','',0,0,'',[],new User(0, '', '', '', new Date(),'',Language.SPANISH,[],[],[], 0 ),[],false, [],0.0)
 
   constructor(private recomService: RecommendationService, private loginService: LoginService, private router: Router){}
 

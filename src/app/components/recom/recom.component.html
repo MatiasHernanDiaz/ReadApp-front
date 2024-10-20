@@ -7,7 +7,9 @@
             <ng-icon name="bootstrapTrash"></ng-icon>
             </button>
         } @else {
-            <ng-icon class="icon-select" name="bootstrapHeart"></ng-icon>
+            <button class="icon-select" (click)="toggleFavorite(recommendation.id)">
+            <ng-icon [name]="isFavorite(recommendation.id)? 'bootstrapHeartFill' : 'bootstrapHeart'"></ng-icon>
+            </button>
               }
         </div>
     </div>

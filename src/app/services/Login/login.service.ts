@@ -34,7 +34,8 @@ export class LoginService {
         this.signedUser.searchCriteria,
         this.signedUser.avatar,
         this.signedUser.minTime,
-        this.signedUser.maxTime
+        this.signedUser.maxTime,
+        this.signedUser.favorites
       )
     } else {
       return new User(-1, '', '', '', new Date(),'', Language.SPANISH,[],[],[], 0 )
