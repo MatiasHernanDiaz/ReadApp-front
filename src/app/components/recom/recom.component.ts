@@ -82,25 +82,17 @@ export class RecomComponent {
   return this.user.favorites.map(rec=>rec.id).includes(recomId)
 }
 
- async toggleFavorite(recomId: number) {
-  if(this.user.favorites.map(rec=>rec.id).includes(recomId)){
-    try{
-      await this.userService.removeFavorite(this.user.id,recomId)
-      this.user= User.fromUserJSON((await this.loginService.refreshSignedUser()).user)
+async toggleFavorite(recomId: number) {
+  try {
+    if (this.user.favorites.map(rec => rec.id).includes(recomId)) {
+      await this.userService.removeFavorite(this.user.id, recomId)
+    } else {
+      await this.userService.addFavorite(this.user.id, recomId)
     }
-    catch{
-  //TODO
-    }
+    this.user = User.fromUserJSON((await this.loginService.refreshSignedUser()).user)
+  } catch (error) {
+    console.error('Error al actualizar favoritos:', error)
   }
-    else{
-      try{
-        await this.userService.addFavorite(this.user.id,recomId)
-        this.user= User.fromUserJSON((await this.loginService.refreshSignedUser()).user)
-      }
-      catch{
-    //TODO
-      }
-    }
-  
 }
+
 }
