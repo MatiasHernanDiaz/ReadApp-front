@@ -30,7 +30,8 @@ export class RecomComponent {
   constructor(
     private router: Router,
     private acRouter: ActivatedRoute,
-    public loginService:LoginService
+    public loginService:LoginService,
+    public userService:UserService
     ) {
     this.acRouter.url.subscribe((url) =>{
       this.url = url[0].path
@@ -82,6 +83,24 @@ export class RecomComponent {
 }
 
  async toggleFavorite(recomId: number) {
-return false
+  if(this.user.favorites.map(rec=>rec.id).includes(recomId)){
+    try{
+      await this.userService.removeFavorite(this.user.id,recomId)
+      this.user= User.fromUserJSON((await this.loginService.refreshSignedUser()).user)
+    }
+    catch{
+  //TODO
+    }
+  }
+    else{
+      try{
+        await this.userService.addFavorite(this.user.id,recomId)
+        this.user= User.fromUserJSON((await this.loginService.refreshSignedUser()).user)
+      }
+      catch{
+    //TODO
+      }
+    }
+  
 }
 }
