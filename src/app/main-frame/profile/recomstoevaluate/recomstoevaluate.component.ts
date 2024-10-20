@@ -17,6 +17,7 @@ export class RecomstoevaluateComponent implements OnInit {
   favoriteRecoms: Recommendation[] = []
   user: User = new User(-1, '', '', '', new Date(), '',undefined, [], [], [], 0)
   loading = true
+  noFavorites = false
 
   constructor(
     private loginService: LoginService,
@@ -29,11 +30,15 @@ export class RecomstoevaluateComponent implements OnInit {
     this.isLoading()
   }
   
-  isLoading(){
-    if(this.favoriteRecoms.length >0){
+  isLoading() {
+    if (this.favoriteRecoms.length > 0) {
+      this.loading = false
+    } else {
+      this.noFavorites = true 
       this.loading = false
     }
   }
+  
   async toggleFavorite(recomId: number) {
     try {
       await this.userService.removeFavorite(this.user.id, recomId)
