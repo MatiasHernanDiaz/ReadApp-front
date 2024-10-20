@@ -176,6 +176,6 @@ export class RecomdetailsComponent {
 
  async onConfirmDelete(book: Book){
   console.log(book)
-  this. recom = await this.recommendationService.deleteBookToRecom(this.useridLog, this.recom.id, book)
+  this. recom = await this.recommendationService.deleteBookToRecom(this.useridLog, this.recom.id, book.id)
  }
 }

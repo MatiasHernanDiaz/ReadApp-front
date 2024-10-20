@@ -69,7 +69,7 @@ class PathRecom extends Path {
     }
 
     deleteBookToRecom(userid: number, recomid: number, bookid: number){
-        return this.pathBasic() + '/' + userid + '/' + recomid + '/' + bookid
+        return this.pathBasic() + '/delete/' + userid + '/' + recomid + '/' + bookid
     }
 
 }
