@@ -17,12 +17,18 @@
 }
 
 @media (max-width:480px ) {
+    :host{
+        overflow-y: visible;
+    }
     .card-container{
         grid-template-columns: 1fr ;
         padding: 0;
     }
 }
-@media (min-width: 481px) and (max-width:768px ) {
+@media (min-width: 481px) and (max-width:976px ) {
+    :host{
+        overflow-y: visible;
+    }
     .card-container{
         grid-template-columns: repeat(2,1fr) ;
     }

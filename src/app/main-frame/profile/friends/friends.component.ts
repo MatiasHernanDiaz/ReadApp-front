@@ -54,11 +54,10 @@ export class FriendsComponent implements OnInit {
 
   async deleteFriend(friend: User) {
     const userId = this.loginService.getSignedUser()!.id
-    console.log(`Eliminando amigo con ID: ${friend.id} para el usuario ID: ${userId}`) // Agrega este log
+    console.log(`Eliminando amigo con ID: ${friend.id} para el usuario ID: ${userId}`) 
 
     await this.userService.deleteFriend(userId, friend.id)
 
-    // Recargar la lista de amigos después de eliminar uno
     this.getFriends()
 }
 }

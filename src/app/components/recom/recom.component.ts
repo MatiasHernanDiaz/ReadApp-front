@@ -40,7 +40,11 @@ export class RecomComponent {
   }
 
   goToDetail(id: number) {
-    this.router.navigate(['app/'+this.url+'/', id])
+    if(this.url === 'recomstoevaluate'){
+      this.router.navigate(['app/recoms/', id])
+    }else{
+      this.router.navigate(['app/'+this.url+'/', id])
+    }
   }
 
   removeRecom(id: number): void {

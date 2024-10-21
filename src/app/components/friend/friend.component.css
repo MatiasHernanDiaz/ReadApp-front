@@ -7,7 +7,7 @@
     border: 1px solid  var(--secundary-color);
     background-color: hsla(26, 88%, 84%, 0.38);
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    width: 300px;
+    width: 320px;
     height: 100px; 
     box-sizing: border-box;
     transition: background-color 0.3s, box-shadow 0.3s; 
@@ -32,7 +32,7 @@
 }
 
 .user-info h3 {
-    font-size: 1.15rem;
+    font-size: 1.5rem;
 }
 
 .user-info p {
@@ -44,4 +44,5 @@
     background-color: transparent;
     padding: 0%;
     margin-top: 0;
+    margin-left: auto;
 }

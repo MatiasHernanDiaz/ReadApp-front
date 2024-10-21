@@ -3,7 +3,9 @@
   <div *ngFor="let friend of friends" class="friend-card">
     <app-friend [user]="friend" (onDeleteFriend)="toDelete(friend)"></app-friend>
   </div>
-  <app-add-button [itemsToDisplay]="friendsToSearch" (searchAction)="findFriends($event)" (loadItemAction)="loadNewFriend($event)"></app-add-button>
+  <i class="addFriend">  
+    <app-add-button [itemsToDisplay]="friendsToSearch" (searchAction)="findFriends($event)" (loadItemAction)="loadNewFriend($event)"></app-add-button>
+  </i>
 </div>
 
 
