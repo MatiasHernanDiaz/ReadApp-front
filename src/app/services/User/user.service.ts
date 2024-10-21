@@ -61,22 +61,22 @@ export class UserService extends Service<User>{
         return friend
   }
 
-  async loadToRead(user: User, newBook: Book) {
-    const url = pathUser.getAddBook(user.id, true)
-    const payload = newBook.bookToJSON()
+    async loadToRead(user: User, newBook: Book) {
+      const url = pathUser.getAddBook(user.id, true)
+      const payload = newBook.bookToJSON()
 
-    const book$ = this.httpClient.post<BookToJSON[]>(url, payload)
-    const book = await lastValueFrom(book$)
-    return book
-  }
-  async loadReadBook(user: User, newBook: Book) {
-    const url = pathUser.getAddBook(user.id, false)
-    const payload = newBook.bookToJSON()
+      const book$ = this.httpClient.post<BookToJSON[]>(url, payload)
+      const book = await lastValueFrom(book$)
+      return book
+    }
+    async loadReadBook(user: User, newBook: Book) {
+      const url = pathUser.getAddBook(user.id, false)
+      const payload = newBook.bookToJSON()
 
-    const book$ = this.httpClient.post<BookToJSON[]>(url, payload)
-    const book = await lastValueFrom(book$)
-    return book
-  }
+      const book$ = this.httpClient.post<BookToJSON[]>(url, payload)
+      const book = await lastValueFrom(book$)
+      return book
+    }
 
   async deleteToRead(userId: number, bookID: number): Promise<void> {
     const url = pathUser.getDelBook(userId, true, bookID)
@@ -88,8 +88,6 @@ export class UserService extends Service<User>{
     const book$ = this.httpClient.delete<void>(url)
     return await lastValueFrom(book$)
   }
-
-    }
 
     async addFavorite(userId: number, recomId: number): Promise<Recommendation[]> {
         const url = pathUser.favoriteCRUD(userId, recomId, 'addFavorite')
