@@ -33,6 +33,14 @@
 
 .user-info h3 {
     font-size: 1.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-clamp: 1;
+    box-orient: vertical;
+    max-width: 170px;
 }
 
 .user-info p {

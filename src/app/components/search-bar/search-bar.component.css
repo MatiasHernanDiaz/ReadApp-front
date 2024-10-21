@@ -1,3 +1,6 @@
+:host{
+    color: blue;
+}
 #search-bar-container {
     display: flex;
     justify-content: center;
@@ -5,6 +8,8 @@
     background-color: var(--tertiary-color);
     width: 100%;
     height: 4rem;
+    z-index: 10;
+    
 }
 
 .search_bar{
@@ -59,7 +64,7 @@ main {
 @media (max-width: 480px) {
 
     #search-bar-container{
-        flex-direction: column;
+        flex-direction: column;    
     }
 
     .wrapper{
@@ -73,5 +78,5 @@ main {
         width: auto;
         padding: 0;
         padding-top: 0.2rem;
-    }
+    }    
 }

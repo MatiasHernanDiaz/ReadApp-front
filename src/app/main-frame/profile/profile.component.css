@@ -25,9 +25,11 @@ aside {
 }
 
 .img-name-aside .avatar {
-    width: 6rem;
+    width: 7rem;
+    height: 7rem;
     border-radius: 50%;
     border: 3px solid var(--primary-color);
+    object-fit: cover;
 }
 
 aside hr {
