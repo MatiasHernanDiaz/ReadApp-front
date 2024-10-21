@@ -1,8 +1,8 @@
 :host {
     display: flex;  
     flex-grow: 1;
-    
     overflow-y: hidden;
+
 }
 
 aside {
@@ -10,11 +10,9 @@ aside {
     flex-direction: column;
     justify-content: start;
     align-items: center;
-
     box-sizing: border-box;
-
     width: 280px;
-
+    min-width: 280px;
     border-right: 1px solid #aaa;
 }
 
@@ -27,9 +25,11 @@ aside {
 }
 
 .img-name-aside .avatar {
-    width: 6rem;
+    width: 7rem;
+    height: 7rem;
     border-radius: 50%;
     border: 3px solid var(--primary-color);
+    object-fit: cover;
 }
 
 aside hr {
@@ -107,7 +107,6 @@ a.active {
 
     aside {
         width: 100%;
-        
     }
 
     .img-name-aside {
@@ -122,5 +121,6 @@ a.active {
 
     aside nav {
         margin: 10px 0;
+
     }
 }
