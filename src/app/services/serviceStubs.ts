@@ -305,7 +305,7 @@ export const recomServiceStub = jasmine.createSpyObj('RecommendationService', ['
     }
 })
 
-recomServiceStub.getRecomm.and.returnValue(
+recomServiceStub.getRecomm.withArgs(1,1).and.returnValue(
     {
         creator: {
             id: 16,

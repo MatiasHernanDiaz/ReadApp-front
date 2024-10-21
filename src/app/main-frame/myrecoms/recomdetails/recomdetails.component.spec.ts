@@ -37,10 +37,10 @@ describe('RecomdetailsComponent', () => {
     expect(component.loading).toBe(false)
   })
 
-  it('cuando carga la recom de id 1', () =>{
-    // component.recomid = 1
-    // component.useridLog = 1
-    // component.ngOnInit()
+  it('cuando carga la recom de id 1 espero que', () =>{
+    component.recomid = 1
+    component.useridLog = 1
+    component.ngOnInit()
     fixture.detectChanges()
     console.log('recomendacion: ', component.recom)
     expect(component.recom.id).toBe(1)
