@@ -17,6 +17,18 @@ export class BookService extends Service<Book>{
     const booksJSON = await lastValueFrom(book$)
     return booksJSON.map((BookJSON) => Book.fromBookJSON(BookJSON))
   }
+  async getReadBooks(userId: number, text?: string): Promise<Book[]> {
+    const url = pathBook.pathRead(userId, text)
+    const book$ = this.httpClient.get<BookToJSON[]>(url)
+    const booksJSON = await lastValueFrom(book$)
+    return booksJSON.map((BookJSON) => Book.fromBookJSON(BookJSON))
+  }
+  async getToReadBooks(userId: number, text?: string): Promise<Book[]> {
+    const url = pathBook.pathToRead(userId, text)
+    const book$ = this.httpClient.get<BookToJSON[]>(url)
+    const booksJSON = await lastValueFrom(book$)
+    return booksJSON.map((BookJSON) => Book.fromBookJSON(BookJSON))
+  }
 
   async searchBooks( recom: RecomEdit, userLogId: number, searchWord: string ): Promise<Book[]> {
     //que libros candidatos para una recom

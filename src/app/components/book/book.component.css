@@ -29,6 +29,17 @@ article.card{
     line-height: 1.5rem;
 }
 
+.icon-select:hover {
+  transform: scale(1.2);
+}
+
+.icon-select{
+  display: flex;
+  justify-content: center;
+  transition: transform 0.2s ease;
+  background-color: transparent;
+}
+
 .card-header{
     display: flex;
     height: 2rem;

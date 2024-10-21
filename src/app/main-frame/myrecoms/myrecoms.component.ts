@@ -79,7 +79,5 @@ export class MyrecomsComponent {
     this.recommendationId = undefined 
     this.goToFind('') 
   }
-  
-  
 
 }

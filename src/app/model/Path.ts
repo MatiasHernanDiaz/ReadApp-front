@@ -68,6 +68,12 @@ class PathRecom extends Path {
         let path: string = this.pathBasic()
         return path += '/rating?userid=' + userid + '&recomid=' + recomid
     }
+
+    deleteBookToRecom(userid: number, recomid: number, bookid: number){
+        return this.pathBasic() + '/delete/' + userid + '/' + recomid + '/' + bookid
+    }
+
+
 }
 
 //======================================================================================================
@@ -81,6 +87,25 @@ class PathBook extends Path {
     }
     else {
       return this.pathBasic()
+    }
+  }
+  pathToRead(userID: number, wordToFind?: string): string {
+
+    if (wordToFind) {
+      return this.pathBasic() + '/nottoread' + '/' + String(userID) + '?text=' + wordToFind
+    }
+    else {
+      return this.pathBasic() + '/nottoread' + '/' + String(userID)
+    }
+
+  }
+
+  pathRead(userID: number, wordToFind?: string): string {
+    if (wordToFind) {
+      return this.pathBasic() + '/notread' + '/' + String(userID) + '?text=' + wordToFind
+    }
+    else {
+      return this.pathBasic() + '/notread' + '/' + String(userID)
     }
   }
 
@@ -111,6 +136,23 @@ class PathUser extends Path {
         else{
             return this.pathBasic() + '/' + userid + '/bookstoread?toread=false'
         }
+    }
+    getAddBook(userid: number, toread: boolean) {
+      if (toread) {
+        return `${this.pathBasic()}/${userid}/addtoread`
+      }
+      else {
+        return `${this.pathBasic()}/${userid}/addreadbook`
+      }
+  }
+
+    getDelBook(userid: number, toread: boolean, bookID: number) {
+      if (toread) {
+        return `${this.pathBasic()}/${userid}/deltoread` + '?bookid=' + bookID
+      }
+      else {
+        return `${this.pathBasic()}/${userid}/delreadbook` + '?bookid=' + bookID
+     }
     }
 
     getEditProfile() {

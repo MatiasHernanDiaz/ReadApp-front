@@ -59,7 +59,35 @@ export class UserService extends Service<User>{
         const friend$ = this.httpClient.post<UserToJSON[]>(url, payload)
         const friend = await lastValueFrom(friend$)
         return friend
+  }
+
+    async loadToRead(user: User, newBook: Book) {
+      const url = pathUser.getAddBook(user.id, true)
+      const payload = newBook.bookToJSON()
+
+      const book$ = this.httpClient.post<BookToJSON[]>(url, payload)
+      const book = await lastValueFrom(book$)
+      return book
     }
+    async loadReadBook(user: User, newBook: Book) {
+      const url = pathUser.getAddBook(user.id, false)
+      const payload = newBook.bookToJSON()
+
+      const book$ = this.httpClient.post<BookToJSON[]>(url, payload)
+      const book = await lastValueFrom(book$)
+      return book
+    }
+
+  async deleteToRead(userId: number, bookID: number): Promise<void> {
+    const url = pathUser.getDelBook(userId, true, bookID)
+    const book$ = this.httpClient.delete<void>(url)
+    return await lastValueFrom(book$)
+  }
+  async deleteRead(userId: number, bookID: number): Promise<void> {
+    const url = pathUser.getDelBook(userId, false, bookID)
+    const book$ = this.httpClient.delete<void>(url)
+    return await lastValueFrom(book$)
+  }
 
     async addFavorite(userId: number, recomId: number): Promise<Recommendation[]> {
         const url = pathUser.favoriteCRUD(userId, recomId, 'addFavorite')

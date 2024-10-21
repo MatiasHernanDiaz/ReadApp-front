@@ -69,5 +69,12 @@ export class RecommendationService extends Service<Recommendation> {
       const recoms$ = this.httpClient.delete<void>(url)
       return await lastValueFrom(recoms$)
     }
+
+    async deleteBookToRecom(userid: number, recomid: number, bookid: number): Promise<RecomEdit>{
+      const url = pathRecom.deleteBookToRecom(userid, recomid, bookid)
+      const recom$ = this.httpClient.delete<JSONRecomEdit>(url)
+      const recomJSON = await lastValueFrom(recom$)
+      return RecomEdit.fromRecomEditJSON(recomJSON)
+    }
   
 }

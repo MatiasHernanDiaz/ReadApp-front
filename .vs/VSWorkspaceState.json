@@ -3,12 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\components\\book",
-    "\\src\\app\\components\\recom",
-    "\\src\\app\\main-frame\\myrecoms",
-    "\\src\\app\\main-frame\\myrecoms\\recomdetails",
-    "\\src\\model"
+    "\\src\\app\\components",
+    "\\src\\app\\components\\add-book",
+    "\\src\\app\\components\\search-bar",
+    "\\src\\app\\main-frame",
+    "\\src\\app\\main-frame\\book-container",
+    "\\src\\app\\main-frame\\profile",
+    "\\src\\app\\main-frame\\profile\\readbooks"
   ],
-  "SelectedNode": "\\src\\model\\Book.ts",
+  "SelectedNode": "\\src\\app\\main-frame\\profile\\books-to-read\\books-to-read.component.ts",
   "PreviewInSolutionExplorer": false
 }
