@@ -46,7 +46,17 @@ export const routes: Routes = [
             { 
                 path: 'books',
                 component: BookContainerComponent
-            },
+          },
+          {
+            path: 'addtoread',
+            component: BookContainerComponent,
+            data: { isToRead: true }
+          },
+          {
+            path: 'addreadbook',
+            component: BookContainerComponent,
+            data: { isToRead: false }
+          },
             { 
                 path: '', 
                 redirectTo: 'recoms', 
@@ -66,11 +76,11 @@ export const routes: Routes = [
                     },
                     {
                         path: "readbooks",
-                        component: ReadbooksComponent
+                        component: ReadbooksComponent,
                     },
                     {
                         path: "bookstoread",
-                        component: BooksToReadComponent
+                      component: BooksToReadComponent,
                     },
                     {
                         path: "recomstoevaluate",

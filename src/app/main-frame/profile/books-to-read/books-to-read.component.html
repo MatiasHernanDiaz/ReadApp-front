@@ -1,7 +1,12 @@
 <div class="card-container">
-    <ng-container *ngFor="let book of readToBooks">
-      <app-book
-        [book]="book"
-      ></app-book>
-    </ng-container>
-  </div>
+  <ng-container *ngFor="let book of readToBooks">
+    <app-book [book]="book" [isDeleteable]="true" (onDeleteBook) ="toDelete(this.book)"></app-book>
+  </ng-container>
+  <app-add-book [url]="'addtoread'"></app-add-book>
+</div>
+
+<app-book-add-msg *ngIf="dialogOpen"
+                  [title]="this.title"
+                  [book]="this.bookSelected"
+                  (addbook)="onConfirmDelete($event)"
+                  (close)="closeDialog()"></app-book-add-msg>

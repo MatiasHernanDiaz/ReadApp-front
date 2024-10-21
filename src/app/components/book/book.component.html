@@ -4,10 +4,13 @@
     </div>
     <div class="card-header">
       <h2>{{book.title}}</h2>
-        <span class="images">
-            <img class="icons" src="assets/medal.svg" alt="Premio">
-            <img class="icons" src="assets/star.svg" alt="Ícono de Destacado">
-        </span>
+      <span class="images">
+        @if (isDeleteable) {
+        <button class="icon-select" (click)="removeBook()">
+          <ng-icon name="bootstrapTrash"></ng-icon>
+        </button>
+        }
+      </span>
     </div>
     <div>
         @if(isEnter){
