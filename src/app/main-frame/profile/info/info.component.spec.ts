@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing'
 
 import { InfoComponent } from './info.component'
 import { httpClientSpy, loginServiceStub } from '@src/app/services/serviceStubs'
@@ -27,4 +27,40 @@ describe('InfoComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy()
   })
+
+  it('Si la edición está dehabilitada, el input debería estar deshabilitado', () => {
+    const lastNameInput = fixture.debugElement.nativeElement.querySelector(`[data-testid="lastname-input"]`)
+
+    expect(lastNameInput.value).toEqual('Simpson')
+    expect(lastNameInput.disabled).toBeTruthy()
+  })
+
+  it('Si habilito la edición, el input debería estar habilitado', fakeAsync(() => {
+    const editPencil = fixture.debugElement.nativeElement.querySelector(`[data-testid="edit-pencil"]`)
+    const lastNameInput = fixture.debugElement.nativeElement.querySelector(`[data-testid="lastname-input"]`)
+
+    editPencil.click()
+    
+    fixture.detectChanges()
+    tick()
+    fixture.detectChanges()
+    
+    expect(lastNameInput.disabled).toBeFalsy()
+  }))
+
+  it('Si borro el valor del input, debería advertirme que es requerido', fakeAsync(() => {
+    const editPencil = fixture.debugElement.nativeElement.querySelector(`[data-testid="edit-pencil"]`)
+    const lastNameInput = fixture.debugElement.nativeElement.querySelector(`[data-testid="lastname-input"]`)
+
+    editPencil.click()
+    lastNameInput.value = ''
+    lastNameInput.dispatchEvent(new Event('input'))
+    fixture.detectChanges()
+    tick()
+    fixture.detectChanges()
+    
+    const validation = fixture.debugElement.nativeElement.querySelector(`[data-testid="errorMessage-lastName"]`)
+    
+    expect(validation.textContent).toBe( " El apellido es requerido " )
+  }))
 })
