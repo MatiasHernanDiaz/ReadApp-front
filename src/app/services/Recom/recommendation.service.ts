@@ -16,6 +16,7 @@ export class RecommendationService extends Service<Recommendation> {
       const url = pathRecom.pathRecom(userid, text)
       const recoms$ = this.httpClient.get<RecommendationJSON[]>(url)
       const recomsJSON = await lastValueFrom(recoms$)
+      //console.log(recomsJSON,"aca")
       return recomsJSON.map((recommendarionJSON) => Recommendation.fromRecomendacionJSON(recommendarionJSON))
 
     }
@@ -36,7 +37,7 @@ export class RecommendationService extends Service<Recommendation> {
 
     async updateRecomEdit(userId: number, recom: RecomEdit): Promise<RecomEdit>{
       const url = pathRecom.pathEntityCRUD(userId, recom.id, 'update')
-      console.log('url ',url)
+      //console.log('url ',url)
       const recoms$ = this.httpClient.put<JSONRecomEdit>(url, recom)
       const recomsJSON = await lastValueFrom(recoms$)
       return RecomEdit.fromRecomEditJSON(recomsJSON)
@@ -68,4 +69,12 @@ export class RecommendationService extends Service<Recommendation> {
       const recoms$ = this.httpClient.delete<void>(url)
       return await lastValueFrom(recoms$)
     }
+
+    async deleteBookToRecom(userid: number, recomid: number, bookid: number): Promise<RecomEdit>{
+      const url = pathRecom.deleteBookToRecom(userid, recomid, bookid)
+      const recom$ = this.httpClient.delete<JSONRecomEdit>(url)
+      const recomJSON = await lastValueFrom(recom$)
+      return RecomEdit.fromRecomEditJSON(recomJSON)
+    }
+  
 }

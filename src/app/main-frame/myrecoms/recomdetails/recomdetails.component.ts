@@ -15,11 +15,13 @@ import { bootstrapPlusCircleFill, bootstrapEye, bootstrapEyeSlash } from '@ng-ic
 import { NgIconComponent, provideIcons } from '@ng-icons/core'
 import { Book } from '@src/app/model/Book'
 import { AddButtonComponent } from '@src/app/components/add-button/add-button.component'
+import { BookAddMsgComponent } from '@src/app/components/book-add-msg/book-add-msg.component'
+
 
 @Component({
   selector: 'app-recomdetails',
   standalone: true,
-  imports: [RatingComponent, CommonModule, BookComponent, BtnNavigateComponent, SpinnerComponent, MsjComponent, AddRatingComponent, NgIconComponent, AddButtonComponent],
+  imports: [RatingComponent, CommonModule, BookComponent, BtnNavigateComponent, SpinnerComponent, MsjComponent, AddRatingComponent, NgIconComponent, AddButtonComponent, BookAddMsgComponent],
   viewProviders: [provideIcons({ bootstrapPlusCircleFill, bootstrapEye,bootstrapEyeSlash })],
   templateUrl: './recomdetails.component.html',
   styleUrl: './recomdetails.component.css'
@@ -38,6 +40,9 @@ export class RecomdetailsComponent {
   booksToSearch: Array<Book> = [] 
   close = true
   eye = {name:""}
+  bookSelected = new Book(0,'','','',0,new Date(0,0,0),'',0,0)
+  title = ''
+  dialogOpen = false
   
   constructor(private recommendationService: RecommendationService, private router: ActivatedRoute, public loginService: LoginService, public bookService: BookService){ 
     this.router.params.subscribe((params)=>{
@@ -158,4 +163,19 @@ export class RecomdetailsComponent {
       this.eye.name = "bootstrapEyeSlash"
     }
   }
+
+  toDelete(book: Book) {
+    this.bookSelected = book
+    this.title = "¿seguro que quiere eliminar este libro a libros leidos?"
+    this.dialogOpen = true
+ }
+
+ closeDialog(){
+  this.dialogOpen = false
+ }
+
+ async onConfirmDelete(book: Book){
+  console.log(book)
+  this. recom = await this.recommendationService.deleteBookToRecom(this.useridLog, this.recom.id, book.id)
+ }
 }

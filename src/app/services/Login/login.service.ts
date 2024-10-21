@@ -33,6 +33,9 @@ export class LoginService {
         this.signedUser.readMode,
         this.signedUser.searchCriteria,
         this.signedUser.avatar,
+        this.signedUser.minTime,
+        this.signedUser.maxTime,
+        this.signedUser.favorites
       )
     } else {
       return new User(-1, '', '', '', new Date(),'', Language.SPANISH,[],[],[], 0 )
@@ -44,7 +47,7 @@ export class LoginService {
 
     const res$ = this.httpClient.get<loginRes>(url)
     const res = await lastValueFrom(res$)
-    
+    console.log(res)
     this.signedUser = User.fromUserJSON(res.user)
     this.changeSignedUserSubject.next( this.signedUser )
 
@@ -59,6 +62,7 @@ export class LoginService {
    
       if (res.login) {
       this.signedUser = User.fromUserJSON(res.user)
+      console.log(this.signedUser)
       return res
     } else {
  
@@ -75,7 +79,6 @@ export class LoginService {
     }
     throw error // Lanza cualquier otro tipo de error que no sea HttpErrorResponse
   }
-  return null
 }
 
   async logout() {
