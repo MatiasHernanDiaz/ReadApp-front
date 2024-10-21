@@ -47,7 +47,6 @@ export class RecomdetailsComponent {
   constructor(private recommendationService: RecommendationService, private router: ActivatedRoute, public loginService: LoginService, public bookService: BookService){ 
     this.router.params.subscribe((params)=>{
       this.recomid = params['id']
-      
     })
 
     this.router.url.subscribe((u) => {
