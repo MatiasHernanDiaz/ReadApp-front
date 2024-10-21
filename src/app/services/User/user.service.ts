@@ -4,6 +4,7 @@ import { User, UserToJSON } from "@src/app/model/User"
 import { Service } from '@src/app/services/AbstractService/abstract.service'
 import { lastValueFrom } from "rxjs"
 import { pathUser } from "@src/app/model/Path"
+import { Recommendation } from "@src/app/model/Recommendation"
 
 
 
@@ -88,4 +89,23 @@ export class UserService extends Service<User>{
     return await lastValueFrom(book$)
   }
 
+    }
+
+    async addFavorite(userId: number, recomId: number): Promise<Recommendation[]> {
+        const url = pathUser.favoriteCRUD(userId, recomId, 'addFavorite')
+        const res= await lastValueFrom(this.httpClient.post<Recommendation[]>(url, {}))
+        return res.map((recom) => Recommendation.fromRecomendacionJSON(recom) )
+      }
+    
+      async removeFavorite( userId: number , recomId: number): Promise<Recommendation[]> {
+        const url = pathUser.favoriteCRUD(userId, recomId, 'removeFavorite')
+        const res= await lastValueFrom(this.httpClient.delete<Recommendation[]>(url))
+        return res.map((recom) => Recommendation.fromRecomendacionJSON(recom) )
+      }
+      async getFavorites(userId: number): Promise<Recommendation[]> {
+        const url = pathUser.favoriteCRUD(userId, 0,'getFavorites')
+        const res= await lastValueFrom(this.httpClient.get<Recommendation[]>(url))
+        return res.map((recom) => Recommendation.fromRecomendacionJSON(recom) )
+      }
+    
 }

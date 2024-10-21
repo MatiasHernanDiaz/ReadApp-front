@@ -17,6 +17,9 @@ export class User {
     readMode: ReadMode
     searchCriteria: SearchCriteria[]
     avatar: string
+    minTime: number
+    maxTime: number
+    favorites:Recommendation[]=[]
     
 
     constructor( 
@@ -33,7 +36,10 @@ export class User {
         readTimeMinAvg: number = 100,
         readMode: ReadMode = readerModes.avgReader, 
         searchCriteria: SearchCriteria[] = [SearchCriteria.GreatReader],
-        avatar: string = ''
+        avatar: string = '',
+        minTime: number = 0,
+        maxTime: number = 0,
+        favorites:Recommendation[]=[]
     ) {
         this.id = id
         this.lastName = lastName
@@ -49,7 +55,9 @@ export class User {
         this.readMode = readMode
         this.searchCriteria = searchCriteria
         this.avatar = avatar
-        
+        this.minTime = minTime
+        this.maxTime = maxTime
+        this.favorites=favorites
     }
 
     baseReadTime( book: Book ) {
@@ -83,7 +91,10 @@ export class User {
             avatar: this.avatar,
             friends: this.friends,
             readBooks: this.readBooks,
-            readToBooks: this.readToBooks
+            readToBooks: this.readToBooks,
+            minTime: this.minTime,
+            maxTime: this.maxTime,
+            favorites: this.favorites
         }
     }
 
@@ -97,12 +108,35 @@ export class User {
             userJSON.email,
             userJSON.nativeLanguage,
             userJSON.friends,
-            userJSON.readBooks,
-            userJSON.readToBooks,
+            userJSON.readBooks.map( bo => new Book(
+                bo.pages,
+                bo.title,
+                bo.imageURL,
+                bo.autor,
+                bo.words,
+                bo.date,
+                bo.lenguages,
+                bo.sales,
+                bo.id
+            )),
+            userJSON.readToBooks.map( bo => new Book(
+                bo.pages,
+                bo.title,
+                bo.imageURL,
+                bo.autor,
+                bo.words,
+                bo.date,
+                bo.lenguages,
+                bo.sales,
+                bo.id
+            )),
             userJSON.readTimeMinAvg,
             User.fromReadModeString(userJSON.readMode),
             userJSON.searchCriteria,
-            userJSON.avatar
+            userJSON.avatar,
+            userJSON.minTime,
+            userJSON.maxTime,
+            userJSON.favorites.map(recom=>Recommendation.fromRecomendacionJSON(recom))
         )
     }
 
@@ -152,8 +186,8 @@ export class FanaticReader implements ReadMode {
     readTime( book: Book, user: User ) {
         const extraTime = !user.readToBooks.includes(book) ? 
             book.pages > Book.largeBookPages ?
-            Book.largeBookPages * 2 + (book.pages - Book.largeBookPages) :
-            book.pages * 2 : 
+            Book.largeBookPages * .02 + (book.pages - Book.largeBookPages) :
+            book.pages * .02 : 
         0
 
         return user.baseReadTime(book) + extraTime
@@ -219,4 +253,7 @@ export type UserToJSON = {
     readMode: string
     searchCriteria: SearchCriteria[]
     avatar: string
+    minTime: number
+    maxTime: number
+    favorites:Recommendation[]
 }

@@ -2,6 +2,10 @@
     display: flex;
     flex-direction: column;
     justify-content: start; 
+<<<<<<< HEAD
     height: 100%;
+=======
+    height: 100%; 
+>>>>>>> develop
 }
 

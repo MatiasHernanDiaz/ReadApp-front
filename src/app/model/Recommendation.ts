@@ -56,7 +56,17 @@ export type RecommendationJSON = {
         recomendacionJSON.time_to_read,
         recomendacionJSON.comments,
         recomendacionJSON.creator,
-        recomendacionJSON.books,
+        recomendacionJSON.books.map( bo => new Book(
+          bo.pages,
+          bo.title,
+          bo.imageURL,
+          bo.autor,
+          bo.words,
+          bo.date,
+          bo.lenguages,
+          bo.sales,
+          bo.id
+        )),
         recomendacionJSON.publicIs,
         recomendacionJSON.ratings,
         recomendacionJSON.ratingsAvg

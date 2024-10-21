@@ -30,6 +30,7 @@ abstract class Path{
     pathEntityId(entityId: number): string{
         return this.pathBasic() + '/' + entityId
     }
+    
 }
 
 //======================================================================================================
@@ -71,6 +72,7 @@ class PathRecom extends Path {
     deleteBookToRecom(userid: number, recomid: number, bookid: number){
         return this.pathBasic() + '/delete/' + userid + '/' + recomid + '/' + bookid
     }
+
 
 }
 
@@ -165,6 +167,18 @@ class PathUser extends Path {
         return `${ this.pathBasic()}/${ userid }/addfriend`
     }
 
+    favoriteCRUD(userId: number, entityId: number, action: string): string{
+        let path: string = this.pathBasic()
+        switch(action){
+        case 'addFavorite': path += '/favorites/'+ userId + '/' + entityId
+        break
+        case 'removeFavorite': path += '/favorites/'+ userId + '/' + entityId
+        break
+        case 'getFavorites': path += '/favorites/'+ userId
+        break
+        }
+        return path
+        }
 }
 
 //==============================================================================

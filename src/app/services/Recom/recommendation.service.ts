@@ -16,6 +16,7 @@ export class RecommendationService extends Service<Recommendation> {
       const url = pathRecom.pathRecom(userid, text)
       const recoms$ = this.httpClient.get<RecommendationJSON[]>(url)
       const recomsJSON = await lastValueFrom(recoms$)
+      console.log(recomsJSON,"aca")
       return recomsJSON.map((recommendarionJSON) => Recommendation.fromRecomendacionJSON(recommendarionJSON))
 
     }
@@ -75,4 +76,5 @@ export class RecommendationService extends Service<Recommendation> {
       const recomJSON = await lastValueFrom(recom$)
       return RecomEdit.fromRecomEditJSON(recomJSON)
     }
+  
 }
