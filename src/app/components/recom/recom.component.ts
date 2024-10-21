@@ -9,7 +9,6 @@ import { ActivatedRoute, Router } from '@angular/router'
 import { Recommendation } from '@src/app/model/Recommendation'
 import { Language, User } from '@src/app/model/User'
 import { LoginService } from '@src/app/services/Login/login.service'
-//import { RecommendationService } from '@src/app/services/Recom/recommendation.service'
 import { UserService } from '@src/app/services/User/user.service'
 @Component({
   selector: 'app-recom',
@@ -21,11 +20,9 @@ import { UserService } from '@src/app/services/User/user.service'
 })
 export class RecomComponent {
   @Input() recommendation: Recommendation = new Recommendation(0,'','',0,0,'',[],new User(0, '', '', '', new Date(),'',Language.SPANISH,[],[],[], 0 ),[],false, [],0.0)
-    //  solo una recomendación
+  
   @Output() onDeleteRecom = new EventEmitter<number>()
   url = ''
-  // userIdLogin: number = -1 
-  // allFavorites: Recommendation[] = []
   user: User = new User(-1, '', '', '', new Date(),'', Language.SPANISH,[],[],[], 0 )
   constructor(
     private router: Router,
@@ -40,14 +37,6 @@ export class RecomComponent {
 
   ngOnInit(){
     this.user = this.loginService.getSignedUser()!
-    console.log("aca esta el user",this.user)
-    // this.userIdLogin = this.loginService.getSignedUser().id
-    // this.allFavorites=this.loginService.getSignedUser().favorites
-    // console.log(this.allFavorites, "lo que trae PURO")
-    
-    // this.userObserver = this.loginService.changeSignedUserSubject.asObservable().subscribe(
-    //   newUser => { this.user = newUser }
-    // )
   }
 
   goToDetail(id: number) {
@@ -78,7 +67,6 @@ export class RecomComponent {
   }
 
   isFavorite(recomId:number) {
-    //console.log(this.allFavorites, "lo que trae")
   return this.user.favorites.map(rec=>rec.id).includes(recomId)
 }
 
