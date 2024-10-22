@@ -3,12 +3,12 @@
         <h3>{{ recommendation.title }}</h3>
         <div class="favorite-icon">
         @if ( isCreator) {
-            <button class="icon-select" (click)="removeRecom(recommendation.id)">
-            <ng-icon name="bootstrapTrash"></ng-icon>
+            <button class="icon-select" (click)="removeRecom(recommendation.id)" >
+            <ng-icon name="bootstrapTrash" data-testid="remove"></ng-icon>
             </button>
         } @else {
-            <button class="icon-select" (click)="toggleFavorite(recommendation.id)">
-            <ng-icon [name]="isFavorite(recommendation.id)? 'bootstrapHeartFill' : 'bootstrapHeart'"></ng-icon>
+            <button class="icon-select" (click)="toggleFavorite(recommendation.id)" >
+            <ng-icon [name]="isFavorite(recommendation.id)? 'bootstrapHeartFill' : 'bootstrapHeart'" data-testid="favorite"></ng-icon>
             </button>
               }
         </div>

@@ -22,4 +22,12 @@ describe('SearchBarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy()
   })
+
+  it('debe emitir "Homero" cuando presiono "Enter"', () => {
+    spyOn(component.lookup, 'emit') 
+    component.userInput = 'Homero' 
+    component.search({ key: 'Enter' }) 
+    expect(component.lookup.emit).toHaveBeenCalledWith('Homero')
+  })
+
 })

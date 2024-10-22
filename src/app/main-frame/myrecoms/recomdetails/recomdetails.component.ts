@@ -47,7 +47,6 @@ export class RecomdetailsComponent {
   constructor(private recommendationService: RecommendationService, private router: ActivatedRoute, public loginService: LoginService, public bookService: BookService){ 
     this.router.params.subscribe((params)=>{
       this.recomid = params['id']
-      
     })
 
     this.router.url.subscribe((u) => {
@@ -65,7 +64,7 @@ export class RecomdetailsComponent {
   }
   
   
-  async ngOnInit(){
+  ngOnInit(){
       this.recommendationService.getRecomm(this.recomid, this.useridLog).then((res)=>{
       this.recom = res
       this.recomEdit = res

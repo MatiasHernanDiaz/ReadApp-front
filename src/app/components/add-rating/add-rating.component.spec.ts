@@ -29,4 +29,18 @@ describe('AddRatingComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy()
   })
+
+  it('Cuando se clickea la segunda estrella, la primera y la segunda estan pintadas', () => {
+    component.displaySelector = true
+    fixture.detectChanges()
+    const star2 = fixture.debugElement.nativeElement.querySelector(`[data-testid="star_2"]`)
+    star2.click()
+    fixture.detectChanges()
+    const star1 = fixture.debugElement.nativeElement.querySelector(`[data-testid="star_1"]`)
+    const star3 = fixture.debugElement.nativeElement.querySelector(`[data-testid="star_3"]`)
+    console.log(star3.attributes['name'])
+    expect(star2.getAttribute('ng-reflect-name')).toBe('bootstrapStarFill')
+    expect(star1.getAttribute('ng-reflect-name')).toBe('bootstrapStarFill')
+    expect(star3.getAttribute('ng-reflect-name')).toBe('bootstrapStar')
+  })
 })
