@@ -11,6 +11,8 @@ import { bootstrapBookmark, bootstrapStar, bootstrapBook,
   bootstrapClock, bootstrapHeart, bootstrapArrowRight, bootstrapTrash } from '@ng-icons/bootstrap-icons'
 import { heroUsers } from '@ng-icons/heroicons/outline'
 import { CommonModule } from '@angular/common'
+import { loginServiceStub } from '@src/app/services/serviceStubs'
+import { Language, User } from '@src/app/model/User'
 
 describe('RecomComponent', () => {
   let component: RecomComponent
@@ -21,7 +23,7 @@ describe('RecomComponent', () => {
       imports: [RecomComponent, CommonModule, NgIconComponent, HttpClientTestingModule],
       providers: [
         provideRouter(routes),
-        LoginService,
+          { provide: LoginService, useValue: loginServiceStub },
         provideIcons({ heroUsers, bootstrapBookmark, bootstrapStar, bootstrapBook, bootstrapClock, bootstrapHeart, bootstrapArrowRight, bootstrapTrash }),
         {
           provide: ActivatedRoute,
@@ -39,5 +41,13 @@ describe('RecomComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy()
+  })
+
+  it('Si es creador de la recomendacion tiene el boton del tachito', () => {
+    component.recommendation.creator.id = 1
+    component.user = new User(1, '', '', '', new Date(),'', Language.SPANISH,[],[],[], 0 )
+    fixture.detectChanges()
+    const btnRecove = fixture.debugElement.nativeElement.querySelector(`[data-testid="remove"]`)
+    expect(btnRecove.getAttribute('ng-reflect-name')).toBe("bootstrapTrash")
   })
 })

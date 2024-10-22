@@ -22,15 +22,5 @@ describe('SearchBarComponent', () => {
     expect(component).toBeTruthy()
   })
 
-  it('debe emitir "dodino" cuando presiono "Enter"', () => {
-    spyOn(component.lookup, 'emit') 
-
-    component.userInput = 'dodino' // simulo el ingreso de palabra dodino
-    
-
-    component.search({ key: 'Enter' }) // evento simulado enter
-
-
-    expect(component.lookup.emit).toHaveBeenCalledWith('dodino')//esta ok?
-  })
+  
 })
