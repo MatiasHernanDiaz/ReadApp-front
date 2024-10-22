@@ -64,7 +64,7 @@ export class RecomdetailsComponent {
   }
   
   
-  async ngOnInit(){
+  ngOnInit(){
       this.recommendationService.getRecomm(this.recomid, this.useridLog).then((res)=>{
       this.recom = res
       this.recomEdit = res

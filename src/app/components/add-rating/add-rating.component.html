@@ -6,7 +6,7 @@
             <textarea [(ngModel)]="text" rows="10" cols="40" class="textArea"></textarea>
             <ul class="stars">
                 @for(star of stars; track star){
-                    <ng-icon [name]="star.name" (click)="starRanking(star.id)" class="starIcon"></ng-icon>
+                    <ng-icon [name]="star.name" (click)="starRanking(star.id)" class="starIcon" [attr.data-testid]="'star_' + star.id"></ng-icon>
                 }
             </ul>
             
