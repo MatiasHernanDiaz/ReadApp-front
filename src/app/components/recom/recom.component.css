@@ -49,11 +49,11 @@ article.card {
     display: block; 
     height: 5rem; 
     overflow-y: auto; 
-    scrollbar-width: thin; 
-    scrollbar-color: var(--primary-color) var(--tertiary-color); 
+    /* scrollbar-width: thin; 
+    scrollbar-color: var(--primary-color) var(--tertiary-color);  */
 }
 
-.comments::-webkit-scrollbar {
+/* .comments::-webkit-scrollbar {
     width: 0.4rem; 
 }
 
@@ -68,7 +68,7 @@ article.card {
 
 .comments::-webkit-scrollbar-thumb:hover {
     background-color: var(--secundary-color); 
-}
+} */
 
 
 .card-header h3 {

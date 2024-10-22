@@ -20,6 +20,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scrollbar-width: thin; 
+  scrollbar-color: var(--primary-color) var(--tertiary-color); 
 }
 
 html {
@@ -83,4 +85,21 @@ button.accept:hover, button.cancel:hover {
 button.cancel {
   background:var(--primary-color);
   border: var(--light-border);
+}
+
+*::-webkit-scrollbar {
+  width: 0.4rem; 
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--tertiary-color); 
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color); 
+  border-radius: 0.5rem; 
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--secundary-color); 
 }
