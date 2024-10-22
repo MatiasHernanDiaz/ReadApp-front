@@ -9,9 +9,7 @@ import { RatingWithId } from '@src/app/model/rating'
 
 @Injectable({ providedIn: 'root' })
 export class RecommendationService extends Service<Recommendation> {
-
-  recomid: number = 0 
-
+  
     async fetchRecoms(userid?: number, text?: string): Promise<Recommendation[]>{
       const url = pathRecom.pathRecom(userid, text)
       const recoms$ = this.httpClient.get<RecommendationJSON[]>(url)

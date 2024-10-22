@@ -32,7 +32,7 @@ export class ReadbooksComponent implements OnInit {
   constructor(
     private userService: UserService, private loginService: LoginService
   ) {}
-  async ngOnInit() {
+  ngOnInit() {
     const user = this.loginService.getSignedUser()!
 
     this.userService.getBookToRead(user.id, false).then((res)=>{
