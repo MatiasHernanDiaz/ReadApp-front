@@ -129,6 +129,12 @@ class PathUser extends Path {
         return this.pathBasic() + '/' + userid + '/friends'
     }
 
+    getDelFriend(userId: number, friendId: number) {
+      const url = `${this.pathBasic()}/${userId}/delfriend?friendid=${friendId}`
+      console.log('URL generada para eliminar amigo:', url) // Verifica la URL
+      return url
+    }
+
     getBookToRead(userid: number, toread: boolean){
         if(toread){
             return this.pathBasic() + '/' + userid + '/bookstoread?toread=true'

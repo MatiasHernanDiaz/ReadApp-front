@@ -1,22 +1,6 @@
 .add-icon {
   font-size: 40px;
 }
-
-.button-acept, .button-cancel {
-  height: 2.5rem;
-  margin: 0 10px;
-  min-width: 100px;
-  border: 2px solid var(--tertiary-color);
-}
-
-.button-acept, .button-cancel {
-  background-color: var(--tertiary-color);
-}
-
-  .button-acept:hover, .button-cancel:hover {
-    background-color: darken(var(--tertiary-color), 10%);
-  }
-
 .add-icon {
   font-size: 40px;
 }

@@ -88,6 +88,11 @@ export class UserService extends Service<User>{
     const book$ = this.httpClient.delete<void>(url)
     return await lastValueFrom(book$)
   }
+  async deleteFriend(userId: number, friendId: number): Promise<void> {
+    const url = pathUser.getDelFriend(userId, friendId) 
+    const friend$ = this.httpClient.delete<void>(url)
+    return await lastValueFrom(friend$)
+  }
 
     async addFavorite(userId: number, recomId: number): Promise<Recommendation[]> {
         const url = pathUser.favoriteCRUD(userId, recomId, 'addFavorite')
